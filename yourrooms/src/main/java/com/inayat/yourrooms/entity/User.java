@@ -5,19 +5,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -28,6 +22,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Entity
 @Table(name = "t_user")
 public class User implements UserDetails, Serializable {
+	
+	
+
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,9 +60,6 @@ public class User implements UserDetails, Serializable {
 
 	@Column(name = "is_verified")
 	private Boolean is_verified;
-
-	@Column(name = "token")
-	private String token;
 
 	@Column(name = "is_enabled")
 	private Boolean is_enabled;
@@ -210,15 +205,7 @@ public class User implements UserDetails, Serializable {
 	public void setIs_verified(Boolean is_verified) {
 		this.is_verified = is_verified;
 	}
-
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
-	}
-
+	
 	public Boolean getIs_enabled() {
 		return is_enabled;
 	}

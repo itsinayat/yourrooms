@@ -2,6 +2,11 @@ package com.inayat.yourrooms.dto;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.inayat.yourrooms.entity.Role;
+
+@JsonInclude(Include.NON_DEFAULT)
 public class UsersDTO {
 	private Long id;
 
@@ -25,8 +30,6 @@ public class UsersDTO {
 
 	private Boolean is_verified;
 
-	private String token;
-
 	private Boolean is_enabled;
 
 	private Boolean del_ind;
@@ -39,9 +42,13 @@ public class UsersDTO {
 
 	private Long update_user_id;
 
-	private RolesDTO roles;
+	private String username;
 
 	private String password;
+	
+	private String otp;
+
+	private Role role;
 
 	public Long getId() {
 		return id;
@@ -131,12 +138,12 @@ public class UsersDTO {
 		this.is_verified = is_verified;
 	}
 
-	public String getToken() {
-		return token;
+	public Boolean getIs_enabled() {
+		return is_enabled;
 	}
 
-	public void setToken(String token) {
-		this.token = token;
+	public void setIs_enabled(Boolean is_enabled) {
+		this.is_enabled = is_enabled;
 	}
 
 	public Boolean getDel_ind() {
@@ -179,28 +186,38 @@ public class UsersDTO {
 		this.update_user_id = update_user_id;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public String getUsername() {
+		return username;
 	}
 
-	public Boolean getIs_enabled() {
-		return is_enabled;
-	}
-
-	public void setIs_enabled(Boolean is_enabled) {
-		this.is_enabled = is_enabled;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
 		return password;
 	}
 
-	public RolesDTO getRoles() {
-		return roles;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public void setRoles(RolesDTO roles) {
-		this.roles = roles;
+	public Role getRole() {
+		return role;
 	}
 
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	public String getOtp() {
+		return otp;
+	}
+
+	public void setOtp(String otp) {
+		this.otp = otp;
+	}
+
+	
+	
 }

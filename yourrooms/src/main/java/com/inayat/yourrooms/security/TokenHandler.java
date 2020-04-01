@@ -178,7 +178,8 @@ public class TokenHandler {
         		&& userDetails != null
         		&& username.equals(userDetails.getUsername()) 
         		&& (this.isTokenActive(username, token)) 
-        		&& !(this.isTokenExpired(token))); 
+        		&& !(this.isTokenExpired(token))
+        		&& (System.currentTimeMillis()>created.getTime())); 
     }
 
 }

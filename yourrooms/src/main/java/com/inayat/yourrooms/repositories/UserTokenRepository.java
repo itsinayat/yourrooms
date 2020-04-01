@@ -23,6 +23,7 @@ public interface UserTokenRepository extends JpaRepository<UserToken, Long> {
 	@Query("SELECT ut FROM UserToken ut, User u "
 			+ "WHERE ut.user.id = u.id "
 			+ "AND u.username = :username "
-			+ "AND status = :userTokenStatus")
-	public UserToken findUserTokenByUsername(@Param("username") String username, @Param("userTokenStatus") String userTokenStatus);
+			+ "AND status = :userTokenStatus "
+			+ "AND ut.tokenKey= :token")
+	public UserToken findUserTokenByUsername(@Param("username") String username, @Param("userTokenStatus") String userTokenStatus,@Param("token") String token);
 }

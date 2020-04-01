@@ -1,18 +1,12 @@
 package com.inayat.yourrooms.translator;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
 import com.inayat.yourrooms.dto.UsersDTO;
 import com.inayat.yourrooms.entity.User;
 
-@Configuration
 public class UsersTranslator {
 	
-	public UsersDTO convertToDto(User tUser) {
+	public static UsersDTO convertToDto(User tUser) {
 		UsersDTO dto = new UsersDTO();
-		dto.setId(tUser.getId());
 		dto.setCreate_dt(tUser.getCreate_dt());
 		dto.setCreate_user_id(tUser.getCreate_user_id());
 		dto.setDel_ind(tUser.getDel_ind());
@@ -29,7 +23,33 @@ public class UsersTranslator {
 		dto.setReferred_by(tUser.getReferred_by());
 		dto.setUpdate_dt(tUser.getUpdate_dt());
 		dto.setUpdate_user_id(tUser.getUpdate_user_id());
+		dto.setUsername(tUser.getUsername());
+		dto.setRole(tUser.getRole());
 	    return dto;
+	}
+	public static User convertToDao(UsersDTO dto) {
+		User dao = new User();
+		dao.setId(dto.getId());
+		dao.setCreate_dt(dto.getCreate_dt());
+		dao.setCreate_user_id(dto.getCreate_user_id());
+		dao.setDel_ind(dto.getDel_ind());
+		dao.setDob(dto.getDob());
+		dao.setEmail(dto.getEmail());
+		dao.setFirstName(dto.getFirstName());
+		dao.setGender(dto.getGender());
+		dao.setIs_enabled(dto.getIs_enabled());
+		dao.setIs_logged_in(dto.getIs_logged_in());
+		dao.setIs_verified(dto.getIs_verified());
+		dao.setLast_login_time(dto.getLast_login_time());
+		dao.setLastName(dto.getLastName());
+		dao.setMobile(dto.getMobile());
+		dao.setReferred_by(dto.getReferred_by());
+		dao.setUpdate_dt(dto.getUpdate_dt());
+		dao.setUpdate_user_id(dto.getUpdate_user_id());
+		dao.setUsername(dto.getUsername());
+		dao.setRole(dto.getRole());
+		dao.setPassword(dto.getPassword());
+	    return dao;
 	}
 
 	

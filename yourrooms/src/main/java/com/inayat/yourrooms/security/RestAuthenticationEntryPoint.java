@@ -26,9 +26,6 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
 		if (e instanceof BadCredentialsException) {
 			 response.setMessage("Wrong Username/Password");
 		}
-		if(e instanceof InsufficientAuthenticationException) {
-			 response.setMessage("Missing Authorization Header");
-		}
 
 		OutputStream out = httpServletResponse.getOutputStream();
 		ObjectMapper mapper = new ObjectMapper();

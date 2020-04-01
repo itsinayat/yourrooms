@@ -26,23 +26,19 @@ public class Role implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	public Role(String name) {
+	public Role(Long id,String name) {
 		this.name = name;
+		this.id = id;
 	}
 	
 	public Role() {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(name = "name")
 	private String name;
-	
-	@OneToOne
-	@JoinTable(name = "t_user", joinColumns = @JoinColumn(name = "id", referencedColumnName = "id"))
-	private User role;
 
 	
 	public Long getId() {

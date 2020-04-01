@@ -1,14 +1,19 @@
 package com.inayat.yourrooms.model;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_DEFAULT)
 public class ApiResponse {
 
 	private int status;
 	private String message;
-	private Object result;
+	private Object data;
 
-	public ApiResponse(int status, String message, Object result){
+	public ApiResponse(int status, String message, Object data){
 	    this.status = status;
 	    this.message = message;
-	    this.result = result;
+	    this.data = data;
     }
 
     public ApiResponse(int status, String message){
@@ -32,17 +37,19 @@ public class ApiResponse {
         this.message = message;
     }
 
-    public Object getResult() {
-        return result;
-    }
-
-    public void setResult(Object result) {
-        this.result = result;
-    }
+   
 
     @Override
 	public String toString() {
 		return "ApiResponse [statusCode=" + status + ", message=" + message +"]";
+	}
+
+	public Object getData() {
+		return data;
+	}
+
+	public void setData(Object data) {
+		this.data = data;
 	}
 
 

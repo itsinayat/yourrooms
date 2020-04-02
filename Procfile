@@ -1,1 +1,1 @@
-web: java -Dserver.port=8085 -war target/yourrooms-0.0.1-SNAPSHOT.war
+web: java $JAVA_OPTS -cp target/classes:target/m2e-wtp/*.jar com.inayat.YourroomsApplication

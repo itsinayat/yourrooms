@@ -66,6 +66,13 @@
 			<artifactId>guava</artifactId>
 			<version>20.0</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>5.2.1.RELEASE</version>
+		</dependency>
+
 
 
 		<dependency>

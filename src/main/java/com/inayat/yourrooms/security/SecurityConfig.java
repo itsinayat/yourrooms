@@ -59,6 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 			.antMatchers("/user/login").permitAll()
 			.antMatchers("/user/logout").permitAll()
+			.antMatchers("/user/test").permitAll()
 			.antMatchers("/user/generate_otp").permitAll()
 			.antMatchers("/user/mobile-login").permitAll()
             .antMatchers("/user/testAuth/**").hasRole("ADMIN")

@@ -97,5 +97,11 @@ public class AuthController {
 		ApiResponse response = userService.login_mobile(user);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public ResponseEntity<ApiResponse> test(@RequestBody UsersDTO user) {
+		ApiResponse response = new ApiResponse(1, "running");
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
 
 }

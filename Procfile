@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* com.inayat.yourrooms.YourroomsApplication
+web: java -jar target/yourrooms-0.0.1-SNAPSHOT.war

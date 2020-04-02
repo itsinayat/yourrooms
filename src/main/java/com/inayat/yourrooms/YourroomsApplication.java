@@ -11,10 +11,4 @@ public class YourroomsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(YourroomsApplication.class, args);
 	}
-
-	@Bean
-	public BCryptPasswordEncoder bCryptPasswordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
-
 }

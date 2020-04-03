@@ -1,24 +1,24 @@
 package com.inayat.yourrooms.security;
 
-import io.jsonwebtoken.*;
 import java.io.UnsupportedEncodingException;
-import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import com.inayat.yourrooms.dao.UserDao;
 import com.inayat.yourrooms.entity.UserToken;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+
 @Component
 public class TokenHandler {
-
-    private final Logger logger = Logger.getLogger(this.getClass());
 
     private final String AUDIENCE_UNKNOWN   = "unknown";
     private final String AUDIENCE_WEB       = "web";
@@ -140,7 +140,6 @@ public class TokenHandler {
                 .compact();
         } catch (UnsupportedEncodingException ex) {
             //didn't want to have this method throw the exception, would rather log it and sign the token like it was before
-            logger.warn(ex.getMessage());
             return Jwts.builder()
                 .setClaims(claims)
                 .setExpiration(this.generateExpirationDate())

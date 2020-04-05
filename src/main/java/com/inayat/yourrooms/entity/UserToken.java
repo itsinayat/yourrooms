@@ -13,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 @Table(name = "t_user_token")
 public class UserToken {
@@ -28,9 +31,11 @@ public class UserToken {
 	@Column(name = "status")
 	private String status;
 	
+	@CreationTimestamp
 	@Column(name = "cdate")
 	private Date cdate;
 	
+	@UpdateTimestamp
 	@Column(name = "udate")
 	private Date udate;
 	

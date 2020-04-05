@@ -75,9 +75,8 @@ public class AuthController {
 	}
 
 	@RequestMapping(value = "/testAuth", method = RequestMethod.GET)
-	public ResponseEntity<ApiResponse> test() {
-		ApiResponse response = userService.updateProfile();
-		return new ResponseEntity<>(response, HttpStatus.OK);
+	public String test() {
+		return "Running";
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -99,13 +98,17 @@ public class AuthController {
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
-	/*
-	 * @RequestMapping(value = "/get-profile", method = RequestMethod.POST) public
-	 * ResponseEntity<ApiResponse> getProfile() { ApiResponse response =
-	 * userService.getProfile(); return new ResponseEntity<>(response,
-	 * HttpStatus.OK); }
-	 */
+	@RequestMapping(value = "/get-profile", method = RequestMethod.GET)
+	public ResponseEntity<ApiResponse> getProfile() {
+		ApiResponse response = userService.getProfile();
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+	@RequestMapping(value = "/update-profile", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ApiResponse> updateProfile(@RequestBody UsersDTO user) {
+		ApiResponse response = userService.updateProfile(user);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+	
+	
 
 }
-
-

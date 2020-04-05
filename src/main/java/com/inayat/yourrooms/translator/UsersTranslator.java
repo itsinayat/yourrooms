@@ -46,7 +46,8 @@ public class UsersTranslator {
 		dao.setReferred_by(dto.getReferred_by());
 		dao.setUpdate_dt(dto.getUpdate_dt());
 		dao.setUpdate_user_id(dto.getUpdate_user_id());
-		dao.setUsername(dto.getUsername());
+		//username is mobile number
+		dao.setUsername(dto.getMobile());
 		dao.setRole(dto.getRole());
 		dao.setPassword(dto.getPassword());
 	    return dao;

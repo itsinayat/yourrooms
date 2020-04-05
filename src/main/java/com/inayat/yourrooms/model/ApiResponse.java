@@ -6,27 +6,27 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_DEFAULT)
 public class ApiResponse {
 
-	private int status;
+	private int statusCode;
 	private String message;
 	private Object data;
 
 	public ApiResponse(int status, String message, Object data){
-	    this.status = status;
+	    this.statusCode = status;
 	    this.message = message;
 	    this.data = data;
     }
 
     public ApiResponse(int status, String message){
-        this.status = status;
+        this.statusCode = status;
         this.message = message;
     }
 
     public int getStatus() {
-        return status;
+        return statusCode;
     }
 
     public void setStatus(int status) {
-        this.status = status;
+        this.statusCode = status;
     }
 
     public String getMessage() {
@@ -41,7 +41,7 @@ public class ApiResponse {
 
     @Override
 	public String toString() {
-		return "ApiResponse [statusCode=" + status + ", message=" + message +"]";
+		return "ApiResponse [statusCode=" + statusCode + ", message=" + message +"]";
 	}
 
 	public Object getData() {

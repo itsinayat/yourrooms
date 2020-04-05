@@ -15,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -37,10 +39,10 @@ public class User implements UserDetails, Serializable {
 	@Column(name = "last_name")
 	private String lastName;
 
-	@Column(name = "email")
+	@Column(name = "email",unique=true)
 	private String email;
 
-	@Column(name = "mobile")
+	@Column(name = "mobile",unique=true)
 	private String mobile;
 
 	@Column(name = "dob")
@@ -66,10 +68,12 @@ public class User implements UserDetails, Serializable {
 
 	@Column(name = "del_ind")
 	private Boolean del_ind;
-
+	
+	@CreationTimestamp
 	@Column(name = "create_dt")
 	private Date create_dt;
-
+	
+	@UpdateTimestamp
 	@Column(name = "update_dt")
 	private Date update_dt;
 
@@ -84,6 +88,9 @@ public class User implements UserDetails, Serializable {
 
 	@Column(name = "password")
 	private String password;
+	
+	@OneToOne
+	private Wallet wallet;
 
 	@OneToOne
 	private Role role;
@@ -268,6 +275,14 @@ public class User implements UserDetails, Serializable {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public Wallet getWallet() {
+		return wallet;
+	}
+
+	public void setWallet(Wallet wallet) {
+		this.wallet = wallet;
 	}
 
 }

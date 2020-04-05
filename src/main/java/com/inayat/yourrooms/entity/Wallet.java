@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 @Table(name = "t_wallet")
 public class Wallet implements Serializable {
@@ -30,15 +33,18 @@ public class Wallet implements Serializable {
 	@OneToOne
 	private User user;
 	
+	@CreationTimestamp
 	@Column(name = "create_dt")
 	private Date create_dt;
-
+	
+	@UpdateTimestamp
 	@Column(name = "update_dt")
 	private Date update_dt;
 
+	
 	@Column(name = "create_user_id")
 	private Long create_user_id;
-
+	
 	@Column(name = "update_user_id")
 	private Long update_user_id;
 	

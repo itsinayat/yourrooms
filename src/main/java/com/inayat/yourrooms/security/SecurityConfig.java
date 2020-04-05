@@ -63,7 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/user/mobile-login").permitAll()
             .antMatchers("/user/testAuth/**").hasRole("ADMIN")
             .antMatchers("/consumer").hasRole("CONSUMER")
-            .antMatchers("/update-profile").permitAll()
+            .antMatchers("/user/update-profile").permitAll()
             
             
             

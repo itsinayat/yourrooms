@@ -132,8 +132,7 @@ public class UserService {
 	}
 
 	public ApiResponse updateProfile() {
-		System.out.println("insode");
-		UserDetails ud =	(UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
 		return new ApiResponse(349, "hello");
 	}
 

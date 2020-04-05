@@ -69,7 +69,7 @@ public class AuthController {
 	@RequestMapping(value = "/logout", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	private boolean logout(@RequestBody User user, HttpServletRequest req, HttpServletResponse resp)
 			throws JsonGenerationException, JsonMappingException, IOException {
-		User loggedInUser = userRepository.findByUsername(user.getUsername());
+		User loggedInUser = userRepository.findByUsername(user.getMobile());
 		userDao.deactivateUserToken(loggedInUser, req.getHeader("Authorization"), resp);
 		return true;
 	}

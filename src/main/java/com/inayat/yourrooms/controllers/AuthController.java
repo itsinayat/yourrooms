@@ -75,8 +75,9 @@ public class AuthController {
 	}
 
 	@RequestMapping(value = "/testAuth", method = RequestMethod.GET)
-	public String test() {
-		return "It works!";
+	public ResponseEntity<ApiResponse> test() {
+		ApiResponse response = userService.updateProfile();
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -97,13 +98,7 @@ public class AuthController {
 		ApiResponse response = userService.login_mobile(user);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
-	
-	@RequestMapping(value = "/update-user", method = RequestMethod.GET)
-	public ResponseEntity<ApiResponse> updateProfile() {
-		ApiResponse response = userService.updateProfile();
-		return new ResponseEntity<>(response, HttpStatus.OK);
-	}
-	
+
 	/*
 	 * @RequestMapping(value = "/get-profile", method = RequestMethod.POST) public
 	 * ResponseEntity<ApiResponse> getProfile() { ApiResponse response =
@@ -112,3 +107,5 @@ public class AuthController {
 	 */
 
 }
+
+

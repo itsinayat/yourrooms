@@ -132,8 +132,8 @@ public class UserService {
 	}
 
 	public ApiResponse updateProfile() {
-		
-		return new ApiResponse(349, "hello");
+		UserDetails ud =	(UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		return new ApiResponse(349, ud.getUsername());
 	}
 
 }

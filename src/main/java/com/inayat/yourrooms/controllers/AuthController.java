@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -69,7 +71,8 @@ public class AuthController {
 	@RequestMapping(value = "/logout", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	private boolean logout(@RequestBody User user, HttpServletRequest req, HttpServletResponse resp)
 			throws JsonGenerationException, JsonMappingException, IOException {
-		User loggedInUser = userRepository.findByUsername(user.getMobile());
+		UserDetails ud = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User loggedInUser = userRepository.findByUsername(ud.getUsername());
 		userDao.deactivateUserToken(loggedInUser, req.getHeader("Authorization"), resp);
 		return true;
 	}

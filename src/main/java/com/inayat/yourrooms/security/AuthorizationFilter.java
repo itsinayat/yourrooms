@@ -25,9 +25,9 @@ public class AuthorizationFilter extends UsernamePasswordAuthenticationFilter {
 	@Value("${app.token.tokenHeader}")
     private String tokenHeader;
 
-	@Value("${app.filter.cors}")
-    private String cors;
-	
+	/*
+	 * @Value("${app.filter.cors}") private String cors;
+	 */
 	@Autowired
 	UserDao userDao;
 
@@ -45,10 +45,12 @@ public class AuthorizationFilter extends UsernamePasswordAuthenticationFilter {
 		HttpServletResponse res = (HttpServletResponse) servletResponse;
 		
 		// Set Headers & Allow All Origins
-		res.addHeader("Access-Control-Allow-Headers",
-                "Access-Control-Allow-Origin, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, " + tokenHeader);
-        if (res.getHeader("Access-Control-Allow-Origin") == null)
-            res.addHeader("Access-Control-Allow-Origin", cors);
+		/*
+		 * res.addHeader("Access-Control-Allow-Headers",
+		 * "Access-Control-Allow-Origin, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, "
+		 * + tokenHeader); if (res.getHeader("Access-Control-Allow-Origin") == null)
+		 * res.addHeader("Access-Control-Allow-Origin", cors);
+		 */
         
         // Check Token From Request
 		String token = req.getHeader(tokenHeader);

@@ -131,7 +131,7 @@ public class UserService {
 		return true;
 	}
 
-	public ApiResponse updateProfile(UsersDTO user) {
+	public ApiResponse updateProfile() {
 		UserDetails ud =	(UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		return new ApiResponse(349, ud.getUsername());
 	}

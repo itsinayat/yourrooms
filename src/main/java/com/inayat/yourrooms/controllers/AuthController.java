@@ -98,9 +98,9 @@ public class AuthController {
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/update-profile", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ApiResponse> updateProfile(@RequestBody UsersDTO user) {
-		ApiResponse response = userService.updateProfile(user);
+	@RequestMapping(value = "/update-user", method = RequestMethod.GET)
+	public ResponseEntity<ApiResponse> updateProfile() {
+		ApiResponse response = userService.updateProfile();
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 	

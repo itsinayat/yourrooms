@@ -1,6 +1,5 @@
 package com.inayat.yourrooms.entity;
 
-
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -11,35 +10,39 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 @Table(name = "t_wallet_transaction")
 public class WalletTransactions {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@ManyToOne
 	private Wallet wallet;
-	
+
 	@Column(name = "amount")
 	private Long amount;
-	
+
 	@Column(name = "tr_type")
 	private String tr_type;
-	
+
 	@Column(name = "comment")
 	private String comment;
-	
-	
+
 	@Column(name = "reference_id")
 	private String reference_id;
-	
+
 	@Column(name = "del_ind")
 	private Boolean del_ind;
-	
+
+	@CreationTimestamp
 	@Column(name = "create_dt")
 	private Date create_dt;
-
+	
+	@UpdateTimestamp
 	@Column(name = "update_dt")
 	private Date update_dt;
 
@@ -48,9 +51,6 @@ public class WalletTransactions {
 
 	@Column(name = "update_user_id")
 	private Long update_user_id;
-
-	
-	
 
 	public Long getId() {
 		return id;

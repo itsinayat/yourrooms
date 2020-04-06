@@ -20,11 +20,13 @@ import com.inayat.yourrooms.entity.Role;
 import com.inayat.yourrooms.entity.User;
 import com.inayat.yourrooms.entity.UserToken;
 import com.inayat.yourrooms.entity.Wallet;
+import com.inayat.yourrooms.entity.WalletTransactions;
 import com.inayat.yourrooms.model.ApiResponse;
 import com.inayat.yourrooms.repositories.ConfigurationRepository;
 import com.inayat.yourrooms.repositories.RoleRepository;
 import com.inayat.yourrooms.repositories.UserRepository;
 import com.inayat.yourrooms.repositories.WalletRepository;
+import com.inayat.yourrooms.repositories.WalletTransactionRepository;
 import com.inayat.yourrooms.security.TokenHandler;
 import com.inayat.yourrooms.translator.UserTokenTranslator;
 import com.inayat.yourrooms.translator.UsersTranslator;
@@ -43,6 +45,8 @@ public class UserService {
 	AuthenticationManager authenticationManager;
 	@Autowired
 	ConfigurationRepository configurationRepository;
+	@Autowired
+	WalletTransactionRepository walletTransactionRepository;
 	@Autowired
 	UserDao userDao;
 	@Autowired
@@ -227,6 +231,19 @@ public class UserService {
 		System.out.println(output);
 		return output;
 	}
+	
+	public String createReferenceID() {
+		char[] chars = "abcdefghijklmnopqrstuvwxyz1234567890".toCharArray();
+		StringBuilder sb = new StringBuilder();
+		Random random = new SecureRandom();
+		for (int i = 0; i < 16; i++) {
+			char c = chars[random.nextInt(chars.length)];
+			sb.append(c);
+		}
+		String output = sb.toString();
+		System.out.println(output);
+		return output;
+	}
 
 	public ApiResponse createReferral(UsersDTO dto) {
 		String mobile = dto.getMobile();
@@ -248,6 +265,15 @@ public class UserService {
 			user.setReferred_by(referralUser.getId());
 			Configuration c =configurationRepository.findByKey("referral_bonus");
 			user.getWallet().setBalance(Long.valueOf(c.getValue()));
+			WalletTransactions tr = new WalletTransactions();
+			tr.setAmount(Long.valueOf(c.getValue()));
+			tr.setComment("Referral Bonus");
+			tr.setReference_id(createReferenceID());
+			tr.setTr_type("CREDIT");
+			tr.setUpdate_user_id(0L);
+			tr.setCreate_user_id(0L);
+			tr.setWallet(user.getWallet());
+			walletTransactionRepository.save(tr);
 			userRepository.save(user);
 		}
 		return new ApiResponse(611, "Referral Saved");

@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 @Table(name = "t_hotels")
 public class Hotels implements Serializable {
@@ -41,10 +44,10 @@ public class Hotels implements Serializable {
 	private Boolean payAtHotel;
 
 	@Column(name = "free_breakfast")
-	private Boolean FreeBreakFast;
+	private Boolean freeBreakFast;
 
 	@Column(name = "couple_friendly")
-	private Boolean CoupleFriendly;
+	private Boolean coupleFriendly;
 
 	@Column(name = "images")
 	private String images;
@@ -64,9 +67,11 @@ public class Hotels implements Serializable {
 	@Column(name = "del_ind")
 	private Boolean del_ind;
 
+	@CreationTimestamp
 	@Column(name = "create_dt")
 	private Date create_dt;
 
+	@UpdateTimestamp
 	@Column(name = "update_dt")
 	private Date update_dt;
 
@@ -124,21 +129,7 @@ public class Hotels implements Serializable {
 		this.payAtHotel = payAtHotel;
 	}
 
-	public Boolean getFreeBreakFast() {
-		return FreeBreakFast;
-	}
-
-	public void setFreeBreakFast(Boolean freeBreakFast) {
-		FreeBreakFast = freeBreakFast;
-	}
-
-	public Boolean getCoupleFriendly() {
-		return CoupleFriendly;
-	}
-
-	public void setCoupleFriendly(Boolean coupleFriendly) {
-		CoupleFriendly = coupleFriendly;
-	}
+	
 
 	public String getImages() {
 		return images;
@@ -218,6 +209,26 @@ public class Hotels implements Serializable {
 
 	public void setUpdate_user_id(Long update_user_id) {
 		this.update_user_id = update_user_id;
+	}
+
+	public Boolean getFreeBreakFast() {
+		return freeBreakFast;
+	}
+
+	public void setFreeBreakFast(Boolean freeBreakFast) {
+		this.freeBreakFast = freeBreakFast;
+	}
+
+	public Boolean getCoupleFriendly() {
+		return coupleFriendly;
+	}
+
+	public void setCoupleFriendly(Boolean coupleFriendly) {
+		this.coupleFriendly = coupleFriendly;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	
 

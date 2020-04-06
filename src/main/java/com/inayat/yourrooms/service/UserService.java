@@ -279,5 +279,15 @@ public class UserService {
 		return new ApiResponse(611, "Referral Saved");
 
 	}
+	public User getCurrentUser() {
+		if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+			UserDetails ud = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			User loggedInUser = userRepository.findByUsername(ud.getUsername());
+			return loggedInUser;
+		}else {
+			return null;
+		}
+	}
+	
 
 }

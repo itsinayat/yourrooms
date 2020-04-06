@@ -1,5 +1,6 @@
 package com.inayat.yourrooms.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,10 @@ public class HotelService {
 				dao.setInitialPrice(hotel.getInitialPrice());
 			if (hotel.getDiscountPrice() != null)
 				dao.setDiscountPrice(hotel.getDiscountPrice());
+			if (hotel.getDiscountPrice() != null)
+				dao.setCity(hotel.getCity());
+			if (hotel.getPincode() != null)
+				dao.setPincode(hotel.getPincode());
 			dao.setCreate_user_id(u.getId());
 			dao.setUpdate_user_id(u.getId());
 			dao.setDel_ind(false);
@@ -51,7 +56,7 @@ public class HotelService {
 		} else {
 			Optional<Hotels> h = hotelRepository.findById(hotel.getId());
 			if (h.isPresent()) {
-				Hotels dao = 	h.get();
+				Hotels dao = h.get();
 				if (hotel.getHotelName() != null)
 					dao.setHotelName(hotel.getHotelName());
 				if (hotel.getAddress() != null)
@@ -72,13 +77,35 @@ public class HotelService {
 					dao.setInitialPrice(hotel.getInitialPrice());
 				if (hotel.getDiscountPrice() != null)
 					dao.setDiscountPrice(hotel.getDiscountPrice());
+				if (hotel.getDiscountPrice() != null)
+					dao.setCity(hotel.getCity());
+				if (hotel.getPincode() != null)
+					dao.setPincode(hotel.getPincode());
 				dao.setUpdate_user_id(u.getId());
 				hotelRepository.save(dao);
-				
+
 			}
 			return new ApiResponse(543, "SUCCESS");
 
 		}
 	}
 
+	public ApiResponse getAllHotel(String city, String pincode) {
+		if (city != null && pincode ==null) {
+			List<Hotels> list = hotelRepository.findByCity(city);
+			return new ApiResponse(343, "SUCCESS", list);
+		} else if (pincode != null && city == null) {
+			List<Hotels> list = hotelRepository.findByPinCode(pincode);
+			return new ApiResponse(343, "SUCCESS", list);
+		} 
+		else if (pincode != null && city != null) {
+			List<Hotels> list = hotelRepository.findByPinCodeAndCity(pincode,city);
+			return new ApiResponse(343, "SUCCESS", list);
+		}
+		else {
+			Iterable<Hotels> hotellist = hotelRepository.findAll();
+			return new ApiResponse(343, "SUCCESS", hotellist);
+
+		}
+	}
 }

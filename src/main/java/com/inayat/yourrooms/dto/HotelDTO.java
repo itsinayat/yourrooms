@@ -2,6 +2,8 @@ package com.inayat.yourrooms.dto;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+
 public class HotelDTO {
 	
 	private Long id;
@@ -9,6 +11,10 @@ public class HotelDTO {
 	private String hotelName;
 
 	private String address;
+	
+	private String city;
+
+	private String pincode;
 
 	private String lattitude;
 
@@ -184,6 +190,22 @@ public class HotelDTO {
 
 	public void setCoupleFriendly(Boolean coupleFriendly) {
 		this.coupleFriendly = coupleFriendly;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getPincode() {
+		return pincode;
+	}
+
+	public void setPincode(String pincode) {
+		this.pincode = pincode;
 	}
 
 	

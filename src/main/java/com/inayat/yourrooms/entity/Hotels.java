@@ -33,6 +33,12 @@ public class Hotels implements Serializable {
 
 	@Column(name = "address")
 	private String address;
+	
+	@Column(name = "city")
+	private String city;
+	
+	@Column(name = "pincode")
+	private String pincode;
 
 	@Column(name = "lattitude")
 	private String lattitude;
@@ -229,6 +235,22 @@ public class Hotels implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getPincode() {
+		return pincode;
+	}
+
+	public void setPincode(String pincode) {
+		this.pincode = pincode;
 	}
 	
 

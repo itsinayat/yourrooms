@@ -68,6 +68,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             
             
             .antMatchers("/user/register/**").permitAll()
+            .antMatchers("/user/generate-otp/**").permitAll()
+            .antMatchers("/user/register-by-otp/**").permitAll()
+            .antMatchers("/user/login-by-otp/**").permitAll()
+            
 			.anyRequest().authenticated().and()
 			.exceptionHandling().accessDeniedHandler(restAccessDeniedHandler).authenticationEntryPoint(restAuthenticationEntryPoint);
     	

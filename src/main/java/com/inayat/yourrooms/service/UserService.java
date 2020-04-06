@@ -43,6 +43,7 @@ public class UserService {
 	TokenHandler tokenHandler;
 	@Autowired
 	OtpService otpService;
+	private static final String  defaultPassoword = "password";
 
 	public ApiResponse register(UsersDTO dto) {
 		User user = UsersTranslator.convertToDao(dto);
@@ -50,7 +51,7 @@ public class UserService {
 		if (u == null) {
 			Optional<Role> r = roleRepository.findById(1L);
 			user.setRole(r.get());
-			Wallet wallet =new Wallet();
+			Wallet wallet = new Wallet();
 			wallet.setBalance(0L);
 			wallet.setDel_ind(false);
 			wallet.setIs_activated(false);
@@ -90,9 +91,8 @@ public class UserService {
 
 	}
 
-	public ApiResponse login_mobile(UsersDTO user) {
+	public ApiResponse loginWithOtp(UsersDTO user) {
 		if (user.getOtp().equals(otpService.getOtp(user.getMobile()))) {
-
 			UserToken userToken = new UserToken();
 			User u = userRepository.findByUsername(user.getMobile());
 			// Generate token
@@ -144,26 +144,67 @@ public class UserService {
 	}
 
 	public ApiResponse updateProfile(UsersDTO user) {
-		if(user.getUsername()!=null && !user.getUsername().isEmpty()) {
+		if (user.getUsername() != null && !user.getUsername().isEmpty()) {
 			return new ApiResponse(50, "Username Cannot be set");
 		}
 
-		UserDetails ud = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		User user1 = userRepository.findByUsername(ud.getUsername());
-		if(user.getMobile() !=null && !user1.getMobile().equals(user.getMobile())) {
-			return new ApiResponse(50, "Mobile Number Cannot be set");
+		if (user.getMobile() != null && !user.getMobile().isEmpty()) {
+			return new ApiResponse(50, "Mobile Cannot be set");
 		}
-		user1.setDob(user.getDob());
-		user1.setEmail(user.getEmail());
-		user1.setFirstName(user.getFirstName());
-		user1.setGender(user.getGender());
-		user1.setIs_enabled(user.getIs_enabled());
-		user1.setIs_verified(user.getIs_verified());
-		user1.setLastName(user.getLastName());
-		user1.setMobile(user.getMobile());
-		user1.setPassword(user.getPassword());
-		userRepository.save(user1);
+
+		if (user.getPassword() != null && !user.getPassword().isEmpty()) {
+			return new ApiResponse(50, "Password Cannot be set directly");
+		}
+
+		UserDetails ud = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User dao = userRepository.findByUsername(ud.getUsername());
+		dao.setDob(user.getDob());
+		dao.setEmail(user.getEmail());
+		dao.setFirstName(user.getFirstName());
+		dao.setGender(user.getGender());
+		dao.setIs_enabled(user.getIs_enabled());
+		dao.setIs_verified(user.getIs_verified());
+		dao.setLastName(user.getLastName());
+		userRepository.save(dao);
 		return new ApiResponse(50, "SUCCESS");
+	}
+
+	public ApiResponse registerByOtp(UsersDTO dto) {
+		if (dto.getOtp().equals(otpService.getOtp(dto.getMobile()))) {
+			User u = userRepository.findByUsername(dto.getMobile());
+			if (u == null) {
+				User user = new User();
+				user.setMobile(dto.getMobile());
+				user.setUsername(dto.getMobile());
+				user.setPassword(defaultPassoword);
+				Optional<Role> r = roleRepository.findById(1L);
+				user.setRole(r.get());
+				Wallet wallet = new Wallet();
+				wallet.setBalance(0L);
+				wallet.setDel_ind(false);
+				wallet.setIs_activated(false);
+				Wallet newwallet = walletRepository.save(wallet);
+				user.setWallet(newwallet);
+				userRepository.save(user);
+				return new ApiResponse(51, "User Registered Successfully.");
+			} else {
+				return new ApiResponse(42, "User Already Registered, Please Login.");
+			}
+
+		} else {
+			return new ApiResponse(45, "Wrong OTP");
+		}
+	}
+
+	public ApiResponse generateOtp(UsersDTO dto) {
+		String mobile = dto.getMobile();
+		String otp = otpService.generateOTP(mobile);
+		Boolean result = sendMessage(mobile, otp);
+		if (result) {
+			return new ApiResponse(46, "SUCCESS", otp);
+		} else {
+			return new ApiResponse(47, "OTP could not be send");
+		}
 	}
 
 }

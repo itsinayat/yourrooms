@@ -71,9 +71,11 @@ public class AuthController {
 	@RequestMapping(value = "/logout", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	private boolean logout(@RequestBody User user, HttpServletRequest req, HttpServletResponse resp)
 			throws JsonGenerationException, JsonMappingException, IOException {
-		UserDetails ud = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		User loggedInUser = userRepository.findByUsername(ud.getUsername());
-		userDao.deactivateUserToken(loggedInUser, req.getHeader("Authorization"), resp);
+		if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+			UserDetails ud = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			User loggedInUser = userRepository.findByUsername(ud.getUsername());
+			userDao.deactivateUserToken(loggedInUser, req.getHeader("Authorization"), resp);
+		}
 		return true;
 	}
 
@@ -89,15 +91,28 @@ public class AuthController {
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/generate_otp", method = RequestMethod.POST)
-	public ResponseEntity<ApiResponse> generate_otp(@RequestBody UsersDTO user) {
-		ApiResponse response = userService.sendOTP(user);
+	// ################################################################################
+	@RequestMapping(value = "/generate-otp", method = RequestMethod.POST)
+	public ResponseEntity<ApiResponse> generateOtpForRegistration(@RequestBody UsersDTO user) {
+		ApiResponse response = userService.generateOtp(user);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/mobile-login", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ApiResponse> loginMobile(@RequestBody UsersDTO user) {
-		ApiResponse response = userService.login_mobile(user);
+	@RequestMapping(value = "/register-by-otp", method = RequestMethod.POST)
+	public ResponseEntity<ApiResponse> mobileRegister(@RequestBody UsersDTO user) {
+		ApiResponse resp = userService.registerByOtp(user);
+		return new ResponseEntity<>(resp, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/login-by-otp", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ApiResponse> loginWithOtp(@RequestBody UsersDTO user) {
+		ApiResponse response = userService.loginWithOtp(user);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/update-profile", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ApiResponse> updateProfile(@RequestBody UsersDTO user) {
+		ApiResponse response = userService.updateProfile(user);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
@@ -106,12 +121,5 @@ public class AuthController {
 		ApiResponse response = userService.getProfile();
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
-	@RequestMapping(value = "/update-profile", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ApiResponse> updateProfile(@RequestBody UsersDTO user) {
-		ApiResponse response = userService.updateProfile(user);
-		return new ResponseEntity<>(response, HttpStatus.OK);
-	}
-	
-	
 
 }

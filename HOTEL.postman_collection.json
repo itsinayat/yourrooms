@@ -10,7 +10,8 @@
 		"1b94c82c-144b-e6b6-9520-87f9ab2bc5a1",
 		"159913e8-758d-7286-1ce7-08771193ee2f",
 		"76f549e3-c247-328c-5210-10eabd055c52",
-		"799bea95-18eb-0654-f2cb-59a5eeb371aa"
+		"799bea95-18eb-0654-f2cb-59a5eeb371aa",
+		"361f8778-400e-fe8d-1886-9a1e851ed14e"
 	],
 	"folders": [],
 	"folders_order": [],
@@ -121,6 +122,35 @@
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": []
+		},
+		{
+			"id": "361f8778-400e-fe8d-1886-9a1e851ed14e",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/user/set-referral",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1586198634019,
+			"name": "http://localhost:8080/user/user/set-referral",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\t\"mobile\":\"12346\",\n\t\"referral_code\":\"3mpsos\"\n}"
 		},
 		{
 			"id": "6dadc683-43de-fbfa-7764-9b2d02f0be8a",

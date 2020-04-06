@@ -58,12 +58,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.authorizeRequests()
 			.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 			.antMatchers("/user/login").permitAll()
-			.antMatchers("/user/logout").permitAll()
+		
 			.antMatchers("/user/generate_otp").permitAll()
 			.antMatchers("/user/mobile-login").permitAll()
             .antMatchers("/user/testAuth/**").hasRole("ADMIN")
             .antMatchers("/consumer").hasRole("CONSUMER")
-            .antMatchers("/user/update-user/**").hasRole("ADMIN")
+            
             
             
             
@@ -71,6 +71,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/user/generate-otp/**").permitAll()
             .antMatchers("/user/register-by-otp/**").permitAll()
             .antMatchers("/user/login-by-otp/**").permitAll()
+            .antMatchers("/user/set-referral/**").permitAll()
+        	.antMatchers("/user/logout").permitAll()
+        	.antMatchers("/user/update-user/**").hasRole("ADMIN")
+            
             
 			.anyRequest().authenticated().and()
 			.exceptionHandling().accessDeniedHandler(restAccessDeniedHandler).authenticationEntryPoint(restAuthenticationEntryPoint);

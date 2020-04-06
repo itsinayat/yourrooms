@@ -24,10 +24,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Entity
 @Table(name = "t_user")
 public class User implements UserDetails, Serializable {
-	
-	
-
-	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,10 +35,10 @@ public class User implements UserDetails, Serializable {
 	@Column(name = "last_name")
 	private String lastName;
 
-	@Column(name = "email",unique=true)
+	@Column(name = "email", unique = true)
 	private String email;
 
-	@Column(name = "mobile",unique=true)
+	@Column(name = "mobile", unique = true)
 	private String mobile;
 
 	@Column(name = "dob")
@@ -53,6 +49,9 @@ public class User implements UserDetails, Serializable {
 
 	@Column(name = "referred_by")
 	private Long referred_by;
+
+	@Column(name = "referral_code", unique = true)
+	private String referral_code;
 
 	@Column(name = "last_login_time")
 	private Date last_login_time;
@@ -68,11 +67,11 @@ public class User implements UserDetails, Serializable {
 
 	@Column(name = "del_ind")
 	private Boolean del_ind;
-	
+
 	@CreationTimestamp
 	@Column(name = "create_dt")
 	private Date create_dt;
-	
+
 	@UpdateTimestamp
 	@Column(name = "update_dt")
 	private Date update_dt;
@@ -83,12 +82,12 @@ public class User implements UserDetails, Serializable {
 	@Column(name = "update_user_id")
 	private Long update_user_id;
 
-	@Column(name = "username",unique=true)
+	@Column(name = "username", unique = true)
 	private String username;
 
 	@Column(name = "password")
 	private String password;
-	
+
 	@OneToOne
 	private Wallet wallet;
 
@@ -212,7 +211,7 @@ public class User implements UserDetails, Serializable {
 	public void setIs_verified(Boolean is_verified) {
 		this.is_verified = is_verified;
 	}
-	
+
 	public Boolean getIs_enabled() {
 		return is_enabled;
 	}
@@ -283,6 +282,14 @@ public class User implements UserDetails, Serializable {
 
 	public void setWallet(Wallet wallet) {
 		this.wallet = wallet;
+	}
+
+	public String getReferral_code() {
+		return referral_code;
+	}
+
+	public void setReferral_code(String referral_code) {
+		this.referral_code = referral_code;
 	}
 
 }

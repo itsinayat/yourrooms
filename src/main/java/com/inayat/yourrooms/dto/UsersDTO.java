@@ -23,6 +23,8 @@ public class UsersDTO {
 	private String gender;
 
 	private Long referred_by;
+	
+	private String referral_code;
 
 	private Date last_login_time;
 
@@ -216,6 +218,14 @@ public class UsersDTO {
 
 	public void setOtp(String otp) {
 		this.otp = otp;
+	}
+
+	public String getReferral_code() {
+		return referral_code;
+	}
+
+	public void setReferral_code(String referral_code) {
+		this.referral_code = referral_code;
 	}
 
 	

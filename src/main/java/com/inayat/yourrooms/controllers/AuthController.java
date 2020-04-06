@@ -121,5 +121,11 @@ public class AuthController {
 		ApiResponse response = userService.getProfile();
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/set-referral", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ApiResponse> setReferral(@RequestBody UsersDTO dto) {
+		ApiResponse response = userService.createReferral(dto);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
 
 }

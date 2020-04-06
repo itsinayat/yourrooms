@@ -1,6 +1,8 @@
 package com.inayat.yourrooms.service;
 
+import java.security.SecureRandom;
 import java.util.Optional;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,11 +15,13 @@ import org.springframework.stereotype.Service;
 import com.inayat.yourrooms.dao.UserDao;
 import com.inayat.yourrooms.dto.UserTokenDTO;
 import com.inayat.yourrooms.dto.UsersDTO;
+import com.inayat.yourrooms.entity.Configuration;
 import com.inayat.yourrooms.entity.Role;
 import com.inayat.yourrooms.entity.User;
 import com.inayat.yourrooms.entity.UserToken;
 import com.inayat.yourrooms.entity.Wallet;
 import com.inayat.yourrooms.model.ApiResponse;
+import com.inayat.yourrooms.repositories.ConfigurationRepository;
 import com.inayat.yourrooms.repositories.RoleRepository;
 import com.inayat.yourrooms.repositories.UserRepository;
 import com.inayat.yourrooms.repositories.WalletRepository;
@@ -38,12 +42,14 @@ public class UserService {
 	@Autowired
 	AuthenticationManager authenticationManager;
 	@Autowired
+	ConfigurationRepository configurationRepository;
+	@Autowired
 	UserDao userDao;
 	@Autowired
 	TokenHandler tokenHandler;
 	@Autowired
 	OtpService otpService;
-	private static final String  defaultPassoword = "password";
+	private static final String defaultPassoword = "password";
 
 	public ApiResponse register(UsersDTO dto) {
 		User user = UsersTranslator.convertToDao(dto);
@@ -177,6 +183,8 @@ public class UserService {
 				user.setMobile(dto.getMobile());
 				user.setUsername(dto.getMobile());
 				user.setPassword(defaultPassoword);
+				String referral_code = createReferalCode(6);
+				user.setReferral_code(referral_code);
 				Optional<Role> r = roleRepository.findById(1L);
 				user.setRole(r.get());
 				Wallet wallet = new Wallet();
@@ -205,6 +213,45 @@ public class UserService {
 		} else {
 			return new ApiResponse(47, "OTP could not be send");
 		}
+	}
+
+	public String createReferalCode(int codeLength) {
+		char[] chars = "abcdefghijklmnopqrstuvwxyz1234567890".toCharArray();
+		StringBuilder sb = new StringBuilder();
+		Random random = new SecureRandom();
+		for (int i = 0; i < codeLength; i++) {
+			char c = chars[random.nextInt(chars.length)];
+			sb.append(c);
+		}
+		String output = sb.toString();
+		System.out.println(output);
+		return output;
+	}
+
+	public ApiResponse createReferral(UsersDTO dto) {
+		String mobile = dto.getMobile();
+		User user = userRepository.findByUsername(mobile);
+		if (user == null) {
+			return new ApiResponse(611, "User Not Found");
+		}
+		if(user.getReferred_by()!=null) {
+			return new ApiResponse(611, "referral already set");
+		}
+		String refferralcode = dto.getReferral_code();
+		User referralUser = userRepository.findByReferral_code(refferralcode);
+		if (referralUser == null) {
+			return new ApiResponse(61, "Invalid Referral Code");
+		} else {
+			if (user.getReferral_code().equals(refferralcode)) {
+				return new ApiResponse(61, "Invalid Referral Code");
+			}
+			user.setReferred_by(referralUser.getId());
+			Configuration c =configurationRepository.findByKey("referral_bonus");
+			user.getWallet().setBalance(Long.valueOf(c.getValue()));
+			userRepository.save(user);
+		}
+		return new ApiResponse(611, "Referral Saved");
+
 	}
 
 }

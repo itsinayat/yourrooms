@@ -25,11 +25,12 @@ public class UsersTranslator {
 		dto.setUpdate_user_id(tUser.getUpdate_user_id());
 		dto.setUsername(tUser.getUsername());
 		dto.setRole(tUser.getRole());
+		dto.setReferral_code(tUser.getReferral_code());
+		dto.setId(tUser.getId());
 	    return dto;
 	}
 	public static User convertToDao(UsersDTO dto) {
 		User dao = new User();
-		dao.setId(dto.getId());
 		dao.setCreate_dt(dto.getCreate_dt());
 		dao.setCreate_user_id(dto.getCreate_user_id());
 		dao.setDel_ind(dto.getDel_ind());
@@ -50,6 +51,7 @@ public class UsersTranslator {
 		dao.setUsername(dto.getMobile());
 		dao.setRole(dto.getRole());
 		dao.setPassword(dto.getPassword());
+		dao.setReferral_code(dto.getReferral_code());
 	    return dao;
 	}
 

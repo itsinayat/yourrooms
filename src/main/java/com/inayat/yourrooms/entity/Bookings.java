@@ -1,6 +1,7 @@
 package com.inayat.yourrooms.entity;
 
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,10 +14,37 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "t_bookings")
 public class Bookings {
+	
+	public Bookings() {
+		this.BookingId =generateBookingId(); 
+		this.bookingStatus = "INITIATED";
+		this.paymentStatus = "PENDING";
+	}
+	
+	private String generateBookingId() {
+		String uuid = UUID.randomUUID().toString();
+		return uuid;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(name = "booking_price")
+	private Double booking_price;
+	
+	@Column(name = "discount_coupon")
+	private String discount_coupon;
+	
+	@Column(name = "discount_price")
+	private Double discount_price;
+	
+	@Column(name = "coupon_discount")
+	private Double coupon_discount;
+	
+	
+	@Column(name = "gst")
+	private Double gst;
 
 	@OneToOne
 	private User user;
@@ -25,7 +53,7 @@ public class Bookings {
 	private String rooms;
 
 	@Column(name = "no_of_guests")
-	private String noOfGuests;
+	private Integer noOfGuests;
 
 	@Column(name = "booking_id")
 	private String BookingId;
@@ -50,6 +78,15 @@ public class Bookings {
 
 	@Column(name = "booking_status")
 	private String bookingStatus;
+	
+	@Column(name = "payment_status")
+	private String paymentStatus;
+	
+	@Column(name = "checkin_date")
+	private String checkinDate;
+	
+	@Column(name = "checkout_date")
+	private String checkoutDate;
 
 	public Long getId() {
 		return id;
@@ -57,6 +94,31 @@ public class Bookings {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Double getBooking_price() {
+		return booking_price;
+	}
+
+	public void setBooking_price(Double booking_price) {
+		this.booking_price = booking_price;
+	}
+
+	
+	public Double getDiscount_price() {
+		return discount_price;
+	}
+
+	public void setDiscount_price(Double discount_price) {
+		this.discount_price = discount_price;
+	}
+
+	public Double getGst() {
+		return gst;
+	}
+
+	public void setGst(Double gst) {
+		this.gst = gst;
 	}
 
 	public User getUser() {
@@ -75,11 +137,11 @@ public class Bookings {
 		this.rooms = rooms;
 	}
 
-	public String getNoOfGuests() {
+	public Integer getNoOfGuests() {
 		return noOfGuests;
 	}
 
-	public void setNoOfGuests(String noOfGuests) {
+	public void setNoOfGuests(Integer noOfGuests) {
 		this.noOfGuests = noOfGuests;
 	}
 
@@ -146,5 +208,50 @@ public class Bookings {
 	public void setBookingStatus(String bookingStatus) {
 		this.bookingStatus = bookingStatus;
 	}
+
+	public String getPaymentStatus() {
+		return paymentStatus;
+	}
+
+	public void setPaymentStatus(String paymentStatus) {
+		this.paymentStatus = paymentStatus;
+	}
+
+	public String getCheckinDate() {
+		return checkinDate;
+	}
+
+	public void setCheckinDate(String checkinDate) {
+		this.checkinDate = checkinDate;
+	}
+
+	public String getCheckoutDate() {
+		return checkoutDate;
+	}
+
+	public void setCheckoutDate(String checkoutDate) {
+		this.checkoutDate = checkoutDate;
+	}
+
+	public String getDiscount_coupon() {
+		return discount_coupon;
+	}
+
+	public void setDiscount_coupon(String discount_coupon) {
+		this.discount_coupon = discount_coupon;
+	}
+
+	public Double getCoupon_discount() {
+		return coupon_discount;
+	}
+
+	public void setCoupon_discount(Double coupon_discount) {
+		this.coupon_discount = coupon_discount;
+	}
+
+	
+
+	
+	
 
 }

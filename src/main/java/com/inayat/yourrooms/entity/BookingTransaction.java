@@ -30,6 +30,9 @@ public class BookingTransaction {
 	@Column(name = "discount_type")
 	private String discountType;
 	
+	@Column(name = "payment_mode")
+	private String payment_mode;
+	
 	@Column(name = "reference_id")
 	private String reference_id;
 	
@@ -136,7 +139,12 @@ public class BookingTransaction {
 		this.update_user_id = update_user_id;
 	}
 
-	
-	
+	public String getPayment_mode() {
+		return payment_mode;
+	}
+
+	public void setPayment_mode(String payment_mode) {
+		this.payment_mode = payment_mode;
+	}
 
 }

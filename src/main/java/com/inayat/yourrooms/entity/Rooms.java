@@ -22,6 +22,12 @@ public class Rooms implements Serializable {
 	@Column(name="name")
 	private String name;
 	
+	@Column(name="initial_price")
+	private Long initialPrice;
+	
+	@Column(name="discount_price")
+	private Long discountPrice;
+	
 	@Column(name="free_cancellation")
 	private Boolean freeCancellation;
 	
@@ -125,6 +131,22 @@ public class Rooms implements Serializable {
 
 	public void setHotel(Hotels hotel) {
 		this.hotel = hotel;
+	}
+
+	public Long getInitialPrice() {
+		return initialPrice;
+	}
+
+	public void setInitialPrice(Long initialPrice) {
+		this.initialPrice = initialPrice;
+	}
+
+	public Long getDiscountPrice() {
+		return discountPrice;
+	}
+
+	public void setDiscountPrice(Long discountPrice) {
+		this.discountPrice = discountPrice;
 	}
 	
 }

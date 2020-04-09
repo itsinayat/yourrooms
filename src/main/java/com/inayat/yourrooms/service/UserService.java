@@ -263,7 +263,7 @@ public class UserService {
 				return new ApiResponse(61, "Invalid Referral Code");
 			}
 			user.setReferred_by(referralUser.getId());
-			Configuration c =configurationRepository.findByKey("referral_bonus");
+			Configuration c =configurationRepository.findByKey("REFERRAL_BONUS");
 			user.getWallet().setBalance(Long.valueOf(c.getValue()));
 			WalletTransactions tr = new WalletTransactions();
 			tr.setAmount(Long.valueOf(c.getValue()));

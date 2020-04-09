@@ -6,12 +6,13 @@
 		"6dadc683-43de-fbfa-7764-9b2d02f0be8a",
 		"0b18e786-90cc-5177-403d-a67188dae4d2",
 		"98aff936-41ce-1401-9241-677d839b0cdb",
-		"98da2518-73c5-740a-61be-570f74eef3a3",
 		"1b94c82c-144b-e6b6-9520-87f9ab2bc5a1",
 		"159913e8-758d-7286-1ce7-08771193ee2f",
 		"76f549e3-c247-328c-5210-10eabd055c52",
 		"799bea95-18eb-0654-f2cb-59a5eeb371aa",
-		"361f8778-400e-fe8d-1886-9a1e851ed14e"
+		"361f8778-400e-fe8d-1886-9a1e851ed14e",
+		"dd01630e-fd5d-20ad-63bd-c7b0b7a3efef",
+		"40b90843-e4ae-6f36-128f-afa33ce47a07"
 	],
 	"folders": [],
 	"folders_order": [],
@@ -153,6 +154,56 @@
 			"rawModeData": "{\n\t\"mobile\":\"12346\",\n\t\"referral_code\":\"3mpsos\"\n}"
 		},
 		{
+			"id": "40b90843-e4ae-6f36-128f-afa33ce47a07",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjMiLCJjcmVhdGVkIjoxNTg2MjA0NDY4MDY4LCJleHAiOjE1ODY4MDkyNjh9.rcV8dyHfARxrTS49AqDLW_MIfCkUCdTS2T_PAUBJagpN-hDxlsOps9Lwj-07Ld5f_MB22CFDpL8Pncg4ciwaZQ\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjMiLCJjcmVhdGVkIjoxNTg2MjA0NDY4MDY4LCJleHAiOjE1ODY4MDkyNjh9.rcV8dyHfARxrTS49AqDLW_MIfCkUCdTS2T_PAUBJagpN-hDxlsOps9Lwj-07Ld5f_MB22CFDpL8Pncg4ciwaZQ",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/hotel/getAll-hotels?city=noida&pincode=222222",
+			"queryParams": [
+				{
+					"key": "city",
+					"value": "noida",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "pincode",
+					"value": "222222",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1586204787955,
+			"name": "http://localhost:8080/hotels/getAll-hotels",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\t\"hotelName\":\"Paradise\",\n\t\"address\":\"noida\",\n\t\"lattitude\":\"1233.333\",\n\t\"longitude\":\"321312.332\",\n\t\"payAtHotel\":true,\n\t\"freeBreakFast\":true,\n\t\"coupleFriendly\":true,\n\t\"freeWifi\":true,\n\t\"initialPrice\":500,\n\t\"discountPrice\":100\n\t\n}"
+		},
+		{
 			"id": "6dadc683-43de-fbfa-7764-9b2d02f0be8a",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [
@@ -282,8 +333,8 @@
 			"rawModeData": "{\n\t\"mobile\":\"000000000000\"\n}"
 		},
 		{
-			"id": "98da2518-73c5-740a-61be-570f74eef3a3",
-			"headers": "Content-Type: application/json\n//Authorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MzExOTgyMjc4IiwiY3JlYXRlZCI6MTU4NTc2MzcwNzk5OSwiZXhwIjoxNTg2MzY4NTA3fQ.e71XH8Drt3PEwRZ-FO4qs0YYI0uYivyvfR2cOA7Iq-y1BUjZVAVmuBlWuoqllET5fDMKADU9ct77g1FFEmMsHQ\n",
+			"id": "dd01630e-fd5d-20ad-63bd-c7b0b7a3efef",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjMiLCJjcmVhdGVkIjoxNTg2MjAxMDk2NzQ0LCJleHAiOjE1ODY4MDU4OTZ9.OwI6JWeRi9J2q_-3BOMAxSW8vt6-ZKZTCL2SYCWkl_0yguvttQNpZKe-V96nXKye0u_7htoPbjuTkc3n850hfA\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -293,12 +344,12 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MzExOTgyMjc4IiwiY3JlYXRlZCI6MTU4NTc2MzcwNzk5OSwiZXhwIjoxNTg2MzY4NTA3fQ.e71XH8Drt3PEwRZ-FO4qs0YYI0uYivyvfR2cOA7Iq-y1BUjZVAVmuBlWuoqllET5fDMKADU9ct77g1FFEmMsHQ",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjMiLCJjcmVhdGVkIjoxNTg2MjAxMDk2NzQ0LCJleHAiOjE1ODY4MDU4OTZ9.OwI6JWeRi9J2q_-3BOMAxSW8vt6-ZKZTCL2SYCWkl_0yguvttQNpZKe-V96nXKye0u_7htoPbjuTkc3n850hfA",
 					"description": "",
-					"enabled": false
+					"enabled": true
 				}
 			],
-			"url": "{{base-url}}/user/generate_otp",
+			"url": "{{base-url}}/hotel/add-or-update-hotel",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -309,12 +360,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1586149250751,
-			"name": "http://localhost:8080/user/generate_otp",
+			"time": 1586202628739,
+			"name": "http://localhost:8080/hotels/add-or-update-hotel",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
-			"rawModeData": "{\n\t\"mobile\":\"9311982278\"\n}"
+			"rawModeData": "{\n\t\"hotelName\":\"Paradise\",\n\t\"address\":\"noida\",\n\t\"lattitude\":\"1233.333\",\n\t\"longitude\":\"321312.332\",\n\t\"payAtHotel\":true,\n\t\"freeBreakFast\":true,\n\t\"coupleFriendly\":true,\n\t\"freeWifi\":true,\n\t\"initialPrice\":500,\n\t\"discountPrice\":100\n\t\n}"
 		}
 	]
 }

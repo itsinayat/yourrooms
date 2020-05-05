@@ -85,6 +85,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         	
         	.antMatchers("/hotel/add-or-update-rooms-to-hotel/**").hasRole("ADMIN")
         	.antMatchers("/hotel/getAll-hotels/**").hasAnyRole("ADMIN","CUSTOMER")
+        	.antMatchers("/hotel/cancelBooking/**").hasAnyRole("ADMIN","CUSTOMER")
         	
         	.antMatchers("/hotel/add-rooms-to-hotel/**").hasRole("ADMIN")
         	.antMatchers("/hotel/getAll-rooms/**").hasAnyRole("ADMIN","CUSTOMER")

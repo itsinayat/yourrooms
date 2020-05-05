@@ -5,9 +5,7 @@ import java.util.Date;
 import java.util.UUID;
 
 public class BookingDTO {
-	
-	
-	
+
 	private Long id;
 
 	private Long userId;
@@ -25,24 +23,22 @@ public class BookingDTO {
 	private Long update_user_id;
 
 	private String bookingStatus;
-	
+
 	private String paymentStatus;
-	
+
 	private String checkinDate;
-	
+
 	private String checkoutDate;
-	
+	private String checkoutStatus;
+	private String checkinStatus;
+
 	private Double booking_price;
-	
+
 	private Double coupon_discount;
-	
+
 	private Double discount_price;
-	
+
 	private Double gst;
-	
-	
-	
-	
 
 	public Long getId() {
 		return id;
@@ -59,8 +55,6 @@ public class BookingDTO {
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-
-
 
 	public int getNoOfGuests() {
 		return noOfGuests;
@@ -142,12 +136,6 @@ public class BookingDTO {
 		this.checkoutDate = checkoutDate;
 	}
 
-	
-
-	
-
-	
-
 	public Double getBooking_price() {
 		return booking_price;
 	}
@@ -180,6 +168,22 @@ public class BookingDTO {
 		this.gst = gst;
 	}
 
+	public String getCheckoutStatus() {
+		return checkoutStatus;
+	}
+
+	public void setCheckoutStatus(String checkoutStatus) {
+		this.checkoutStatus = checkoutStatus;
+	}
+
+	public String getCheckinStatus() {
+		return checkinStatus;
+	}
+
+	public void setCheckinStatus(String checkinStatus) {
+		this.checkinStatus = checkinStatus;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -188,7 +192,9 @@ public class BookingDTO {
 		result = prime * result + ((bookingStatus == null) ? 0 : bookingStatus.hashCode());
 		result = prime * result + ((booking_price == null) ? 0 : booking_price.hashCode());
 		result = prime * result + ((checkinDate == null) ? 0 : checkinDate.hashCode());
+		result = prime * result + ((checkinStatus == null) ? 0 : checkinStatus.hashCode());
 		result = prime * result + ((checkoutDate == null) ? 0 : checkoutDate.hashCode());
+		result = prime * result + ((checkoutStatus == null) ? 0 : checkoutStatus.hashCode());
 		result = prime * result + ((coupon_discount == null) ? 0 : coupon_discount.hashCode());
 		result = prime * result + ((create_user_id == null) ? 0 : create_user_id.hashCode());
 		result = prime * result + ((del_ind == null) ? 0 : del_ind.hashCode());
@@ -202,6 +208,5 @@ public class BookingDTO {
 		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
 		return result;
 	}
-	
 
 }

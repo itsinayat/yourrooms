@@ -92,6 +92,12 @@ public class Bookings {
 	
 	@Column(name = "checkout_date")
 	private String checkoutDate;
+	
+	@Column(name = "checkin_status")
+	private String checkin_status;
+	
+	@Column(name = "checkout_status")
+	private String checkout_status;
 
 	public Long getId() {
 		return id;
@@ -252,6 +258,22 @@ public class Bookings {
 
 	public void setCoupon_discount(Double coupon_discount) {
 		this.coupon_discount = coupon_discount;
+	}
+
+	public String getCheckin_status() {
+		return checkin_status;
+	}
+
+	public void setCheckin_status(String checkin_status) {
+		this.checkin_status = checkin_status;
+	}
+
+	public String getCheckout_status() {
+		return checkout_status;
+	}
+
+	public void setCheckout_status(String checkout_status) {
+		this.checkout_status = checkout_status;
 	}
 
 	

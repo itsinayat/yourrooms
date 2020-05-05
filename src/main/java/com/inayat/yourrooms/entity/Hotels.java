@@ -97,7 +97,7 @@ public class Hotels implements Serializable {
 	@Column(name = "update_user_id")
 	private Long update_user_id;
 	
-	@JsonManagedReference
+	
 	@ManyToMany(mappedBy="hotels")
     private Set<User> staffs;
 	

@@ -12,8 +12,10 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.inayat.yourrooms.dto.BOOKING_STATUS;
 import com.inayat.yourrooms.dto.BookingDTO;
 import com.inayat.yourrooms.dto.BookingResponse;
+import com.inayat.yourrooms.dto.CHECKIN_CHECKOUT_STATUS;
 import com.inayat.yourrooms.dto.HotelDTO;
 import com.inayat.yourrooms.dto.ReviewAndRatingsDTO;
 import com.inayat.yourrooms.dto.RoomsDTO;
@@ -179,7 +181,6 @@ public class HotelService {
 				dto.setRating(h.getRating());
 				dto.setUpdate_dt(h.getUpdate_dt());
 				dto.setUpdate_user_id(h.getUpdate_user_id());
-				
 
 				List<ReviewAndRatings> g = reviewAndRatingsRepository.findByHotel(h);
 				List<ReviewAndRatingsDTO> list1 = new ArrayList<>();
@@ -297,6 +298,8 @@ public class HotelService {
 		dao.setDiscount_price(discountPriceTotal);
 		dao.setGst(calculateGst(initialPriceTotal - discountPriceTotal));
 		dao.setDel_ind(false);
+		dao.setCheckout_status(CHECKIN_CHECKOUT_STATUS.PENDING.toString());
+		dao.setCheckin_status(CHECKIN_CHECKOUT_STATUS.PENDING.toString());
 		Bookings newbooking = bookingRepository.save(dao);
 		BookingResponse dto = BookingResponseTranslator.translateToDTO(newbooking);
 		return new ApiResponse(432, "SUCCESS", dto);
@@ -414,8 +417,8 @@ public class HotelService {
 			PaymentOrder f = paymentService.getPaymentByOrderId(map.get("id"));
 			System.out.println(map);
 			BookingTransaction bt = bookingTransactionRepository.findByOrderId(f.getId());
-			if(bt==null) {
-				return new ApiResponse(3421, "order ID not found"); 
+			if (bt == null) {
+				return new ApiResponse(3421, "order ID not found");
 			}
 			bt.getBooking().setPaymentStatus(f.getPayments().get(0).getStatus());
 			bt.setPaymentId(map.get("payment_id"));
@@ -489,7 +492,19 @@ public class HotelService {
 	}
 
 	public ApiResponse createHash(String payment_id, String payment_status, String id, String hash) {
-		String hashs  =EncryptionUtil.encode("payment_id="+payment_id+"&payment_status="+payment_status+"&id="+id+"");
-		return new ApiResponse(674, "Success" ,hashs);
+		String hashs = EncryptionUtil
+				.encode("payment_id=" + payment_id + "&payment_status=" + payment_status + "&id=" + id + "");
+		return new ApiResponse(674, "Success", hashs);
+	}
+
+	
+	public ApiResponse cancelBooking(String bookingId) {
+		Bookings  bookings=  bookingRepository.findByUserAndBooking(userService.getCurrentUser(),Long.valueOf(bookingId));
+		if(bookings ==null) {
+			return new ApiResponse(674, "Booking Not Found");
+		}
+		bookings.setBookingStatus(BOOKING_STATUS.CANCELLED.toString());
+		bookingRepository.save(bookings);
+		return new ApiResponse(674, "Booking CANCELLED");
 	}
 }

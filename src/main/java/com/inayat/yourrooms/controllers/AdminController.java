@@ -24,6 +24,7 @@ import com.inayat.yourrooms.dto.HotelDTO;
 import com.inayat.yourrooms.dto.RoomsDTO;
 import com.inayat.yourrooms.entity.Bookings;
 import com.inayat.yourrooms.model.ApiResponse;
+import com.inayat.yourrooms.service.AdminService;
 import com.inayat.yourrooms.service.HotelService;
 
 @RestController
@@ -31,6 +32,8 @@ import com.inayat.yourrooms.service.HotelService;
 @EnableAutoConfiguration
 @RequestMapping("/admin")
 public class AdminController {
+	@Autowired
+	AdminService adminService;
 	/*
 	 * @RequestMapping(value = "/book", method = RequestMethod.POST) public
 	 * ResponseEntity<ApiResponse> BookRoom(@RequestBody BookingDTO request) throws
@@ -38,14 +41,11 @@ public class AdminController {
 	 * ResponseEntity<>(resp, HttpStatus.OK); }
 	 */
 	
-	/*
-	 * @RequestMapping(value = "/apply-coupon/{bookingId}/{code}", method =
-	 * RequestMethod.GET) public ResponseEntity<ApiResponse>
-	 * applyCoupon(@PathVariable("code") String code, @PathVariable("bookingId")
-	 * String bookingId) throws NumberFormatException, IOException { ApiResponse
-	 * resp = hotelservice.applyCoupon(code,Long.parseLong(bookingId)); return new
-	 * ResponseEntity<>(resp, HttpStatus.OK); }
-	 */
+	@RequestMapping(value = "/getMyHotels", method = RequestMethod.GET)
+	public ResponseEntity<ApiResponse> getMyHotels() throws NumberFormatException, IOException {
+		ApiResponse resp = adminService.getMyHotels();
+		return new ResponseEntity<>(resp, HttpStatus.OK);
+	}
 	
 	
 	

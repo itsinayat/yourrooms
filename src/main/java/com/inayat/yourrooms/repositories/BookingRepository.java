@@ -12,7 +12,9 @@ import com.inayat.yourrooms.entity.User;
 @Repository
 public interface BookingRepository extends CrudRepository<Bookings, Long> {
 
-	 @Query("SELECT b from Bookings b "
-				+ "WHERE b.user = :user")
+	@Query("SELECT b from Bookings b " + "WHERE b.user = :user")
 	List<Bookings> findByUser(User user);
+
+	@Query("SELECT b from Bookings b " + "WHERE b.user = :user and id =:bookingId")
+	Bookings findByUserAndBooking(User user, Long bookingId);
 }

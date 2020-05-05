@@ -16,6 +16,8 @@ public class BookingResponse {
 	 private String paymentStatus;
 	 private String checkinDate;
 	 private String checkout_date;
+	 private String checkout_status;
+	 private String checkin_status;
 	 private String bookingId;
 	 private Long userId;
 	public Long getId() {
@@ -110,6 +112,19 @@ public class BookingResponse {
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
+	public String getCheckout_status() {
+		return checkout_status;
+	}
+	public void setCheckout_status(String checkout_status) {
+		this.checkout_status = checkout_status;
+	}
+	public String getCheckin_status() {
+		return checkin_status;
+	}
+	public void setCheckin_status(String checkin_status) {
+		this.checkin_status = checkin_status;
+	}
+	
 	 
 
 }

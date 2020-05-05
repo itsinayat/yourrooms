@@ -28,6 +28,8 @@ public class BookingHistoryResponseTranslator implements Serializable {
 			h.setNoOfGuests(b.getNoOfGuests());
 			h.setPrice(b.getBooking_price());
 			h.setRooms(b.getRooms());
+			h.setCheckin_status(b.getCheckin_status());
+			h.setCheckout_status(b.getCheckout_status());
 			
 			
 			BookingTransactionDTO dto =new BookingTransactionDTO();
@@ -44,7 +46,9 @@ public class BookingHistoryResponseTranslator implements Serializable {
 			dto.setReference_id(tr.getReference_id());
 			dto.setTotalAmount(tr.getTotalAmount());
 			dto.setTransaction_id(tr.getTransaction_id());
+			
 			h.setTransaction(dto);
+			
 			}
 			list.add(h);
 		}

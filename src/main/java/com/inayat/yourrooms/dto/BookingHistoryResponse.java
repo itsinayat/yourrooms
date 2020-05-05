@@ -3,6 +3,8 @@ package com.inayat.yourrooms.dto;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
+
 public class BookingHistoryResponse implements Serializable {
 	Long id;
 	Double price;
@@ -19,6 +21,9 @@ public class BookingHistoryResponse implements Serializable {
 	String checkinDate;
 	String checkoutDate;
 	String bookingId;
+	private String checkin_status;
+	
+	private String checkout_status;
 	
 	public Long getId() {
 		return id;
@@ -112,6 +117,18 @@ public class BookingHistoryResponse implements Serializable {
 	}
 	public void setTransaction(BookingTransactionDTO transaction) {
 		this.transaction = transaction;
+	}
+	public String getCheckin_status() {
+		return checkin_status;
+	}
+	public void setCheckin_status(String checkin_status) {
+		this.checkin_status = checkin_status;
+	}
+	public String getCheckout_status() {
+		return checkout_status;
+	}
+	public void setCheckout_status(String checkout_status) {
+		this.checkout_status = checkout_status;
 	}
 	
 

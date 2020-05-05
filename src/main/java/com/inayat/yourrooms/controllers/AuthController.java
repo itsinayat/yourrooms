@@ -1,6 +1,7 @@
 package com.inayat.yourrooms.controllers;
 
 import java.io.IOException;
+import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,9 +25,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.inayat.yourrooms.dao.UserDao;
+import com.inayat.yourrooms.dto.ReviewAndRatingsDTO;
 import com.inayat.yourrooms.dto.UsersDTO;
+import com.inayat.yourrooms.entity.Coupons;
 import com.inayat.yourrooms.entity.User;
 import com.inayat.yourrooms.model.ApiResponse;
+import com.inayat.yourrooms.repositories.CouponRepository;
 import com.inayat.yourrooms.repositories.RoleRepository;
 import com.inayat.yourrooms.repositories.UserRepository;
 import com.inayat.yourrooms.security.TokenHandler;
@@ -61,6 +65,9 @@ public class AuthController {
 
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	CouponRepository couponRepository;
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ApiResponse> login(@RequestBody UsersDTO user) {
@@ -126,6 +133,38 @@ public class AuthController {
 	public ResponseEntity<ApiResponse> setReferral(@RequestBody UsersDTO dto) {
 		ApiResponse response = userService.createReferral(dto);
 		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/get-wallet", method = RequestMethod.GET)
+	public ResponseEntity<ApiResponse> getWallet() {
+		ApiResponse response = userService.getWallet();
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/get-wallet-ransaction", method = RequestMethod.GET)
+	public ResponseEntity<ApiResponse> getWalletTransaction() {
+		ApiResponse response = userService.getWalletTransaction();
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/get-booking-history", method = RequestMethod.GET)
+	public ResponseEntity<ApiResponse> getBookinghistory() {
+		ApiResponse response = userService.getBookingHistory();
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/get-all-coupons", method = RequestMethod.GET)
+	public ResponseEntity<ApiResponse> getAllCoupons() {
+		Iterable<Coupons> response = couponRepository.findAll();
+		ApiResponse res= new ApiResponse(4234, "SUCCESS",  response);
+		return new ResponseEntity<>(res, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/review-and-rating", method = RequestMethod.POST)
+	public ResponseEntity<ApiResponse> reviewAndRating(@RequestBody ReviewAndRatingsDTO dto) {
+		ApiResponse response = userService.setReviewAndRating(dto);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	
 	}
 
 }

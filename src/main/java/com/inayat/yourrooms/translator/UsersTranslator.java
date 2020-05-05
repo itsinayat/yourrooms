@@ -32,8 +32,8 @@ public class UsersTranslator {
 	public static User convertToDao(UsersDTO dto) {
 		User dao = new User();
 		dao.setCreate_dt(dto.getCreate_dt());
-		dao.setCreate_user_id(dto.getCreate_user_id());
-		dao.setDel_ind(dto.getDel_ind());
+		dao.setCreate_user_id(0L);
+		dao.setDel_ind(false);
 		dao.setDob(dto.getDob());
 		dao.setEmail(dto.getEmail());
 		dao.setFirstName(dto.getFirstName());

@@ -1,5 +1,6 @@
 package com.inayat.yourrooms.dto;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.UUID;
 
@@ -31,13 +32,13 @@ public class BookingDTO {
 	
 	private String checkoutDate;
 	
-	private Long booking_price;
+	private Double booking_price;
 	
-	private Long coupon_discount;
+	private Double coupon_discount;
 	
-	private Long discount_price;
+	private Double discount_price;
 	
-	private Long gst;
+	private Double gst;
 	
 	
 	
@@ -141,39 +142,66 @@ public class BookingDTO {
 		this.checkoutDate = checkoutDate;
 	}
 
-	public Long getBooking_price() {
+	
+
+	
+
+	
+
+	public Double getBooking_price() {
 		return booking_price;
 	}
 
-	public void setBooking_price(Long booking_price) {
+	public void setBooking_price(Double booking_price) {
 		this.booking_price = booking_price;
 	}
 
-	public Long getCoupon_discount() {
+	public Double getCoupon_discount() {
 		return coupon_discount;
 	}
 
-	public void setCoupon_discount(Long coupon_discount) {
+	public void setCoupon_discount(Double coupon_discount) {
 		this.coupon_discount = coupon_discount;
 	}
 
-	public Long getDiscount_price() {
+	public Double getDiscount_price() {
 		return discount_price;
 	}
 
-	public void setDiscount_price(Long discount_price) {
+	public void setDiscount_price(Double discount_price) {
 		this.discount_price = discount_price;
 	}
 
-	public Long getGst() {
+	public Double getGst() {
 		return gst;
 	}
 
-	public void setGst(Long gst) {
+	public void setGst(Double gst) {
 		this.gst = gst;
 	}
 
-	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((BookingId == null) ? 0 : BookingId.hashCode());
+		result = prime * result + ((bookingStatus == null) ? 0 : bookingStatus.hashCode());
+		result = prime * result + ((booking_price == null) ? 0 : booking_price.hashCode());
+		result = prime * result + ((checkinDate == null) ? 0 : checkinDate.hashCode());
+		result = prime * result + ((checkoutDate == null) ? 0 : checkoutDate.hashCode());
+		result = prime * result + ((coupon_discount == null) ? 0 : coupon_discount.hashCode());
+		result = prime * result + ((create_user_id == null) ? 0 : create_user_id.hashCode());
+		result = prime * result + ((del_ind == null) ? 0 : del_ind.hashCode());
+		result = prime * result + ((discount_price == null) ? 0 : discount_price.hashCode());
+		result = prime * result + ((gst == null) ? 0 : gst.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + noOfGuests;
+		result = prime * result + ((paymentStatus == null) ? 0 : paymentStatus.hashCode());
+		result = prime * result + Arrays.hashCode(rooms);
+		result = prime * result + ((update_user_id == null) ? 0 : update_user_id.hashCode());
+		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		return result;
+	}
 	
 
 }

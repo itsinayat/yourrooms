@@ -74,13 +74,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/user/set-referral/**").permitAll()
         	.antMatchers("/user/logout").permitAll()
         	.antMatchers("/user/update-user/**").hasRole("ADMIN")
+        	.antMatchers("/user/get-wallet/**").hasAnyRole("ADMIN","CONSUMER")
+        	.antMatchers("/user/get-wallet-ransaction/**").hasAnyRole("ADMIN","CONSUMER")
+        	.antMatchers("/user/get-booking-history**").hasAnyRole("ADMIN","CONSUMER")
+        	.antMatchers("/user/get-all-coupons**").hasAnyRole("ADMIN","CONSUMER")
+        	.antMatchers("/user/review-and-rating**").hasAnyRole("ADMIN","CONSUMER")
         	
-        	.antMatchers("/hotel/add-or-update-hotel/**").hasRole("ADMIN")
+        	
+        	
+        	
+        	.antMatchers("/hotel/add-or-update-rooms-to-hotel/**").hasRole("ADMIN")
         	.antMatchers("/hotel/getAll-hotels/**").hasAnyRole("ADMIN","CUSTOMER")
         	
         	.antMatchers("/hotel/add-rooms-to-hotel/**").hasRole("ADMIN")
         	.antMatchers("/hotel/getAll-rooms/**").hasAnyRole("ADMIN","CUSTOMER")
         	.antMatchers("/hotel/getRoom/**").hasAnyRole("ADMIN","CUSTOMER")
+        	.antMatchers("/payment/getPaymentByOrderId/**").hasAnyRole("ADMIN","CUSTOMER")
+        	.antMatchers("/payment/getPaymentByOrderId/**").hasAnyRole("ADMIN","CUSTOMER")
+        	.antMatchers("/payment/payment/**").hasAnyRole("ADMIN","CUSTOMER")
+        	.antMatchers("/payment/create-refund/**").hasAnyRole("ADMIN","CUSTOMER")
+        	.antMatchers("/payment/update-order/**").hasAnyRole("ADMIN","CUSTOMER")
+        	
+        	
+        	
         	
         	
             

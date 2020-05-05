@@ -5,8 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.inayat.yourrooms.entity.Configuration;
-import com.inayat.yourrooms.entity.Role;
-import com.inayat.yourrooms.entity.User;
 
 @Repository
 public interface ConfigurationRepository extends CrudRepository<Configuration, Long> {

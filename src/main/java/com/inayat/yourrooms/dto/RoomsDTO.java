@@ -1,6 +1,6 @@
 package com.inayat.yourrooms.dto;
 
-import javax.persistence.Column;
+import java.util.Date;
 
 import com.inayat.yourrooms.entity.Hotels;
 
@@ -31,6 +31,15 @@ public class RoomsDTO {
 	private Long hotelId;
 	
 	private Hotels hotel;
+
+	
+	private Date create_dt;
+
+	private Date update_dt;
+
+	private Long create_user_id;
+
+	private Long update_user_id;
 	
 
 	public Long getId() {
@@ -135,6 +144,38 @@ public class RoomsDTO {
 
 	public void setDiscountPrice(Long discountPrice) {
 		this.discountPrice = discountPrice;
+	}
+
+	public Date getCreate_dt() {
+		return create_dt;
+	}
+
+	public void setCreate_dt(Date create_dt) {
+		this.create_dt = create_dt;
+	}
+
+	public Date getUpdate_dt() {
+		return update_dt;
+	}
+
+	public void setUpdate_dt(Date update_dt) {
+		this.update_dt = update_dt;
+	}
+
+	public Long getCreate_user_id() {
+		return create_user_id;
+	}
+
+	public void setCreate_user_id(Long create_user_id) {
+		this.create_user_id = create_user_id;
+	}
+
+	public Long getUpdate_user_id() {
+		return update_user_id;
+	}
+
+	public void setUpdate_user_id(Long update_user_id) {
+		this.update_user_id = update_user_id;
 	}
 
 	

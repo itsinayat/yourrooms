@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 @Table(name = "t_bookings")
 public class Bookings {
@@ -64,9 +67,11 @@ public class Bookings {
 	@Column(name = "del_ind")
 	private Boolean del_ind;
 
+	@CreationTimestamp
 	@Column(name = "create_dt")
 	private Date create_dt;
-
+	
+	@UpdateTimestamp
 	@Column(name = "update_dt")
 	private Date update_dt;
 

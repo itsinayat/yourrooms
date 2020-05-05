@@ -1,6 +1,5 @@
 package com.inayat.yourrooms.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -15,42 +14,38 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
-@Table(name = "t_wallet")
-public class Wallet implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+@Table(name = "t_review_and_ratings")
+public class ReviewAndRatings{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "balance")
-	private Long balance;
+	@OneToOne
+	private Hotels hotel;
 	
-	@CreationTimestamp
-	@Column(name = "create_dt")
-	private Date create_dt;
-	
-	@UpdateTimestamp
-	@Column(name = "update_dt")
-	private Date update_dt;
-
-	
-	@Column(name = "create_user_id")
-	private Long create_user_id;
-	
-	@Column(name = "update_user_id")
-	private Long update_user_id;
+	@Column(name = "comment")
+	private String comment;
 	
 	@Column(name = "del_ind")
 	private Boolean del_ind;
 	
-	@Column(name = "is_activated")
-	private Boolean is_activated;
+	@Column(name = "rating")
+	private Integer rating;
+	
+	@CreationTimestamp
+	@Column(name = "create_dt")
+	private Date create_dt;
 
+	@UpdateTimestamp
+	@Column(name = "update_dt")
+	private Date update_dt;
+
+	@Column(name = "create_user_id")
+	private Long create_user_id;
+
+	@Column(name = "update_user_id")
+	private Long update_user_id;
 
 	public Long getId() {
 		return id;
@@ -60,12 +55,28 @@ public class Wallet implements Serializable {
 		this.id = id;
 	}
 
-	public Long getBalance() {
-		return balance;
+	public Hotels getHotel() {
+		return hotel;
 	}
 
-	public void setBalance(Long balance) {
-		this.balance = balance;
+	public void setHotel(Hotels hotel) {
+		this.hotel = hotel;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public Boolean getDel_ind() {
+		return del_ind;
+	}
+
+	public void setDel_ind(Boolean del_ind) {
+		this.del_ind = del_ind;
 	}
 
 	public Date getCreate_dt() {
@@ -100,23 +111,13 @@ public class Wallet implements Serializable {
 		this.update_user_id = update_user_id;
 	}
 
-	public Boolean getDel_ind() {
-		return del_ind;
+	public Integer getRating() {
+		return rating;
 	}
 
-	public void setDel_ind(Boolean del_ind) {
-		this.del_ind = del_ind;
-	}
-
-	public Boolean getIs_activated() {
-		return is_activated;
-	}
-
-	public void setIs_activated(Boolean is_activated) {
-		this.is_activated = is_activated;
+	public void setRating(Integer rating) {
+		this.rating = rating;
 	}
 	
 	
-	
-
 }

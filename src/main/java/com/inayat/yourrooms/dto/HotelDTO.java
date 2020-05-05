@@ -1,10 +1,14 @@
 package com.inayat.yourrooms.dto;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
-import javax.persistence.Column;
+import com.inayat.yourrooms.entity.ReviewAndRatings;
+import com.inayat.yourrooms.entity.User;
 
-public class HotelDTO {
+public class HotelDTO implements Serializable {
 	
 	private Long id;
 	
@@ -45,6 +49,12 @@ public class HotelDTO {
 	private Long create_user_id;
 
 	private Long update_user_id;
+	
+	private Set<User> staffs;
+	
+	private List<ReviewAndRatingsDTO> reviewAndRatings;
+	
+	private String ac;
 
 	public Long getId() {
 		return id;
@@ -208,6 +218,21 @@ public class HotelDTO {
 		this.pincode = pincode;
 	}
 
-	
+	public String getAc() {
+		return ac;
+	}
 
+	public void setAc(String ac) {
+		this.ac = ac;
+	}
+
+	public List<ReviewAndRatingsDTO> getReviewAndRatings() {
+		return reviewAndRatings;
+	}
+
+	public void setReviewAndRatings(List<ReviewAndRatingsDTO> reviewAndRatings) {
+		this.reviewAndRatings = reviewAndRatings;
+	}
+	
+	
 }

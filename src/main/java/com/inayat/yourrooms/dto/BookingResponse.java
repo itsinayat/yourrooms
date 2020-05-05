@@ -17,6 +17,7 @@ public class BookingResponse {
 	 private String checkinDate;
 	 private String checkout_date;
 	 private String bookingId;
+	 private Long userId;
 	public Long getId() {
 		return id;
 	}
@@ -102,6 +103,12 @@ public class BookingResponse {
 	}
 	public void setCoupon_discount(Double coupon_discount) {
 		this.coupon_discount = coupon_discount;
+	}
+	public Long getUserId() {
+		return userId;
+	}
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 	 
 

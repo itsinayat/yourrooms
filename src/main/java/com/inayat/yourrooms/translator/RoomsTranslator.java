@@ -5,7 +5,7 @@ import com.inayat.yourrooms.entity.Hotels;
 import com.inayat.yourrooms.entity.Rooms;
 
 public class RoomsTranslator {
-
+	
 	public static Rooms translateToDao(RoomsDTO dto, Hotels hotel) {
 		Rooms dao = new Rooms();
 		dao.setBalconyAvl(dto.getBalconyAvl());
@@ -19,6 +19,7 @@ public class RoomsTranslator {
 		dao.setRoomType(dto.getRoomType());
 		dao.setInitialPrice(dto.getInitialPrice());
 		dao.setDiscountPrice(dto.getDiscountPrice());
+		
 		return dao;
 	}
 
@@ -28,7 +29,6 @@ public class RoomsTranslator {
 		dto.setBalconyAvl(dao.getBalconyAvl());
 		dto.setDoubleBed(dao.getDoubleBed());
 		dto.setFreeCancellation(dao.getFreeCancellation());
-
 		dto.setHotel(dao.getHotel());
 		dto.setName(dao.getName());
 		dto.setOccupacy(dao.getOccupacy());
@@ -37,6 +37,15 @@ public class RoomsTranslator {
 		dto.setRoomType(dao.getRoomType());
 		dto.setInitialPrice(dao.getInitialPrice());
 		dto.setDiscountPrice(dao.getDiscountPrice());
+		dto.setUpdate_dt(dao.getUpdate_dt());
+		dto.setUpdate_user_id(dao.getUpdate_user_id());
+		dto.setCreate_dt(dao.getCreate_dt());
+		dto.setCreate_user_id(dao.getCreate_user_id());
+		dto.setCreate_dt(dao.getCreate_dt());
+		dto.setCreate_user_id(dao.getCreate_user_id());
+		dto.setUpdate_dt(dao.getUpdate_dt());
+		dto.setUpdate_user_id(dao.getUpdate_user_id());
+		
 		
 		return dto;
 	}

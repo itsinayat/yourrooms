@@ -7,11 +7,16 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -21,6 +26,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "t_user")
 public class User implements UserDetails, Serializable {
@@ -28,6 +35,13 @@ public class User implements UserDetails, Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+    
+     
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JsonBackReference
+    @JoinTable(name="t_user_t_hotels", joinColumns={@JoinColumn(referencedColumnName="id")}
+                                        , inverseJoinColumns={@JoinColumn(referencedColumnName="id")})  
+    private Set<Hotels> hotels =  new HashSet<>();
 
 	@Column(name = "first_name")
 	private String firstName;
@@ -291,5 +305,15 @@ public class User implements UserDetails, Serializable {
 	public void setReferral_code(String referral_code) {
 		this.referral_code = referral_code;
 	}
+
+	public Set<Hotels> getHotels() {
+		return hotels;
+	}
+
+	public void setHotels(Set<Hotels> hotels) {
+		this.hotels = hotels;
+	}
+
+
 
 }

@@ -3,17 +3,24 @@ package com.inayat.yourrooms.entity;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "t_hotels")
@@ -33,10 +40,10 @@ public class Hotels implements Serializable {
 
 	@Column(name = "address")
 	private String address;
-	
+
 	@Column(name = "city")
 	private String city;
-	
+
 	@Column(name = "pincode")
 	private String pincode;
 
@@ -70,6 +77,9 @@ public class Hotels implements Serializable {
 	@Column(name = "rating")
 	private Long rating;
 
+	@Column(name = "ac")
+	private String ac;
+
 	@Column(name = "del_ind")
 	private Boolean del_ind;
 
@@ -86,6 +96,11 @@ public class Hotels implements Serializable {
 
 	@Column(name = "update_user_id")
 	private Long update_user_id;
+	
+	@JsonManagedReference
+	@ManyToMany(mappedBy="hotels")
+    private Set<User> staffs;
+	
 
 	public Long getId() {
 		return id;
@@ -134,8 +149,6 @@ public class Hotels implements Serializable {
 	public void setPayAtHotel(Boolean payAtHotel) {
 		this.payAtHotel = payAtHotel;
 	}
-
-	
 
 	public String getImages() {
 		return images;
@@ -252,6 +265,22 @@ public class Hotels implements Serializable {
 	public void setPincode(String pincode) {
 		this.pincode = pincode;
 	}
-	
+
+	public String getAc() {
+		return ac;
+	}
+
+	public void setAc(String ac) {
+		this.ac = ac;
+	}
+
+	public Set<User> getStaffs() {
+		return staffs;
+	}
+
+	public void setStaffs(Set<User> staffs) {
+		this.staffs = staffs;
+	}
+
 
 }

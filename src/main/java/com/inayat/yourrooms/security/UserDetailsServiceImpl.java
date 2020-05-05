@@ -1,5 +1,6 @@
 package com.inayat.yourrooms.security;
 
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -13,9 +14,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.inayat.yourrooms.dao.UserDao;
 import com.inayat.yourrooms.entity.Role;
 import com.inayat.yourrooms.entity.User;
+import com.inayat.yourrooms.model.ApiResponse;
 import com.inayat.yourrooms.repositories.UserRepository;
 
 
@@ -31,7 +34,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    	 User user =null;
+     	 User user =null;
     	if (userCache !=null){
 	    user = userCache;
     	}else {

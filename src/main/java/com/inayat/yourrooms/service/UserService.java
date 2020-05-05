@@ -1,8 +1,13 @@
 package com.inayat.yourrooms.service;
 
 import java.security.SecureRandom;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,23 +18,36 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import com.inayat.yourrooms.dao.UserDao;
+import com.inayat.yourrooms.dto.BookingHistoryResponse;
+import com.inayat.yourrooms.dto.ReviewAndRatingsDTO;
 import com.inayat.yourrooms.dto.UserTokenDTO;
 import com.inayat.yourrooms.dto.UsersDTO;
+import com.inayat.yourrooms.dto.WalletDTO;
+import com.inayat.yourrooms.dto.WalletTransactionHistoryResponse;
+import com.inayat.yourrooms.entity.Bookings;
 import com.inayat.yourrooms.entity.Configuration;
+import com.inayat.yourrooms.entity.Hotels;
+import com.inayat.yourrooms.entity.ReviewAndRatings;
 import com.inayat.yourrooms.entity.Role;
 import com.inayat.yourrooms.entity.User;
 import com.inayat.yourrooms.entity.UserToken;
 import com.inayat.yourrooms.entity.Wallet;
 import com.inayat.yourrooms.entity.WalletTransactions;
 import com.inayat.yourrooms.model.ApiResponse;
+import com.inayat.yourrooms.repositories.BookingRepository;
 import com.inayat.yourrooms.repositories.ConfigurationRepository;
+import com.inayat.yourrooms.repositories.HotelRepository;
+import com.inayat.yourrooms.repositories.ReviewAndRatingsRepository;
 import com.inayat.yourrooms.repositories.RoleRepository;
 import com.inayat.yourrooms.repositories.UserRepository;
 import com.inayat.yourrooms.repositories.WalletRepository;
 import com.inayat.yourrooms.repositories.WalletTransactionRepository;
 import com.inayat.yourrooms.security.TokenHandler;
+import com.inayat.yourrooms.translator.BookingHistoryResponseTranslator;
 import com.inayat.yourrooms.translator.UserTokenTranslator;
 import com.inayat.yourrooms.translator.UsersTranslator;
+import com.inayat.yourrooms.translator.WalletTransactionHistoryResponseTranslator;
+import com.inayat.yourrooms.translator.WalletTranslator;
 import com.inayat.yourrooms.utils.Constants;
 
 @Service
@@ -47,12 +65,21 @@ public class UserService {
 	ConfigurationRepository configurationRepository;
 	@Autowired
 	WalletTransactionRepository walletTransactionRepository;
+	
+	@Autowired
+	BookingRepository bookingRepository;
+	
+	@Autowired
+	ReviewAndRatingsRepository reviewAndRatingsRepository;
 	@Autowired
 	UserDao userDao;
 	@Autowired
 	TokenHandler tokenHandler;
 	@Autowired
 	OtpService otpService;
+	
+	@Autowired
+	HotelRepository hotelRepository;
 	private static final String defaultPassoword = "password";
 
 	public ApiResponse register(UsersDTO dto) {
@@ -121,7 +148,6 @@ public class UserService {
 		} else {
 			return new ApiResponse(45, "Wrong OTP");
 		}
-
 	}
 
 	public ApiResponse sendOTP(UsersDTO dto) {
@@ -187,6 +213,11 @@ public class UserService {
 				user.setMobile(dto.getMobile());
 				user.setUsername(dto.getMobile());
 				user.setPassword(defaultPassoword);
+				user.setDel_ind(false);
+				user.setCreate_user_id(0L);
+				user.setIs_enabled(true);
+				user.setIs_logged_in(false);
+				user.setIs_verified(true);
 				String referral_code = createReferalCode(6);
 				user.setReferral_code(referral_code);
 				Optional<Role> r = roleRepository.findById(1L);
@@ -194,7 +225,9 @@ public class UserService {
 				Wallet wallet = new Wallet();
 				wallet.setBalance(0L);
 				wallet.setDel_ind(false);
-				wallet.setIs_activated(false);
+				wallet.setIs_activated(true);
+				wallet.setCreate_user_id(0L);
+				wallet.setUpdate_user_id(0L);
 				Wallet newwallet = walletRepository.save(wallet);
 				user.setWallet(newwallet);
 				userRepository.save(user);
@@ -288,6 +321,63 @@ public class UserService {
 			return null;
 		}
 	}
+
+	public ApiResponse getWallet() {
+		Wallet wallet = getCurrentUser().getWallet();
+		WalletDTO dto = WalletTranslator.convertToDto(wallet);
+		return new ApiResponse(435, "success", dto);
+		
+	}
+
+	public ApiResponse getWalletTransaction() {
+		Wallet wallet = getCurrentUser().getWallet();
+		List<WalletTransactions> trs = walletTransactionRepository.findByWallet(wallet);
+		List<WalletTransactionHistoryResponse> list =WalletTransactionHistoryResponseTranslator.translate(trs);
+		return new ApiResponse(321, "SUCCESS",list);
+	}
+	
+	public ApiResponse getBookingHistory() {
+		User user = getCurrentUser();
+		List<Bookings> bookings = bookingRepository.findByUser(user);
+		List<BookingHistoryResponse> list = BookingHistoryResponseTranslator.translate(bookings);
+		return new ApiResponse(321, "SUCCESS", list);
+	}
+
+	public ApiResponse setReviewAndRating(ReviewAndRatingsDTO dto) {
+		Optional<Hotels> h = hotelRepository.findById(dto.getHotelId());
+		if(!h.isPresent()) {
+			return new ApiResponse(321, "Hotel Not found");
+		}
+		User user = getCurrentUser();
+		Hotels hotel  =h.get();
+		ReviewAndRatings rr = reviewAndRatingsRepository.findByUserAndHotel(user.getId(), hotel);
+		if(rr!=null) {
+			rr.setComment(dto.getComment());
+			rr.setDel_ind(false);
+			rr.setHotel(hotel);
+			rr.setRating(dto.getRating());
+			rr.setUpdate_user_id(user.getId());
+			rr.setCreate_user_id(user.getId());
+			reviewAndRatingsRepository.save(rr);
+			return new ApiResponse(321, "Updated Review");
+		}else {
+			rr = new ReviewAndRatings();
+			rr.setComment(dto.getComment());
+			rr.setDel_ind(false);
+			rr.setHotel(hotel);
+			rr.setRating(dto.getRating());
+			rr.setUpdate_user_id(user.getId());
+			rr.setCreate_user_id(user.getId());
+			reviewAndRatingsRepository.save(rr);
+			return new ApiResponse(321, "created Review");
+		}
+		
+		
+
+		
+	}
+	
+	
 	
 
 }

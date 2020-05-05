@@ -1,5 +1,6 @@
 package com.inayat.yourrooms.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,9 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 @Table(name = "t_booking_transactions")
-public class BookingTransaction {
+public class BookingTransaction implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,15 +37,23 @@ public class BookingTransaction {
 	@Column(name = "payment_mode")
 	private String payment_mode;
 	
+	@Column(name = "orderId")
+	private String order_id;
+	
 	@Column(name = "reference_id")
 	private String reference_id;
 	
 	@Column(name = "del_ind")
 	private Boolean del_ind;
 	
+	@Column(name = "transaction_url")
+	private String transaction_url;
+	
+	@CreationTimestamp
 	@Column(name = "create_dt")
 	private Date create_dt;
 
+	@UpdateTimestamp
 	@Column(name = "update_dt")
 	private Date update_dt;
 
@@ -50,6 +62,20 @@ public class BookingTransaction {
 
 	@Column(name = "update_user_id")
 	private Long update_user_id;
+	
+	@Column(name = "transaction_id")
+	private String transaction_id;
+	
+	@Column(name = "paymentId")
+	private String paymentId;
+	
+	@Column(name = "paymentStatus")
+	private String paymentStatus;
+	
+	@Column(name = "paymentHash")
+	private String paymentHash;
+	
+	
 
 	public Long getId() {
 		return id;
@@ -146,5 +172,55 @@ public class BookingTransaction {
 	public void setPayment_mode(String payment_mode) {
 		this.payment_mode = payment_mode;
 	}
+
+	public String getOrder_id() {
+		return order_id;
+	}
+
+	public void setOrder_id(String order_id) {
+		this.order_id = order_id;
+	}
+
+	public String getTransaction_id() {
+		return transaction_id;
+	}
+
+	public void setTransaction_id(String transaction_id) {
+		this.transaction_id = transaction_id;
+	}
+
+	public String getTransaction_url() {
+		return transaction_url;
+	}
+
+	public void setTransaction_url(String transaction_url) {
+		this.transaction_url = transaction_url;
+	}
+
+	public String getPaymentId() {
+		return paymentId;
+	}
+
+	public void setPaymentId(String paymentId) {
+		this.paymentId = paymentId;
+	}
+
+	public String getPaymentStatus() {
+		return paymentStatus;
+	}
+
+	public void setPaymentStatus(String paymentStatus) {
+		this.paymentStatus = paymentStatus;
+	}
+
+	public String getPaymentHash() {
+		return paymentHash;
+	}
+
+	public void setPaymentHash(String paymentHash) {
+		this.paymentHash = paymentHash;
+	}
+	
+	
 
 }

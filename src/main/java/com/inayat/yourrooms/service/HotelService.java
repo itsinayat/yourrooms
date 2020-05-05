@@ -1,7 +1,10 @@
 package com.inayat.yourrooms.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,23 +15,33 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.inayat.yourrooms.dto.BookingDTO;
 import com.inayat.yourrooms.dto.BookingResponse;
 import com.inayat.yourrooms.dto.HotelDTO;
+import com.inayat.yourrooms.dto.ReviewAndRatingsDTO;
 import com.inayat.yourrooms.dto.RoomsDTO;
 import com.inayat.yourrooms.entity.BookingTransaction;
 import com.inayat.yourrooms.entity.Bookings;
 import com.inayat.yourrooms.entity.Configuration;
 import com.inayat.yourrooms.entity.Coupons;
 import com.inayat.yourrooms.entity.Hotels;
+import com.inayat.yourrooms.entity.ReviewAndRatings;
 import com.inayat.yourrooms.entity.Rooms;
 import com.inayat.yourrooms.entity.User;
 import com.inayat.yourrooms.model.ApiResponse;
 import com.inayat.yourrooms.repositories.BookingRepository;
+import com.inayat.yourrooms.repositories.BookingTransactionRepository;
 import com.inayat.yourrooms.repositories.ConfigurationRepository;
 import com.inayat.yourrooms.repositories.CouponRepository;
 import com.inayat.yourrooms.repositories.HotelRepository;
+import com.inayat.yourrooms.repositories.ReviewAndRatingsRepository;
 import com.inayat.yourrooms.repositories.RoomsRepository;
 import com.inayat.yourrooms.repositories.UserRepository;
 import com.inayat.yourrooms.translator.BookingResponseTranslator;
 import com.inayat.yourrooms.translator.RoomsTranslator;
+import com.inayat.yourrooms.utils.EncryptionUtil;
+import com.instamojo.wrapper.exception.ConnectionException;
+import com.instamojo.wrapper.exception.HTTPException;
+import com.instamojo.wrapper.model.PaymentOrder;
+import com.instamojo.wrapper.model.PaymentOrderResponse;
+import com.instamojo.wrapper.model.Refund;
 
 @Service
 public class HotelService {
@@ -47,6 +60,13 @@ public class HotelService {
 	CouponRepository couponRepository;
 	@Autowired
 	ConfigurationRepository configurationRepository;
+	@Autowired
+	PaymentService paymentService;
+	@Autowired
+	BookingTransactionRepository bookingTransactionRepository;
+
+	@Autowired
+	ReviewAndRatingsRepository reviewAndRatingsRepository;
 
 	public ApiResponse addOrUpdate(HotelDTO hotel) {
 		User u = userService.getCurrentUser();
@@ -76,6 +96,8 @@ public class HotelService {
 				dao.setCity(hotel.getCity());
 			if (hotel.getPincode() != null)
 				dao.setPincode(hotel.getPincode());
+			if (hotel.getAc() != null)
+				dao.setAc(hotel.getAc());
 			dao.setCreate_user_id(u.getId());
 			dao.setUpdate_user_id(u.getId());
 			dao.setDel_ind(false);
@@ -111,14 +133,17 @@ public class HotelService {
 					dao.setPincode(hotel.getPincode());
 				dao.setUpdate_user_id(u.getId());
 				hotelRepository.save(dao);
+				return new ApiResponse(543, "SUCCESS");
+			} else {
+				return new ApiResponse(543, "Hotel Doesn't Exists");
 
 			}
-			return new ApiResponse(543, "SUCCESS");
 
 		}
+
 	}
 
-	public ApiResponse getAllHotel(String city, String pincode) {
+	public ApiResponse getAllHotel(String city, String pincode) throws JsonProcessingException {
 		if (city != null && pincode == null) {
 			List<Hotels> list = hotelRepository.findByCity(city);
 			return new ApiResponse(343, "SUCCESS", list);
@@ -130,6 +155,46 @@ public class HotelService {
 			return new ApiResponse(343, "SUCCESS", list);
 		} else {
 			Iterable<Hotels> hotellist = hotelRepository.findAll();
+			List<HotelDTO> list = new ArrayList<>();
+			for (Hotels h : hotellist) {
+				HotelDTO dto = new HotelDTO();
+				dto.setAc(h.getAc());
+				dto.setAddress(h.getAddress());
+				dto.setCity(h.getCity());
+				dto.setCoupleFriendly(h.getCoupleFriendly());
+				dto.setCreate_dt(h.getCreate_dt());
+				dto.setCreate_user_id(h.getCreate_user_id());
+				dto.setDel_ind(h.getDel_ind());
+				dto.setDiscountPrice(h.getDiscountPrice());
+				dto.setFreeBreakFast(h.getFreeBreakFast());
+				dto.setFreeWifi(h.getFreeWifi());
+				dto.setHotelName(h.getHotelName());
+				dto.setId(h.getId());
+				dto.setImages(h.getImages());
+				dto.setInitialPrice(h.getInitialPrice());
+				dto.setLattitude(h.getLattitude());
+				dto.setLongitude(h.getLongitude());
+				dto.setPayAtHotel(h.getPayAtHotel());
+				dto.setPincode(h.getPincode());
+				dto.setRating(h.getRating());
+				dto.setUpdate_dt(h.getUpdate_dt());
+				dto.setUpdate_user_id(h.getUpdate_user_id());
+				
+
+				List<ReviewAndRatings> g = reviewAndRatingsRepository.findByHotel(h);
+				List<ReviewAndRatingsDTO> list1 = new ArrayList<>();
+
+				for (ReviewAndRatings r : g) {
+					ReviewAndRatingsDTO rr = new ReviewAndRatingsDTO();
+					rr.setComment(r.getComment());
+					rr.setDel_ind(r.getDel_ind());
+					rr.setId(r.getId());
+					rr.setRating(r.getRating());
+					list1.add(rr);
+				}
+				dto.setReviewAndRatings(list1);
+				list.add(dto);
+			}
 			return new ApiResponse(343, "SUCCESS", hotellist);
 
 		}
@@ -142,27 +207,55 @@ public class HotelService {
 			return new ApiResponse(413, "Hotel not found");
 		}
 		Hotels hotel = h.get();
-		Rooms room = RoomsTranslator.translateToDao(dto, hotel);
-		roomsRepository.save(room);
-		return new ApiResponse(432, "SUCCESS");
+
+		if (dto.getId() == null) {
+			Rooms room = RoomsTranslator.translateToDao(dto, hotel);
+			room.setCreate_user_id(userService.getCurrentUser().getId());
+			room.setUpdate_user_id(userService.getCurrentUser().getId());
+			roomsRepository.save(room);
+			return new ApiResponse(432, "ADDED ROOM");
+		} else {
+			Optional<Rooms> r = roomsRepository.findById(dto.getId());
+			if (!r.isPresent()) {
+				return new ApiResponse(432, "Room Not Found");
+			}
+			Rooms dao = r.get();
+
+			dao.setBalconyAvl(dto.getBalconyAvl());
+			dao.setDoubleBed(dto.getDoubleBed());
+			dao.setFreeCancellation(dto.getFreeCancellation());
+			dao.setHotel(hotel);
+			dao.setName(dto.getName());
+			dao.setOccupacy(dto.getOccupacy());
+			dao.setReserved(false);
+			dao.setRoomSize(dto.getRoomSize());
+			dao.setRoomType(dto.getRoomType());
+			dao.setInitialPrice(dto.getInitialPrice());
+			dao.setDiscountPrice(dto.getDiscountPrice());
+			dao.setUpdate_user_id(userService.getCurrentUser().getId());
+			roomsRepository.save(dao);
+			return new ApiResponse(432, "ROOM UPDATED");
+		}
 
 	}
 
 	public ApiResponse getAllHotelRooms(Long hotel_id) {
-		Hotels hotel = hotelRepository.findById(hotel_id).get();
-		if (hotel == null) {
+		Optional<Hotels> hotelopt = hotelRepository.findById(hotel_id);
+		if (!hotelopt.isPresent()) {
 			return new ApiResponse(413, "Hotel not found");
 		}
+		Hotels hotel = hotelopt.get();
 		List<Rooms> rooms = roomsRepository.findAllByHotel(hotel);
 		return new ApiResponse(322, "SUCCESS", rooms);
 	}
 
 	public ApiResponse getRoom(Long room_id) {
-		Rooms rooms = roomsRepository.findById(room_id).get();
-		if (rooms == null) {
+		Optional<Rooms> rooms = roomsRepository.findById(room_id);
+
+		if (!rooms.isPresent()) {
 			return new ApiResponse(413, "Room not found");
 		}
-		return new ApiResponse(322, "SUCCESS", RoomsTranslator.translateToDTO(rooms));
+		return new ApiResponse(322, "SUCCESS", RoomsTranslator.translateToDTO(rooms.get()));
 	}
 
 	public ApiResponse BookRoom(BookingDTO request) throws IOException {
@@ -203,6 +296,7 @@ public class HotelService {
 		dao.setBooking_price(initialPriceTotal);
 		dao.setDiscount_price(discountPriceTotal);
 		dao.setGst(calculateGst(initialPriceTotal - discountPriceTotal));
+		dao.setDel_ind(false);
 		Bookings newbooking = bookingRepository.save(dao);
 		BookingResponse dto = BookingResponseTranslator.translateToDTO(newbooking);
 		return new ApiResponse(432, "SUCCESS", dto);
@@ -220,6 +314,9 @@ public class HotelService {
 				Bookings bookings = bks.get();
 				bookings.setDiscount_coupon(code);
 				bookings.setCoupon_discount(c.getValue());
+				Double gst = calculateGst(
+						bookings.getBooking_price() - bookings.getDiscount_price() - bookings.getCoupon_discount());
+				bookings.setGst(gst);
 				BookingResponse resp = BookingResponseTranslator.translateToDTO(bookings);
 				bookingRepository.save(bookings);
 				return new ApiResponse(545, "Coupon Applied", resp);
@@ -234,5 +331,165 @@ public class HotelService {
 		String rate = c.getValue();
 		Double gst = finalPrice * (Double.parseDouble(rate) / 100);
 		return gst;
+	}
+
+	public ApiResponse payment(BookingDTO booking) {
+		String cd = String.valueOf(booking.hashCode());
+
+		Optional<Bookings> bookings = bookingRepository.findById(booking.getId());
+		if (!bookings.isPresent()) {
+			return new ApiResponse(646, "BookingId Not Found");
+		}
+
+		List<BookingTransaction> bt = bookingTransactionRepository.findByBookingIdAndPaymentHash(bookings.get(), cd);
+		for (BookingTransaction b : bt) {
+			if (b.getPaymentHash().equals(String.valueOf(booking.hashCode()))) {
+				return new ApiResponse(646, "Payment Already Initiated", getPaymentByOrderId(b.getOrder_id()));
+			}
+		}
+		bookings.get().getTransaction();
+
+		Optional<User> c = userRepository.findById(bookings.get().getUser().getId());
+		if (!c.isPresent()) {
+			return new ApiResponse(646, "User Not Found");
+		}
+		PaymentOrderResponse resp = null;
+
+		try {
+			resp = paymentService.createOrder(bookings.get(), booking.hashCode());
+		} catch (Exception e) {
+			return new ApiResponse(67, "Failed", e.getMessage());
+		}
+
+		if (resp != null) {
+			return new ApiResponse(67, "SUCCESS", resp);
+		} else {
+			return new ApiResponse(674, "FAILED");
+		}
+
+	}
+
+	public ApiResponse getPaymentByOrderId(String orderId) {
+		PaymentOrder paymentOrder = paymentService.getPaymentByOrderId(orderId);
+		if (paymentOrder != null) {
+			return new ApiResponse(432, "SUCCESS", paymentOrder);
+		}
+		return new ApiResponse(432, "OrderId Not present");
+	}
+
+	public ApiResponse createRefund(String paymentId, double refundAmount) {
+		/*
+		 * Create a new refund
+		 */
+		Refund refund = new Refund();
+		refund.setPaymentId(paymentId);
+		refund.setStatus("refunded");
+		refund.setType("RFD");
+		refund.setBody("This is a test refund.");
+		refund.setRefundAmount(refundAmount);
+
+		try {
+			Refund createdRefund = paymentService.getPaymentApi().createRefund(refund);
+			return new ApiResponse(432, "SUCCESS", createdRefund);
+
+		} catch (HTTPException e) {
+			System.out.println(e.getStatusCode());
+			System.out.println(e.getMessage());
+			System.out.println(e.getJsonPayload());
+
+		} catch (ConnectionException e) {
+			System.out.println(e.getMessage());
+		}
+		return new ApiResponse(509, "FAILED");
+	}
+
+	public ApiResponse getAllOrders() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ApiResponse updateOrder(String payment_id, String payment_status, String id, String hash) {
+		if (hash != null) {
+			Map<String, String> map = getEncryptedParam(hash);
+			PaymentOrder f = paymentService.getPaymentByOrderId(map.get("id"));
+			System.out.println(map);
+			BookingTransaction bt = bookingTransactionRepository.findByOrderId(f.getId());
+			if(bt==null) {
+				return new ApiResponse(3421, "order ID not found"); 
+			}
+			bt.getBooking().setPaymentStatus(f.getPayments().get(0).getStatus());
+			bt.setPaymentId(map.get("payment_id"));
+			bt.setPaymentStatus(map.get("payment_status"));
+			bt.setReference_id(f.getTransactionId());
+			bt.setPaidAmount(f.getAmount().longValue());
+			bt.setPaymentStatus(f.getPayments().get(0).getStatus());
+			bt.setPayment_mode("ONLINE");
+			bookingTransactionRepository.save(bt);
+			return new ApiResponse(3421, "SUCCESS", f);
+		} else {
+			BookingTransaction bt = bookingTransactionRepository.findByOrderId(id);
+			PaymentOrder f = paymentService.getPaymentByOrderId(id);
+			bt.getBooking().setPaymentStatus(payment_status);
+			bt.setPaymentId(payment_id);
+			bt.setPaymentStatus(payment_status);
+			bt.setReference_id(f.getTransactionId());
+			bt.setPaidAmount(f.getAmount().longValue());
+			bt.setPaymentStatus(f.getPayments().get(0).getStatus());
+			bt.setPayment_mode("ONLINE");
+			bookingTransactionRepository.save(bt);
+			return new ApiResponse(3421, "SUCCESS", f);
+
+		}
+	}
+
+	public Map<String, String> getEncryptedParam(String param) {
+		String x = EncryptionUtil.decode(param);
+		Map<String, String> map = new HashMap<>();
+		String[] s = x.split("&");
+		for (String v : s) {
+			String[] kv = v.split("=");
+			map.put(kv[0], kv[1]);
+		}
+		return map;
+	}
+
+	public ApiResponse paymentPayAthotel(BookingDTO booking) {
+		String cd = String.valueOf(booking.hashCode());
+
+		Optional<Bookings> bookings = bookingRepository.findById(booking.getId());
+		if (!bookings.isPresent()) {
+			return new ApiResponse(646, "BookingId Not Found");
+		}
+
+		List<BookingTransaction> bt = bookingTransactionRepository.findByBookingIdAndPaymentHash(bookings.get(), cd);
+		for (BookingTransaction b : bt) {
+			if (b.getPaymentHash().equals(String.valueOf(booking.hashCode()))) {
+				return new ApiResponse(646, "Payment Already Initiated", b.getOrder_id());
+			}
+		}
+
+		Optional<User> c = userRepository.findById(bookings.get().getUser().getId());
+		if (!c.isPresent()) {
+			return new ApiResponse(646, "User Not Found");
+		}
+		BookingTransaction resp = null;
+
+		try {
+			resp = paymentService.createOrderPayAtHotel(bookings.get(), booking.hashCode());
+		} catch (Exception e) {
+			return new ApiResponse(67, "Failed", e.getMessage());
+		}
+
+		if (resp != null) {
+			return new ApiResponse(67, "SUCCESS");
+		} else {
+			return new ApiResponse(674, "FAILED");
+		}
+
+	}
+
+	public ApiResponse createHash(String payment_id, String payment_status, String id, String hash) {
+		String hashs  =EncryptionUtil.encode("payment_id="+payment_id+"&payment_status="+payment_status+"&id="+id+"");
+		return new ApiResponse(674, "Success" ,hashs);
 	}
 }

@@ -3,6 +3,7 @@
 import java.io.IOException;
 
 import javax.websocket.server.PathParam;
+import javax.ws.rs.QueryParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -18,8 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.inayat.yourrooms.dto.BookingDTO;
+import com.inayat.yourrooms.dto.BookingTransactionDTO;
 import com.inayat.yourrooms.dto.HotelDTO;
 import com.inayat.yourrooms.dto.RoomsDTO;
+import com.inayat.yourrooms.entity.Bookings;
 import com.inayat.yourrooms.model.ApiResponse;
 import com.inayat.yourrooms.service.HotelService;
 
@@ -38,26 +41,26 @@ public class HotelController {
 	}
 	
 	@RequestMapping(value = "/getAll-hotels", method = RequestMethod.GET)
-	public ResponseEntity<ApiResponse> getAllHotel(@RequestParam(required = false) String city,@RequestParam(required = false) String pincode) {
+	public ResponseEntity<ApiResponse> getAllHotel(@RequestParam(required = false) String city,@RequestParam(required = false) String pincode) throws JsonProcessingException {
 		ApiResponse resp = hotelservice.getAllHotel(city,pincode);
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/add-rooms-to-hotel", method = RequestMethod.POST)
+	@RequestMapping(value = "/add-or-update-rooms-to-hotel", method = RequestMethod.POST)
 	public ResponseEntity<ApiResponse> addRoomsTOHotel(@RequestBody RoomsDTO rooms) {
 		ApiResponse resp = hotelservice.addRoomsTOHotel(rooms);
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/getAll-rooms/{hotel_id}", method = RequestMethod.GET)
-	public ResponseEntity<ApiResponse> getAllHotelRooms(@PathVariable("hotel_id") Long hotel_id) {
+	@RequestMapping(value = "/getAll-rooms", method = RequestMethod.GET)
+	public ResponseEntity<ApiResponse> getAllHotelRooms(@RequestParam("hotel_id") Long hotel_id) {
 		ApiResponse resp = hotelservice.getAllHotelRooms(hotel_id);
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/getRoom/{room_id}", method = RequestMethod.GET)
-	public ResponseEntity<ApiResponse> getRoom(@PathVariable("room_id") Long room_id) {
-		ApiResponse resp = hotelservice.getRoom(room_id);
+	@RequestMapping(value = "/getRoom", method = RequestMethod.GET)
+	public ResponseEntity<ApiResponse> getRoom(@RequestParam("id") Long id) {
+		ApiResponse resp = hotelservice.getRoom(id);
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 	
@@ -72,6 +75,10 @@ public class HotelController {
 		ApiResponse resp = hotelservice.applyCoupon(code,Long.parseLong(bookingId));
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
+	
+	
+	
+	
 	
 	
 }

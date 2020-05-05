@@ -1,6 +1,7 @@
 package com.inayat.yourrooms.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,6 +28,9 @@ public class Coupons implements Serializable{
 	
 	@Column(name = "value")
 	private Double value;
+	
+	@Column
+	private Date expiry;
 
 	public Coupons(long id, String code, Double value) {
 		this.id=id;
@@ -62,6 +66,14 @@ public class Coupons implements Serializable{
 
 	public void setValue(Double value) {
 		this.value = value;
+	}
+
+	public Date getExpiry() {
+		return expiry;
+	}
+
+	public void setExpiry(Date expiry) {
+		this.expiry = expiry;
 	}
 
 	

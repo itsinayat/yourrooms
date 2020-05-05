@@ -18,14 +18,16 @@ public class BookingResponseTranslator {
 		dto.setDiscount_coupon(dao.getDiscount_coupon());
 		dto.setDiscount_price(dao.getDiscount_price());
 		dto.setCoupon_discount(dao.getCoupon_discount());
-		dto.setGst(dao.getGst());
 		dto.setId(dao.getId());
+		dto.setGst(dao.getGst());
 		dto.setNoOfGuests(dao.getNoOfGuests());
 		dto.setPaymentStatus(dao.getPaymentStatus());
 		ObjectMapper mapper = new ObjectMapper();
 		Long[] rooms = mapper.readValue(dao.getRooms(), Long[].class);
 		dto.setRooms(rooms);
 		dto.setTransaction(dao.getTransaction());
+		dto.setUserId(dao.getUser().getId());
+		
 		return dto;
 	}
 

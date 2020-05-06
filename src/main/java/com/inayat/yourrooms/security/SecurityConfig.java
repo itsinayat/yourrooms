@@ -96,6 +96,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         	.antMatchers("/payment/create-refund/**").hasAnyRole("ADMIN","CUSTOMER")
         	.antMatchers("/payment/update-order/**").hasAnyRole("ADMIN","CUSTOMER")
         	
+        	.antMatchers("/hotel_images/**").permitAll()
+        	
         	
         	
         	

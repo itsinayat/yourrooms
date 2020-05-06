@@ -83,9 +83,10 @@ public class UserService {
 	private static final String defaultPassoword = "password";
 
 	public ApiResponse register(UsersDTO dto) {
-		User user = UsersTranslator.convertToDao(dto);
-		User u = userRepository.findByUsername(user.getUsername());
+		
+		User u = userRepository.findByUsername(dto.getUsername());
 		if (u == null) {
+			User user = UsersTranslator.convertToDao(dto);
 			Optional<Role> r = roleRepository.findById(1L);
 			user.setRole(r.get());
 			Wallet wallet = new Wallet();
@@ -94,6 +95,7 @@ public class UserService {
 			wallet.setIs_activated(false);
 			Wallet newwallet = walletRepository.save(wallet);
 			user.setWallet(newwallet);
+			user.setUsername(dto.getUsername());
 			userRepository.save(user);
 			return new ApiResponse(41, "SUCCESS");
 		} else {

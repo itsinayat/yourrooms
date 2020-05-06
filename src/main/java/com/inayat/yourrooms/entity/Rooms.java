@@ -68,6 +68,9 @@ public class Rooms implements Serializable {
 	@Column(name = "update_user_id")
 	private Long update_user_id;
 	
+	@Column(name = "images")
+	private String images;
+	
 	
 	@ManyToOne
 	private Hotels hotel;
@@ -198,6 +201,14 @@ public class Rooms implements Serializable {
 
 	public void setUpdate_user_id(Long update_user_id) {
 		this.update_user_id = update_user_id;
+	}
+
+	public String getImages() {
+		return images;
+	}
+
+	public void setImages(String images) {
+		this.images = images;
 	}
 	
 	

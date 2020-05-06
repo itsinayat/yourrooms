@@ -497,14 +497,78 @@ public class HotelService {
 		return new ApiResponse(674, "Success", hashs);
 	}
 
-	
 	public ApiResponse cancelBooking(String bookingId) {
-		Bookings  bookings=  bookingRepository.findByUserAndBooking(userService.getCurrentUser(),Long.valueOf(bookingId));
-		if(bookings ==null) {
+		Bookings bookings = bookingRepository.findByUserAndBooking(userService.getCurrentUser(),
+				Long.valueOf(bookingId));
+		if (bookings == null) {
 			return new ApiResponse(674, "Booking Not Found");
 		}
 		bookings.setBookingStatus(BOOKING_STATUS.CANCELLED.toString());
 		bookingRepository.save(bookings);
 		return new ApiResponse(674, "Booking CANCELLED");
+	}
+
+	public ApiResponse updateBooking(BookingDTO request) throws Exception {
+		Optional<Bookings> bookings = bookingRepository.findById(request.getId());
+		if (!bookings.isPresent()) {
+			return new ApiResponse(674, "Booking Not Found");
+		}
+		Bookings booking = bookings.get();
+		if(request.getBooking_price() != null)
+			booking.setBooking_price(request.getBooking_price());
+		
+		if(request.getDel_ind() != null)
+			booking.setDel_ind(request.getDel_ind());
+		
+		if(request.getBookingStatus() != null)
+			booking.setBookingStatus(request.getBookingStatus());
+		
+		if(request.getCheckinDate() !=null)
+			booking.setCheckinDate(request.getCheckinDate());
+		
+		if(request.getCheckinStatus() != null)
+			booking.setCheckin_status(request.getCheckinStatus());
+		
+		if(request.getCheckoutDate() !=null)
+			booking.setCheckoutDate(request.getCheckoutDate());
+	
+		
+		if(request.getCheckoutStatus() !=null)
+			booking.setCheckout_status(request.getCheckoutStatus());
+	
+		
+		if(request.getCoupon_discount() != null)
+			booking.setCoupon_discount(request.getCoupon_discount());
+		
+		if(request.getDiscount_price() !=null)
+			booking.setDiscount_price(request.getDiscount_price());
+		
+		if(request.getGst() !=null)
+			booking.setGst(request.getGst());
+		
+		if(request.getNoOfGuests() !=0)
+			booking.setNoOfGuests(request.getNoOfGuests());
+		
+		if(request.getPaymentStatus() !=null)
+			booking.setPaymentStatus(request.getPaymentStatus());
+		
+		if(request.getRooms() !=null) {
+			ObjectMapper Obj = new ObjectMapper();
+			String jsonStr;
+			try {
+				jsonStr = Obj.writeValueAsString(request.getRooms());
+			} catch (Exception e) {
+				throw new Exception(e);
+			}
+			booking.setRooms(jsonStr);
+			
+		}
+		
+		booking.setUpdate_user_id(userService.getCurrentUser().getId());
+		bookingRepository.save(booking);
+		
+			
+		return new ApiResponse(674, "Booking Updated");
+
 	}
 }

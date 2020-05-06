@@ -36,9 +36,5 @@ public class DataLoader implements ApplicationRunner {
 		configurationRepository.save(new Configuration(5L,"IM_SALT","fb7d6875d700457198525b308bcd1d52"));
 		configurationRepository.save(new Configuration(6L,"IM_CLIENT_SECRET","test_uICB6FvnzLkYR0lS256p7WIVUkxO9Ddm4uyzwXWuqVhSKbvdUVoOsLWkFHiW0w1VMlXVtjZ8WWXa3wSTHieGqGVxxbqhrTnkxrbWWiUPhT0rTHGnrcd200TAMnE"));
 		configurationRepository.save(new Configuration(7L,"IM_CLIENT_ID","test_6I2TqQfGs3yXN2SH9yfgQJgL0sV4NvSNy1V"));
-		
-		
-		
-	
 	}
 }

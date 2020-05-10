@@ -78,15 +78,17 @@ public class AuthController {
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/logout", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	private boolean logout(@RequestBody User user, HttpServletRequest req, HttpServletResponse resp)
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	private ResponseEntity<ApiResponse> logout( HttpServletRequest req, HttpServletResponse resp)
 			throws JsonGenerationException, JsonMappingException, IOException {
 		if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
 			UserDetails ud = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			User loggedInUser = userRepository.findByUsername(ud.getUsername());
 			userDao.deactivateUserToken(loggedInUser, req.getHeader("Authorization"), resp);
+			return new ResponseEntity<>(new ApiResponse(340, "Logged out Success"), HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>(new ApiResponse(340, "Already Logged out"), HttpStatus.OK);
 		}
-		return true;
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)

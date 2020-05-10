@@ -2,6 +2,7 @@ package com.inayat.yourrooms.service;
 
 import java.security.SecureRandom;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -94,6 +95,10 @@ public class UserService {
 			user.setUsername(dto.getMobile());
 			Optional<Role> r = roleRepository.findById(1L);
 			user.setRole(r.get());
+			String referral_code = createReferalCode(6);
+			user.setReferral_code(referral_code);
+			user.setIs_logged_in(false);
+			user.setUpdate_user_id(0L);
 			Wallet wallet = new Wallet();
 			wallet.setBalance(0L);
 			wallet.setDel_ind(false);
@@ -120,15 +125,17 @@ public class UserService {
 
 		// Generate token
 		User userDetails = userDao.getUser(user.getUsername());
+		userDetails.setLast_login_time(new Date());
 		String tokenKey = this.tokenHandler.generateToken(userDetails);
 
 		// Build response
 		userToken.setUser(userDetails);
 		userToken.setTokenKey(tokenKey);
 		userToken.setStatus(Constants.UsetTokenStatus.ACTIVE);
-
+		userRepository.save(userDetails);
 		// Save token
 		userDao.saveUserToken(userToken);
+		
 		UserTokenDTO dto = UserTokenTranslator.translateToDTO(userToken);
 		return new ApiResponse(43, "SUCCESS", dto);
 
@@ -140,13 +147,14 @@ public class UserService {
 			User u = userRepository.findByUsername(user.getMobile());
 			// Generate token
 			User userDetails = userDao.getUser(u.getUsername());
+			userDetails.setLast_login_time(new Date());
 			String tokenKey = this.tokenHandler.generateToken(userDetails);
 
 			// Build response
 			userToken.setUser(userDetails);
 			userToken.setTokenKey(tokenKey);
 			userToken.setStatus(Constants.UsetTokenStatus.ACTIVE);
-
+			userRepository.save(userDetails);
 			// Save token
 			userDao.saveUserToken(userToken);
 			UserTokenDTO dto = UserTokenTranslator.translateToDTO(userToken);
@@ -230,6 +238,7 @@ public class UserService {
 				user.setIs_verified(true);
 				String referral_code = createReferalCode(6);
 				user.setReferral_code(referral_code);
+				user.setUpdate_user_id(0L);
 				Optional<Role> r = roleRepository.findById(1L);
 				user.setRole(r.get());
 				Wallet wallet = new Wallet();
@@ -302,8 +311,10 @@ public class UserService {
 		if (referralUser == null) {
 			return new ApiResponse(61, "Invalid Referral Code");
 		} else {
+			if(user.getReferral_code()!=null) {
 			if (user.getReferral_code().equals(refferralcode)) {
 				return new ApiResponse(61, "Invalid Referral Code");
+			}
 			}
 			user.setReferred_by(referralUser.getId());
 			Configuration c =configurationRepository.findByKey("REFERRAL_BONUS");

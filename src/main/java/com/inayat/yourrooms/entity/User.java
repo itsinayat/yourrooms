@@ -41,7 +41,7 @@ public class User implements UserDetails, Serializable {
 	@JsonBackReference
     @JoinTable(name="t_user_t_hotels", joinColumns={@JoinColumn(referencedColumnName="id")}
                                         , inverseJoinColumns={@JoinColumn(referencedColumnName="id")})  
-    private Set<Hotels> hotels =  new HashSet<>();
+    private Set<Hotel> hotels =  new HashSet<>();
 
 	@Column(name = "first_name")
 	private String firstName;
@@ -306,11 +306,11 @@ public class User implements UserDetails, Serializable {
 		this.referral_code = referral_code;
 	}
 
-	public Set<Hotels> getHotels() {
+	public Set<Hotel> getHotels() {
 		return hotels;
 	}
 
-	public void setHotels(Set<Hotels> hotels) {
+	public void setHotels(Set<Hotel> hotels) {
 		this.hotels = hotels;
 	}
 

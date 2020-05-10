@@ -7,12 +7,12 @@ import java.util.List;
 import com.inayat.yourrooms.dto.BookingHistoryResponse;
 import com.inayat.yourrooms.dto.BookingTransactionDTO;
 import com.inayat.yourrooms.entity.BookingTransaction;
-import com.inayat.yourrooms.entity.Bookings;
+import com.inayat.yourrooms.entity.Booking;
 
 public class BookingHistoryResponseTranslator implements Serializable {
-	public static List<BookingHistoryResponse> translate(List<Bookings> bookings) {
+	public static List<BookingHistoryResponse> translate(List<Booking> bookings) {
 		List<BookingHistoryResponse> list =new ArrayList<>();
-		for(Bookings b:bookings) {
+		for(Booking b:bookings) {
 			BookingHistoryResponse h =new BookingHistoryResponse();
 			h.setBookingId(b.getBookingId());
 			h.setBookingStatus(b.getBookingStatus());

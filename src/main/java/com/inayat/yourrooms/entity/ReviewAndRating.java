@@ -15,14 +15,14 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "t_review_and_ratings")
-public class ReviewAndRatings{
+public class ReviewAndRating{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@OneToOne
-	private Hotels hotel;
+	private Hotel hotel;
 	
 	@Column(name = "comment")
 	private String comment;
@@ -55,11 +55,11 @@ public class ReviewAndRatings{
 		this.id = id;
 	}
 
-	public Hotels getHotel() {
+	public Hotel getHotel() {
 		return hotel;
 	}
 
-	public void setHotel(Hotels hotel) {
+	public void setHotel(Hotel hotel) {
 		this.hotel = hotel;
 	}
 

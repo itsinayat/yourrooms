@@ -16,9 +16,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "t_bookings")
-public class Bookings {
+public class Booking {
 	
-	public Bookings() {
+	public Booking() {
 		this.BookingId =generateBookingId(); 
 		this.bookingStatus = "INITIATED";
 		this.paymentStatus = "PENDING";

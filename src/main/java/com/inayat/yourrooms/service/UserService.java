@@ -15,6 +15,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.inayat.yourrooms.dao.UserDao;
@@ -24,15 +25,15 @@ import com.inayat.yourrooms.dto.UserTokenDTO;
 import com.inayat.yourrooms.dto.UsersDTO;
 import com.inayat.yourrooms.dto.WalletDTO;
 import com.inayat.yourrooms.dto.WalletTransactionHistoryResponse;
-import com.inayat.yourrooms.entity.Bookings;
+import com.inayat.yourrooms.entity.Booking;
 import com.inayat.yourrooms.entity.Configuration;
-import com.inayat.yourrooms.entity.Hotels;
-import com.inayat.yourrooms.entity.ReviewAndRatings;
+import com.inayat.yourrooms.entity.Hotel;
+import com.inayat.yourrooms.entity.ReviewAndRating;
 import com.inayat.yourrooms.entity.Role;
 import com.inayat.yourrooms.entity.User;
 import com.inayat.yourrooms.entity.UserToken;
 import com.inayat.yourrooms.entity.Wallet;
-import com.inayat.yourrooms.entity.WalletTransactions;
+import com.inayat.yourrooms.entity.WalletTransaction;
 import com.inayat.yourrooms.model.ApiResponse;
 import com.inayat.yourrooms.repositories.BookingRepository;
 import com.inayat.yourrooms.repositories.ConfigurationRepository;
@@ -79,14 +80,18 @@ public class UserService {
 	OtpService otpService;
 	
 	@Autowired
+	BCryptPasswordEncoder encoder;
+	
+	@Autowired
 	HotelRepository hotelRepository;
 	private static final String defaultPassoword = "password";
 
 	public ApiResponse register(UsersDTO dto) {
 		
-		User u = userRepository.findByUsername(dto.getUsername());
+		User u = userRepository.findByMobile(dto.getMobile());
 		if (u == null) {
 			User user = UsersTranslator.convertToDao(dto);
+			user.setUsername(dto.getMobile());
 			Optional<Role> r = roleRepository.findById(1L);
 			user.setRole(r.get());
 			Wallet wallet = new Wallet();
@@ -95,7 +100,6 @@ public class UserService {
 			wallet.setIs_activated(false);
 			Wallet newwallet = walletRepository.save(wallet);
 			user.setWallet(newwallet);
-			user.setUsername(dto.getUsername());
 			userRepository.save(user);
 			return new ApiResponse(41, "SUCCESS");
 		} else {
@@ -203,7 +207,11 @@ public class UserService {
 		dao.setIs_enabled(user.getIs_enabled());
 		dao.setIs_verified(user.getIs_verified());
 		dao.setLastName(user.getLastName());
+		try {
 		userRepository.save(dao);
+		}catch (Exception e) {
+			return new ApiResponse(50, e.getMessage());
+		}
 		return new ApiResponse(50, "SUCCESS");
 	}
 
@@ -214,7 +222,7 @@ public class UserService {
 				User user = new User();
 				user.setMobile(dto.getMobile());
 				user.setUsername(dto.getMobile());
-				user.setPassword(defaultPassoword);
+				user.setPassword(encoder.encode(defaultPassoword));
 				user.setDel_ind(false);
 				user.setCreate_user_id(0L);
 				user.setIs_enabled(true);
@@ -300,7 +308,7 @@ public class UserService {
 			user.setReferred_by(referralUser.getId());
 			Configuration c =configurationRepository.findByKey("REFERRAL_BONUS");
 			user.getWallet().setBalance(Long.valueOf(c.getValue()));
-			WalletTransactions tr = new WalletTransactions();
+			WalletTransaction tr = new WalletTransaction();
 			tr.setAmount(Long.valueOf(c.getValue()));
 			tr.setComment("Referral Bonus");
 			tr.setReference_id(createReferenceID());
@@ -333,26 +341,26 @@ public class UserService {
 
 	public ApiResponse getWalletTransaction() {
 		Wallet wallet = getCurrentUser().getWallet();
-		List<WalletTransactions> trs = walletTransactionRepository.findByWallet(wallet);
+		List<WalletTransaction> trs = walletTransactionRepository.findByWallet(wallet);
 		List<WalletTransactionHistoryResponse> list =WalletTransactionHistoryResponseTranslator.translate(trs);
 		return new ApiResponse(321, "SUCCESS",list);
 	}
 	
 	public ApiResponse getBookingHistory() {
 		User user = getCurrentUser();
-		List<Bookings> bookings = bookingRepository.findByUser(user);
+		List<Booking> bookings = bookingRepository.findByUser(user);
 		List<BookingHistoryResponse> list = BookingHistoryResponseTranslator.translate(bookings);
 		return new ApiResponse(321, "SUCCESS", list);
 	}
 
 	public ApiResponse setReviewAndRating(ReviewAndRatingsDTO dto) {
-		Optional<Hotels> h = hotelRepository.findById(dto.getHotelId());
+		Optional<Hotel> h = hotelRepository.findById(dto.getHotelId());
 		if(!h.isPresent()) {
 			return new ApiResponse(321, "Hotel Not found");
 		}
 		User user = getCurrentUser();
-		Hotels hotel  =h.get();
-		ReviewAndRatings rr = reviewAndRatingsRepository.findByUserAndHotel(user.getId(), hotel);
+		Hotel hotel  =h.get();
+		ReviewAndRating rr = reviewAndRatingsRepository.findByUserAndHotel(user.getId(), hotel);
 		if(rr!=null) {
 			rr.setComment(dto.getComment());
 			rr.setDel_ind(false);
@@ -363,7 +371,7 @@ public class UserService {
 			reviewAndRatingsRepository.save(rr);
 			return new ApiResponse(321, "Updated Review");
 		}else {
-			rr = new ReviewAndRatings();
+			rr = new ReviewAndRating();
 			rr.setComment(dto.getComment());
 			rr.setDel_ind(false);
 			rr.setHotel(hotel);

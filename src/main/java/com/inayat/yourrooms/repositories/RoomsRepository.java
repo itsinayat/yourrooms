@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import com.inayat.yourrooms.entity.Hotels;
-import com.inayat.yourrooms.entity.Rooms;
+import com.inayat.yourrooms.entity.Hotel;
+import com.inayat.yourrooms.entity.Room;
 
-public interface RoomsRepository  extends CrudRepository<Rooms, Long>{
-	@Query("SELECT r from Rooms r " + "WHERE r.hotel = :hotel_id ")
-	List<Rooms> findAllByHotel(Hotels hotel_id);
+public interface RoomsRepository  extends CrudRepository<Room, Long>{
+	@Query("SELECT r from Room r " + "WHERE r.hotel = :hotel_id ")
+	List<Room> findAllByHotel(Hotel hotel_id);
 
 }

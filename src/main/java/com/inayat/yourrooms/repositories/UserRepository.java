@@ -13,4 +13,8 @@ public interface UserRepository extends CrudRepository<User, Long> {
     @Query("SELECT u from User u "
 			+ "WHERE u.referral_code = :referral_code ")
 	public User findByReferral_code(String referral_code);
+
+    @Query("SELECT u from User u "
+			+ "WHERE u.mobile = :mobile ")
+	public User findByMobile(String mobile);
 }

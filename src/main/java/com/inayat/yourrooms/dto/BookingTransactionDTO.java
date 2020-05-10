@@ -2,12 +2,12 @@ package com.inayat.yourrooms.dto;
 
 import java.util.Date;
 
-import com.inayat.yourrooms.entity.Bookings;
+import com.inayat.yourrooms.entity.Booking;
 
 public class BookingTransactionDTO {
 	private Long id;
 
-	private Bookings booking;
+	private Booking booking;
 	
 	private Long totalAmount;
 
@@ -43,11 +43,11 @@ public class BookingTransactionDTO {
 		this.id = id;
 	}
 
-	public Bookings getBooking() {
+	public Booking getBooking() {
 		return booking;
 	}
 
-	public void setBooking(Bookings booking) {
+	public void setBooking(Booking booking) {
 		this.booking = booking;
 	}
 

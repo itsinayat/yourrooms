@@ -29,7 +29,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.inayat.yourrooms.dao.UserDao;
 import com.inayat.yourrooms.dto.ReviewAndRatingsDTO;
 import com.inayat.yourrooms.dto.UsersDTO;
-import com.inayat.yourrooms.entity.Coupons;
+import com.inayat.yourrooms.entity.Coupon;
 import com.inayat.yourrooms.entity.User;
 import com.inayat.yourrooms.model.ApiResponse;
 import com.inayat.yourrooms.repositories.CouponRepository;
@@ -72,7 +72,6 @@ public class AuthController {
 	@Autowired
 	CouponRepository couponRepository;
 
-
 	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ApiResponse> login(@RequestBody UsersDTO user) {
 		ApiResponse response = userService.login(user);
@@ -90,6 +89,13 @@ public class AuthController {
 		return true;
 	}
 
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public ResponseEntity<ApiResponse> register(@RequestBody UsersDTO user) {
+		user.setPassword(encoder.encode(user.getPassword()));
+		ApiResponse resp = userService.register(user);
+		return new ResponseEntity<>(resp, HttpStatus.OK);
+	}
+
 	@RequestMapping(value = "/testAuth", method = RequestMethod.GET)
 	public String test() {
 		return "Running";
@@ -103,7 +109,6 @@ public class AuthController {
 
 	@RequestMapping(value = "/register-by-otp", method = RequestMethod.POST)
 	public ResponseEntity<ApiResponse> mobileRegister(@RequestBody UsersDTO user) {
-		user.setPassword(encoder.encode(user.getPassword()));
 		ApiResponse resp = userService.registerByOtp(user);
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
@@ -152,7 +157,7 @@ public class AuthController {
 
 	@RequestMapping(value = "/get-all-coupons", method = RequestMethod.GET)
 	public ResponseEntity<ApiResponse> getAllCoupons() {
-		Iterable<Coupons> response = couponRepository.findAll();
+		Iterable<Coupon> response = couponRepository.findAll();
 		ApiResponse res = new ApiResponse(4234, "SUCCESS", response);
 		return new ResponseEntity<>(res, HttpStatus.OK);
 	}

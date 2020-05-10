@@ -2,10 +2,13 @@ package com.inayat.yourrooms.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,16 +19,18 @@ import com.inayat.yourrooms.dto.BOOKING_STATUS;
 import com.inayat.yourrooms.dto.BookingDTO;
 import com.inayat.yourrooms.dto.BookingResponse;
 import com.inayat.yourrooms.dto.CHECKIN_CHECKOUT_STATUS;
+import com.inayat.yourrooms.dto.CouponsRequest;
 import com.inayat.yourrooms.dto.HotelDTO;
+import com.inayat.yourrooms.dto.MapStaffRequest;
 import com.inayat.yourrooms.dto.ReviewAndRatingsDTO;
 import com.inayat.yourrooms.dto.RoomsDTO;
 import com.inayat.yourrooms.entity.BookingTransaction;
-import com.inayat.yourrooms.entity.Bookings;
+import com.inayat.yourrooms.entity.Booking;
 import com.inayat.yourrooms.entity.Configuration;
-import com.inayat.yourrooms.entity.Coupons;
-import com.inayat.yourrooms.entity.Hotels;
-import com.inayat.yourrooms.entity.ReviewAndRatings;
-import com.inayat.yourrooms.entity.Rooms;
+import com.inayat.yourrooms.entity.Coupon;
+import com.inayat.yourrooms.entity.Hotel;
+import com.inayat.yourrooms.entity.ReviewAndRating;
+import com.inayat.yourrooms.entity.Room;
 import com.inayat.yourrooms.entity.User;
 import com.inayat.yourrooms.model.ApiResponse;
 import com.inayat.yourrooms.repositories.BookingRepository;
@@ -73,7 +78,7 @@ public class HotelService {
 	public ApiResponse addOrUpdate(HotelDTO hotel) {
 		User u = userService.getCurrentUser();
 		if (hotel.getId() == null) {
-			Hotels dao = new Hotels();
+			Hotel dao = new Hotel();
 			if (hotel.getHotelName() != null)
 				dao.setHotelName(hotel.getHotelName());
 			if (hotel.getAddress() != null)
@@ -106,9 +111,9 @@ public class HotelService {
 			hotelRepository.save(dao);
 			return new ApiResponse(543, "SUCCESS");
 		} else {
-			Optional<Hotels> h = hotelRepository.findById(hotel.getId());
+			Optional<Hotel> h = hotelRepository.findById(hotel.getId());
 			if (h.isPresent()) {
-				Hotels dao = h.get();
+				Hotel dao = h.get();
 				if (hotel.getHotelName() != null)
 					dao.setHotelName(hotel.getHotelName());
 				if (hotel.getAddress() != null)
@@ -147,18 +152,18 @@ public class HotelService {
 
 	public ApiResponse getAllHotel(String city, String pincode) throws JsonProcessingException {
 		if (city != null && pincode == null) {
-			List<Hotels> list = hotelRepository.findByCity(city);
+			List<Hotel> list = hotelRepository.findByCity(city);
 			return new ApiResponse(343, "SUCCESS", list);
 		} else if (pincode != null && city == null) {
-			List<Hotels> list = hotelRepository.findByPinCode(pincode);
+			List<Hotel> list = hotelRepository.findByPinCode(pincode);
 			return new ApiResponse(343, "SUCCESS", list);
 		} else if (pincode != null && city != null) {
-			List<Hotels> list = hotelRepository.findByPinCodeAndCity(pincode, city);
+			List<Hotel> list = hotelRepository.findByPinCodeAndCity(pincode, city);
 			return new ApiResponse(343, "SUCCESS", list);
 		} else {
-			Iterable<Hotels> hotellist = hotelRepository.findAll();
+			Iterable<Hotel> hotellist = hotelRepository.findAll();
 			List<HotelDTO> list = new ArrayList<>();
-			for (Hotels h : hotellist) {
+			for (Hotel h : hotellist) {
 				HotelDTO dto = new HotelDTO();
 				dto.setAc(h.getAc());
 				dto.setAddress(h.getAddress());
@@ -172,7 +177,6 @@ public class HotelService {
 				dto.setFreeWifi(h.getFreeWifi());
 				dto.setHotelName(h.getHotelName());
 				dto.setId(h.getId());
-				dto.setImages(h.getImages());
 				dto.setInitialPrice(h.getInitialPrice());
 				dto.setLattitude(h.getLattitude());
 				dto.setLongitude(h.getLongitude());
@@ -182,10 +186,10 @@ public class HotelService {
 				dto.setUpdate_dt(h.getUpdate_dt());
 				dto.setUpdate_user_id(h.getUpdate_user_id());
 
-				List<ReviewAndRatings> g = reviewAndRatingsRepository.findByHotel(h);
+				List<ReviewAndRating> g = reviewAndRatingsRepository.findByHotel(h);
 				List<ReviewAndRatingsDTO> list1 = new ArrayList<>();
 
-				for (ReviewAndRatings r : g) {
+				for (ReviewAndRating r : g) {
 					ReviewAndRatingsDTO rr = new ReviewAndRatingsDTO();
 					rr.setComment(r.getComment());
 					rr.setDel_ind(r.getDel_ind());
@@ -202,25 +206,25 @@ public class HotelService {
 	}
 
 	public ApiResponse addRoomsTOHotel(RoomsDTO dto) {
-		Optional<Hotels> h = hotelRepository.findById(dto.getHotelId());
+		Optional<Hotel> h = hotelRepository.findById(dto.getHotelId());
 
 		if (!h.isPresent()) {
 			return new ApiResponse(413, "Hotel not found");
 		}
-		Hotels hotel = h.get();
+		Hotel hotel = h.get();
 
 		if (dto.getId() == null) {
-			Rooms room = RoomsTranslator.translateToDao(dto, hotel);
+			Room room = RoomsTranslator.translateToDao(dto, hotel);
 			room.setCreate_user_id(userService.getCurrentUser().getId());
 			room.setUpdate_user_id(userService.getCurrentUser().getId());
 			roomsRepository.save(room);
 			return new ApiResponse(432, "ADDED ROOM");
 		} else {
-			Optional<Rooms> r = roomsRepository.findById(dto.getId());
+			Optional<Room> r = roomsRepository.findById(dto.getId());
 			if (!r.isPresent()) {
 				return new ApiResponse(432, "Room Not Found");
 			}
-			Rooms dao = r.get();
+			Room dao = r.get();
 
 			dao.setBalconyAvl(dto.getBalconyAvl());
 			dao.setDoubleBed(dto.getDoubleBed());
@@ -241,17 +245,17 @@ public class HotelService {
 	}
 
 	public ApiResponse getAllHotelRooms(Long hotel_id) {
-		Optional<Hotels> hotelopt = hotelRepository.findById(hotel_id);
+		Optional<Hotel> hotelopt = hotelRepository.findById(hotel_id);
 		if (!hotelopt.isPresent()) {
 			return new ApiResponse(413, "Hotel not found");
 		}
-		Hotels hotel = hotelopt.get();
-		List<Rooms> rooms = roomsRepository.findAllByHotel(hotel);
+		Hotel hotel = hotelopt.get();
+		List<Room> rooms = roomsRepository.findAllByHotel(hotel);
 		return new ApiResponse(322, "SUCCESS", rooms);
 	}
 
 	public ApiResponse getRoom(Long room_id) {
-		Optional<Rooms> rooms = roomsRepository.findById(room_id);
+		Optional<Room> rooms = roomsRepository.findById(room_id);
 
 		if (!rooms.isPresent()) {
 			return new ApiResponse(413, "Room not found");
@@ -271,11 +275,11 @@ public class HotelService {
 
 		Long[] ids = request.getRooms();
 		for (Long id : ids) {
-			Optional<Rooms> room = roomsRepository.findById(id);
+			Optional<Room> room = roomsRepository.findById(id);
 			if (!room.isPresent()) {
 				return new ApiResponse(432, "Room Id is Not Valid");
 			}
-			Rooms roomdetails = room.get();
+			Room roomdetails = room.get();
 			totalAVL += roomdetails.getOccupacy();
 			initialPriceTotal += roomdetails.getInitialPrice();
 			discountPriceTotal += roomdetails.getDiscountPrice();
@@ -284,7 +288,7 @@ public class HotelService {
 			return new ApiResponse(432, "No sufficient rooms are avaialable");
 		}
 
-		Bookings dao = new Bookings();
+		Booking dao = new Booking();
 		dao.setCreate_user_id(userService.getCurrentUser().getId());
 		dao.setNoOfGuests(request.getNoOfGuests());
 		ObjectMapper Obj = new ObjectMapper();
@@ -300,21 +304,21 @@ public class HotelService {
 		dao.setDel_ind(false);
 		dao.setCheckout_status(CHECKIN_CHECKOUT_STATUS.PENDING.toString());
 		dao.setCheckin_status(CHECKIN_CHECKOUT_STATUS.PENDING.toString());
-		Bookings newbooking = bookingRepository.save(dao);
+		Booking newbooking = bookingRepository.save(dao);
 		BookingResponse dto = BookingResponseTranslator.translateToDTO(newbooking);
 		return new ApiResponse(432, "SUCCESS", dto);
 	}
 
 	public ApiResponse applyCoupon(String code, Long bookingId) throws IOException {
-		Coupons c = couponRepository.findBycode(code);
+		Coupon c = couponRepository.findBycode(code);
 		if (c == null) {
 			return new ApiResponse(545, "Invalid Coupon");
 		} else {
-			Optional<Bookings> bks = bookingRepository.findById(bookingId);
+			Optional<Booking> bks = bookingRepository.findById(bookingId);
 			if (!bks.isPresent()) {
 				return new ApiResponse(545, "Invalid booking Id");
 			} else {
-				Bookings bookings = bks.get();
+				Booking bookings = bks.get();
 				bookings.setDiscount_coupon(code);
 				bookings.setCoupon_discount(c.getValue());
 				Double gst = calculateGst(
@@ -339,7 +343,7 @@ public class HotelService {
 	public ApiResponse payment(BookingDTO booking) {
 		String cd = String.valueOf(booking.hashCode());
 
-		Optional<Bookings> bookings = bookingRepository.findById(booking.getId());
+		Optional<Booking> bookings = bookingRepository.findById(booking.getId());
 		if (!bookings.isPresent()) {
 			return new ApiResponse(646, "BookingId Not Found");
 		}
@@ -459,7 +463,7 @@ public class HotelService {
 	public ApiResponse paymentPayAthotel(BookingDTO booking) {
 		String cd = String.valueOf(booking.hashCode());
 
-		Optional<Bookings> bookings = bookingRepository.findById(booking.getId());
+		Optional<Booking> bookings = bookingRepository.findById(booking.getId());
 		if (!bookings.isPresent()) {
 			return new ApiResponse(646, "BookingId Not Found");
 		}
@@ -498,7 +502,7 @@ public class HotelService {
 	}
 
 	public ApiResponse cancelBooking(String bookingId) {
-		Bookings bookings = bookingRepository.findByUserAndBooking(userService.getCurrentUser(),
+		Booking bookings = bookingRepository.findByUserAndBooking(userService.getCurrentUser(),
 				Long.valueOf(bookingId));
 		if (bookings == null) {
 			return new ApiResponse(674, "Booking Not Found");
@@ -509,50 +513,48 @@ public class HotelService {
 	}
 
 	public ApiResponse updateBooking(BookingDTO request) throws Exception {
-		Optional<Bookings> bookings = bookingRepository.findById(request.getId());
+		Optional<Booking> bookings = bookingRepository.findById(request.getId());
 		if (!bookings.isPresent()) {
 			return new ApiResponse(674, "Booking Not Found");
 		}
-		Bookings booking = bookings.get();
-		if(request.getBooking_price() != null)
+		Booking booking = bookings.get();
+		if (request.getBooking_price() != null)
 			booking.setBooking_price(request.getBooking_price());
-		
-		if(request.getDel_ind() != null)
+
+		if (request.getDel_ind() != null)
 			booking.setDel_ind(request.getDel_ind());
-		
-		if(request.getBookingStatus() != null)
+
+		if (request.getBookingStatus() != null)
 			booking.setBookingStatus(request.getBookingStatus());
-		
-		if(request.getCheckinDate() !=null)
+
+		if (request.getCheckinDate() != null)
 			booking.setCheckinDate(request.getCheckinDate());
-		
-		if(request.getCheckinStatus() != null)
+
+		if (request.getCheckinStatus() != null)
 			booking.setCheckin_status(request.getCheckinStatus());
-		
-		if(request.getCheckoutDate() !=null)
+
+		if (request.getCheckoutDate() != null)
 			booking.setCheckoutDate(request.getCheckoutDate());
-	
-		
-		if(request.getCheckoutStatus() !=null)
+
+		if (request.getCheckoutStatus() != null)
 			booking.setCheckout_status(request.getCheckoutStatus());
-	
-		
-		if(request.getCoupon_discount() != null)
+
+		if (request.getCoupon_discount() != null)
 			booking.setCoupon_discount(request.getCoupon_discount());
-		
-		if(request.getDiscount_price() !=null)
+
+		if (request.getDiscount_price() != null)
 			booking.setDiscount_price(request.getDiscount_price());
-		
-		if(request.getGst() !=null)
+
+		if (request.getGst() != null)
 			booking.setGst(request.getGst());
-		
-		if(request.getNoOfGuests() !=0)
+
+		if (request.getNoOfGuests() != 0)
 			booking.setNoOfGuests(request.getNoOfGuests());
-		
-		if(request.getPaymentStatus() !=null)
+
+		if (request.getPaymentStatus() != null)
 			booking.setPaymentStatus(request.getPaymentStatus());
-		
-		if(request.getRooms() !=null) {
+
+		if (request.getRooms() != null) {
 			ObjectMapper Obj = new ObjectMapper();
 			String jsonStr;
 			try {
@@ -561,14 +563,94 @@ public class HotelService {
 				throw new Exception(e);
 			}
 			booking.setRooms(jsonStr);
-			
+
 		}
-		
+
 		booking.setUpdate_user_id(userService.getCurrentUser().getId());
 		bookingRepository.save(booking);
-		
-			
+
 		return new ApiResponse(674, "Booking Updated");
 
 	}
+
+	public ApiResponse mapStaffTOHotel(MapStaffRequest request) {
+		String hotelId = request.getHotelId();
+		String[] staff = request.getStaff();
+		Optional<Hotel> hotels = hotelRepository.findById(Long.valueOf(hotelId));
+		if (!hotels.isPresent()) {
+			return new ApiResponse(674, "Hotel Not found");
+		}
+		Hotel hotel = hotels.get();
+		Set<User> userSet = new HashSet<>();
+		// check user
+		for (String id : staff) {
+			Optional<User> users = userRepository.findById(Long.valueOf(id));
+			if (!users.isPresent()) {
+				return new ApiResponse(674, "user ID '" + id + "' is not present.");
+			}
+			User user = users.get();
+			user.getHotels().add(hotel);
+		}
+		hotelRepository.save(hotel);
+		return new ApiResponse(674, "Staff added");
+
+	}
+
+	public ApiResponse removeStafffromHotel(MapStaffRequest request) {
+		String hotelId = request.getHotelId();
+		String[] staff = request.getStaff();
+		Optional<Hotel> hotels = hotelRepository.findById(Long.valueOf(hotelId));
+		if (!hotels.isPresent()) {
+			return new ApiResponse(674, "Hotel Not found");
+		}
+		Hotel hotel = hotels.get();
+		// check user
+		for (String id : staff) {
+			Optional<User> users = userRepository.findById(Long.valueOf(id));
+			if (!users.isPresent()) {
+				return new ApiResponse(674, "user ID '" + id + "' is not present.");
+			}
+			User user = users.get();
+			user.getHotels().remove(hotel);
+		}
+		hotelRepository.save(hotel);
+		return new ApiResponse(674, "Staff REMOVED from hotel");
+
+	}
+
+	public ApiResponse addNewCoupon(CouponsRequest request) {
+		if (request.getId() != null) {
+			Optional<Coupon> coupons = couponRepository.findById(request.getId());
+			Date date = request.getExpiry();
+			if (!coupons.isPresent()) {
+				return new ApiResponse(674, "coupon not existed");
+			} else {
+				Coupon coupon = coupons.get();
+				coupon.setCode(request.getCode());
+				coupon.setExpiry(date);
+				coupon.setValue(request.getValue());
+				couponRepository.save(coupon);
+				return new ApiResponse(674, "coupon updated");
+			}
+		} else {
+			Date date = request.getExpiry();
+			Coupon coupon = new Coupon(request.getCode(), request.getValue(), date);
+			try {
+				couponRepository.save(coupon);
+			} catch (Exception e) {
+				// TODO: handle exception
+				return new ApiResponse(674, e.getMessage());
+			}
+			return new ApiResponse(674, "coupon added");
+		}
+	}
+
+	public ApiResponse getAllBookings(String hotelId) {
+		Optional<Hotel> hotels= hotelRepository.findById(Long.valueOf(hotelId));
+		if(!hotels.isPresent()) {
+			return new ApiResponse(674, "Hotel Not Found");
+		}
+		return new ApiResponse(674, null);
+	}
+
 }

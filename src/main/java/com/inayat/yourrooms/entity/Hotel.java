@@ -2,7 +2,6 @@ package com.inayat.yourrooms.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -11,20 +10,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.ws.rs.DefaultValue;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "t_hotels")
-public class Hotels implements Serializable {
+public class Hotel implements Serializable {
 
 	/**
 	 * 
@@ -62,9 +61,6 @@ public class Hotels implements Serializable {
 	@Column(name = "couple_friendly")
 	private Boolean coupleFriendly;
 
-	@Column(name = "images")
-	private String images;
-
 	@Column(name = "free_wifi")
 	private Boolean freeWifi;
 
@@ -97,9 +93,16 @@ public class Hotels implements Serializable {
 	@Column(name = "update_user_id")
 	private Long update_user_id;
 	
+	@Column(name = "is_blocked")
+	private Boolean isBlocked =false;
+	
 	
 	@ManyToMany(mappedBy="hotels")
     private Set<User> staffs;
+	
+	@OneToMany(mappedBy = "htl", cascade = CascadeType.ALL)
+	@JsonManagedReference
+    private Set<HotelImage> hotelImages;
 	
 
 	public Long getId() {
@@ -150,13 +153,6 @@ public class Hotels implements Serializable {
 		this.payAtHotel = payAtHotel;
 	}
 
-	public String getImages() {
-		return images;
-	}
-
-	public void setImages(String images) {
-		this.images = images;
-	}
 
 	public Boolean getFreeWifi() {
 		return freeWifi;
@@ -280,6 +276,22 @@ public class Hotels implements Serializable {
 
 	public void setStaffs(Set<User> staffs) {
 		this.staffs = staffs;
+	}
+
+	public Set<HotelImage> getHotelImages() {
+		return hotelImages;
+	}
+
+	public void setHotelImages(Set<HotelImage> hotelImages) {
+		this.hotelImages = hotelImages;
+	}
+
+	public Boolean getIsBlocked() {
+		return isBlocked;
+	}
+
+	public void setIsBlocked(Boolean isBlocked) {
+		this.isBlocked = isBlocked;
 	}
 
 

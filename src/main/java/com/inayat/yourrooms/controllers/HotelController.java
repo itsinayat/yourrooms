@@ -1,11 +1,8 @@
 package com.inayat.yourrooms.controllers;
 
 import java.io.IOException;
-import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.websocket.server.PathParam;
-import javax.ws.rs.QueryParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -25,14 +22,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.inayat.yourrooms.dto.BookingDTO;
-import com.inayat.yourrooms.dto.BookingTransactionDTO;
+import com.inayat.yourrooms.dto.CouponsRequest;
 import com.inayat.yourrooms.dto.HotelDTO;
+import com.inayat.yourrooms.dto.MapStaffRequest;
 import com.inayat.yourrooms.dto.RoomsDTO;
-import com.inayat.yourrooms.entity.Bookings;
 import com.inayat.yourrooms.model.ApiResponse;
 import com.inayat.yourrooms.service.FileStorageService;
 import com.inayat.yourrooms.service.HotelService;
@@ -48,11 +43,6 @@ public class HotelController {
 	@Autowired
 	FileStorageService fileStorageService;
 
-	@RequestMapping(value = "/add-or-update-hotel", method = RequestMethod.POST)
-	public ResponseEntity<ApiResponse> addOrUpdate(@RequestBody HotelDTO hotel) {
-		ApiResponse resp = hotelservice.addOrUpdate(hotel);
-		return new ResponseEntity<>(resp, HttpStatus.OK);
-	}
 
 	@RequestMapping(value = "/getAll-hotels", method = RequestMethod.GET)
 	public ResponseEntity<ApiResponse> getAllHotel(@RequestParam(required = false) String city,
@@ -61,11 +51,7 @@ public class HotelController {
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/add-or-update-rooms-to-hotel", method = RequestMethod.POST)
-	public ResponseEntity<ApiResponse> addRoomsTOHotel(@RequestBody RoomsDTO rooms) {
-		ApiResponse resp = hotelservice.addRoomsTOHotel(rooms);
-		return new ResponseEntity<>(resp, HttpStatus.OK);
-	}
+
 
 	@RequestMapping(value = "/getAll-rooms", method = RequestMethod.GET)
 	public ResponseEntity<ApiResponse> getAllHotelRooms(@RequestParam("hotel_id") Long hotel_id) {
@@ -104,22 +90,22 @@ public class HotelController {
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 
-	@PostMapping("/uploadMultipleFiles")
-	public ResponseEntity<ApiResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files,
-			@RequestParam("id") String id, @RequestParam("flag") String flag) throws IOException {
-		ApiResponse res=null;
-		if(flag.equalsIgnoreCase("room"))
-			res = fileStorageService.storeFileRoomsMultiple(files, id);
-		if(flag.equalsIgnoreCase("hotel"))
-			res = fileStorageService.storeFileHotelsMultiple(files, id);
-		return new ResponseEntity<>(res, HttpStatus.OK);
-	}
+	
 
-	@GetMapping("/downloadFile/{roomId}/{fileName:.+}")
+	@GetMapping("/downloadFile/{type}/{roomId}/{fileName:.+}")
 	public ResponseEntity<Resource> downloadFile(@PathVariable("fileName") String fileName,
-			@PathVariable("roomId") String roomId, HttpServletRequest request) {
+			@PathVariable("roomId") String roomId, @PathVariable("type") String type, HttpServletRequest request) {
 		// Load file as Resource
-		Resource resource = fileStorageService.loadFileAsResource(fileName, roomId);
+		Resource resource;
+		if (type.equalsIgnoreCase("room")) {
+			resource = fileStorageService.loadFileAsResourceRoom(fileName, roomId);
+		}
+
+		else if (type.equalsIgnoreCase("hotel")) {
+			resource = fileStorageService.loadFileAsResourceHotel(fileName, roomId);
+		} else {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
 
 		// Try to determine file's content type
 		String contentType = null;
@@ -139,12 +125,5 @@ public class HotelController {
 				.body(resource);
 	}
 
-	@GetMapping("/getImagesOfRoom/{roomId}")
-	public ResponseEntity<ApiResponse> getImagesOfRoom(@PathVariable("roomId") String roomId,
-			HttpServletRequest request) throws JsonParseException, JsonMappingException, IOException {
-		ApiResponse res = fileStorageService.getImagesOfRoom(roomId);
-		return new ResponseEntity<>(res, HttpStatus.OK);
-
-	}
 
 }

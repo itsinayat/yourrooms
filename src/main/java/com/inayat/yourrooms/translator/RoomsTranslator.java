@@ -1,13 +1,13 @@
 package com.inayat.yourrooms.translator;
 
 import com.inayat.yourrooms.dto.RoomsDTO;
-import com.inayat.yourrooms.entity.Hotels;
-import com.inayat.yourrooms.entity.Rooms;
+import com.inayat.yourrooms.entity.Hotel;
+import com.inayat.yourrooms.entity.Room;
 
 public class RoomsTranslator {
 	
-	public static Rooms translateToDao(RoomsDTO dto, Hotels hotel) {
-		Rooms dao = new Rooms();
+	public static Room translateToDao(RoomsDTO dto, Hotel hotel) {
+		Room dao = new Room();
 		dao.setBalconyAvl(dto.getBalconyAvl());
 		dao.setDoubleBed(dto.getDoubleBed());
 		dao.setFreeCancellation(dto.getFreeCancellation());
@@ -23,7 +23,7 @@ public class RoomsTranslator {
 		return dao;
 	}
 
-	public static RoomsDTO translateToDTO(Rooms dao) {
+	public static RoomsDTO translateToDTO(Room dao) {
 		RoomsDTO dto = new RoomsDTO();
 		dto.setId(dao.getId());
 		dto.setBalconyAvl(dao.getBalconyAvl());
@@ -45,8 +45,6 @@ public class RoomsTranslator {
 		dto.setCreate_user_id(dao.getCreate_user_id());
 		dto.setUpdate_dt(dao.getUpdate_dt());
 		dto.setUpdate_user_id(dao.getUpdate_user_id());
-		
-		
 		return dto;
 	}
 

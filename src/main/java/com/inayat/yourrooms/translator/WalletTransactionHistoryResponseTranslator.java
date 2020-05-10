@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.inayat.yourrooms.dto.WalletTransactionHistoryResponse;
-import com.inayat.yourrooms.entity.WalletTransactions;
+import com.inayat.yourrooms.entity.WalletTransaction;
 
 public class WalletTransactionHistoryResponseTranslator {
 	
-	public static  List<WalletTransactionHistoryResponse> translate(List<WalletTransactions> trs) {
+	public static  List<WalletTransactionHistoryResponse> translate(List<WalletTransaction> trs) {
 		List<WalletTransactionHistoryResponse> list = new ArrayList<>();
-		for(WalletTransactions wt:trs) {
+		for(WalletTransaction wt:trs) {
 			WalletTransactionHistoryResponse resp = new WalletTransactionHistoryResponse();
 			resp.setAmount(wt.getAmount());
 			resp.setComment(wt.getComment());

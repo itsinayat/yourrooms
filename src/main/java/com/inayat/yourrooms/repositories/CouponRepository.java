@@ -4,11 +4,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.inayat.yourrooms.entity.Coupons;
+import com.inayat.yourrooms.entity.Coupon;
 
 @Repository
-public interface CouponRepository extends CrudRepository<Coupons, Long> {
-	 @Query("SELECT c from Coupons c "
+public interface CouponRepository extends CrudRepository<Coupon, Long> {
+	 @Query("SELECT c from Coupon c "
 				+ "WHERE c.code = :code ")
-		public Coupons findBycode(String code);
+		public Coupon findBycode(String code);
 }

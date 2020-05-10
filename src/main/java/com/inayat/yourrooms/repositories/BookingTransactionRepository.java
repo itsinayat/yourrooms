@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import com.inayat.yourrooms.entity.BookingTransaction;
-import com.inayat.yourrooms.entity.Bookings;
+import com.inayat.yourrooms.entity.Booking;
 
 public interface BookingTransactionRepository extends CrudRepository<BookingTransaction, Long> {
 
@@ -16,6 +16,6 @@ public interface BookingTransactionRepository extends CrudRepository<BookingTran
 
 	 @Query("SELECT bt from BookingTransaction bt "
 				+ "WHERE bt.booking = :bookings and bt.paymentHash= :ph")
-	List<BookingTransaction> findByBookingIdAndPaymentHash(Bookings bookings,String ph);
+	List<BookingTransaction> findByBookingIdAndPaymentHash(Booking bookings,String ph);
 
 }

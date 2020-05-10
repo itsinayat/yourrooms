@@ -2,7 +2,7 @@ package com.inayat.yourrooms.dto;
 
 import java.util.Date;
 
-import com.inayat.yourrooms.entity.Hotels;
+import com.inayat.yourrooms.entity.Hotel;
 
 public class RoomsDTO {
 
@@ -30,7 +30,7 @@ public class RoomsDTO {
 
 	private Long hotelId;
 	
-	private Hotels hotel;
+	private Hotel hotel;
 
 	
 	private Date create_dt;
@@ -41,7 +41,11 @@ public class RoomsDTO {
 
 	private Long update_user_id;
 	
+	private String images;
+	
 
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -122,11 +126,11 @@ public class RoomsDTO {
 		this.hotelId = hotelId;
 	}
 
-	public Hotels getHotel() {
+	public Hotel getHotel() {
 		return hotel;
 	}
 
-	public void setHotel(Hotels hotel) {
+	public void setHotel(Hotel hotel) {
 		this.hotel = hotel;
 	}
 
@@ -176,6 +180,14 @@ public class RoomsDTO {
 
 	public void setUpdate_user_id(Long update_user_id) {
 		this.update_user_id = update_user_id;
+	}
+
+	public String getImages() {
+		return images;
+	}
+
+	public void setImages(String images) {
+		this.images = images;
 	}
 
 	

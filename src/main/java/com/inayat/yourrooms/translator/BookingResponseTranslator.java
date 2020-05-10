@@ -4,11 +4,11 @@ import java.io.IOException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.inayat.yourrooms.dto.BookingResponse;
-import com.inayat.yourrooms.entity.Bookings;
+import com.inayat.yourrooms.entity.Booking;
 
 public class BookingResponseTranslator {
 
-	public static BookingResponse translateToDTO(Bookings dao) throws IOException {
+	public static BookingResponse translateToDTO(Booking dao) throws IOException {
 		BookingResponse dto = new BookingResponse();
 		dto.setBooking_price(dao.getBooking_price());
 		dto.setBookingId(dao.getBookingId());

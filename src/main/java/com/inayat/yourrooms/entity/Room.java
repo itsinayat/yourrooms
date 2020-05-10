@@ -2,12 +2,15 @@ package com.inayat.yourrooms.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -16,44 +19,51 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "t_rooms")
-public class Rooms implements Serializable {
+public class Room implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(name="name")
+
+	@Column(name = "name")
 	private String name;
-	
-	@Column(name="initial_price")
+
+	@Column(name = "initial_price")
 	private Long initialPrice;
-	
-	@Column(name="discount_price")
+
+	@Column(name = "discount_price")
 	private Long discountPrice;
-	
-	@Column(name="free_cancellation")
+
+	@Column(name = "free_cancellation")
 	private Boolean freeCancellation;
-	
-	@Column(name="balcony_avl")
+
+	@Column(name = "balcony_avl")
 	private Boolean balconyAvl;
-	
-	@Column(name="double_bed")
+
+	@Column(name = "double_bed")
 	private Boolean doubleBed;
-	
-	@Column(name="occupacy")
+
+	@Column(name = "occupacy")
 	private Long occupacy;
 	
-	@Column(name="room_size")
+	@Column(name = "avialable")
+	private Long avialable;
+
+	@Column(name = "room_size")
 	private String roomSize;
-	
-	//premium/exedc/del
-	@Column(name="room_type")
+
+	// premium/exedc/del
+	@Column(name = "room_type")
 	private String roomType;
-	
-	@Column(name="reserved")
+
+	@Column(name = "reserved")
 	private Boolean reserved;
-	
+
 	@CreationTimestamp
 	@Column(name = "create_dt")
 	private Date create_dt;
@@ -67,13 +77,13 @@ public class Rooms implements Serializable {
 
 	@Column(name = "update_user_id")
 	private Long update_user_id;
-	
-	@Column(name = "images")
-	private String images;
-	
-	
+
 	@ManyToOne
-	private Hotels hotel;
+	private Hotel hotel;
+
+	@OneToMany(mappedBy = "rms", cascade = CascadeType.ALL)
+	@JsonManagedReference
+	private Set<RoomImage> roomImages;
 
 	public Long getId() {
 		return id;
@@ -147,11 +157,12 @@ public class Rooms implements Serializable {
 		this.reserved = reserved;
 	}
 
-	public Hotels getHotel() {
+	@JsonIgnore
+	public Hotel getHotel() {
 		return hotel;
 	}
 
-	public void setHotel(Hotels hotel) {
+	public void setHotel(Hotel hotel) {
 		this.hotel = hotel;
 	}
 
@@ -203,13 +214,20 @@ public class Rooms implements Serializable {
 		this.update_user_id = update_user_id;
 	}
 
-	public String getImages() {
-		return images;
+	public Set<RoomImage> getRoomImages() {
+		return roomImages;
 	}
 
-	public void setImages(String images) {
-		this.images = images;
+	public void setRoomImages(Set<RoomImage> roomImages) {
+		this.roomImages = roomImages;
 	}
-	
-	
+
+	public Long getAvialable() {
+		return avialable;
+	}
+
+	public void setAvialable(Long avialable) {
+		this.avialable = avialable;
+	}
+
 }

@@ -16,4 +16,10 @@ public class Utils {
 		Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
 		return date1;
 		}
+		
+		public static Date addDays(Date d, int days)
+	    {
+	        d.setTime(d.getTime() + days * 1000 * 60 * 60 * 24);
+	        return d;
+	    }
 }

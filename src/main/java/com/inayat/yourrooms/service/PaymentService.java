@@ -11,7 +11,7 @@ import com.inayat.yourrooms.dto.BookingDTO;
 import com.inayat.yourrooms.dto.PAYMENT_MODE;
 import com.inayat.yourrooms.dto.PaymentStatus;
 import com.inayat.yourrooms.entity.BookingTransaction;
-import com.inayat.yourrooms.entity.Bookings;
+import com.inayat.yourrooms.entity.Booking;
 import com.inayat.yourrooms.entity.Configuration;
 import com.inayat.yourrooms.entity.User;
 import com.inayat.yourrooms.model.ApiResponse;
@@ -38,7 +38,7 @@ public class PaymentService {
 	@Autowired
 	UserService userService;
 
-	public PaymentOrderResponse createOrder(Bookings dao, int hashCode) throws Exception {
+	public PaymentOrderResponse createOrder(Booking dao, int hashCode) throws Exception {
 
 		Instamojo api = getPaymentApi();
 		String message;
@@ -95,7 +95,7 @@ public class PaymentService {
 
 	}
 
-	public static Double calculateAmountPayable(Bookings dao) {
+	public static Double calculateAmountPayable(Booking dao) {
 		Double initial_price = dao.getBooking_price();
 		Double coupon_discount = dao.getCoupon_discount();
 		Double discountPrice = dao.getDiscount_price();
@@ -146,7 +146,7 @@ public class PaymentService {
 		return api;
 	}
 
-	public BookingTransaction createOrderPayAtHotel(Bookings dao, int hashCode) {
+	public BookingTransaction createOrderPayAtHotel(Booking dao, int hashCode) {
 			BookingTransaction bookingTransaction = new BookingTransaction();
 			String tid = generateTrId();
 			String oid = generateOrderId();

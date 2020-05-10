@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-import com.inayat.yourrooms.entity.ReviewAndRatings;
+import com.inayat.yourrooms.entity.ReviewAndRating;
 import com.inayat.yourrooms.entity.User;
 
 public class HotelDTO implements Serializable {
@@ -51,6 +51,8 @@ public class HotelDTO implements Serializable {
 	private Long update_user_id;
 	
 	private Set<User> staffs;
+	
+	private Boolean isBlocked;
 	
 	private List<ReviewAndRatingsDTO> reviewAndRatings;
 	
@@ -218,7 +220,7 @@ public class HotelDTO implements Serializable {
 		this.pincode = pincode;
 	}
 
-	public String getAc() {
+	public String getAc() {	
 		return ac;
 	}
 
@@ -232,6 +234,22 @@ public class HotelDTO implements Serializable {
 
 	public void setReviewAndRatings(List<ReviewAndRatingsDTO> reviewAndRatings) {
 		this.reviewAndRatings = reviewAndRatings;
+	}
+
+	public Set<User> getStaffs() {
+		return staffs;
+	}
+
+	public void setStaffs(Set<User> staffs) {
+		this.staffs = staffs;
+	}
+
+	public Boolean getIsBlocked() {
+		return isBlocked;
+	}
+
+	public void setIsBlocked(Boolean isBlocked) {
+		this.isBlocked = isBlocked;
 	}
 	
 	

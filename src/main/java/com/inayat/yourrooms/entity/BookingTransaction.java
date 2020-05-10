@@ -23,7 +23,7 @@ public class BookingTransaction implements Serializable{
 	private Long id;
 	
 	@OneToOne
-	private Bookings booking;
+	private Booking booking;
 	
 	@Column(name = "total_amount")
 	private Long totalAmount;
@@ -85,11 +85,11 @@ public class BookingTransaction implements Serializable{
 		this.id = id;
 	}
 
-	public Bookings getBooking() {
+	public Booking getBooking() {
 		return booking;
 	}
 
-	public void setBooking(Bookings booking) {
+	public void setBooking(Booking booking) {
 		this.booking = booking;
 	}
 

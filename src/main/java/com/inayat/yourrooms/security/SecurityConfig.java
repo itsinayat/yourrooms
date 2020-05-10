@@ -47,6 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
 		authenticationManagerBuilder.userDetailsService(this.userDetailsService);
 	}
+	
 	  
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -55,30 +56,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.sessionManagement()
 	        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 	        .and()
-		.authorizeRequests()
+	        .authorizeRequests()
 			.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-			.antMatchers("/user/login").permitAll()
-		
-			.antMatchers("/user/generate_otp").permitAll()
-			.antMatchers("/user/mobile-login").permitAll()
-            .antMatchers("/user/testAuth/**").hasRole("ADMIN")
-            .antMatchers("/consumer").hasRole("CONSUMER")
-            
-            
-            
-            
-            .antMatchers("/user/register/**").permitAll()
+			.antMatchers("/user/testAuth/**").hasRole("ADMIN")
             .antMatchers("/user/generate-otp/**").permitAll()
             .antMatchers("/user/register-by-otp/**").permitAll()
             .antMatchers("/user/login-by-otp/**").permitAll()
+			.antMatchers("/user/login").permitAll()
+            .antMatchers("/user/register/**").permitAll()
             .antMatchers("/user/set-referral/**").permitAll()
-        	.antMatchers("/user/logout").permitAll()
-        	.antMatchers("/user/update-user/**").hasRole("ADMIN")
-        	.antMatchers("/user/get-wallet/**").hasAnyRole("ADMIN","CONSUMER")
-        	.antMatchers("/user/get-wallet-ransaction/**").hasAnyRole("ADMIN","CONSUMER")
-        	.antMatchers("/user/get-booking-history**").hasAnyRole("ADMIN","CONSUMER")
-        	.antMatchers("/user/get-all-coupons**").hasAnyRole("ADMIN","CONSUMER")
-        	.antMatchers("/user/review-and-rating**").hasAnyRole("ADMIN","CONSUMER")
+        	.antMatchers("/user/logout").hasAnyRole("ADMIN","CONSUMER","SUPERADMIN")
+        	.antMatchers("/user/update-user/**").hasAnyRole("ADMIN","CONSUMER","SUPERADMIN")
+        	.antMatchers("/user/get-profile/**").hasAnyRole("ADMIN","CONSUMER","SUPERADMIN")
+        	.antMatchers("/user/get-wallet/**").hasAnyRole("ADMIN","CONSUMER","SUPERADMIN")
+        	.antMatchers("/user/get-wallet-ransaction/**").hasAnyRole("ADMIN","CONSUMER","SUPERADMIN")
+        	.antMatchers("/user/get-booking-history**").hasAnyRole("ADMIN","CONSUMER","SUPERADMIN")
+        	.antMatchers("/user/get-all-coupons**").hasAnyRole("ADMIN","CONSUMER","SUPERADMIN")
+        	.antMatchers("/user/review-and-rating**").hasAnyRole("ADMIN","CONSUMER","SUPERADMIN")
         	
         	
         	

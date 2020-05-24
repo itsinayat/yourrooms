@@ -2,20 +2,94 @@
 	"id": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 	"name": "HOTEL",
 	"description": "",
-	"order": [
-		"6dadc683-43de-fbfa-7764-9b2d02f0be8a",
-		"0b18e786-90cc-5177-403d-a67188dae4d2",
-		"98aff936-41ce-1401-9241-677d839b0cdb",
-		"1b94c82c-144b-e6b6-9520-87f9ab2bc5a1",
-		"159913e8-758d-7286-1ce7-08771193ee2f",
-		"76f549e3-c247-328c-5210-10eabd055c52",
-		"799bea95-18eb-0654-f2cb-59a5eeb371aa",
-		"361f8778-400e-fe8d-1886-9a1e851ed14e",
-		"dd01630e-fd5d-20ad-63bd-c7b0b7a3efef",
-		"40b90843-e4ae-6f36-128f-afa33ce47a07"
+	"order": [],
+	"folders": [
+		{
+			"name": "Hotels",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"order": [
+				"40dd2d06-cb9a-98a2-c3c9-0cf5d82977df",
+				"c7e6b414-2988-e719-5a0c-69e2198fcdb5",
+				"3c8ddcfb-30c8-b3ff-c57e-914b1b6189b5",
+				"6d0bd587-cb8b-1941-43a9-5031577e787b",
+				"ea26dc74-5dd0-60db-4f74-b8f6e855b3b4",
+				"aa5dabd8-5235-85a9-7272-922bd8b8e837",
+				"4cd6288f-fed7-ad5c-0224-b8a724362f5c",
+				"f4e36bd8-288b-6930-c004-ae042400875d",
+				"ef59f406-3cdd-42c2-28f0-21983d4e187a",
+				"ac6d2d4b-b1ae-50c2-9409-b0cfef3623c8",
+				"5f76d0e9-83f5-3671-8338-c1401e787b5d",
+				"29ccb87e-bbbb-fd1c-6893-5dee6086b650"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "1e8e4444-4f5c-d80b-c3fc-95a7ea1c4c8a"
+		},
+		{
+			"name": "admin",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"order": [
+				"0da1d173-39bf-01aa-952c-c73cec41090f",
+				"c044fa5a-0278-904e-b2b3-bb57284563a3",
+				"27c139ab-9cd8-08c8-ae88-edf01fae2f89",
+				"d4fe54a7-e4ac-5220-9860-785623349fa2",
+				"96349127-6d9a-8604-c92f-98aa6a748255",
+				"efc4edf5-ceed-98e0-efc4-bfa65b26222a"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "c6f4db30-1482-9e81-296e-c19720d0d9ee"
+		},
+		{
+			"name": "superadmin",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"order": [
+				"dd01630e-fd5d-20ad-63bd-c7b0b7a3efef",
+				"cc9af0af-052a-a78a-f976-5ca6e11c0e7c",
+				"4e0c18b3-d413-4d34-d93a-bc9a63691239",
+				"f1983a10-0742-7d47-26a7-80d5d5a03427",
+				"40b90843-e4ae-6f36-128f-afa33ce47a07",
+				"a7b4a19b-5e05-bc57-d94c-90455eeba8b4"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "4981089d-389e-1b46-16a2-dcd8e5d20e54"
+		},
+		{
+			"name": "user",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"order": [
+				"799bea95-18eb-0654-f2cb-59a5eeb371aa",
+				"76f549e3-c247-328c-5210-10eabd055c52",
+				"6dadc683-43de-fbfa-7764-9b2d02f0be8a",
+				"0b18e786-90cc-5177-403d-a67188dae4d2",
+				"b9c6783d-de7a-4e23-b4cc-5c0ab60a3540",
+				"11fc5ae7-c944-3500-15c1-ddc09a84f33d",
+				"361f8778-400e-fe8d-1886-9a1e851ed14e",
+				"1b94c82c-144b-e6b6-9520-87f9ab2bc5a1",
+				"159913e8-758d-7286-1ce7-08771193ee2f",
+				"98aff936-41ce-1401-9241-677d839b0cdb",
+				"94d0bb90-07a3-fe24-5681-3fbee86d1676",
+				"3849e7a7-6b03-7f68-cb9d-ff127e362924",
+				"180aaa94-15a8-b002-959f-d695ea69bcae",
+				"59f9e7e0-5ea6-73bc-b216-dad551222c0e",
+				"83810f94-f561-5699-f0c5-b642490f77e2"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "171a38f8-6c6c-92a0-7457-3461a20d9a21"
+		}
 	],
-	"folders": [],
-	"folders_order": [],
+	"folders_order": [
+		"1e8e4444-4f5c-d80b-c3fc-95a7ea1c4c8a",
+		"171a38f8-6c6c-92a0-7457-3461a20d9a21",
+		"c6f4db30-1482-9e81-296e-c19720d0d9ee",
+		"4981089d-389e-1b46-16a2-dcd8e5d20e54"
+	],
 	"timestamp": 1585651245669,
 	"owner": 0,
 	"public": false,
@@ -38,6 +112,7 @@
 				}
 			],
 			"url": "{{base-url}}/user/testAuth",
+			"folder": "171a38f8-6c6c-92a0-7457-3461a20d9a21",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -49,19 +124,85 @@
 			"currentHelper": "normal",
 			"helperAttributes": {},
 			"time": 1586084349150,
-			"name": "http://localhost:8080/user/testAuth",
+			"name": "TEST",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
 			"rawModeData": "{\n\t\"username\":\"admin\",\n\t\"password\":\"admin\"\n\t}"
 		},
 		{
+			"id": "0da1d173-39bf-01aa-952c-c73cec41090f",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MzExOTgyMjczIiwiY3JlYXRlZCI6MTU4ODY3ODMzNzA4OSwiZXhwIjoxNTg5MjgzMTM3fQ.cV2XEEkZai-WQ9QiKcuM1dms2Zq2ZzqsGT4cIfP5H2z1FSwkZIvJtyGiB9tgjHHEZtoM_BupXv0Pty283xPN6w\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MzExOTgyMjczIiwiY3JlYXRlZCI6MTU4ODY3ODMzNzA4OSwiZXhwIjoxNTg5MjgzMTM3fQ.cV2XEEkZai-WQ9QiKcuM1dms2Zq2ZzqsGT4cIfP5H2z1FSwkZIvJtyGiB9tgjHHEZtoM_BupXv0Pty283xPN6w",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/admin/getMyHotels",
+			"folder": "1e8e4444-4f5c-d80b-c3fc-95a7ea1c4c8a",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1588678421939,
+			"name": "getHotels",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n        \"id\": 1,\n        \"booking_price\": 5000,\n        \"discount_price\": 200,\n        \"coupon_discount\": 50,\n        \"discount_coupon\": \"FREE50\",\n        \"gst\": 480,\n        \"rooms\": [\n            1\n        ],\n        \"noOfGuests\": 2,\n        \"transaction\": null,\n        \"bookingStatus\": \"INITIATED\",\n        \"paymentStatus\": \"PENDING\",\n        \"checkinDate\": \"14/09/1994\",\n        \"checkout_date\": \"15/09/1994\",\n        \"bookingId\": \"d2c6a68c-a06d-4c1d-8dd1-5d4cc4d964b9\",\n        \"userId\": 1\n    }"
+		},
+		{
+			"id": "11fc5ae7-c944-3500-15c1-ddc09a84f33d",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/user/register",
+			"folder": "171a38f8-6c6c-92a0-7457-3461a20d9a21",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1589108994033,
+			"name": "register WITH password and username copy",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\t\"mobile\":\"9798192659\",\n\t\"password\": \"password\"\n}"
+		},
+		{
 			"id": "159913e8-758d-7286-1ce7-08771193ee2f",
-			"headers": "Authorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTExMTEiLCJjcmVhdGVkIjoxNTg2MTUwODg3Njc1LCJleHAiOjE1ODY3NTU2ODd9.witv35zFBe3XqRDLl-ZGhblTxSrlGUQADlOEztJFLvLt687fsLdni4Yzx_AXhYMsOaEJ7P1EVLe0vMEYxdziAw\nContent-Type: application/json\n",
+			"headers": "Authorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5Nzk4MTkyNjU5IiwiY3JlYXRlZCI6MTU4OTEwOTAzNjM3NywiZXhwIjoxNTg5NzEzODM2fQ.8MjWVW5ocIQOYXOkK9APzOq6Z6PgLldYkre1BakxbJZcVlQ3YXZMNfkO-gZtM7RnhoA7qxuFCljxN5X_WgcSjA\nContent-Type: application/json\n",
 			"headerData": [
 				{
 					"key": "Authorization",
-					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTExMTEiLCJjcmVhdGVkIjoxNTg2MTUwODg3Njc1LCJleHAiOjE1ODY3NTU2ODd9.witv35zFBe3XqRDLl-ZGhblTxSrlGUQADlOEztJFLvLt687fsLdni4Yzx_AXhYMsOaEJ7P1EVLe0vMEYxdziAw",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5Nzk4MTkyNjU5IiwiY3JlYXRlZCI6MTU4OTEwOTAzNjM3NywiZXhwIjoxNTg5NzEzODM2fQ.8MjWVW5ocIQOYXOkK9APzOq6Z6PgLldYkre1BakxbJZcVlQ3YXZMNfkO-gZtM7RnhoA7qxuFCljxN5X_WgcSjA",
 					"description": "",
 					"enabled": true
 				},
@@ -73,6 +214,7 @@
 				}
 			],
 			"url": "{{base-url}}/user/update-profile",
+			"folder": "171a38f8-6c6c-92a0-7457-3461a20d9a21",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -83,12 +225,49 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1586151009806,
-			"name": "54.175.13.79:8080/user/update-profile",
+			"time": 1589109436360,
+			"name": "update user profile",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
-			"rawModeData": "{\n\t\"gender\":\"M\",\n\t\"dob\":\"03/04/2017\",\n\t\"email\":\"test@gmail.com\",\n\t\"firstName\" :\"inayat\",\n\t\"lastName\":\"das\",\n\t\"is_enabled\" : true,\n\t\"is_verified\" :true\n}"
+			"rawModeData": "{\n\t\"gender\":\"M\",\n\t\"dob\":\"03/04/2017\",\n\t\"email\":\"inayat.rdec@gmail.com\",\n\t\"firstName\" :\"inayat\",\n\t\"lastName\":\"das\",\n\t\"is_enabled\" : true,\n\t\"is_verified\" :true\n}"
+		},
+		{
+			"id": "180aaa94-15a8-b002-959f-d695ea69bcae",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MzExOTgyMjczIiwiY3JlYXRlZCI6MTU4ODY4MjIzMTIwNSwiZXhwIjoxNTg5Mjg3MDMxfQ.y8B6pLIzYdi65yNUCXYOsKJD0zPLCjzYQAQeehqK3ufH-jtMoTWzc9HmrQ3Wta-yiiEYzpRCiFnH2Q1Pgucs3g\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MzExOTgyMjczIiwiY3JlYXRlZCI6MTU4ODY4MjIzMTIwNSwiZXhwIjoxNTg5Mjg3MDMxfQ.y8B6pLIzYdi65yNUCXYOsKJD0zPLCjzYQAQeehqK3ufH-jtMoTWzc9HmrQ3Wta-yiiEYzpRCiFnH2Q1Pgucs3g",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/admin/getAllBookings",
+			"folder": "171a38f8-6c6c-92a0-7457-3461a20d9a21",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1588934619099,
+			"name": "booking history",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\t\"mobile\":\"111111\",\n\t\"otp\":\"057469\"\n}"
 		},
 		{
 			"id": "1b94c82c-144b-e6b6-9520-87f9ab2bc5a1",
@@ -108,6 +287,7 @@
 				}
 			],
 			"url": "{{base-url}}/user/get-profile",
+			"folder": "171a38f8-6c6c-92a0-7457-3461a20d9a21",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -119,23 +299,30 @@
 			"currentHelper": "normal",
 			"helperAttributes": {},
 			"time": 1586151274687,
-			"name": "http://localhost:8080/user/get-profile",
+			"name": "get user profile",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": []
 		},
 		{
-			"id": "361f8778-400e-fe8d-1886-9a1e851ed14e",
-			"headers": "Content-Type: application/json\n",
+			"id": "27c139ab-9cd8-08c8-ae88-edf01fae2f89",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODg2NjUxMTY1MCwiZXhwIjoxNTg5NDcxMzExfQ.CbUwOe558OU6xvdN_MvcekBUkDDIA8Giqb7i1kGqS5rGoknIHsRy1k1Jl8jwOusvNUIZof7SIh61c80cDYVpZw\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
 					"value": "application/json",
 					"description": "",
 					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODg2NjUxMTY1MCwiZXhwIjoxNTg5NDcxMzExfQ.CbUwOe558OU6xvdN_MvcekBUkDDIA8Giqb7i1kGqS5rGoknIHsRy1k1Jl8jwOusvNUIZof7SIh61c80cDYVpZw",
+					"description": "",
+					"enabled": true
 				}
 			],
-			"url": "{{base-url}}/user/set-referral",
+			"url": "{{base-url}}/hotel/add-or-update-rooms-to-hotel",
+			"folder": "1e8e4444-4f5c-d80b-c3fc-95a7ea1c4c8a",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -146,16 +333,16 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1586198634019,
-			"name": "http://localhost:8080/user/user/set-referral",
+			"time": 1588866808766,
+			"name": "addRoomToHotel",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
-			"rawModeData": "{\n\t\"mobile\":\"12346\",\n\t\"referral_code\":\"3mpsos\"\n}"
+			"rawModeData": "{\t\n\t\"hotelId\":2,\n\t\"name\":\"delux1 room\",\n\t\"freeCancellation\":false,\n\t\"balconyAvl\":true,\n\t\"doubleBed\":true,\n\t\"occupacy\":5,\n\t\"roomSize\":\"5x5\",\n\t\"roomType\":\"SUPER-DELUXE-1\",\n\t\"initialPrice\":5000,\n\t\"discountPrice\":200\n}"
 		},
 		{
-			"id": "40b90843-e4ae-6f36-128f-afa33ce47a07",
-			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjMiLCJjcmVhdGVkIjoxNTg2MjA0NDY4MDY4LCJleHAiOjE1ODY4MDkyNjh9.rcV8dyHfARxrTS49AqDLW_MIfCkUCdTS2T_PAUBJagpN-hDxlsOps9Lwj-07Ld5f_MB22CFDpL8Pncg4ciwaZQ\n",
+			"id": "29ccb87e-bbbb-fd1c-6893-5dee6086b650",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -165,23 +352,126 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjMiLCJjcmVhdGVkIjoxNTg2MjA0NDY4MDY4LCJleHAiOjE1ODY4MDkyNjh9.rcV8dyHfARxrTS49AqDLW_MIfCkUCdTS2T_PAUBJagpN-hDxlsOps9Lwj-07Ld5f_MB22CFDpL8Pncg4ciwaZQ",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw",
 					"description": "",
 					"enabled": true
 				}
 			],
-			"url": "{{base-url}}/hotel/getAll-hotels?city=noida&pincode=222222",
-			"queryParams": [
+			"url": "{{base-url}}/payment/getPaymentByOrderId/82fd861b6e1a40cc95ccb110c47a5c24",
+			"folder": "1e8e4444-4f5c-d80b-c3fc-95a7ea1c4c8a",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587960004694,
+			"name": "getPayment details",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n        \"id\": 1,\n        \"booking_price\": 5000,\n        \"discount_price\": 200,\n        \"coupon_discount\": 50,\n        \"discount_coupon\": \"FREE50\",\n        \"gst\": 480,\n        \"rooms\": [\n            1\n        ],\n        \"noOfGuests\": 2,\n        \"transaction\": null,\n        \"bookingStatus\": \"INITIATED\",\n        \"paymentStatus\": \"PENDING\",\n        \"checkinDate\": \"14/09/1994\",\n        \"checkout_date\": \"15/09/1994\",\n        \"bookingId\": \"d2c6a68c-a06d-4c1d-8dd1-5d4cc4d964b9\",\n        \"userId\": 1\n    }"
+		},
+		{
+			"id": "361f8778-400e-fe8d-1886-9a1e851ed14e",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU4OTEwNTQ4OTU2NCwiZXhwIjoxNTg5NzEwMjg5fQ.DtdM-d1oVxppP_cb9glnFawZo0DwjA2DUbDEdQj9mnehfBGWdO6kHpi6Nt5Rt3CnmhBasRqTrVQYcS_uD4qc-A\n",
+			"headerData": [
 				{
-					"key": "city",
-					"value": "noida",
-					"equals": true,
+					"key": "Content-Type",
+					"value": "application/json",
 					"description": "",
 					"enabled": true
 				},
 				{
-					"key": "pincode",
-					"value": "222222",
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU4OTEwNTQ4OTU2NCwiZXhwIjoxNTg5NzEwMjg5fQ.DtdM-d1oVxppP_cb9glnFawZo0DwjA2DUbDEdQj9mnehfBGWdO6kHpi6Nt5Rt3CnmhBasRqTrVQYcS_uD4qc-A",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/user/set-referral",
+			"folder": "171a38f8-6c6c-92a0-7457-3461a20d9a21",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1589109151622,
+			"name": "apply referral code",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\t\"mobile\":\"9798192659\",\n\t\"referral_code\":\"jwx4fp\"\n}"
+		},
+		{
+			"id": "3849e7a7-6b03-7f68-cb9d-ff127e362924",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/user/get-wallet-ransaction",
+			"folder": "171a38f8-6c6c-92a0-7457-3461a20d9a21",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587965171196,
+			"name": "wallet transaction history",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\t\"mobile\":\"111111\",\n\t\"otp\":\"057469\"\n}"
+		},
+		{
+			"id": "3c8ddcfb-30c8-b3ff-c57e-914b1b6189b5",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/hotel/getAll-rooms?hotel_id=1",
+			"folder": "1e8e4444-4f5c-d80b-c3fc-95a7ea1c4c8a",
+			"queryParams": [
+				{
+					"key": "hotel_id",
+					"value": "1",
 					"equals": true,
 					"description": "",
 					"enabled": true
@@ -196,12 +486,274 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1586204787955,
-			"name": "http://localhost:8080/hotels/getAll-hotels",
+			"time": 1587827032141,
+			"name": "get all rooms of a hotel",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\t\"name\":\"delux room\",\n\t\"freeCancellation\":false,\n\t\"balconyAvl\":true,\n\t\"doubleBed\":true,\n\t\"occupacy\":5,\n\t\"roomSize\":\"5x5\",\n\t\"roomType\":\"DELUXE\",\n\t\"hotelId\":1\n}"
+		},
+		{
+			"id": "40b90843-e4ae-6f36-128f-afa33ce47a07",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU4ODkzOTEwOTQwNiwiZXhwIjoxNTg5NTQzOTA5fQ.MfSS8kCWGlxtu2D4slE54KdHJYgJSTZX4ygP3adIahyAsCLBbxvDRUjAt7St9AkMrXCmgaU9_Zi3CZsiEHomsA\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU4ODkzOTEwOTQwNiwiZXhwIjoxNTg5NTQzOTA5fQ.MfSS8kCWGlxtu2D4slE54KdHJYgJSTZX4ygP3adIahyAsCLBbxvDRUjAt7St9AkMrXCmgaU9_Zi3CZsiEHomsA",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/hotel/getAll-hotels",
+			"folder": "1e8e4444-4f5c-d80b-c3fc-95a7ea1c4c8a",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1588939418858,
+			"name": "get all hotels",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
 			"rawModeData": "{\n\t\"hotelName\":\"Paradise\",\n\t\"address\":\"noida\",\n\t\"lattitude\":\"1233.333\",\n\t\"longitude\":\"321312.332\",\n\t\"payAtHotel\":true,\n\t\"freeBreakFast\":true,\n\t\"coupleFriendly\":true,\n\t\"freeWifi\":true,\n\t\"initialPrice\":500,\n\t\"discountPrice\":100\n\t\n}"
+		},
+		{
+			"id": "40dd2d06-cb9a-98a2-c3c9-0cf5d82977df",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MzExOTgyMjc4IiwiY3JlYXRlZCI6MTU4NjgzNTA5MDk5MCwiZXhwIjoxNTg3NDM5ODkwfQ.4EJwJr8x3_GBDsZSI-16_4QT92LHHsloTzbo-x6PGvdSqYTxSbf3C1KEhWvxPCixG2JVtZM_85z3JWmUjGHz-g\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MzExOTgyMjc4IiwiY3JlYXRlZCI6MTU4NjgzNTA5MDk5MCwiZXhwIjoxNTg3NDM5ODkwfQ.4EJwJr8x3_GBDsZSI-16_4QT92LHHsloTzbo-x6PGvdSqYTxSbf3C1KEhWvxPCixG2JVtZM_85z3JWmUjGHz-g",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/hotel/cancelBooking/1",
+			"folder": "1e8e4444-4f5c-d80b-c3fc-95a7ea1c4c8a",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1588679907490,
+			"name": "cancelBooking",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\t\"hotelName\":\"Paradise1\",\n\t\"address\":\"noida\",\n\t\"lattitude\":\"1233.333\",\n\t\"longitude\":\"321312.332\",\n\t\"payAtHotel\":true,\n\t\"freeBreakFast\":true,\n\t\"coupleFriendly\":true,\n\t\"freeWifi\":true,\n\t\"initialPrice\":500,\n\t\"discountPrice\":100,\n\t\"city\" :\"noida\",\n\t\"pincode\":\"111111\",\n\t\"ac\":false\n}"
+		},
+		{
+			"id": "4cd6288f-fed7-ad5c-0224-b8a724362f5c",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjMiLCJjcmVhdGVkIjoxNTg2MzM3MjE0NzQ5LCJleHAiOjE1ODY5NDIwMTR9.3VkqaIwZEVkJPRxYPRLdrThZvitenFgQdZR1_L9ysCyInZD-CGU5rR9V7-1CmBUK8UW-E2TXGo-xVfZQpi59ag\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjMiLCJjcmVhdGVkIjoxNTg2MzM3MjE0NzQ5LCJleHAiOjE1ODY5NDIwMTR9.3VkqaIwZEVkJPRxYPRLdrThZvitenFgQdZR1_L9ysCyInZD-CGU5rR9V7-1CmBUK8UW-E2TXGo-xVfZQpi59ag",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/hotel/apply-coupon/2/FREE50",
+			"folder": "1e8e4444-4f5c-d80b-c3fc-95a7ea1c4c8a",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1586395515184,
+			"name": "apply coupon code",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": ""
+		},
+		{
+			"id": "4e0c18b3-d413-4d34-d93a-bc9a63691239",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODkzNDc1MjU3NCwiZXhwIjoxNTg5NTM5NTUyfQ.GEkMkKYbsyPhIZZ0TOI5KgfwN0Oc8e4eYEFP5KvvjgVRfdN3i7h6r8UFa1ZgnWLN89HH57BK51sCF0FJXdkBxA\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODkzNDc1MjU3NCwiZXhwIjoxNTg5NTM5NTUyfQ.GEkMkKYbsyPhIZZ0TOI5KgfwN0Oc8e4eYEFP5KvvjgVRfdN3i7h6r8UFa1ZgnWLN89HH57BK51sCF0FJXdkBxA",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/hotel/remove-staff-from-hotel",
+			"folder": "4981089d-389e-1b46-16a2-dcd8e5d20e54",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1588937000172,
+			"name": "remove staff from hotel",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\"hotelId\":1,\n\"staff\":[1]\n}"
+		},
+		{
+			"id": "59f9e7e0-5ea6-73bc-b216-dad551222c0e",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/user/get-all-coupons",
+			"folder": "171a38f8-6c6c-92a0-7457-3461a20d9a21",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587969757963,
+			"name": "ALL existing coupon code",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\t\"mobile\":\"111111\",\n\t\"otp\":\"057469\"\n}"
+		},
+		{
+			"id": "5f76d0e9-83f5-3671-8338-c1401e787b5d",
+			"headers": "Authorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8090/payment/update-order?hash=Szy0MYi0c-dwUJUx62oKikzljRnOeDSXLSPBHHdZD2IqCapIHWoPgY2VTn112yp7krIYcxIgoRVE-XAwsTfJ_fXd1HfD246UNY5FG12DeXfH4g98sZzT3J0zvONSeOE-kzF-m3klA3T89NiYZ9zU3bbneS3vjYvdvRfuk6lxQPuy7C2nbp7Co35gIog8Y5lo",
+			"folder": "1e8e4444-4f5c-d80b-c3fc-95a7ea1c4c8a",
+			"queryParams": [
+				{
+					"key": "hash",
+					"value": "Szy0MYi0c-dwUJUx62oKikzljRnOeDSXLSPBHHdZD2IqCapIHWoPgY2VTn112yp7krIYcxIgoRVE-XAwsTfJ_fXd1HfD246UNY5FG12DeXfH4g98sZzT3J0zvONSeOE-kzF-m3klA3T89NiYZ9zU3bbneS3vjYvdvRfuk6lxQPuy7C2nbp7Co35gIog8Y5lo",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587959379284,
+			"name": "update order by client using hash(Payment redirection)",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": []
+		},
+		{
+			"id": "6d0bd587-cb8b-1941-43a9-5031577e787b",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/hotel/getRoom?id=1",
+			"folder": "1e8e4444-4f5c-d80b-c3fc-95a7ea1c4c8a",
+			"queryParams": [
+				{
+					"key": "id",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587826281386,
+			"name": "get room details",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\t\"name\":\"delux room\",\n\t\"freeCancellation\":false,\n\t\"balconyAvl\":true,\n\t\"doubleBed\":true,\n\t\"occupacy\":5,\n\t\"roomSize\":\"5x5\",\n\t\"roomType\":\"DELUXE\",\n\t\"hotelId\":1\n}"
 		},
 		{
 			"id": "6dadc683-43de-fbfa-7764-9b2d02f0be8a",
@@ -215,6 +767,7 @@
 				}
 			],
 			"url": "{{base-url}}/user/login-by-otp",
+			"folder": "171a38f8-6c6c-92a0-7457-3461a20d9a21",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -225,12 +778,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1586150348475,
-			"name": "http://localhost:8080/user/login-by-otp",
+			"time": 1587826883319,
+			"name": "LOGIN with OTP",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
-			"rawModeData": "{\n\t\"mobile\":\"111111\",\n\t\"otp\":\"948612\"\n}"
+			"rawModeData": "{\n\t\"mobile\":\"1234\",\n\t\"otp\":\"896769\"\n}"
 		},
 		{
 			"id": "76f549e3-c247-328c-5210-10eabd055c52",
@@ -250,6 +803,7 @@
 				}
 			],
 			"url": "{{base-url}}/user/register-by-otp",
+			"folder": "171a38f8-6c6c-92a0-7457-3461a20d9a21",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -261,12 +815,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1586150058935,
-			"name": "http://localhost:8080/user/registerByMobile",
+			"time": 1588675434225,
+			"name": "REGISTER",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
-			"rawModeData": "{\n\t\"mobile\":\"111111\",\n\t\"otp\":\"057469\"\n}"
+			"rawModeData": "{\n\t\"mobile\":\"9311982273\",\n\t\"otp\":\"960799\"\n}"
 		},
 		{
 			"id": "799bea95-18eb-0654-f2cb-59a5eeb371aa",
@@ -280,6 +834,7 @@
 				}
 			],
 			"url": "{{base-url}}/user/generate-otp",
+			"folder": "171a38f8-6c6c-92a0-7457-3461a20d9a21",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -290,16 +845,154 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1586151728396,
-			"name": "http://localhost:8080/user/user/generate-otp",
+			"time": 1587979211562,
+			"name": "generate OTP",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
-			"rawModeData": "{\n\t\"mobile\":\"1234\"\n}"
+			"rawModeData": "{\n\t\"mobile\":\"9311982273\"\n}"
+		},
+		{
+			"id": "83810f94-f561-5699-f0c5-b642490f77e2",
+			"headers": "Authorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/user/review-and-rating",
+			"folder": "171a38f8-6c6c-92a0-7457-3461a20d9a21",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587972323493,
+			"name": "set review and rating",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\r\n\t\"hotelId\":1,\r\n\t\"comment\":\"good hotel\",\r\n\t\"rating\":5\r\n}"
+		},
+		{
+			"id": "94d0bb90-07a3-fe24-5681-3fbee86d1676",
+			"headers": "Authorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODY4NzcxNTY5OSwiZXhwIjoxNTg5MjkyNTE1fQ.6H2fdkPW5zJrLaDdkDkelnyhI8hvekur7lXCys8lSFlEtetlcnNl3UwcOiilNBLl9exqQy-GvE-YFbkL4V4LXg\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODY4NzcxNTY5OSwiZXhwIjoxNTg5MjkyNTE1fQ.6H2fdkPW5zJrLaDdkDkelnyhI8hvekur7lXCys8lSFlEtetlcnNl3UwcOiilNBLl9exqQy-GvE-YFbkL4V4LXg",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/user/get-wallet",
+			"folder": "171a38f8-6c6c-92a0-7457-3461a20d9a21",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1588688007450,
+			"name": "get wallet",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": []
+		},
+		{
+			"id": "96349127-6d9a-8604-c92f-98aa6a748255",
+			"headers": "//Content-Type: multipart/form-data\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODg2NjUxMTY1MCwiZXhwIjoxNTg5NDcxMzExfQ.CbUwOe558OU6xvdN_MvcekBUkDDIA8Giqb7i1kGqS5rGoknIHsRy1k1Jl8jwOusvNUIZof7SIh61c80cDYVpZw\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "multipart/form-data",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODg2NjUxMTY1MCwiZXhwIjoxNTg5NDcxMzExfQ.CbUwOe558OU6xvdN_MvcekBUkDDIA8Giqb7i1kGqS5rGoknIHsRy1k1Jl8jwOusvNUIZof7SIh61c80cDYVpZw",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/hotel/uploadMultipleFiles",
+			"folder": "c6f4db30-1482-9e81-296e-c19720d0d9ee",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "files",
+					"value": "Screenshot (164).png",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				},
+				{
+					"key": "id",
+					"value": "1",
+					"description": "room/hotel id",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "files",
+					"value": "Screenshot (149).png",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				},
+				{
+					"key": "files",
+					"value": "Screenshot (153).png",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				},
+				{
+					"key": "flag",
+					"value": "hotel",
+					"description": "if upload to hotel \"hotel\"/\"room\"",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1588871662234,
+			"name": "uploadImage Multiple",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"isFromCollection": true,
+			"collectionRequestId": "96349127-6d9a-8604-c92f-98aa6a748255"
 		},
 		{
 			"id": "98aff936-41ce-1401-9241-677d839b0cdb",
-			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwMDAwMDAwMDAwMDAiLCJjcmVhdGVkIjoxNTg2MTAwMzU3MzczLCJleHAiOjE1ODY3MDUxNTd9.Z4I4XWj-7hepF1pIQznuCftv1qrPh_TvsFwzEGxLbmJ5QOoe5L_bCjK87sZNXUI1w56ubAEZyxNg4A3kNDvH4A\n",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MzExOTgyMjc5IiwiY3JlYXRlZCI6MTU4OTExMDMyMDU4MSwiZXhwIjoxNTg5NzE1MTIwfQ.b4xTNsgSf9P-pD21NqAHKfOx7AZN6qUs6ad9tzSXmfoU1bl8K2cn5vhfmdtuI4puuMuLwMLyxshs62a_OpDs-Q\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -309,32 +1002,33 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwMDAwMDAwMDAwMDAiLCJjcmVhdGVkIjoxNTg2MTAwMzU3MzczLCJleHAiOjE1ODY3MDUxNTd9.Z4I4XWj-7hepF1pIQznuCftv1qrPh_TvsFwzEGxLbmJ5QOoe5L_bCjK87sZNXUI1w56ubAEZyxNg4A3kNDvH4A",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MzExOTgyMjc5IiwiY3JlYXRlZCI6MTU4OTExMDMyMDU4MSwiZXhwIjoxNTg5NzE1MTIwfQ.b4xTNsgSf9P-pD21NqAHKfOx7AZN6qUs6ad9tzSXmfoU1bl8K2cn5vhfmdtuI4puuMuLwMLyxshs62a_OpDs-Q",
 					"description": "",
 					"enabled": true
 				}
 			],
 			"url": "{{base-url}}/user/logout",
+			"folder": "171a38f8-6c6c-92a0-7457-3461a20d9a21",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
 			"pathVariableData": [],
-			"method": "POST",
+			"method": "GET",
 			"data": [],
 			"dataMode": "raw",
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1586100397586,
-			"name": "http://localhost:8080/user/logout",
+			"time": 1589110786351,
+			"name": "LOGOUT",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
-			"rawModeData": "{\n\t\"mobile\":\"000000000000\"\n}"
+			"rawModeData": ""
 		},
 		{
-			"id": "dd01630e-fd5d-20ad-63bd-c7b0b7a3efef",
-			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjMiLCJjcmVhdGVkIjoxNTg2MjAxMDk2NzQ0LCJleHAiOjE1ODY4MDU4OTZ9.OwI6JWeRi9J2q_-3BOMAxSW8vt6-ZKZTCL2SYCWkl_0yguvttQNpZKe-V96nXKye0u_7htoPbjuTkc3n850hfA\n",
+			"id": "a7b4a19b-5e05-bc57-d94c-90455eeba8b4",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU4ODkzOTEwOTQwNiwiZXhwIjoxNTg5NTQzOTA5fQ.MfSS8kCWGlxtu2D4slE54KdHJYgJSTZX4ygP3adIahyAsCLBbxvDRUjAt7St9AkMrXCmgaU9_Zi3CZsiEHomsA\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -344,12 +1038,49 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjMiLCJjcmVhdGVkIjoxNTg2MjAxMDk2NzQ0LCJleHAiOjE1ODY4MDU4OTZ9.OwI6JWeRi9J2q_-3BOMAxSW8vt6-ZKZTCL2SYCWkl_0yguvttQNpZKe-V96nXKye0u_7htoPbjuTkc3n850hfA",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU4ODkzOTEwOTQwNiwiZXhwIjoxNTg5NTQzOTA5fQ.MfSS8kCWGlxtu2D4slE54KdHJYgJSTZX4ygP3adIahyAsCLBbxvDRUjAt7St9AkMrXCmgaU9_Zi3CZsiEHomsA",
 					"description": "",
 					"enabled": true
 				}
 			],
-			"url": "{{base-url}}/hotel/add-or-update-hotel",
+			"url": "{{base-url}}/hotel/getAll-hotels",
+			"folder": "4981089d-389e-1b46-16a2-dcd8e5d20e54",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1588953922639,
+			"name": "get all configuration",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\t\"hotelName\":\"Paradise\",\n\t\"address\":\"noida\",\n\t\"lattitude\":\"1233.333\",\n\t\"longitude\":\"321312.332\",\n\t\"payAtHotel\":true,\n\t\"freeBreakFast\":true,\n\t\"coupleFriendly\":true,\n\t\"freeWifi\":true,\n\t\"initialPrice\":500,\n\t\"discountPrice\":100\n\t\n}"
+		},
+		{
+			"id": "aa5dabd8-5235-85a9-7272-922bd8b8e837",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MzExOTgyMjczIiwiY3JlYXRlZCI6MTU4ODY3NTc3OTk3MCwiZXhwIjoxNTg5MjgwNTc5fQ.5sSaIEvW56IRSAc21peBb__slv3vcR0pDyMKDWrc2DBjQ7B5ExLN6taSQqXcB27msjph6_VgILBJ0hcIfdcBoQ\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MzExOTgyMjczIiwiY3JlYXRlZCI6MTU4ODY3NTc3OTk3MCwiZXhwIjoxNTg5MjgwNTc5fQ.5sSaIEvW56IRSAc21peBb__slv3vcR0pDyMKDWrc2DBjQ7B5ExLN6taSQqXcB27msjph6_VgILBJ0hcIfdcBoQ",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/hotel/update-booking",
+			"folder": "1e8e4444-4f5c-d80b-c3fc-95a7ea1c4c8a",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -360,12 +1091,519 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1586202628739,
-			"name": "http://localhost:8080/hotels/add-or-update-hotel",
+			"time": 1588686175319,
+			"name": "update existing booking",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\t\"rooms\":[1],\n\t\"noOfGuests\":2,\n\t\"checkinDate\":\"14/09/1994\",\n\t\"checkoutDate\":\"15/09/1995\",\n\t\"id\":5\n\t\n}"
+		},
+		{
+			"id": "ac6d2d4b-b1ae-50c2-9409-b0cfef3623c8",
+			"headers": "Authorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8090/payment/update-order?payment_id=MOJO0426Z05N58155436&payment_status=Credit&id=82fd861b6e1a40cc95ccb110c47a5c24&transaction_id=TRfbcd108f-d616-4bc0-b02c-61d8af5ac1a2",
+			"folder": "1e8e4444-4f5c-d80b-c3fc-95a7ea1c4c8a",
+			"queryParams": [
+				{
+					"key": "payment_id",
+					"value": "MOJO0426Z05N58155436",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "payment_status",
+					"value": "Credit",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "id",
+					"value": "82fd861b6e1a40cc95ccb110c47a5c24",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "transaction_id",
+					"value": "TRfbcd108f-d616-4bc0-b02c-61d8af5ac1a2",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587959408066,
+			"name": "createHash",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"isFromCollection": true,
+			"collectionRequestId": "ef59f406-3cdd-42c2-28f0-21983d4e187a"
+		},
+		{
+			"id": "b9c6783d-de7a-4e23-b4cc-5c0ab60a3540",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/user/login",
+			"folder": "171a38f8-6c6c-92a0-7457-3461a20d9a21",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1589107959618,
+			"name": "LOGIN WITH password and username",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\t\"username\": \"inayat1\",\n\t\"password\": \"password\"\n}"
+		},
+		{
+			"id": "c044fa5a-0278-904e-b2b3-bb57284563a3",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/payment/create-refund/MOJO0426Z05N58155436/500",
+			"folder": "c6f4db30-1482-9e81-296e-c19720d0d9ee",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1588678515942,
+			"name": "refund",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n        \"id\": 1,\n        \"booking_price\": 5000,\n        \"discount_price\": 200,\n        \"coupon_discount\": 50,\n        \"discount_coupon\": \"FREE50\",\n        \"gst\": 480,\n        \"rooms\": [\n            1\n        ],\n        \"noOfGuests\": 2,\n        \"transaction\": null,\n        \"bookingStatus\": \"INITIATED\",\n        \"paymentStatus\": \"PENDING\",\n        \"checkinDate\": \"14/09/1994\",\n        \"checkout_date\": \"15/09/1994\",\n        \"bookingId\": \"d2c6a68c-a06d-4c1d-8dd1-5d4cc4d964b9\",\n        \"userId\": 1\n    }"
+		},
+		{
+			"id": "c7e6b414-2988-e719-5a0c-69e2198fcdb5",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODg2NjUxMTY1MCwiZXhwIjoxNTg5NDcxMzExfQ.CbUwOe558OU6xvdN_MvcekBUkDDIA8Giqb7i1kGqS5rGoknIHsRy1k1Jl8jwOusvNUIZof7SIh61c80cDYVpZw\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODg2NjUxMTY1MCwiZXhwIjoxNTg5NDcxMzExfQ.CbUwOe558OU6xvdN_MvcekBUkDDIA8Giqb7i1kGqS5rGoknIHsRy1k1Jl8jwOusvNUIZof7SIh61c80cDYVpZw",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/hotel/downloadFile/hotel/1/Screenshot (150).png",
+			"folder": "1e8e4444-4f5c-d80b-c3fc-95a7ea1c4c8a",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1588870342696,
+			"name": "downloadFile",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
 			"rawModeData": "{\n\t\"hotelName\":\"Paradise\",\n\t\"address\":\"noida\",\n\t\"lattitude\":\"1233.333\",\n\t\"longitude\":\"321312.332\",\n\t\"payAtHotel\":true,\n\t\"freeBreakFast\":true,\n\t\"coupleFriendly\":true,\n\t\"freeWifi\":true,\n\t\"initialPrice\":500,\n\t\"discountPrice\":100\n\t\n}"
+		},
+		{
+			"id": "cc9af0af-052a-a78a-f976-5ca6e11c0e7c",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODkzNDc1MjU3NCwiZXhwIjoxNTg5NTM5NTUyfQ.GEkMkKYbsyPhIZZ0TOI5KgfwN0Oc8e4eYEFP5KvvjgVRfdN3i7h6r8UFa1ZgnWLN89HH57BK51sCF0FJXdkBxA\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODkzNDc1MjU3NCwiZXhwIjoxNTg5NTM5NTUyfQ.GEkMkKYbsyPhIZZ0TOI5KgfwN0Oc8e4eYEFP5KvvjgVRfdN3i7h6r8UFa1ZgnWLN89HH57BK51sCF0FJXdkBxA",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/hotel/add-staff-to-hotel",
+			"folder": "4981089d-389e-1b46-16a2-dcd8e5d20e54",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1588936716394,
+			"name": "Add staff to hotel",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\"hotelId\":1,\n\"staff\":[1,2,3]\n}"
+		},
+		{
+			"id": "d4fe54a7-e4ac-5220-9860-785623349fa2",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MzExOTgyMjczIiwiY3JlYXRlZCI6MTU4ODY3ODMzNzA4OSwiZXhwIjoxNTg5MjgzMTM3fQ.cV2XEEkZai-WQ9QiKcuM1dms2Zq2ZzqsGT4cIfP5H2z1FSwkZIvJtyGiB9tgjHHEZtoM_BupXv0Pty283xPN6w\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MzExOTgyMjczIiwiY3JlYXRlZCI6MTU4ODY3ODMzNzA4OSwiZXhwIjoxNTg5MjgzMTM3fQ.cV2XEEkZai-WQ9QiKcuM1dms2Zq2ZzqsGT4cIfP5H2z1FSwkZIvJtyGiB9tgjHHEZtoM_BupXv0Pty283xPN6w",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/hotel/update-room",
+			"folder": "c6f4db30-1482-9e81-296e-c19720d0d9ee",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1588757247496,
+			"name": "updateRooms",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\t\"hotelId\":2,\n\t\"name\":\"delux1 room\",\n\t\"freeCancellation\":false,\n\t\"balconyAvl\":true,\n\t\"doubleBed\":true,\n\t\"occupacy\":5,\n\t\"roomSize\":\"5x5\",\n\t\"roomType\":\"SUPER-DELUXE-1\",\n\t\"initialPrice\":5000,\n\t\"discountPrice\":200\n}"
+		},
+		{
+			"id": "dd01630e-fd5d-20ad-63bd-c7b0b7a3efef",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU4ODkzOTEwOTQwNiwiZXhwIjoxNTg5NTQzOTA5fQ.MfSS8kCWGlxtu2D4slE54KdHJYgJSTZX4ygP3adIahyAsCLBbxvDRUjAt7St9AkMrXCmgaU9_Zi3CZsiEHomsA\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU4ODkzOTEwOTQwNiwiZXhwIjoxNTg5NTQzOTA5fQ.MfSS8kCWGlxtu2D4slE54KdHJYgJSTZX4ygP3adIahyAsCLBbxvDRUjAt7St9AkMrXCmgaU9_Zi3CZsiEHomsA",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/hotel/add-or-update-hotel",
+			"folder": "4981089d-389e-1b46-16a2-dcd8e5d20e54",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1588939317330,
+			"name": "add/update new Hotel",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\t\"hotelName\":\"Paradise1\",\n\t\"address\":\"noida\",\n\t\"lattitude\":\"1233.333\",\n\t\"longitude\":\"321312.332\",\n\t\"payAtHotel\":true,\n\t\"freeBreakFast\":true,\n\t\"coupleFriendly\":true,\n\t\"freeWifi\":true,\n\t\"initialPrice\":500,\n\t\"discountPrice\":100,\n\t\"city\" :\"noida\",\n\t\"pincode\":\"111111\",\n\t\"ac\":false\n}"
+		},
+		{
+			"id": "ea26dc74-5dd0-60db-4f74-b8f6e855b3b4",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MzExOTgyMjczIiwiY3JlYXRlZCI6MTU4ODY4MjIzMTIwNSwiZXhwIjoxNTg5Mjg3MDMxfQ.y8B6pLIzYdi65yNUCXYOsKJD0zPLCjzYQAQeehqK3ufH-jtMoTWzc9HmrQ3Wta-yiiEYzpRCiFnH2Q1Pgucs3g\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MzExOTgyMjczIiwiY3JlYXRlZCI6MTU4ODY4MjIzMTIwNSwiZXhwIjoxNTg5Mjg3MDMxfQ.y8B6pLIzYdi65yNUCXYOsKJD0zPLCjzYQAQeehqK3ufH-jtMoTWzc9HmrQ3Wta-yiiEYzpRCiFnH2Q1Pgucs3g",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/hotel/book",
+			"folder": "1e8e4444-4f5c-d80b-c3fc-95a7ea1c4c8a",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1588686188930,
+			"name": "Book a room",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\t\"userId\":\"1\",\n\t\"rooms\":[1],\n\t\"noOfGuests\":2,\n\t\"checkinDate\":\"14/09/1994\",\n\t\"checkoutDate\":\"15/09/1994\"\n\t\n}"
+		},
+		{
+			"id": "ef59f406-3cdd-42c2-28f0-21983d4e187a",
+			"headers": "Authorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8090/payment/update-order?payment_id=MOJO0426Z05N58155436&payment_status=Credit&id=82fd861b6e1a40cc95ccb110c47a5c24&transaction_id=TRfbcd108f-d616-4bc0-b02c-61d8af5ac1a2",
+			"folder": "1e8e4444-4f5c-d80b-c3fc-95a7ea1c4c8a",
+			"queryParams": [
+				{
+					"key": "payment_id",
+					"value": "MOJO0426Z05N58155436",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "payment_status",
+					"value": "Credit",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "id",
+					"value": "82fd861b6e1a40cc95ccb110c47a5c24",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "transaction_id",
+					"value": "TRfbcd108f-d616-4bc0-b02c-61d8af5ac1a2",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587959408066,
+			"name": "update order(payment  redirection)",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": []
+		},
+		{
+			"id": "efc4edf5-ceed-98e0-efc4-bfa65b26222a",
+			"headers": "//Content-Type: multipart/form-data\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODg2NjUxMTY1MCwiZXhwIjoxNTg5NDcxMzExfQ.CbUwOe558OU6xvdN_MvcekBUkDDIA8Giqb7i1kGqS5rGoknIHsRy1k1Jl8jwOusvNUIZof7SIh61c80cDYVpZw\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "multipart/form-data",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODg2NjUxMTY1MCwiZXhwIjoxNTg5NDcxMzExfQ.CbUwOe558OU6xvdN_MvcekBUkDDIA8Giqb7i1kGqS5rGoknIHsRy1k1Jl8jwOusvNUIZof7SIh61c80cDYVpZw",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/hotel/delete/hotel/1",
+			"folder": "c6f4db30-1482-9e81-296e-c19720d0d9ee",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "files",
+					"value": "Screenshot (164).png",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				},
+				{
+					"key": "id",
+					"value": "1",
+					"description": "room/hotel id",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "files",
+					"value": "Screenshot (149).png",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				},
+				{
+					"key": "files",
+					"value": "Screenshot (153).png",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				},
+				{
+					"key": "flag",
+					"value": "hotel",
+					"description": "if upload to hotel \"hotel\"/\"room\"",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1588873697099,
+			"name": "delete Image of hotel/room",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": []
+		},
+		{
+			"id": "f1983a10-0742-7d47-26a7-80d5d5a03427",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU4ODk0MTI4MzkwNSwiZXhwIjoxNTg5NTQ2MDgzfQ.CJNmsnKm5n9SxxVk5CViVpy6b5QSQqR9Q-fMYt9QopicC48RQWXXIoZO10yKlCPxXk09G31rRdyrqsFfBGvlsg\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU4ODk0MTI4MzkwNSwiZXhwIjoxNTg5NTQ2MDgzfQ.CJNmsnKm5n9SxxVk5CViVpy6b5QSQqR9Q-fMYt9QopicC48RQWXXIoZO10yKlCPxXk09G31rRdyrqsFfBGvlsg",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/hotel/addUpdateNewCoupon",
+			"folder": "4981089d-389e-1b46-16a2-dcd8e5d20e54",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1588953255235,
+			"name": "add update coupon",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\t\"code\":\"FREE25\",\n\t\"value\":20,\n\t\"expiry\":\"2020-08-01\",\n\t\"id\":90\n}"
+		},
+		{
+			"id": "f4e36bd8-288b-6930-c004-ae042400875d",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/payment/online",
+			"folder": "1e8e4444-4f5c-d80b-c3fc-95a7ea1c4c8a",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587960031403,
+			"name": "payment(online/offline)",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n        \"id\": 1\n}"
 		}
 	]
 }

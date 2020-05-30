@@ -160,7 +160,7 @@
 			"currentHelper": "normal",
 			"helperAttributes": {},
 			"time": 1588678421939,
-			"name": "getHotels",
+			"name": "getMyHotels",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
@@ -815,12 +815,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1588675434225,
+			"time": 1590317577585,
 			"name": "REGISTER",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
-			"rawModeData": "{\n\t\"mobile\":\"9311982273\",\n\t\"otp\":\"960799\"\n}"
+			"rawModeData": "{\n\t\"mobile\":\"1111111111\",\n\t\"otp\":\"754304\"\n}"
 		},
 		{
 			"id": "799bea95-18eb-0654-f2cb-59a5eeb371aa",
@@ -845,12 +845,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1587979211562,
+			"time": 1590317551781,
 			"name": "generate OTP",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
-			"rawModeData": "{\n\t\"mobile\":\"9311982273\"\n}"
+			"rawModeData": "{\n\t\"mobile\":\"1111111111\"\n}"
 		},
 		{
 			"id": "83810f94-f561-5699-f0c5-b642490f77e2",
@@ -1349,7 +1349,7 @@
 					"enabled": true
 				}
 			],
-			"url": "{{base-url}}/hotel/add-or-update-hotel",
+			"url": "{{base-url}}/admin/add-or-update-hotel",
 			"folder": "4981089d-389e-1b46-16a2-dcd8e5d20e54",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -1361,7 +1361,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1588939317330,
+			"time": 1590314716241,
 			"name": "add/update new Hotel",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",

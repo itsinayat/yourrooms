@@ -7,6 +7,16 @@ import java.util.UUID;
 public class BookingDTO {
 
 	private Long id;
+	
+	private Long hotelId;
+
+	public Long getHotelId() {
+		return hotelId;
+	}
+
+	public void setHotelId(Long hotelId) {
+		this.hotelId = hotelId;
+	}
 
 	private Long userId;
 
@@ -200,6 +210,7 @@ public class BookingDTO {
 		result = prime * result + ((del_ind == null) ? 0 : del_ind.hashCode());
 		result = prime * result + ((discount_price == null) ? 0 : discount_price.hashCode());
 		result = prime * result + ((gst == null) ? 0 : gst.hashCode());
+		result = prime * result + ((hotelId == null) ? 0 : hotelId.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + noOfGuests;
 		result = prime * result + ((paymentStatus == null) ? 0 : paymentStatus.hashCode());
@@ -208,5 +219,109 @@ public class BookingDTO {
 		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
 		return result;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		BookingDTO other = (BookingDTO) obj;
+		if (BookingId == null) {
+			if (other.BookingId != null)
+				return false;
+		} else if (!BookingId.equals(other.BookingId))
+			return false;
+		if (bookingStatus == null) {
+			if (other.bookingStatus != null)
+				return false;
+		} else if (!bookingStatus.equals(other.bookingStatus))
+			return false;
+		if (booking_price == null) {
+			if (other.booking_price != null)
+				return false;
+		} else if (!booking_price.equals(other.booking_price))
+			return false;
+		if (checkinDate == null) {
+			if (other.checkinDate != null)
+				return false;
+		} else if (!checkinDate.equals(other.checkinDate))
+			return false;
+		if (checkinStatus == null) {
+			if (other.checkinStatus != null)
+				return false;
+		} else if (!checkinStatus.equals(other.checkinStatus))
+			return false;
+		if (checkoutDate == null) {
+			if (other.checkoutDate != null)
+				return false;
+		} else if (!checkoutDate.equals(other.checkoutDate))
+			return false;
+		if (checkoutStatus == null) {
+			if (other.checkoutStatus != null)
+				return false;
+		} else if (!checkoutStatus.equals(other.checkoutStatus))
+			return false;
+		if (coupon_discount == null) {
+			if (other.coupon_discount != null)
+				return false;
+		} else if (!coupon_discount.equals(other.coupon_discount))
+			return false;
+		if (create_user_id == null) {
+			if (other.create_user_id != null)
+				return false;
+		} else if (!create_user_id.equals(other.create_user_id))
+			return false;
+		if (del_ind == null) {
+			if (other.del_ind != null)
+				return false;
+		} else if (!del_ind.equals(other.del_ind))
+			return false;
+		if (discount_price == null) {
+			if (other.discount_price != null)
+				return false;
+		} else if (!discount_price.equals(other.discount_price))
+			return false;
+		if (gst == null) {
+			if (other.gst != null)
+				return false;
+		} else if (!gst.equals(other.gst))
+			return false;
+		if (hotelId == null) {
+			if (other.hotelId != null)
+				return false;
+		} else if (!hotelId.equals(other.hotelId))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (noOfGuests != other.noOfGuests)
+			return false;
+		if (paymentStatus == null) {
+			if (other.paymentStatus != null)
+				return false;
+		} else if (!paymentStatus.equals(other.paymentStatus))
+			return false;
+		if (!Arrays.equals(rooms, other.rooms))
+			return false;
+		if (update_user_id == null) {
+			if (other.update_user_id != null)
+				return false;
+		} else if (!update_user_id.equals(other.update_user_id))
+			return false;
+		if (userId == null) {
+			if (other.userId != null)
+				return false;
+		} else if (!userId.equals(other.userId))
+			return false;
+		return true;
+	}
+
+
+	
 
 }

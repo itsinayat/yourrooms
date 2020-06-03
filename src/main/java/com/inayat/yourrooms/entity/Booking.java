@@ -54,6 +54,17 @@ public class Booking {
 
 	@Column(name = "rooms")
 	private String rooms;
+	
+	@Column(name = "hotelId")
+	private Long hotelId;
+
+	public Long getHotelId() {
+		return hotelId;
+	}
+
+	public void setHotelId(Long hotelId) {
+		this.hotelId = hotelId;
+	}
 
 	@Column(name = "no_of_guests")
 	private Integer noOfGuests;
@@ -88,10 +99,10 @@ public class Booking {
 	private String paymentStatus;
 	
 	@Column(name = "checkin_date")
-	private String checkinDate;
+	private Date checkinDate;
 	
 	@Column(name = "checkout_date")
-	private String checkoutDate;
+	private Date checkoutDate;
 	
 	@Column(name = "checkin_status")
 	private String checkin_status;
@@ -228,19 +239,20 @@ public class Booking {
 		this.paymentStatus = paymentStatus;
 	}
 
-	public String getCheckinDate() {
+	
+	public Date getCheckinDate() {
 		return checkinDate;
 	}
 
-	public void setCheckinDate(String checkinDate) {
+	public void setCheckinDate(Date checkinDate) {
 		this.checkinDate = checkinDate;
 	}
 
-	public String getCheckoutDate() {
+	public Date getCheckoutDate() {
 		return checkoutDate;
 	}
 
-	public void setCheckoutDate(String checkoutDate) {
+	public void setCheckoutDate(Date checkoutDate) {
 		this.checkoutDate = checkoutDate;
 	}
 

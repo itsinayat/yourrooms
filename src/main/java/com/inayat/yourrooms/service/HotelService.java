@@ -1,6 +1,8 @@
 package com.inayat.yourrooms.service;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -10,10 +12,13 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
+import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.inayat.yourrooms.dto.BOOKING_STATUS;
 import com.inayat.yourrooms.dto.BookingDTO;
@@ -263,13 +268,17 @@ public class HotelService {
 		return new ApiResponse(322, "SUCCESS", RoomsTranslator.translateToDTO(rooms.get()));
 	}
 
-	public ApiResponse BookRoom(BookingDTO request) throws IOException {
+	public ApiResponse BookRoom(BookingDTO request) throws IOException, ParseException {
 		Optional<User> u = userRepository.findById(request.getUserId());
 		if (!u.isPresent()) {
 			return new ApiResponse(432, "User Not Found");
 		}
+		Optional<Hotel> hotels = hotelRepository.findById(request.getHotelId());
+		if (!hotels.isPresent()) {
+			return new ApiResponse(432, "Hotel Not Found");
+		}
 
-		int totalAVL = 0;
+		boolean isReserved = false;
 		double initialPriceTotal = 0;
 		double discountPriceTotal = 0;
 
@@ -279,13 +288,6 @@ public class HotelService {
 			if (!room.isPresent()) {
 				return new ApiResponse(432, "Room Id is Not Valid");
 			}
-			Room roomdetails = room.get();
-			totalAVL += roomdetails.getOccupacy();
-			initialPriceTotal += roomdetails.getInitialPrice();
-			discountPriceTotal += roomdetails.getDiscountPrice();
-		}
-		if (totalAVL < request.getNoOfGuests()) {
-			return new ApiResponse(432, "No sufficient rooms are avaialable");
 		}
 
 		Booking dao = new Booking();
@@ -296,15 +298,26 @@ public class HotelService {
 		dao.setRooms(jsonStr);
 		dao.setUpdate_user_id(userService.getCurrentUser().getId());
 		dao.setUser(u.get());
-		dao.setCheckinDate(request.getCheckinDate());
-		dao.setCheckoutDate(request.getCheckoutDate());
+
+		Date checkinDate = new SimpleDateFormat("dd/MM/yyyy").parse(request.getCheckinDate());
+		Date checkoutDate = new SimpleDateFormat("dd/MM/yyyy").parse(request.getCheckoutDate());
+		dao.setCheckinDate(checkinDate);
+		dao.setCheckoutDate(checkoutDate);
 		dao.setBooking_price(initialPriceTotal);
 		dao.setDiscount_price(discountPriceTotal);
 		dao.setGst(calculateGst(initialPriceTotal - discountPriceTotal));
 		dao.setDel_ind(false);
 		dao.setCheckout_status(CHECKIN_CHECKOUT_STATUS.PENDING.toString());
 		dao.setCheckin_status(CHECKIN_CHECKOUT_STATUS.PENDING.toString());
+		dao.setHotelId(hotels.get().getId());
 		Booking newbooking = bookingRepository.save(dao);
+
+		for (Long id : ids) {
+			Optional<Room> rooms = roomsRepository.findById(id);
+			Room room = rooms.get();
+			room.setReserved(true);
+			roomsRepository.save(room);
+		}
 		BookingResponse dto = BookingResponseTranslator.translateToDTO(newbooking);
 		return new ApiResponse(432, "SUCCESS", dto);
 	}
@@ -415,7 +428,7 @@ public class HotelService {
 		return null;
 	}
 
-	public ApiResponse updateOrder(String payment_id, String payment_status, String id, String hash) {
+	public ApiResponse updateOrder(String payment_id, String payment_status, String id, String hash) throws JsonParseException, JsonMappingException, IOException {
 		if (hash != null) {
 			Map<String, String> map = getEncryptedParam(hash);
 			PaymentOrder f = paymentService.getPaymentByOrderId(map.get("id"));
@@ -432,6 +445,19 @@ public class HotelService {
 			bt.setPaymentStatus(f.getPayments().get(0).getStatus());
 			bt.setPayment_mode("ONLINE");
 			bookingTransactionRepository.save(bt);
+
+			String s = bt.getBooking().getRooms();
+			ObjectMapper mapper = new ObjectMapper();
+			Long[] rooms = mapper.readValue(s, Long[].class);
+			for (long r : rooms) {
+				Optional<Room> rms = roomsRepository.findById(Long.valueOf(r));
+				if (rms.isPresent()) {
+					Room room = rms.get();
+					room.setReserved(true);
+					roomsRepository.save(room);
+				}
+			}
+
 			return new ApiResponse(3421, "SUCCESS", f);
 		} else {
 			BookingTransaction bt = bookingTransactionRepository.findByOrderId(id);
@@ -447,6 +473,7 @@ public class HotelService {
 			return new ApiResponse(3421, "SUCCESS", f);
 
 		}
+
 	}
 
 	public Map<String, String> getEncryptedParam(String param) {
@@ -528,13 +555,13 @@ public class HotelService {
 			booking.setBookingStatus(request.getBookingStatus());
 
 		if (request.getCheckinDate() != null)
-			booking.setCheckinDate(request.getCheckinDate());
+			booking.setCheckinDate(new SimpleDateFormat("dd/MM/yyyy").parse(request.getCheckinDate()));
 
 		if (request.getCheckinStatus() != null)
 			booking.setCheckin_status(request.getCheckinStatus());
 
 		if (request.getCheckoutDate() != null)
-			booking.setCheckoutDate(request.getCheckoutDate());
+			booking.setCheckoutDate(new SimpleDateFormat("dd/MM/yyyy").parse(request.getCheckoutDate()));
 
 		if (request.getCheckoutStatus() != null)
 			booking.setCheckout_status(request.getCheckoutStatus());
@@ -646,11 +673,18 @@ public class HotelService {
 	}
 
 	public ApiResponse getAllBookings(String hotelId) {
-		Optional<Hotel> hotels= hotelRepository.findById(Long.valueOf(hotelId));
-		if(!hotels.isPresent()) {
+		Optional<Hotel> hotels = hotelRepository.findById(Long.valueOf(hotelId));
+		if (!hotels.isPresent()) {
 			return new ApiResponse(674, "Hotel Not Found");
 		}
-		return new ApiResponse(674, null);
+		List<Booking> bookings = bookingRepository.finByHotel(Long.valueOf(hotelId));
+		return new ApiResponse(674, "SUCCESS", bookings);
+	}
+
+	public ApiResponse getAllBookings() {
+		Iterable<Booking> hotels = bookingRepository.findAll();
+
+		return new ApiResponse(674, "SUCCESS", hotels);
 	}
 
 }

@@ -73,6 +73,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         	.antMatchers("/user/get-booking-history**").hasAnyRole("ADMIN","CONSUMER","SUPERADMIN")
         	.antMatchers("/user/get-all-coupons**").hasAnyRole("ADMIN","CONSUMER","SUPERADMIN")
         	.antMatchers("/user/review-and-rating**").hasAnyRole("ADMIN","CONSUMER","SUPERADMIN")
+        	.antMatchers("/user/change_user_role**").hasAnyRole("SUPERADMIN")
         	
         	
         	

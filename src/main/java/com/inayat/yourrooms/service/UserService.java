@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 
 import com.inayat.yourrooms.dao.UserDao;
 import com.inayat.yourrooms.dto.BookingHistoryResponse;
+import com.inayat.yourrooms.dto.ChangeRoleRequest;
 import com.inayat.yourrooms.dto.ReviewAndRatingsDTO;
 import com.inayat.yourrooms.dto.UserTokenDTO;
 import com.inayat.yourrooms.dto.UsersDTO;
@@ -67,10 +68,10 @@ public class UserService {
 	ConfigurationRepository configurationRepository;
 	@Autowired
 	WalletTransactionRepository walletTransactionRepository;
-	
+
 	@Autowired
 	BookingRepository bookingRepository;
-	
+
 	@Autowired
 	ReviewAndRatingsRepository reviewAndRatingsRepository;
 	@Autowired
@@ -79,16 +80,16 @@ public class UserService {
 	TokenHandler tokenHandler;
 	@Autowired
 	OtpService otpService;
-	
+
 	@Autowired
 	BCryptPasswordEncoder encoder;
-	
+
 	@Autowired
 	HotelRepository hotelRepository;
 	private static final String defaultPassoword = "password";
 
 	public ApiResponse register(UsersDTO dto) {
-		
+
 		User u = userRepository.findByMobile(dto.getMobile());
 		if (u == null) {
 			User user = UsersTranslator.convertToDao(dto);
@@ -135,7 +136,7 @@ public class UserService {
 		userRepository.save(userDetails);
 		// Save token
 		userDao.saveUserToken(userToken);
-		
+
 		UserTokenDTO dto = UserTokenTranslator.translateToDTO(userToken);
 		return new ApiResponse(43, "SUCCESS", dto);
 
@@ -216,8 +217,8 @@ public class UserService {
 		dao.setIs_verified(user.getIs_verified());
 		dao.setLastName(user.getLastName());
 		try {
-		userRepository.save(dao);
-		}catch (Exception e) {
+			userRepository.save(dao);
+		} catch (Exception e) {
 			return new ApiResponse(50, e.getMessage());
 		}
 		return new ApiResponse(50, "SUCCESS");
@@ -283,7 +284,7 @@ public class UserService {
 		System.out.println(output);
 		return output;
 	}
-	
+
 	public String createReferenceID() {
 		char[] chars = "abcdefghijklmnopqrstuvwxyz1234567890".toCharArray();
 		StringBuilder sb = new StringBuilder();
@@ -303,7 +304,7 @@ public class UserService {
 		if (user == null) {
 			return new ApiResponse(611, "User Not Found");
 		}
-		if(user.getReferred_by()!=null) {
+		if (user.getReferred_by() != null) {
 			return new ApiResponse(611, "referral already set");
 		}
 		String refferralcode = dto.getReferral_code();
@@ -311,13 +312,13 @@ public class UserService {
 		if (referralUser == null) {
 			return new ApiResponse(61, "Invalid Referral Code");
 		} else {
-			if(user.getReferral_code()!=null) {
-			if (user.getReferral_code().equals(refferralcode)) {
-				return new ApiResponse(61, "Invalid Referral Code");
-			}
+			if (user.getReferral_code() != null) {
+				if (user.getReferral_code().equals(refferralcode)) {
+					return new ApiResponse(61, "Invalid Referral Code");
+				}
 			}
 			user.setReferred_by(referralUser.getId());
-			Configuration c =configurationRepository.findByKey("REFERRAL_BONUS");
+			Configuration c = configurationRepository.findByKey("REFERRAL_BONUS");
 			user.getWallet().setBalance(Long.valueOf(c.getValue()));
 			WalletTransaction tr = new WalletTransaction();
 			tr.setAmount(Long.valueOf(c.getValue()));
@@ -333,12 +334,13 @@ public class UserService {
 		return new ApiResponse(611, "Referral Saved");
 
 	}
+
 	public User getCurrentUser() {
 		if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
 			UserDetails ud = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			User loggedInUser = userRepository.findByUsername(ud.getUsername());
 			return loggedInUser;
-		}else {
+		} else {
 			return null;
 		}
 	}
@@ -347,16 +349,16 @@ public class UserService {
 		Wallet wallet = getCurrentUser().getWallet();
 		WalletDTO dto = WalletTranslator.convertToDto(wallet);
 		return new ApiResponse(435, "success", dto);
-		
+
 	}
 
 	public ApiResponse getWalletTransaction() {
 		Wallet wallet = getCurrentUser().getWallet();
 		List<WalletTransaction> trs = walletTransactionRepository.findByWallet(wallet);
-		List<WalletTransactionHistoryResponse> list =WalletTransactionHistoryResponseTranslator.translate(trs);
-		return new ApiResponse(321, "SUCCESS",list);
+		List<WalletTransactionHistoryResponse> list = WalletTransactionHistoryResponseTranslator.translate(trs);
+		return new ApiResponse(321, "SUCCESS", list);
 	}
-	
+
 	public ApiResponse getBookingHistory() {
 		User user = getCurrentUser();
 		List<Booking> bookings = bookingRepository.findByUser(user);
@@ -366,13 +368,13 @@ public class UserService {
 
 	public ApiResponse setReviewAndRating(ReviewAndRatingsDTO dto) {
 		Optional<Hotel> h = hotelRepository.findById(dto.getHotelId());
-		if(!h.isPresent()) {
+		if (!h.isPresent()) {
 			return new ApiResponse(321, "Hotel Not found");
 		}
 		User user = getCurrentUser();
-		Hotel hotel  =h.get();
+		Hotel hotel = h.get();
 		ReviewAndRating rr = reviewAndRatingsRepository.findByUserAndHotel(user.getId(), hotel);
-		if(rr!=null) {
+		if (rr != null) {
 			rr.setComment(dto.getComment());
 			rr.setDel_ind(false);
 			rr.setHotel(hotel);
@@ -381,7 +383,7 @@ public class UserService {
 			rr.setCreate_user_id(user.getId());
 			reviewAndRatingsRepository.save(rr);
 			return new ApiResponse(321, "Updated Review");
-		}else {
+		} else {
 			rr = new ReviewAndRating();
 			rr.setComment(dto.getComment());
 			rr.setDel_ind(false);
@@ -392,13 +394,25 @@ public class UserService {
 			reviewAndRatingsRepository.save(rr);
 			return new ApiResponse(321, "created Review");
 		}
-		
-		
 
+	}
+
+	public ApiResponse changeRole(ChangeRoleRequest request) {
+		Optional<User> users = userRepository.findById(request.getUserId());
+		if (!users.isPresent()) {
+			return new ApiResponse(321, "UserId not found");
+		}
+		Optional<Role> roles = roleRepository.findById(request.getRoleId());
+		if(!roles.isPresent()) {
+			return new ApiResponse(321, "invalid role");
+		}
+		
+		User user  = 	users.get();
+		user.setRole(roles.get());
+		userRepository.save(user);
+		
+		return new ApiResponse(321, "SUCCESS");
 		
 	}
-	
-	
-	
 
 }

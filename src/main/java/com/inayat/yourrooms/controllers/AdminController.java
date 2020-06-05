@@ -121,5 +121,19 @@ public class AdminController {
 		return new ResponseEntity<>(res, HttpStatus.OK);
 
 	}
+	
+	@GetMapping("/getAllBookings")
+	public ResponseEntity<ApiResponse> getAllBooking() {
+		ApiResponse res = hotelservice.getAllBookings();
+		return new ResponseEntity<>(res, HttpStatus.OK);
+
+	}
+	
+	@RequestMapping(value = "/findUser/{id}", method = RequestMethod.GET)
+	public ResponseEntity<ApiResponse> findUserById(@PathVariable String id) {
+		ApiResponse response = adminService.findUserById(id);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+
+	}
 
 }

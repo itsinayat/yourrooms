@@ -1,5 +1,7 @@
 package com.inayat.yourrooms.dto;
 
+import java.util.Date;
+
 import com.inayat.yourrooms.entity.BookingTransaction;
 
 public class BookingResponse {
@@ -14,8 +16,8 @@ public class BookingResponse {
 	 private BookingTransaction transaction;
 	 private String bookingStatus;
 	 private String paymentStatus;
-	 private String checkinDate;
-	 private String checkout_date;
+	 private Date checkinDate;
+	 private Date checkout_date;
 	 private String checkout_status;
 	 private String checkin_status;
 	 private String bookingId;
@@ -64,16 +66,16 @@ public class BookingResponse {
 	public void setPaymentStatus(String paymentStatus) {
 		this.paymentStatus = paymentStatus;
 	}
-	public String getCheckinDate() {
+	public Date getCheckinDate() {
 		return checkinDate;
 	}
-	public void setCheckinDate(String checkinDate) {
+	public void setCheckinDate(Date checkinDate) {
 		this.checkinDate = checkinDate;
 	}
-	public String getCheckout_date() {
+	public Date getCheckout_date() {
 		return checkout_date;
 	}
-	public void setCheckout_date(String checkout_date) {
+	public void setCheckout_date(Date checkout_date) {
 		this.checkout_date = checkout_date;
 	}
 	public String getBookingId() {

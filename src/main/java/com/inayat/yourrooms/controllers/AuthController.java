@@ -27,6 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.inayat.yourrooms.dao.UserDao;
+import com.inayat.yourrooms.dto.ChangeRoleRequest;
 import com.inayat.yourrooms.dto.ReviewAndRatingsDTO;
 import com.inayat.yourrooms.dto.UsersDTO;
 import com.inayat.yourrooms.entity.Coupon;
@@ -167,6 +168,13 @@ public class AuthController {
 	@RequestMapping(value = "/review-and-rating", method = RequestMethod.POST)
 	public ResponseEntity<ApiResponse> reviewAndRating(@RequestBody ReviewAndRatingsDTO dto) {
 		ApiResponse response = userService.setReviewAndRating(dto);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+
+	}
+	
+	@RequestMapping(value = "/change_user_role", method = RequestMethod.POST)
+	public ResponseEntity<ApiResponse> changeRole(@RequestBody ChangeRoleRequest request) {
+		ApiResponse response = userService.changeRole(request);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 
 	}

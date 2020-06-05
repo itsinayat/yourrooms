@@ -1,6 +1,7 @@
 package com.inayat.yourrooms.controllers;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -66,7 +67,7 @@ public class HotelController {
 	}
 
 	@RequestMapping(value = "/book", method = RequestMethod.POST)
-	public ResponseEntity<ApiResponse> BookRoom(@RequestBody BookingDTO request) throws IOException {
+	public ResponseEntity<ApiResponse> BookRoom(@RequestBody BookingDTO request) throws IOException, ParseException {
 		ApiResponse resp = hotelservice.BookRoom(request);
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}

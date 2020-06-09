@@ -36,7 +36,10 @@
 				"27c139ab-9cd8-08c8-ae88-edf01fae2f89",
 				"d4fe54a7-e4ac-5220-9860-785623349fa2",
 				"96349127-6d9a-8604-c92f-98aa6a748255",
-				"efc4edf5-ceed-98e0-efc4-bfa65b26222a"
+				"efc4edf5-ceed-98e0-efc4-bfa65b26222a",
+				"849530a2-fbde-8d11-2f01-bb54cce9b887",
+				"ec1209a4-73df-bf3a-bad2-078f9209e837",
+				"db2a6646-da24-02d1-adc2-f2e3efd7c81a"
 			],
 			"owner": 0,
 			"folders_order": [],
@@ -77,7 +80,8 @@
 				"3849e7a7-6b03-7f68-cb9d-ff127e362924",
 				"180aaa94-15a8-b002-959f-d695ea69bcae",
 				"59f9e7e0-5ea6-73bc-b216-dad551222c0e",
-				"83810f94-f561-5699-f0c5-b642490f77e2"
+				"83810f94-f561-5699-f0c5-b642490f77e2",
+				"63049814-7eb6-b7af-dd43-b84e81fb28ae"
 			],
 			"owner": 0,
 			"folders_order": [],
@@ -159,7 +163,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1588678421939,
+			"time": 1591174170520,
 			"name": "getMyHotels",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
@@ -262,7 +266,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1588934619099,
+			"time": 1590824866699,
 			"name": "booking history",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
@@ -306,7 +310,7 @@
 		},
 		{
 			"id": "27c139ab-9cd8-08c8-ae88-edf01fae2f89",
-			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODg2NjUxMTY1MCwiZXhwIjoxNTg5NDcxMzExfQ.CbUwOe558OU6xvdN_MvcekBUkDDIA8Giqb7i1kGqS5rGoknIHsRy1k1Jl8jwOusvNUIZof7SIh61c80cDYVpZw\n",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MDgyMzE2NTM4MSwiZXhwIjoxNTkxNDI3OTY1fQ.ys1HrEKltmwHDAGgHET3MIzE6CnXpz2frqgqeMuw46CbMXgwmQjXBwMC2oQYWUUqMfkfxZSlqpRFou16GF6lOg\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -316,12 +320,12 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODg2NjUxMTY1MCwiZXhwIjoxNTg5NDcxMzExfQ.CbUwOe558OU6xvdN_MvcekBUkDDIA8Giqb7i1kGqS5rGoknIHsRy1k1Jl8jwOusvNUIZof7SIh61c80cDYVpZw",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MDgyMzE2NTM4MSwiZXhwIjoxNTkxNDI3OTY1fQ.ys1HrEKltmwHDAGgHET3MIzE6CnXpz2frqgqeMuw46CbMXgwmQjXBwMC2oQYWUUqMfkfxZSlqpRFou16GF6lOg",
 					"description": "",
 					"enabled": true
 				}
 			],
-			"url": "{{base-url}}/hotel/add-or-update-rooms-to-hotel",
+			"url": "{{base-url}}/admin/add-or-update-rooms-to-hotel",
 			"folder": "1e8e4444-4f5c-d80b-c3fc-95a7ea1c4c8a",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -333,7 +337,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1588866808766,
+			"time": 1590823526995,
 			"name": "addRoomToHotel",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
@@ -712,6 +716,42 @@
 			"responses": []
 		},
 		{
+			"id": "63049814-7eb6-b7af-dd43-b84e81fb28ae",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTE3Njg1NzM0NiwiZXhwIjoxNTkxNzgxNjU3fQ.B3XJ1JYevTybrGG9yxNPFKm6v7steJlQWBd1e-5yo_O5tJkE4kF-Mk-ZTatOkkludJIe5prJonKuIM_uj2K86w\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTE3Njg1NzM0NiwiZXhwIjoxNTkxNzgxNjU3fQ.B3XJ1JYevTybrGG9yxNPFKm6v7steJlQWBd1e-5yo_O5tJkE4kF-Mk-ZTatOkkludJIe5prJonKuIM_uj2K86w",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/user/change_user_role",
+			"folder": "171a38f8-6c6c-92a0-7457-3461a20d9a21",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1591177052503,
+			"name": "{{base-url}}/user/change_user_role",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\"userId\":2,\n\"roleId\":2\n}"
+		},
+		{
 			"id": "6d0bd587-cb8b-1941-43a9-5031577e787b",
 			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw\n",
 			"headerData": [
@@ -845,7 +885,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1590317551781,
+			"time": 1591710150292,
 			"name": "generate OTP",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
@@ -887,6 +927,35 @@
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
 			"rawModeData": "{\r\n\t\"hotelId\":1,\r\n\t\"comment\":\"good hotel\",\r\n\t\"rating\":5\r\n}"
+		},
+		{
+			"id": "849530a2-fbde-8d11-2f01-bb54cce9b887",
+			"headers": "Authorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MDgyMzE2NTM4MSwiZXhwIjoxNTkxNDI3OTY1fQ.ys1HrEKltmwHDAGgHET3MIzE6CnXpz2frqgqeMuw46CbMXgwmQjXBwMC2oQYWUUqMfkfxZSlqpRFou16GF6lOg\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MDgyMzE2NTM4MSwiZXhwIjoxNTkxNDI3OTY1fQ.ys1HrEKltmwHDAGgHET3MIzE6CnXpz2frqgqeMuw46CbMXgwmQjXBwMC2oQYWUUqMfkfxZSlqpRFou16GF6lOg",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/admin/getAllBookings",
+			"folder": "c6f4db30-1482-9e81-296e-c19720d0d9ee",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1590845432695,
+			"name": "localhost:8090/admin/getAllBookings/1",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": []
 		},
 		{
 			"id": "94d0bb90-07a3-fe24-5681-3fbee86d1676",
@@ -1333,6 +1402,35 @@
 			"rawModeData": "{\t\"hotelId\":2,\n\t\"name\":\"delux1 room\",\n\t\"freeCancellation\":false,\n\t\"balconyAvl\":true,\n\t\"doubleBed\":true,\n\t\"occupacy\":5,\n\t\"roomSize\":\"5x5\",\n\t\"roomType\":\"SUPER-DELUXE-1\",\n\t\"initialPrice\":5000,\n\t\"discountPrice\":200\n}"
 		},
 		{
+			"id": "db2a6646-da24-02d1-adc2-f2e3efd7c81a",
+			"headers": "Authorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MDgyMzE2NTM4MSwiZXhwIjoxNTkxNDI3OTY1fQ.ys1HrEKltmwHDAGgHET3MIzE6CnXpz2frqgqeMuw46CbMXgwmQjXBwMC2oQYWUUqMfkfxZSlqpRFou16GF6lOg\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MDgyMzE2NTM4MSwiZXhwIjoxNTkxNDI3OTY1fQ.ys1HrEKltmwHDAGgHET3MIzE6CnXpz2frqgqeMuw46CbMXgwmQjXBwMC2oQYWUUqMfkfxZSlqpRFou16GF6lOg",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/admin/findUser/1",
+			"folder": "c6f4db30-1482-9e81-296e-c19720d0d9ee",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1590825198465,
+			"name": "{{base-url}}/admin/findUser",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": []
+		},
+		{
 			"id": "dd01630e-fd5d-20ad-63bd-c7b0b7a3efef",
 			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU4ODkzOTEwOTQwNiwiZXhwIjoxNTg5NTQzOTA5fQ.MfSS8kCWGlxtu2D4slE54KdHJYgJSTZX4ygP3adIahyAsCLBbxvDRUjAt7St9AkMrXCmgaU9_Zi3CZsiEHomsA\n",
 			"headerData": [
@@ -1370,7 +1468,7 @@
 		},
 		{
 			"id": "ea26dc74-5dd0-60db-4f74-b8f6e855b3b4",
-			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MzExOTgyMjczIiwiY3JlYXRlZCI6MTU4ODY4MjIzMTIwNSwiZXhwIjoxNTg5Mjg3MDMxfQ.y8B6pLIzYdi65yNUCXYOsKJD0zPLCjzYQAQeehqK3ufH-jtMoTWzc9HmrQ3Wta-yiiEYzpRCiFnH2Q1Pgucs3g\n",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTE3MTE2MDY3MSwiZXhwIjoxNTkxNzc1OTYwfQ.eiyVTB8I_eHTttEEhbTeyOKG9YcGcKM4N2bxz0wf2CztaQiHGRHJY3C7HIeil8IRxgKkkIEp2TGrihy6Cz78Aw\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -1380,7 +1478,7 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MzExOTgyMjczIiwiY3JlYXRlZCI6MTU4ODY4MjIzMTIwNSwiZXhwIjoxNTg5Mjg3MDMxfQ.y8B6pLIzYdi65yNUCXYOsKJD0zPLCjzYQAQeehqK3ufH-jtMoTWzc9HmrQ3Wta-yiiEYzpRCiFnH2Q1Pgucs3g",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTE3MTE2MDY3MSwiZXhwIjoxNTkxNzc1OTYwfQ.eiyVTB8I_eHTttEEhbTeyOKG9YcGcKM4N2bxz0wf2CztaQiHGRHJY3C7HIeil8IRxgKkkIEp2TGrihy6Cz78Aw",
 					"description": "",
 					"enabled": true
 				}
@@ -1397,12 +1495,41 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1588686188930,
+			"time": 1591171281685,
 			"name": "Book a room",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
-			"rawModeData": "{\n\t\"userId\":\"1\",\n\t\"rooms\":[1],\n\t\"noOfGuests\":2,\n\t\"checkinDate\":\"14/09/1994\",\n\t\"checkoutDate\":\"15/09/1994\"\n\t\n}"
+			"rawModeData": "{\t\"hotelId\":1,\n\t\"userId\":1,\n\t\"rooms\":[1],\n\t\"noOfGuests\":2,\n\t\"checkinDate\":\"14/09/1994\",\n\t\"checkoutDate\":\"15/09/1994\"\n\t\n}"
+		},
+		{
+			"id": "ec1209a4-73df-bf3a-bad2-078f9209e837",
+			"headers": "Authorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MDgyMzE2NTM4MSwiZXhwIjoxNTkxNDI3OTY1fQ.ys1HrEKltmwHDAGgHET3MIzE6CnXpz2frqgqeMuw46CbMXgwmQjXBwMC2oQYWUUqMfkfxZSlqpRFou16GF6lOg\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MDgyMzE2NTM4MSwiZXhwIjoxNTkxNDI3OTY1fQ.ys1HrEKltmwHDAGgHET3MIzE6CnXpz2frqgqeMuw46CbMXgwmQjXBwMC2oQYWUUqMfkfxZSlqpRFou16GF6lOg",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/admin/getAllBookings",
+			"folder": "c6f4db30-1482-9e81-296e-c19720d0d9ee",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1590825298413,
+			"name": "localhost:8090/admin/getAllBookings",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": []
 		},
 		{
 			"id": "ef59f406-3cdd-42c2-28f0-21983d4e187a",

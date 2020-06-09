@@ -37,6 +37,7 @@ import com.inayat.yourrooms.entity.UserToken;
 import com.inayat.yourrooms.entity.Wallet;
 import com.inayat.yourrooms.entity.WalletTransaction;
 import com.inayat.yourrooms.model.ApiResponse;
+import com.inayat.yourrooms.model.OTPResponse;
 import com.inayat.yourrooms.repositories.BookingRepository;
 import com.inayat.yourrooms.repositories.ConfigurationRepository;
 import com.inayat.yourrooms.repositories.HotelRepository;
@@ -262,11 +263,17 @@ public class UserService {
 	}
 
 	public ApiResponse generateOtp(UsersDTO dto) {
+		boolean flag = false;
+		User user = userRepository.findByUsername(dto.getMobile());
+		if (user != null) {
+			flag = true;
+		}
 		String mobile = dto.getMobile();
 		String otp = otpService.generateOTP(mobile);
 		Boolean result = sendMessage(mobile, otp);
+
 		if (result) {
-			return new ApiResponse(46, "SUCCESS", otp);
+			return new ApiResponse(46, "SUCCESS", new OTPResponse(otp, flag));
 		} else {
 			return new ApiResponse(47, "OTP could not be send");
 		}
@@ -403,16 +410,16 @@ public class UserService {
 			return new ApiResponse(321, "UserId not found");
 		}
 		Optional<Role> roles = roleRepository.findById(request.getRoleId());
-		if(!roles.isPresent()) {
+		if (!roles.isPresent()) {
 			return new ApiResponse(321, "invalid role");
 		}
-		
-		User user  = 	users.get();
+
+		User user = users.get();
 		user.setRole(roles.get());
 		userRepository.save(user);
-		
+
 		return new ApiResponse(321, "SUCCESS");
-		
+
 	}
 
 }

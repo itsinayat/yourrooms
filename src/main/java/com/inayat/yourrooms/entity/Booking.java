@@ -37,13 +37,13 @@ public class Booking {
 	private Double booking_price;
 	
 	@Column(name = "discount_coupon")
-	private String discount_coupon;
+	private String discount_coupon="NONE";
 	
 	@Column(name = "discount_price")
 	private Double discount_price;
 	
 	@Column(name = "coupon_discount")
-	private Double coupon_discount;
+	private Double coupon_discount = 0d;
 	
 	
 	@Column(name = "gst")

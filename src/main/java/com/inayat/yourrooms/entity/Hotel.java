@@ -64,17 +64,12 @@ public class Hotel implements Serializable {
 	@Column(name = "free_wifi")
 	private Boolean freeWifi;
 
-	@Column(name = "initial_price")
-	private Long initialPrice;
-
-	@Column(name = "discount_price")
-	private Long discountPrice;
 
 	@Column(name = "rating")
 	private Long rating;
 
 	@Column(name = "ac")
-	private String ac;
+	private Boolean ac;
 
 	@Column(name = "del_ind")
 	private Boolean del_ind;
@@ -162,22 +157,6 @@ public class Hotel implements Serializable {
 		this.freeWifi = freeWifi;
 	}
 
-	public Long getInitialPrice() {
-		return initialPrice;
-	}
-
-	public void setInitialPrice(Long initialPrice) {
-		this.initialPrice = initialPrice;
-	}
-
-	public Long getDiscountPrice() {
-		return discountPrice;
-	}
-
-	public void setDiscountPrice(Long discountPrice) {
-		this.discountPrice = discountPrice;
-	}
-
 	public Long getRating() {
 		return rating;
 	}
@@ -262,11 +241,13 @@ public class Hotel implements Serializable {
 		this.pincode = pincode;
 	}
 
-	public String getAc() {
+	
+
+	public Boolean getAc() {
 		return ac;
 	}
 
-	public void setAc(String ac) {
+	public void setAc(Boolean ac) {
 		this.ac = ac;
 	}
 

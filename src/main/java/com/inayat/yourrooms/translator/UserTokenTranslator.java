@@ -8,6 +8,7 @@ public class UserTokenTranslator {
 	public static UserTokenDTO translateToDTO(UserToken dto) {
 		UserTokenDTO token = new UserTokenDTO();
 		token.setTokenKey(dto.getTokenKey());
+		token.setRole(dto.getUser().getRole().getName());
 		return token;
 
 	}

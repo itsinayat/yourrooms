@@ -1,6 +1,7 @@
 package com.inayat.yourrooms.translator;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import com.inayat.yourrooms.entity.BookingTransaction;
 import com.inayat.yourrooms.entity.Booking;
 
 public class BookingHistoryResponseTranslator implements Serializable {
-	public static List<BookingHistoryResponse> translate(List<Booking> bookings) {
+	public static List<BookingHistoryResponse> translate(List<Booking> bookings) throws ParseException {
 		List<BookingHistoryResponse> list =new ArrayList<>();
 		for(Booking b:bookings) {
 			BookingHistoryResponse h =new BookingHistoryResponse();

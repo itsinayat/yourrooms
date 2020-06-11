@@ -79,26 +79,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         	
         	
         	.antMatchers("/hotel/add-or-update-rooms-to-hotel/**").hasRole("ADMIN")
-        	.antMatchers("/hotel/getAll-hotels/**").hasAnyRole("ADMIN","CUSTOMER")
-        	.antMatchers("/hotel/cancelBooking/**").hasAnyRole("ADMIN","CUSTOMER")
+        	.antMatchers("/hotel/getAll-hotels/**").hasAnyRole("ADMIN","CONSUMER","SUPERADMIN")
+        	.antMatchers("/hotel/cancelBooking/**").hasAnyRole("ADMIN","CONSUMER","SUPERADMIN")
+        	.antMatchers("/hotel/downloadFile/**").permitAll()
+        	
         	
         	.antMatchers("/hotel/add-rooms-to-hotel/**").hasRole("ADMIN")
-        	.antMatchers("/hotel/getAll-rooms/**").hasAnyRole("ADMIN","CUSTOMER")
-        	.antMatchers("/hotel/getRoom/**").hasAnyRole("ADMIN","CUSTOMER")
+        	.antMatchers("/hotel/getAll-rooms/**").hasAnyRole("ADMIN","CONSUMER","SUPERADMIN")
+        	.antMatchers("/hotel/getRoom/**").hasAnyRole("ADMIN","CONSUMER","SUPERADMIN")
         	.antMatchers("/payment/getPaymentByOrderId/**").hasAnyRole("ADMIN","CUSTOMER")
         	.antMatchers("/payment/getPaymentByOrderId/**").hasAnyRole("ADMIN","CUSTOMER")
         	.antMatchers("/payment/payment/**").hasAnyRole("ADMIN","CUSTOMER")
         	.antMatchers("/payment/create-refund/**").hasAnyRole("ADMIN","CUSTOMER")
-        	.antMatchers("/payment/update-order/**").hasAnyRole("ADMIN","CUSTOMER")
+        	.antMatchers("/payment/update-order/**").hasAnyRole("ADMIN","CUSTOMER","SUPERADMIN")
         	
         	.antMatchers("/hotel_images/**").permitAll()
-        	
-        	
-        	
-        	
-        	
-            
-            
 			.anyRequest().authenticated().and()
 			.exceptionHandling().accessDeniedHandler(restAccessDeniedHandler).authenticationEntryPoint(restAuthenticationEntryPoint);
     	

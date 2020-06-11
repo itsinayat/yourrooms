@@ -32,7 +32,7 @@ public class DataLoader implements ApplicationRunner {
 	public void run(ApplicationArguments args) {
 		roleRepository.save(new Role(1L,"ROLE_ADMIN"));
 		roleRepository.save(new Role(2L,"ROLE_CONSUMER"));
-		roleRepository.save(new Role(3L,"ROLE_OWNER"));
+		roleRepository.save(new Role(3L,"ROLE_SUPERADMIN"));
 		configurationRepository.save(new Configuration(1L,"REFERRAL_BONUS","100"));
 		configurationRepository.save(new Configuration(2L,"GST_RATE","10"));
 		Coupon c =new Coupon("FREE50", Double.valueOf(50),Utils.addDays(new Date(), 30));

@@ -100,11 +100,7 @@ public class HotelService {
 				dao.setFreeWifi(hotel.getFreeWifi());
 			if (hotel.getCoupleFriendly() != null)
 				dao.setCoupleFriendly(hotel.getCoupleFriendly());
-			if (hotel.getInitialPrice() != null)
-				dao.setInitialPrice(hotel.getInitialPrice());
-			if (hotel.getDiscountPrice() != null)
-				dao.setDiscountPrice(hotel.getDiscountPrice());
-			if (hotel.getDiscountPrice() != null)
+			if (hotel.getCity() != null)
 				dao.setCity(hotel.getCity());
 			if (hotel.getPincode() != null)
 				dao.setPincode(hotel.getPincode());
@@ -134,16 +130,16 @@ public class HotelService {
 				if (hotel.getFreeWifi() != null)
 					dao.setFreeWifi(hotel.getFreeWifi());
 				if (hotel.getCoupleFriendly() != null)
-					dao.setCoupleFriendly(hotel.getCoupleFriendly());
-				if (hotel.getInitialPrice() != null)
-					dao.setInitialPrice(hotel.getInitialPrice());
-				if (hotel.getDiscountPrice() != null)
-					dao.setDiscountPrice(hotel.getDiscountPrice());
-				if (hotel.getDiscountPrice() != null)
+					dao.setCoupleFriendly(hotel.getCoupleFriendly());	
+				if (hotel.getCity() != null)
 					dao.setCity(hotel.getCity());
 				if (hotel.getPincode() != null)
 					dao.setPincode(hotel.getPincode());
-				dao.setUpdate_user_id(u.getId());
+				if (hotel.getAc() != null)
+					dao.setAc(hotel.getAc());
+				if (hotel.getIsBlocked() != null)
+					dao.setIsBlocked(hotel.getIsBlocked());
+				
 				hotelRepository.save(dao);
 				return new ApiResponse(543, "SUCCESS");
 			} else {
@@ -177,12 +173,12 @@ public class HotelService {
 				dto.setCreate_dt(h.getCreate_dt());
 				dto.setCreate_user_id(h.getCreate_user_id());
 				dto.setDel_ind(h.getDel_ind());
-				dto.setDiscountPrice(h.getDiscountPrice());
+				
 				dto.setFreeBreakFast(h.getFreeBreakFast());
 				dto.setFreeWifi(h.getFreeWifi());
 				dto.setHotelName(h.getHotelName());
 				dto.setId(h.getId());
-				dto.setInitialPrice(h.getInitialPrice());
+				
 				dto.setLattitude(h.getLattitude());
 				dto.setLongitude(h.getLongitude());
 				dto.setPayAtHotel(h.getPayAtHotel());

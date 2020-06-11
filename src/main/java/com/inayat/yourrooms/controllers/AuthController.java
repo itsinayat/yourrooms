@@ -1,6 +1,7 @@
 package com.inayat.yourrooms.controllers;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -153,7 +154,7 @@ public class AuthController {
 	}
 
 	@RequestMapping(value = "/get-booking-history", method = RequestMethod.GET)
-	public ResponseEntity<ApiResponse> getBookinghistory() {
+	public ResponseEntity<ApiResponse> getBookinghistory() throws ParseException {
 		ApiResponse response = userService.getBookingHistory();
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}

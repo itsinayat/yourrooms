@@ -34,10 +34,7 @@ public class HotelDTO implements Serializable {
 
 	private Boolean freeWifi;
 
-	private Long initialPrice;
-
-	private Long discountPrice;
-
+	
 	private Long rating;
 
 	private Boolean del_ind;
@@ -56,7 +53,7 @@ public class HotelDTO implements Serializable {
 	
 	private List<ReviewAndRatingsDTO> reviewAndRatings;
 	
-	private String ac;
+	private Boolean ac;
 
 	public Long getId() {
 		return id;
@@ -124,21 +121,7 @@ public class HotelDTO implements Serializable {
 		this.freeWifi = freeWifi;
 	}
 
-	public Long getInitialPrice() {
-		return initialPrice;
-	}
-
-	public void setInitialPrice(Long initialPrice) {
-		this.initialPrice = initialPrice;
-	}
-
-	public Long getDiscountPrice() {
-		return discountPrice;
-	}
-
-	public void setDiscountPrice(Long discountPrice) {
-		this.discountPrice = discountPrice;
-	}
+	
 
 	public Long getRating() {
 		return rating;
@@ -220,11 +203,13 @@ public class HotelDTO implements Serializable {
 		this.pincode = pincode;
 	}
 
-	public String getAc() {	
+	
+
+	public Boolean getAc() {
 		return ac;
 	}
 
-	public void setAc(String ac) {
+	public void setAc(Boolean ac) {
 		this.ac = ac;
 	}
 

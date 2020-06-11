@@ -77,7 +77,7 @@ public class AdminController {
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 
-	@PostMapping("/delete/{type}/{id}")
+	@GetMapping("/delete/{type}/{id}")
 	public ResponseEntity<ApiResponse> uploadMultipleFiles(@PathVariable("id") String id,
 			@PathVariable("type") String type) {
 		if (type.equalsIgnoreCase("room")) {
@@ -132,6 +132,28 @@ public class AdminController {
 	@RequestMapping(value = "/findUser/{id}", method = RequestMethod.GET)
 	public ResponseEntity<ApiResponse> findUserById(@PathVariable String id) {
 		ApiResponse response = adminService.findUserById(id);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+
+	}
+
+	
+	@RequestMapping(value = "/viewTransactionById/{id}", method = RequestMethod.GET)
+	public ResponseEntity<ApiResponse> viewTransactionById(@PathVariable String id) {
+		ApiResponse response = adminService.viewTransactionById(id);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+
+	}
+	
+	@RequestMapping(value = "/findHotel/{id}", method = RequestMethod.GET)
+	public ResponseEntity<ApiResponse> findHotel(@PathVariable String id) {
+		ApiResponse response = adminService.findHotel(id);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+
+	}
+	
+	@RequestMapping(value = "/getAllUsers", method = RequestMethod.GET)
+	public ResponseEntity<ApiResponse> getAllUsers() {
+		ApiResponse response = adminService.getAllUsers();
 		return new ResponseEntity<>(response, HttpStatus.OK);
 
 	}

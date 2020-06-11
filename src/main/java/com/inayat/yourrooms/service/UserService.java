@@ -1,6 +1,7 @@
 package com.inayat.yourrooms.service;
 
 import java.security.SecureRandom;
+import java.text.ParseException;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
@@ -375,7 +376,7 @@ public class UserService {
 		return new ApiResponse(321, "SUCCESS", list);
 	}
 
-	public ApiResponse getBookingHistory() {
+	public ApiResponse getBookingHistory() throws ParseException {
 		User user = getCurrentUser();
 		List<Booking> bookings = bookingRepository.findByUser(user);
 		List<BookingHistoryResponse> list = BookingHistoryResponseTranslator.translate(bookings);

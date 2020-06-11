@@ -7,10 +7,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(Include.NON_DEFAULT)
-public class UserTokenDTO implements Serializable{
-	
+public class UserTokenDTO implements Serializable {
+
 	private long tokenId;
-	
+
 	private String tokenKey;
 
 	private String status;
@@ -18,6 +18,16 @@ public class UserTokenDTO implements Serializable{
 	private Date cdate;
 
 	private Date udate;
+
+	private String role;
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 	public long getTokenId() {
 		return tokenId;
@@ -58,5 +68,5 @@ public class UserTokenDTO implements Serializable{
 	public void setUdate(Date udate) {
 		this.udate = udate;
 	}
-	
+
 }

@@ -1,8 +1,12 @@
 package com.inayat.yourrooms.entity;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +18,9 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "t_booking_transactions")
 public class BookingTransaction implements Serializable{
@@ -22,7 +29,8 @@ public class BookingTransaction implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToOne
+	@JsonBackReference
+	@OneToOne(cascade = CascadeType.ALL)
 	private Booking booking;
 	
 	@Column(name = "total_amount")
@@ -72,6 +80,7 @@ public class BookingTransaction implements Serializable{
 	@Column(name = "paymentStatus")
 	private String paymentStatus;
 	
+	@JsonIgnore
 	@Column(name = "paymentHash")
 	private String paymentHash;
 	
@@ -133,8 +142,8 @@ public class BookingTransaction implements Serializable{
 		this.del_ind = del_ind;
 	}
 
-	public Date getCreate_dt() {
-		return create_dt;
+	public Date getCreate_dt() throws ParseException {
+		return create_dt ;
 	}
 
 	public void setCreate_dt(Date create_dt) {

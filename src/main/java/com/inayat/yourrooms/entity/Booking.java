@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "t_bookings")
 public class Booking {
@@ -73,6 +75,7 @@ public class Booking {
 	private String BookingId;
 
 	@OneToOne
+	@JsonManagedReference
 	private BookingTransaction transaction;
 
 	@Column(name = "del_ind")

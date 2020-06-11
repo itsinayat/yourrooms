@@ -252,20 +252,11 @@ public class UserService {
 				wallet.setUpdate_user_id(0L);
 				Wallet newwallet = walletRepository.save(wallet);
 				user.setWallet(newwallet);
-				User userDetails = userRepository.save(user);
-				//generate token
-				String tokenKey = this.tokenHandler.generateToken(user);
-				UserToken userToken = new UserToken();
-				userToken.setUser(userDetails);
-				userToken.setTokenKey(tokenKey);
-				userToken.setStatus(Constants.UsetTokenStatus.ACTIVE);
-				userDao.saveUserToken(userToken);
-				UserTokenDTO dtoToken = UserTokenTranslator.translateToDTO(userToken);
-				return new ApiResponse(51, "User Registered Successfully.",dtoToken);
+				userRepository.save(user);
+				return new ApiResponse(51, "User Registered Successfully.");
 			} else {
 				return new ApiResponse(42, "User Already Registered, Please Login.");
 			}
-			
 
 		} else {
 			return new ApiResponse(45, "Wrong OTP");

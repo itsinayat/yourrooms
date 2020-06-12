@@ -27,8 +27,8 @@ public class BookingResponseTranslator {
 		dto.setRooms(rooms);
 		dto.setTransaction(dao.getTransaction());
 		dto.setUserId(dao.getUser().getId());
-		dto.setCheckin_status(dao.getCheckin_status());
-		dto.setCheckout_status(dao.getCheckout_status());
+		dto.setCheckin_status(dao.getCheckinStatus());
+		dto.setCheckout_status(dao.getCheckoutStatus());
 		
 		return dto;
 	}

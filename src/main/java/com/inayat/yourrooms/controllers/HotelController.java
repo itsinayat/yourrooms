@@ -125,6 +125,12 @@ public class HotelController {
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
 				.body(resource);
 	}
+	
+	@RequestMapping(value = "/cancelBooking", method = RequestMethod.POST)
+	public ResponseEntity<ApiResponse> cancelBooking(@RequestBody BookingDTO request) throws Exception {
+		ApiResponse resp = hotelservice.cancelBooking(request);
+		return new ResponseEntity<>(resp, HttpStatus.OK);
+	}
 
 
 }

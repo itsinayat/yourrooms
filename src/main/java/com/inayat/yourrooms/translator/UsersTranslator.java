@@ -14,7 +14,6 @@ public class UsersTranslator {
 		dto.setEmail(tUser.getEmail());
 		dto.setFirstName(tUser.getFirstName());
 		dto.setGender(tUser.getGender());
-		dto.setIs_enabled(tUser.getIs_enabled());
 		dto.setIs_logged_in(tUser.getIs_logged_in());
 		dto.setIs_verified(tUser.getIs_verified());
 		dto.setLast_login_time(tUser.getLast_login_time());
@@ -24,7 +23,7 @@ public class UsersTranslator {
 		dto.setUpdate_dt(tUser.getUpdate_dt());
 		dto.setUpdate_user_id(tUser.getUpdate_user_id());
 		dto.setUsername(tUser.getUsername());
-		dto.setRole(tUser.getRole());
+		dto.setRole(tUser.getRole().getName());
 		dto.setReferral_code(tUser.getReferral_code());
 		dto.setId(tUser.getId());
 	    return dto;
@@ -38,7 +37,6 @@ public class UsersTranslator {
 		dao.setEmail(dto.getEmail());
 		dao.setFirstName(dto.getFirstName());
 		dao.setGender(dto.getGender());
-		dao.setIs_enabled(dto.getIs_enabled());
 		dao.setIs_logged_in(dto.getIs_logged_in());
 		dao.setIs_verified(dto.getIs_verified());
 		dao.setLast_login_time(dto.getLast_login_time());
@@ -49,7 +47,6 @@ public class UsersTranslator {
 		dao.setUpdate_user_id(dto.getUpdate_user_id());
 		//username is mobile number
 		dao.setUsername(dto.getMobile());
-		dao.setRole(dto.getRole());
 		dao.setPassword(dto.getPassword());
 		dao.setReferral_code(dto.getReferral_code());
 	    return dao;

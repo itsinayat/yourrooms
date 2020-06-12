@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-import com.inayat.yourrooms.entity.ReviewAndRating;
 import com.inayat.yourrooms.entity.User;
 
 public class HotelDTO implements Serializable {

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inayat.yourrooms.dto.BookingDTO;
+import com.inayat.yourrooms.dto.RefundRequest;
 import com.inayat.yourrooms.model.ApiResponse;
 import com.inayat.yourrooms.service.HotelService;
 
@@ -70,6 +71,12 @@ public class PaymentController {
 			@QueryParam("payment_status") String payment_status, @QueryParam("id") String id,
 			@QueryParam(value = "hash") String hash) throws NumberFormatException, IOException {
 		ApiResponse resp = hotelservice.createHash(payment_id, payment_status, id, hash);
+		return new ResponseEntity<>(resp, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/initiateRefund", method = RequestMethod.POST)
+	public ResponseEntity<ApiResponse> initiateRefund(@RequestBody RefundRequest refundRequest) throws NumberFormatException, IOException {
+		ApiResponse resp = hotelservice.initiateRefund(refundRequest);
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 

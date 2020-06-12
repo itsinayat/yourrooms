@@ -73,6 +73,7 @@ public class PaymentService {
 			bookingTransaction.setPaymentStatus(PaymentStatus.PENDING.toString());
 			bookingTransaction.setDiscountType("NONE");
 			bookingTransaction.setPaidAmount(0L);
+			bookingTransaction.setPayment_mode("ONLINE");
 			bookingTransaction.setBooking(dao);
 			bookingTransaction.setPaymentHash(String.valueOf(hashCode));
 			bookingTransactionReository.save(bookingTransaction);

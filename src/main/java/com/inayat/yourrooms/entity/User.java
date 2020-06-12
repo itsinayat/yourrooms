@@ -76,8 +76,8 @@ public class User implements UserDetails, Serializable {
 	@Column(name = "is_verified")
 	private Boolean is_verified;
 
-	@Column(name = "is_enabled")
-	private Boolean is_enabled;
+	@Column(name = "enabled")
+	private Boolean enabled;
 
 	@Column(name = "del_ind")
 	private Boolean del_ind;
@@ -129,7 +129,9 @@ public class User implements UserDetails, Serializable {
 	public boolean isEnabled() {
 		return true;
 	}
-
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
 	public Date getCreate_dt() {
 		return create_dt;
 	}
@@ -226,14 +228,7 @@ public class User implements UserDetails, Serializable {
 		this.is_verified = is_verified;
 	}
 
-	public Boolean getIs_enabled() {
-		return is_enabled;
-	}
-
-	public void setIs_enabled(Boolean is_enabled) {
-		this.is_enabled = is_enabled;
-	}
-
+	
 	public Boolean getDel_ind() {
 		return del_ind;
 	}

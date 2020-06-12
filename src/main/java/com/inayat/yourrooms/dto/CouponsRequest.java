@@ -11,6 +11,16 @@ public class CouponsRequest {
 	private Double value;
 	
 	private Date expiry;
+	
+	private Boolean enabled;
+
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
 
 	public Long getId() {
 		return id;
@@ -44,11 +54,14 @@ public class CouponsRequest {
 		this.expiry = expiry;
 	}
 
-	public CouponsRequest(Long id, String code, Double value, Date expiry) {
+	public CouponsRequest(Long id, String code, Double value, Date expiry,Boolean enabled) {
 		super();
 		this.code = code;
 		this.value = value;
 		this.expiry = expiry;
+		this.id = id;
+		this.enabled = enabled;
+		
 	}
 	
 	

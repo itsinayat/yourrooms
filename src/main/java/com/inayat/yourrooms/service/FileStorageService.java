@@ -191,7 +191,7 @@ public class FileStorageService {
 		Optional<RoomImage> rooms = roomsImageRepository.findById(Long.valueOf(id));
 		if (rooms.isPresent()) {
 			roomsImageRepository.delete(rooms.get());
-			return new ApiResponse(432, "IMAGE DELETED");
+			return new ApiResponse(432, "SUCCESS");
 		} else {
 			return new ApiResponse(432, "Image NOT FOUND");
 		}
@@ -202,7 +202,7 @@ public class FileStorageService {
 		Optional<HotelImage> rooms = hotelImageRepository.findById(Long.valueOf(id));
 		if (rooms.isPresent()) {
 			hotelImageRepository.delete(rooms.get());
-			return new ApiResponse(432, "IMAGE DELETED");
+			return new ApiResponse(432, "SUCCESS");
 		} else {
 			return new ApiResponse(432, "Image NOT FOUND");
 		}

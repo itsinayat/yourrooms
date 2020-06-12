@@ -215,7 +215,6 @@ public class UserService {
 		dao.setEmail(user.getEmail());
 		dao.setFirstName(user.getFirstName());
 		dao.setGender(user.getGender());
-		dao.setIs_enabled(user.getIs_enabled());
 		dao.setIs_verified(user.getIs_verified());
 		dao.setLastName(user.getLastName());
 		try {
@@ -236,7 +235,6 @@ public class UserService {
 				user.setPassword(encoder.encode(defaultPassoword));
 				user.setDel_ind(false);
 				user.setCreate_user_id(0L);
-				user.setIs_enabled(true);
 				user.setIs_logged_in(false);
 				user.setIs_verified(true);
 				String referral_code = createReferalCode(6);
@@ -421,6 +419,39 @@ public class UserService {
 
 		return new ApiResponse(321, "SUCCESS");
 
+	}
+
+	public ApiResponse updateProfileById(UsersDTO user) {
+
+		if (user.getUsername() != null && !user.getUsername().isEmpty()) {
+			return new ApiResponse(50, "Username Cannot be set");
+		}
+
+		if (user.getMobile() != null && !user.getMobile().isEmpty()) {
+			return new ApiResponse(50, "Mobile Cannot be set");
+		}
+
+		if (user.getPassword() != null && !user.getPassword().isEmpty()) {
+			return new ApiResponse(50, "Password Cannot be set directly");
+		}
+
+		Optional<User> users = userRepository.findById(user.getId());
+		if(!users.isPresent()) {
+			return new ApiResponse(50, "USER NOT FOUND");
+		}
+		User dao = users.get();
+		
+		dao.setEnabled(user.getIs_enabled());
+		dao.setIs_verified(user.getIs_verified());
+		dao.setDel_ind(user.getDel_ind());
+		dao.getRole().setName(user.getRole());
+		try {
+			userRepository.save(dao);
+		} catch (Exception e) {
+			return new ApiResponse(50, e.getMessage());
+		}
+		return new ApiResponse(50, "SUCCESS");
+	
 	}
 
 }

@@ -8,6 +8,7 @@ import javax.ws.rs.QueryParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,11 +28,13 @@ import com.inayat.yourrooms.dto.CouponsRequest;
 import com.inayat.yourrooms.dto.HotelDTO;
 import com.inayat.yourrooms.dto.MapStaffRequest;
 import com.inayat.yourrooms.dto.RoomsDTO;
+import com.inayat.yourrooms.dto.UsersDTO;
 import com.inayat.yourrooms.entity.Booking;
 import com.inayat.yourrooms.model.ApiResponse;
 import com.inayat.yourrooms.service.AdminService;
 import com.inayat.yourrooms.service.FileStorageService;
 import com.inayat.yourrooms.service.HotelService;
+import com.inayat.yourrooms.service.UserService;
 
 @RestController
 @CrossOrigin
@@ -47,6 +50,8 @@ public class AdminController {
 
 	@Autowired
 	HotelService hotelservice;
+	@Autowired
+	UserService userService;
 
 	@RequestMapping(value = "/add-or-update-hotel", method = RequestMethod.POST)
 	public ResponseEntity<ApiResponse> addOrUpdate(@RequestBody HotelDTO hotel) {
@@ -129,6 +134,14 @@ public class AdminController {
 
 	}
 	
+	@GetMapping("/findBookingById/{id}")
+	public ResponseEntity<ApiResponse> findBookingById(@PathVariable String id) {
+		ApiResponse res = hotelservice.findBookingById(id);
+		return new ResponseEntity<>(res, HttpStatus.OK);
+
+	}
+	
+	
 	@RequestMapping(value = "/findUser/{id}", method = RequestMethod.GET)
 	public ResponseEntity<ApiResponse> findUserById(@PathVariable String id) {
 		ApiResponse response = adminService.findUserById(id);
@@ -151,11 +164,39 @@ public class AdminController {
 
 	}
 	
+	@RequestMapping(value = "/getCouponById/{id}", method = RequestMethod.GET)
+	public ResponseEntity<ApiResponse> getCouponById(@PathVariable String id) {
+		ApiResponse response = adminService.getCouponById(id);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+
+	}
+	
 	@RequestMapping(value = "/getAllUsers", method = RequestMethod.GET)
 	public ResponseEntity<ApiResponse> getAllUsers() {
 		ApiResponse response = adminService.getAllUsers();
 		return new ResponseEntity<>(response, HttpStatus.OK);
 
 	}
+	
+	@RequestMapping(value = "/deleteCoupon/{id}", method = RequestMethod.GET)
+	public ResponseEntity<ApiResponse> deleteCoupon(@PathVariable("id") String id) {
+		ApiResponse response = adminService.deleteCoupon(id);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+
+	}
+	
+	@RequestMapping(value = "/getRevenue", method = RequestMethod.GET)
+	public ResponseEntity<ApiResponse> getRevenue() {
+		ApiResponse response = adminService.getRevenue();
+		return new ResponseEntity<>(response, HttpStatus.OK);
+
+	}
+	
+	@RequestMapping(value = "/updateProfileById", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ApiResponse> updateProfileById(@RequestBody UsersDTO user) {
+		ApiResponse response = userService.updateProfileById(user);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+	
 
 }

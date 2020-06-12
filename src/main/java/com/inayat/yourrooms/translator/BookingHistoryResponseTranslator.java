@@ -29,8 +29,8 @@ public class BookingHistoryResponseTranslator implements Serializable {
 			h.setNoOfGuests(b.getNoOfGuests());
 			h.setPrice(b.getBooking_price());
 			h.setRooms(b.getRooms());
-			h.setCheckin_status(b.getCheckin_status());
-			h.setCheckout_status(b.getCheckout_status());
+			h.setCheckin_status(b.getCheckinStatus());
+			h.setCheckout_status(b.getCheckoutStatus());
 			
 			
 			BookingTransactionDTO dto =new BookingTransactionDTO();

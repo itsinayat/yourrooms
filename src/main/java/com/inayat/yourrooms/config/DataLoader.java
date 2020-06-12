@@ -35,9 +35,8 @@ public class DataLoader implements ApplicationRunner {
 		roleRepository.save(new Role(3L,"ROLE_SUPERADMIN"));
 		configurationRepository.save(new Configuration(1L,"REFERRAL_BONUS","100"));
 		configurationRepository.save(new Configuration(2L,"GST_RATE","10"));
-		Coupon c =new Coupon("FREE50", Double.valueOf(50),Utils.addDays(new Date(), 30));
-		c.setId(1L);
-		couponRepository.save(c);
+//		Coupon c =new Coupon(1L,"FREE50", Double.valueOf(50),true,Utils.addDays(new Date(), 30));
+//		couponRepository.save(c);
 		configurationRepository.save(new Configuration(3L,"IM_PRIVATE_KEY","test_c0fe7a31708c15d1d1fd548d88c"));
 		configurationRepository.save(new Configuration(4L,"IM_AUTH_TOKEN","test_75914bf49a32ffaaee32bf441b8"));
 		configurationRepository.save(new Configuration(5L,"IM_SALT","fb7d6875d700457198525b308bcd1d52"));

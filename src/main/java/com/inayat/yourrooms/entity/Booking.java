@@ -39,13 +39,13 @@ public class Booking {
 	private Double booking_price;
 	
 	@Column(name = "discount_coupon")
-	private String discount_coupon;
+	private String discount_coupon="NONE";
 	
 	@Column(name = "discount_price")
 	private Double discount_price;
 	
 	@Column(name = "coupon_discount")
-	private Double coupon_discount;
+	private Double coupon_discount=0d;
 	
 	
 	@Column(name = "gst")
@@ -108,10 +108,10 @@ public class Booking {
 	private Date checkoutDate;
 	
 	@Column(name = "checkin_status")
-	private String checkin_status;
+	private String checkinStatus;
 	
 	@Column(name = "checkout_status")
-	private String checkout_status;
+	private String checkoutStatus;
 
 	public Long getId() {
 		return id;
@@ -275,22 +275,23 @@ public class Booking {
 		this.coupon_discount = coupon_discount;
 	}
 
-	public String getCheckin_status() {
-		return checkin_status;
+	public String getCheckinStatus() {
+		return checkinStatus;
 	}
 
-	public void setCheckin_status(String checkin_status) {
-		this.checkin_status = checkin_status;
+	public void setCheckinStatus(String checkinStatus) {
+		this.checkinStatus = checkinStatus;
 	}
 
-	public String getCheckout_status() {
-		return checkout_status;
+	public String getCheckoutStatus() {
+		return checkoutStatus;
 	}
 
-	public void setCheckout_status(String checkout_status) {
-		this.checkout_status = checkout_status;
+	public void setCheckoutStatus(String checkoutStatus) {
+		this.checkoutStatus = checkoutStatus;
 	}
 
+	
 	
 
 	

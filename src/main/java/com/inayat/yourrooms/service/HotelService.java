@@ -12,7 +12,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
-import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,13 +26,15 @@ import com.inayat.yourrooms.dto.CHECKIN_CHECKOUT_STATUS;
 import com.inayat.yourrooms.dto.CouponsRequest;
 import com.inayat.yourrooms.dto.HotelDTO;
 import com.inayat.yourrooms.dto.MapStaffRequest;
+import com.inayat.yourrooms.dto.RefundRequest;
 import com.inayat.yourrooms.dto.ReviewAndRatingsDTO;
 import com.inayat.yourrooms.dto.RoomsDTO;
-import com.inayat.yourrooms.entity.BookingTransaction;
 import com.inayat.yourrooms.entity.Booking;
+import com.inayat.yourrooms.entity.BookingTransaction;
 import com.inayat.yourrooms.entity.Configuration;
 import com.inayat.yourrooms.entity.Coupon;
 import com.inayat.yourrooms.entity.Hotel;
+import com.inayat.yourrooms.entity.Refunds;
 import com.inayat.yourrooms.entity.ReviewAndRating;
 import com.inayat.yourrooms.entity.Room;
 import com.inayat.yourrooms.entity.User;
@@ -43,6 +44,7 @@ import com.inayat.yourrooms.repositories.BookingTransactionRepository;
 import com.inayat.yourrooms.repositories.ConfigurationRepository;
 import com.inayat.yourrooms.repositories.CouponRepository;
 import com.inayat.yourrooms.repositories.HotelRepository;
+import com.inayat.yourrooms.repositories.RefundsRepository;
 import com.inayat.yourrooms.repositories.ReviewAndRatingsRepository;
 import com.inayat.yourrooms.repositories.RoomsRepository;
 import com.inayat.yourrooms.repositories.UserRepository;
@@ -51,6 +53,7 @@ import com.inayat.yourrooms.translator.RoomsTranslator;
 import com.inayat.yourrooms.utils.EncryptionUtil;
 import com.instamojo.wrapper.exception.ConnectionException;
 import com.instamojo.wrapper.exception.HTTPException;
+import com.instamojo.wrapper.model.Payment;
 import com.instamojo.wrapper.model.PaymentOrder;
 import com.instamojo.wrapper.model.PaymentOrderResponse;
 import com.instamojo.wrapper.model.Refund;
@@ -79,6 +82,9 @@ public class HotelService {
 
 	@Autowired
 	ReviewAndRatingsRepository reviewAndRatingsRepository;
+
+	@Autowired
+	RefundsRepository refundsRepository;
 
 	public ApiResponse addOrUpdate(HotelDTO hotel) {
 		User u = userService.getCurrentUser();
@@ -130,7 +136,7 @@ public class HotelService {
 				if (hotel.getFreeWifi() != null)
 					dao.setFreeWifi(hotel.getFreeWifi());
 				if (hotel.getCoupleFriendly() != null)
-					dao.setCoupleFriendly(hotel.getCoupleFriendly());	
+					dao.setCoupleFriendly(hotel.getCoupleFriendly());
 				if (hotel.getCity() != null)
 					dao.setCity(hotel.getCity());
 				if (hotel.getPincode() != null)
@@ -139,7 +145,7 @@ public class HotelService {
 					dao.setAc(hotel.getAc());
 				if (hotel.getIsBlocked() != null)
 					dao.setIsBlocked(hotel.getIsBlocked());
-				
+
 				hotelRepository.save(dao);
 				return new ApiResponse(543, "SUCCESS");
 			} else {
@@ -173,12 +179,12 @@ public class HotelService {
 				dto.setCreate_dt(h.getCreate_dt());
 				dto.setCreate_user_id(h.getCreate_user_id());
 				dto.setDel_ind(h.getDel_ind());
-				
+
 				dto.setFreeBreakFast(h.getFreeBreakFast());
 				dto.setFreeWifi(h.getFreeWifi());
 				dto.setHotelName(h.getHotelName());
 				dto.setId(h.getId());
-				
+
 				dto.setLattitude(h.getLattitude());
 				dto.setLongitude(h.getLongitude());
 				dto.setPayAtHotel(h.getPayAtHotel());
@@ -284,7 +290,12 @@ public class HotelService {
 			if (!room.isPresent()) {
 				return new ApiResponse(432, "Room Id is Not Valid");
 			}
+
+			initialPriceTotal += room.get().getInitialPrice();
+			discountPriceTotal += room.get().getDiscountPrice();
 		}
+
+		double totalprice = initialPriceTotal - discountPriceTotal;
 
 		Booking dao = new Booking();
 		dao.setCreate_user_id(userService.getCurrentUser().getId());
@@ -301,10 +312,10 @@ public class HotelService {
 		dao.setCheckoutDate(checkoutDate);
 		dao.setBooking_price(initialPriceTotal);
 		dao.setDiscount_price(discountPriceTotal);
-		dao.setGst(calculateGst(initialPriceTotal - discountPriceTotal));
+		dao.setGst(calculateGst(totalprice));
 		dao.setDel_ind(false);
-		dao.setCheckout_status(CHECKIN_CHECKOUT_STATUS.PENDING.toString());
-		dao.setCheckin_status(CHECKIN_CHECKOUT_STATUS.PENDING.toString());
+		dao.setCheckoutStatus(CHECKIN_CHECKOUT_STATUS.PENDING.toString());
+		dao.setCheckinStatus(CHECKIN_CHECKOUT_STATUS.PENDING.toString());
 		dao.setHotelId(hotels.get().getId());
 		Booking newbooking = bookingRepository.save(dao);
 
@@ -330,9 +341,6 @@ public class HotelService {
 				Booking bookings = bks.get();
 				bookings.setDiscount_coupon(code);
 				bookings.setCoupon_discount(c.getValue());
-				Double gst = calculateGst(
-						bookings.getBooking_price() - bookings.getDiscount_price() - bookings.getCoupon_discount());
-				bookings.setGst(gst);
 				BookingResponse resp = BookingResponseTranslator.translateToDTO(bookings);
 				bookingRepository.save(bookings);
 				return new ApiResponse(545, "Coupon Applied", resp);
@@ -356,11 +364,14 @@ public class HotelService {
 		if (!bookings.isPresent()) {
 			return new ApiResponse(646, "BookingId Not Found");
 		}
+		if(bookings.get().getBookingStatus().equals("CANCELLED")) {
+			return new ApiResponse(646, "FAILED:ATTEMPT TO PAY FOR CANCELLED BOOKING ");
+		}
 
 		List<BookingTransaction> bt = bookingTransactionRepository.findByBookingIdAndPaymentHash(bookings.get(), cd);
 		for (BookingTransaction b : bt) {
 			if (b.getPaymentHash().equals(String.valueOf(booking.hashCode()))) {
-				return new ApiResponse(646, "Payment Already Initiated", getPaymentByOrderId(b.getOrder_id()));
+				return new ApiResponse(646, "Payment Already Initiated", bookings.get().getTransaction());
 			}
 		}
 		bookings.get().getTransaction();
@@ -424,7 +435,8 @@ public class HotelService {
 		return null;
 	}
 
-	public ApiResponse updateOrder(String payment_id, String payment_status, String id, String hash) throws JsonParseException, JsonMappingException, IOException {
+	public ApiResponse updateOrder(String payment_id, String payment_status, String id, String hash)
+			throws JsonParseException, JsonMappingException, IOException {
 		if (hash != null) {
 			Map<String, String> map = getEncryptedParam(hash);
 			PaymentOrder f = paymentService.getPaymentByOrderId(map.get("id"));
@@ -440,7 +452,10 @@ public class HotelService {
 			bt.setPaidAmount(f.getAmount().longValue());
 			bt.setPaymentStatus(f.getPayments().get(0).getStatus());
 			bt.setPayment_mode("ONLINE");
+			bt.getBooking().setPaymentStatus("SUCCESS");
 			bookingTransactionRepository.save(bt);
+			
+			//updating order
 
 			String s = bt.getBooking().getRooms();
 			ObjectMapper mapper = new ObjectMapper();
@@ -463,8 +478,10 @@ public class HotelService {
 			bt.setPaymentStatus(payment_status);
 			bt.setReference_id(f.getTransactionId());
 			bt.setPaidAmount(f.getAmount().longValue());
-			bt.setPaymentStatus(f.getPayments().get(0).getStatus());
+			bt.setPaymentStatus(f.getPayments().get(0).getStatus().toUpperCase());
 			bt.setPayment_mode("ONLINE");
+			bt.getBooking().setPaymentStatus(payment_status.toUpperCase());
+			bt.getBooking().setBookingStatus("PAID");
 			bookingTransactionRepository.save(bt);
 			return new ApiResponse(3421, "SUCCESS", f);
 
@@ -554,13 +571,13 @@ public class HotelService {
 			booking.setCheckinDate(new SimpleDateFormat("dd/MM/yyyy").parse(request.getCheckinDate()));
 
 		if (request.getCheckinStatus() != null)
-			booking.setCheckin_status(request.getCheckinStatus());
+			booking.setCheckinStatus(request.getCheckinStatus());
 
 		if (request.getCheckoutDate() != null)
 			booking.setCheckoutDate(new SimpleDateFormat("dd/MM/yyyy").parse(request.getCheckoutDate()));
 
 		if (request.getCheckoutStatus() != null)
-			booking.setCheckout_status(request.getCheckoutStatus());
+			booking.setCheckoutStatus(request.getCheckoutStatus());
 
 		if (request.getCoupon_discount() != null)
 			booking.setCoupon_discount(request.getCoupon_discount());
@@ -592,7 +609,7 @@ public class HotelService {
 		booking.setUpdate_user_id(userService.getCurrentUser().getId());
 		bookingRepository.save(booking);
 
-		return new ApiResponse(674, "Booking Updated");
+		return new ApiResponse(674, "SUCCESS");
 
 	}
 
@@ -615,7 +632,7 @@ public class HotelService {
 			user.getHotels().add(hotel);
 		}
 		hotelRepository.save(hotel);
-		return new ApiResponse(674, "Staff added");
+		return new ApiResponse(674, "SUCCESS");
 
 	}
 
@@ -637,35 +654,38 @@ public class HotelService {
 			user.getHotels().remove(hotel);
 		}
 		hotelRepository.save(hotel);
-		return new ApiResponse(674, "Staff REMOVED from hotel");
+		return new ApiResponse(674, "SUCCESS");
 
 	}
 
 	public ApiResponse addNewCoupon(CouponsRequest request) {
 		if (request.getId() != null) {
 			Optional<Coupon> coupons = couponRepository.findById(request.getId());
-			Date date = request.getExpiry();
 			if (!coupons.isPresent()) {
 				return new ApiResponse(674, "coupon not existed");
 			} else {
 				Coupon coupon = coupons.get();
+
 				coupon.setCode(request.getCode());
-				coupon.setExpiry(date);
+				coupon.setExpiry(request.getExpiry());
 				coupon.setValue(request.getValue());
+				coupon.setEnabled(request.getEnabled());
+
 				couponRepository.save(coupon);
-				return new ApiResponse(674, "coupon updated");
+				return new ApiResponse(674, "SUCCESS");
 			}
 		} else {
 			Date date = request.getExpiry();
-			Coupon coupon = new Coupon(request.getCode(), request.getValue(), date);
+			Coupon coupon = new Coupon(request.getCode(), request.getValue(), false, date);
 			try {
 				couponRepository.save(coupon);
 			} catch (Exception e) {
 				// TODO: handle exception
 				return new ApiResponse(674, e.getMessage());
 			}
-			return new ApiResponse(674, "coupon added");
+			return new ApiResponse(674, "SUCCESS");
 		}
+
 	}
 
 	public ApiResponse getAllBookings(String hotelId) {
@@ -681,6 +701,115 @@ public class HotelService {
 		Iterable<Booking> hotels = bookingRepository.findAll();
 
 		return new ApiResponse(674, "SUCCESS", hotels);
+	}
+
+	public ApiResponse findBookingById(String id) {
+		Optional<Booking> bookings = bookingRepository.findById(Long.valueOf(id));
+		if (!bookings.isPresent()) {
+			return new ApiResponse(674, "Booking Not Found");
+		}
+		Booking booking = bookings.get();
+		return new ApiResponse(674, "SUCCESS", booking);
+	}
+
+	public ApiResponse initiateRefund(RefundRequest request) {
+		Optional<Booking> bookings = bookingRepository.findById(Long.valueOf(request.getBookingId()));
+		if (!bookings.isPresent()) {
+			return new ApiResponse(674, "Booking Not Found");
+		}
+		BookingTransaction bt = bookings.get().getTransaction();
+		if (bt == null) {
+			return new ApiResponse(674, "Payment not initiated yet");
+		}
+		String paymentId = bt.getPaymentId();
+
+		/*
+		 * Create a new refund
+		 */
+		Refund refund = new Refund();
+		refund.setPaymentId(paymentId);
+		refund.setStatus("refunded");
+		refund.setType("RFD");
+		refund.setBody("Order Id:" + bt.getOrder_id());
+		refund.setRefundAmount(request.getRefundAmount());
+
+		try {
+			Refund createdRefund = paymentService.getPaymentApi().createRefund(refund);
+			Refunds ref = new Refunds(createdRefund.getId(), createdRefund.getPaymentId(), createdRefund.getStatus(), createdRefund.getTotalAmount(), createdRefund.getRefundAmount(), createdRefund.getCreatedAt(), bookings.get().getId());
+			refundsRepository.save(ref);
+			return new ApiResponse(432, "SUCCESS", createdRefund);
+
+		} catch (HTTPException e) {
+			System.out.println(e.getStatusCode());
+			System.out.println(e.getMessage());
+			System.out.println(e.getJsonPayload());
+			return new ApiResponse(432, "FAILED", e.getJsonPayload());
+
+		} catch (ConnectionException e) {
+			System.out.println(e.getMessage());
+		}
+		return new ApiResponse(509, "FAILED");
+
+	}
+
+	
+	// Booking can be cancelled upto 24 hrs
+	public ApiResponse cancelBooking(BookingDTO request) {
+
+		Optional<Booking> bookings = bookingRepository.findById(request.getId());
+		if (!bookings.isPresent()) {
+			return new ApiResponse(674, "Booking Not Found");
+		}
+		Booking booking = bookings.get();
+		if(booking.getBookingStatus().equals("CANCELLED")) {
+			return new ApiResponse(674, "BOOKING ALREADY CANCELLED");
+		}
+		Date checkinDate = booking.getCheckinDate();
+		long checkinDateMillis = checkinDate.getTime();
+		long offsetCancellationTime = 24 * 60 * 60 * 1000; // 24 hrs
+		long throttleTime = checkinDateMillis - offsetCancellationTime;
+		long currentTime = System.currentTimeMillis();
+		if (currentTime > throttleTime) {
+			return new ApiResponse(509,
+					"Booking Can be cancelled Only Uptu 24 Hrs Of chekin Date,Please Contact Customer care");
+		}
+		BookingTransaction btr  = booking.getTransaction();
+		if(btr == null) {
+
+			booking.setBookingStatus("CANCELLED");
+			bookingRepository.save(booking);
+			return new ApiResponse(674, "BOOKING CANCELLED: NO REFUND NEEDED");
+		
+		}
+		PaymentOrder r= paymentService.getPaymentByOrderId(booking.getTransaction().getOrder_id());
+		List<Payment> ps= r.getPayments();
+		Payment payment =null;
+		for(Payment p:ps) {
+			if(p.getStatus() !=null) {
+				payment = p;
+			}
+		}
+		if (null != payment && payment.getStatus().equals("successful")) {
+			// perform refund
+			RefundRequest req = new RefundRequest(booking.getId(),
+			Double.valueOf(booking.getTransaction().getPaidAmount()));
+			ApiResponse resp = initiateRefund(req);
+			if (resp.getMessage().equals("SUCCESS")) {
+				booking.setBookingStatus("CANCELLED");
+				booking.setPaymentStatus("REFUNDED");
+				booking.getTransaction().setPaymentStatus("REFUNDED");
+				bookingRepository.save(booking);
+				return new ApiResponse(674, "BOOKING CANCELLED AND REFUND INITIATED",resp);
+			} else {
+				return new ApiResponse(674, "ERROR OCCURED WHILE BOOKING CANCELLATION");
+			}
+
+		} else {
+			booking.setBookingStatus("CANCELLED");
+			bookingRepository.save(booking);
+			return new ApiResponse(674, "BOOKING CANCELLED: NO REFUND NEEDED");
+		}
+
 	}
 
 }

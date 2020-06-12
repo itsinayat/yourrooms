@@ -245,6 +245,8 @@ public class HotelService {
 			dao.setInitialPrice(dto.getInitialPrice());
 			dao.setDiscountPrice(dto.getDiscountPrice());
 			dao.setUpdate_user_id(userService.getCurrentUser().getId());
+			dao.setReserved(dto.getReserved());
+			dao.setDisabled(dto.getDisabled());
 			roomsRepository.save(dao);
 			return new ApiResponse(432, "ROOM UPDATED");
 		}
@@ -267,7 +269,7 @@ public class HotelService {
 		if (!rooms.isPresent()) {
 			return new ApiResponse(413, "Room not found");
 		}
-		return new ApiResponse(322, "SUCCESS", RoomsTranslator.translateToDTO(rooms.get()));
+		return new ApiResponse(322, "SUCCESS", rooms.get());
 	}
 
 	public ApiResponse BookRoom(BookingDTO request) throws IOException, ParseException {
@@ -777,8 +779,10 @@ public class HotelService {
 		if(btr == null) {
 
 			booking.setBookingStatus("CANCELLED");
+			booking.setPaymentStatus("CANCELLED");
 			bookingRepository.save(booking);
-			return new ApiResponse(674, "BOOKING CANCELLED: NO REFUND NEEDED");
+			//dont change status code
+			return new ApiResponse(200, "BOOKING CANCELLED: NO REFUND NEEDED");
 		
 		}
 		PaymentOrder r= paymentService.getPaymentByOrderId(booking.getTransaction().getOrder_id());
@@ -799,15 +803,16 @@ public class HotelService {
 				booking.setPaymentStatus("REFUNDED");
 				booking.getTransaction().setPaymentStatus("REFUNDED");
 				bookingRepository.save(booking);
-				return new ApiResponse(674, "BOOKING CANCELLED AND REFUND INITIATED",resp);
+				return new ApiResponse(200, "BOOKING CANCELLED AND REFUND INITIATED",resp);
 			} else {
 				return new ApiResponse(674, "ERROR OCCURED WHILE BOOKING CANCELLATION");
 			}
 
 		} else {
 			booking.setBookingStatus("CANCELLED");
+			booking.setPaymentStatus("CANCELLED");
 			bookingRepository.save(booking);
-			return new ApiResponse(674, "BOOKING CANCELLED: NO REFUND NEEDED");
+			return new ApiResponse(200, "BOOKING CANCELLED: NO REFUND NEEDED");
 		}
 
 	}

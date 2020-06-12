@@ -198,5 +198,12 @@ public class AdminController {
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/getAllRefunds", method = RequestMethod.GET)
+	public ResponseEntity<ApiResponse> getAllRefunds() {
+		ApiResponse response = adminService.getAllRefunds();
+		return new ResponseEntity<>(response, HttpStatus.OK);
+
+	}
+	
 
 }

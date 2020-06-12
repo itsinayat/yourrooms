@@ -10,12 +10,14 @@ import com.inayat.yourrooms.entity.Booking;
 import com.inayat.yourrooms.entity.BookingTransaction;
 import com.inayat.yourrooms.entity.Coupon;
 import com.inayat.yourrooms.entity.Hotel;
+import com.inayat.yourrooms.entity.Refunds;
 import com.inayat.yourrooms.entity.User;
 import com.inayat.yourrooms.model.ApiResponse;
 import com.inayat.yourrooms.repositories.BookingRepository;
 import com.inayat.yourrooms.repositories.BookingTransactionRepository;
 import com.inayat.yourrooms.repositories.CouponRepository;
 import com.inayat.yourrooms.repositories.HotelRepository;
+import com.inayat.yourrooms.repositories.RefundsRepository;
 import com.inayat.yourrooms.repositories.UserRepository;
 
 @Service
@@ -41,6 +43,11 @@ BookingRepository bookingRepository;
 
 @Autowired
 CouponRepository couponRepository;
+
+@Autowired
+RefundsRepository refundsRepository;
+
+
 
 
 	public ApiResponse getMyHotels() {
@@ -106,6 +113,12 @@ CouponRepository couponRepository;
 			sum=sum+x;
 		}
 		return new ApiResponse(674, "SUCCESS", sum);
+	}
+
+	public ApiResponse getAllRefunds() {
+		Iterable<Refunds> rfnds = refundsRepository.findAll();
+		return new ApiResponse(321, "SUCCESS",rfnds);
+	
 	}
 	
 	

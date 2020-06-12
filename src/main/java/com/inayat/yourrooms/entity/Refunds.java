@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "t_refund")
 public class Refunds {
-
+public Refunds() {}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

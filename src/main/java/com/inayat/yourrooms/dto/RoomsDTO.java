@@ -42,10 +42,20 @@ public class RoomsDTO {
 	private Long update_user_id;
 	
 	private String images;
+
+	private Boolean disabled;
 	
 
 	
 	
+	public Boolean getDisabled() {
+		return disabled;
+	}
+
+	public void setDisabled(Boolean disabled) {
+		this.disabled = disabled;
+	}
+
 	public Long getId() {
 		return id;
 	}

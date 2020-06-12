@@ -19,7 +19,6 @@ public class RoomsTranslator {
 		dao.setRoomType(dto.getRoomType());
 		dao.setInitialPrice(dto.getInitialPrice());
 		dao.setDiscountPrice(dto.getDiscountPrice());
-		
 		return dao;
 	}
 

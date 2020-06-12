@@ -62,11 +62,22 @@ public class Room implements Serializable {
 	private String roomType;
 
 	@Column(name = "reserved")
-	private Boolean reserved;
+	private Boolean reserved=false;
+	
+	@Column(name = "disabled")
+	private Boolean disabled=false;
 
 	@CreationTimestamp
 	@Column(name = "create_dt")
 	private Date create_dt;
+
+	public Boolean getDisabled() {
+		return disabled;
+	}
+
+	public void setDisabled(Boolean disabled) {
+		this.disabled = disabled;
+	}
 
 	@UpdateTimestamp
 	@Column(name = "update_dt")

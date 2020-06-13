@@ -23,7 +23,7 @@ public class UsersDTO {
 	private String gender;
 
 	private Long referred_by;
-	
+
 	private String referral_code;
 
 	private Date last_login_time;
@@ -47,10 +47,21 @@ public class UsersDTO {
 	private String username;
 
 	private String password;
-	
+
 	private String otp;
 
 	private String role;
+
+	private boolean enabled;
+	
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 
 	public Long getId() {
 		return id;
@@ -228,6 +239,4 @@ public class UsersDTO {
 		this.referral_code = referral_code;
 	}
 
-	
-	
 }

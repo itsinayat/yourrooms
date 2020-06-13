@@ -47,8 +47,8 @@ public class HotelController {
 
 	@RequestMapping(value = "/getAll-hotels", method = RequestMethod.GET)
 	public ResponseEntity<ApiResponse> getAllHotel(@RequestParam(required = false) String city,
-			@RequestParam(required = false) String pincode) throws JsonProcessingException {
-		ApiResponse resp = hotelservice.getAllHotel(city, pincode);
+			@RequestParam(required = false) String pincode,@RequestParam(required = false) String sortBy,@RequestParam(required = false) String ascDsc) throws JsonProcessingException {
+		ApiResponse resp = hotelservice.getAllHotel(city, pincode,sortBy,ascDsc);
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 

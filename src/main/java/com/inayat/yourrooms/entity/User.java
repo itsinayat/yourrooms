@@ -27,10 +27,33 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "t_user")
 public class User implements UserDetails, Serializable {
+	
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public User(Long id,String firstName, String lastName, String email, String mobile, Boolean is_verified, Boolean enabled,
+			Boolean del_ind, Long create_user_id, Long update_user_id, String username, String password, Role role) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.mobile = mobile;
+		this.is_verified = is_verified;
+		this.enabled = enabled;
+		this.del_ind = del_ind;
+		this.create_user_id = create_user_id;
+		this.update_user_id = update_user_id;
+		this.username = username;
+		this.password = password;
+		this.role = role;
+		this.id = id;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -99,6 +122,7 @@ public class User implements UserDetails, Serializable {
 	@Column(name = "username", unique = true)
 	private String username;
 
+	@JsonIgnore
 	@Column(name = "password")
 	private String password;
 

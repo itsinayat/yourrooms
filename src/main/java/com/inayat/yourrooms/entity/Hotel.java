@@ -99,6 +99,19 @@ public class Hotel implements Serializable {
 	@JsonManagedReference
     private Set<HotelImage> hotelImages;
 	
+	
+	@OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
+	@JsonManagedReference
+    private Set<ReviewAndRating> reviewAndRating;
+	
+
+	public Set<ReviewAndRating> getReviewAndRating() {
+		return reviewAndRating;
+	}
+
+	public void setReviewAndRating(Set<ReviewAndRating> reviewAndRating) {
+		this.reviewAndRating = reviewAndRating;
+	}
 
 	public Long getId() {
 		return id;

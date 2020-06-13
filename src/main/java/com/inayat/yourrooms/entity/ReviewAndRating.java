@@ -7,11 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "t_review_and_ratings")
@@ -20,9 +23,6 @@ public class ReviewAndRating{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@OneToOne
-	private Hotel hotel;
 	
 	@Column(name = "comment")
 	private String comment;
@@ -46,6 +46,20 @@ public class ReviewAndRating{
 
 	@Column(name = "update_user_id")
 	private Long update_user_id;
+	
+	@ManyToOne
+	@JsonBackReference
+    private Hotel hotel;
+
+	
+
+	public Hotel getHotel() {
+		return hotel;
+	}
+
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
+	}
 
 	public Long getId() {
 		return id;
@@ -55,13 +69,6 @@ public class ReviewAndRating{
 		this.id = id;
 	}
 
-	public Hotel getHotel() {
-		return hotel;
-	}
-
-	public void setHotel(Hotel hotel) {
-		this.hotel = hotel;
-	}
 
 	public String getComment() {
 		return comment;

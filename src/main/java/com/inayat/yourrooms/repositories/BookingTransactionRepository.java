@@ -17,5 +17,4 @@ public interface BookingTransactionRepository extends CrudRepository<BookingTran
 	 @Query("SELECT bt from BookingTransaction bt "
 				+ "WHERE bt.booking = :bookings and bt.paymentHash= :ph")
 	List<BookingTransaction> findByBookingIdAndPaymentHash(Booking bookings,String ph);
-
 }

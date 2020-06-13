@@ -13,6 +13,7 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -157,59 +158,43 @@ public class HotelService {
 
 	}
 
-	public ApiResponse getAllHotel(String city, String pincode) throws JsonProcessingException {
+	public ApiResponse getAllHotel(String city, String pincode,String sortBy,String ascDesc) throws JsonProcessingException {
+		List<Hotel> list = null;
 		if (city != null && pincode == null) {
-			List<Hotel> list = hotelRepository.findByCity(city);
+			if(null !=ascDesc && ascDesc.equals("asc")) {
+			list = hotelRepository.findByCityASC(city,sortBy);
+			}else if(null !=ascDesc && ascDesc.equals("desc")) {
+			list = hotelRepository.findByCityDESC(city,sortBy);
+			}else {
+				list = hotelRepository.findByCityDESC(city,sortBy);
+			}
 			return new ApiResponse(343, "SUCCESS", list);
 		} else if (pincode != null && city == null) {
-			List<Hotel> list = hotelRepository.findByPinCode(pincode);
-			return new ApiResponse(343, "SUCCESS", list);
+			if(null !=ascDesc && ascDesc.equals("asc")) {
+			list = hotelRepository.findByPinCodeASC(pincode,sortBy);
+			}else if(null !=ascDesc && ascDesc.equals("desc")) {
+				list = hotelRepository.findByPinCodeDESC(pincode,sortBy);
+			}else {
+				list = hotelRepository.findByCityDESC(city,sortBy);
+			}
 		} else if (pincode != null && city != null) {
-			List<Hotel> list = hotelRepository.findByPinCodeAndCity(pincode, city);
+			if(null !=ascDesc && ascDesc.equals("asc")) {
+			list = hotelRepository.findByPinCodeAndCityASC(pincode, city,sortBy);
+			}else if(null !=ascDesc && ascDesc.equals("desc")) {
+				list = hotelRepository.findByPinCodeAndCityDESC(pincode, city,sortBy);
+			}else {
+				list = hotelRepository.findByCityDESC(city,sortBy);
+			}
 			return new ApiResponse(343, "SUCCESS", list);
 		} else {
-			Iterable<Hotel> hotellist = hotelRepository.findAll();
-			List<HotelDTO> list = new ArrayList<>();
-			for (Hotel h : hotellist) {
-				HotelDTO dto = new HotelDTO();
-				dto.setAc(h.getAc());
-				dto.setAddress(h.getAddress());
-				dto.setCity(h.getCity());
-				dto.setCoupleFriendly(h.getCoupleFriendly());
-				dto.setCreate_dt(h.getCreate_dt());
-				dto.setCreate_user_id(h.getCreate_user_id());
-				dto.setDel_ind(h.getDel_ind());
-
-				dto.setFreeBreakFast(h.getFreeBreakFast());
-				dto.setFreeWifi(h.getFreeWifi());
-				dto.setHotelName(h.getHotelName());
-				dto.setId(h.getId());
-
-				dto.setLattitude(h.getLattitude());
-				dto.setLongitude(h.getLongitude());
-				dto.setPayAtHotel(h.getPayAtHotel());
-				dto.setPincode(h.getPincode());
-				dto.setRating(h.getRating());
-				dto.setUpdate_dt(h.getUpdate_dt());
-				dto.setUpdate_user_id(h.getUpdate_user_id());
-
-				List<ReviewAndRating> g = reviewAndRatingsRepository.findByHotel(h);
-				List<ReviewAndRatingsDTO> list1 = new ArrayList<>();
-
-				for (ReviewAndRating r : g) {
-					ReviewAndRatingsDTO rr = new ReviewAndRatingsDTO();
-					rr.setComment(r.getComment());
-					rr.setDel_ind(r.getDel_ind());
-					rr.setId(r.getId());
-					rr.setRating(r.getRating());
-					list1.add(rr);
-				}
-				dto.setReviewAndRatings(list1);
-				list.add(dto);
-			}
+			ascDesc="desc";
+			sortBy="id";
+			Iterable<Hotel> hotellist = hotelRepository.findAll(Sort.by(ascDesc.equals("asc")?Sort.Direction.ASC:Sort.Direction.DESC, sortBy));
+			
 			return new ApiResponse(343, "SUCCESS", hotellist);
 
 		}
+		return new ApiResponse(343, "SUCCESS", list);
 	}
 
 	public ApiResponse addRoomsTOHotel(RoomsDTO dto) {

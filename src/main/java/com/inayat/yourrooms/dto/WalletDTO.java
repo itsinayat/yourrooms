@@ -2,8 +2,11 @@ package com.inayat.yourrooms.dto;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.inayat.yourrooms.entity.User;
 
+@JsonInclude(Include.NON_DEFAULT)
 public class WalletDTO {
 	
 	private Long id;

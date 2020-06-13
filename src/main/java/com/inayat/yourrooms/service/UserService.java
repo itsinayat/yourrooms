@@ -237,6 +237,7 @@ public class UserService {
 				user.setCreate_user_id(0L);
 				user.setIs_logged_in(false);
 				user.setIs_verified(true);
+				user.setLast_login_time(new Date());
 				String referral_code = createReferalCode(6);
 				user.setReferral_code(referral_code);
 				user.setUpdate_user_id(0L);
@@ -250,8 +251,20 @@ public class UserService {
 				wallet.setUpdate_user_id(0L);
 				Wallet newwallet = walletRepository.save(wallet);
 				user.setWallet(newwallet);
+			
+				// Generate token
+				String tokenKey = this.tokenHandler.generateToken(user);
+				
+				// Build response
+				UserToken userToken =new UserToken();
+				userToken.setUser(user);
+				userToken.setTokenKey(tokenKey);
+				userToken.setStatus(Constants.UsetTokenStatus.ACTIVE);
 				userRepository.save(user);
-				return new ApiResponse(51, "User Registered Successfully.");
+				// Save token
+				userDao.saveUserToken(userToken);
+				UserTokenDTO userTokenDTO = UserTokenTranslator.translateToDTO(userToken);
+				return new ApiResponse(51, "User Registered Successfully",userTokenDTO);
 			} else {
 				return new ApiResponse(42, "User Already Registered, Please Login.");
 			}

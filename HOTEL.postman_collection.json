@@ -15,12 +15,14 @@
 				"6d0bd587-cb8b-1941-43a9-5031577e787b",
 				"ea26dc74-5dd0-60db-4f74-b8f6e855b3b4",
 				"aa5dabd8-5235-85a9-7272-922bd8b8e837",
+				"c61e7944-2afc-527e-69ee-7c74f8f7be9e",
 				"4cd6288f-fed7-ad5c-0224-b8a724362f5c",
 				"f4e36bd8-288b-6930-c004-ae042400875d",
 				"ef59f406-3cdd-42c2-28f0-21983d4e187a",
 				"ac6d2d4b-b1ae-50c2-9409-b0cfef3623c8",
 				"5f76d0e9-83f5-3671-8338-c1401e787b5d",
-				"29ccb87e-bbbb-fd1c-6893-5dee6086b650"
+				"29ccb87e-bbbb-fd1c-6893-5dee6086b650",
+				"99e02fa2-9330-8410-a0e3-10c56dfaae42"
 			],
 			"owner": 0,
 			"folders_order": [],
@@ -32,11 +34,21 @@
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"order": [
 				"0da1d173-39bf-01aa-952c-c73cec41090f",
+				"35d73c5b-401f-10d6-e51a-152601d945a9",
 				"c044fa5a-0278-904e-b2b3-bb57284563a3",
+				"55776a9a-2b5d-c0b6-8148-255270cd681c",
+				"3eb9040e-41d3-2b45-b159-a1e75711db1c",
+				"44e35e4f-81ed-0c15-b491-0597f79949d6",
+				"9f133572-2785-ae5c-7bf1-f769e6f269a2",
 				"27c139ab-9cd8-08c8-ae88-edf01fae2f89",
 				"d4fe54a7-e4ac-5220-9860-785623349fa2",
 				"96349127-6d9a-8604-c92f-98aa6a748255",
 				"efc4edf5-ceed-98e0-efc4-bfa65b26222a",
+				"247eef50-d698-ef6f-0034-ae112910009b",
+				"46cdd845-4c83-5a89-1140-44c07350e4be",
+				"e4c84d75-a27e-240c-5e4d-c33a4c2f4d95",
+				"61e47ff3-b448-93db-408c-d2428f16d437",
+				"18b44d6b-4ccc-93ac-ff55-c3c6a4f29080",
 				"849530a2-fbde-8d11-2f01-bb54cce9b887",
 				"ec1209a4-73df-bf3a-bad2-078f9209e837",
 				"db2a6646-da24-02d1-adc2-f2e3efd7c81a"
@@ -55,7 +67,12 @@
 				"4e0c18b3-d413-4d34-d93a-bc9a63691239",
 				"f1983a10-0742-7d47-26a7-80d5d5a03427",
 				"40b90843-e4ae-6f36-128f-afa33ce47a07",
-				"a7b4a19b-5e05-bc57-d94c-90455eeba8b4"
+				"22b9ebee-3968-5410-0571-59b10d595aa3",
+				"9456dd9e-4dc2-dc36-e648-419e103fd9ce",
+				"7c113299-9607-87e8-e8f3-0852302d4019",
+				"a7b4a19b-5e05-bc57-d94c-90455eeba8b4",
+				"0d8a5bc5-07a5-cc3f-8157-a58fff32f5a3",
+				"7e284d6e-a38e-72a8-9d1e-0cc246577ace"
 			],
 			"owner": 0,
 			"folders_order": [],
@@ -75,8 +92,10 @@
 				"361f8778-400e-fe8d-1886-9a1e851ed14e",
 				"1b94c82c-144b-e6b6-9520-87f9ab2bc5a1",
 				"159913e8-758d-7286-1ce7-08771193ee2f",
+				"a67d8c03-7c69-9daa-cbfc-efdbb34085ff",
 				"98aff936-41ce-1401-9241-677d839b0cdb",
 				"94d0bb90-07a3-fe24-5681-3fbee86d1676",
+				"f82125e4-2a77-1d27-ccaf-c9892e711de6",
 				"3849e7a7-6b03-7f68-cb9d-ff127e362924",
 				"180aaa94-15a8-b002-959f-d695ea69bcae",
 				"59f9e7e0-5ea6-73bc-b216-dad551222c0e",
@@ -133,6 +152,42 @@
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
 			"rawModeData": "{\n\t\"username\":\"admin\",\n\t\"password\":\"admin\"\n\t}"
+		},
+		{
+			"id": "0d8a5bc5-07a5-cc3f-8157-a58fff32f5a3",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU4ODkzOTEwOTQwNiwiZXhwIjoxNTg5NTQzOTA5fQ.MfSS8kCWGlxtu2D4slE54KdHJYgJSTZX4ygP3adIahyAsCLBbxvDRUjAt7St9AkMrXCmgaU9_Zi3CZsiEHomsA\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU4ODkzOTEwOTQwNiwiZXhwIjoxNTg5NTQzOTA5fQ.MfSS8kCWGlxtu2D4slE54KdHJYgJSTZX4ygP3adIahyAsCLBbxvDRUjAt7St9AkMrXCmgaU9_Zi3CZsiEHomsA",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/admin/viewTransactionById/1",
+			"folder": "4981089d-389e-1b46-16a2-dcd8e5d20e54",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1591722920688,
+			"name": "{{base-url}}/admin/viewTransactionById/1",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\t\"hotelName\":\"Paradise\",\n\t\"address\":\"noida\",\n\t\"lattitude\":\"1233.333\",\n\t\"longitude\":\"321312.332\",\n\t\"payAtHotel\":true,\n\t\"freeBreakFast\":true,\n\t\"coupleFriendly\":true,\n\t\"freeWifi\":true,\n\t\"initialPrice\":500,\n\t\"discountPrice\":100\n\t\n}"
 		},
 		{
 			"id": "0da1d173-39bf-01aa-952c-c73cec41090f",
@@ -229,12 +284,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1589109436360,
+			"time": 1591883996120,
 			"name": "update user profile",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
-			"rawModeData": "{\n\t\"gender\":\"M\",\n\t\"dob\":\"03/04/2017\",\n\t\"email\":\"inayat.rdec@gmail.com\",\n\t\"firstName\" :\"inayat\",\n\t\"lastName\":\"das\",\n\t\"is_enabled\" : true,\n\t\"is_verified\" :true\n}"
+			"rawModeData": "{\n\t\"gender\":\"M\",\n\t\"dob\":\"03/04/2017\",\n\t\"email\":\"inayat.rdec@gmail.com\",\n\t\"firstName\" :\"inayat\",\n\t\"lastName\":\"das\",\n\t\"enabled\" : true,\n\t\"is_verified\" :true\n}"
 		},
 		{
 			"id": "180aaa94-15a8-b002-959f-d695ea69bcae",
@@ -274,6 +329,65 @@
 			"rawModeData": "{\n\t\"mobile\":\"111111\",\n\t\"otp\":\"057469\"\n}"
 		},
 		{
+			"id": "18b44d6b-4ccc-93ac-ff55-c3c6a4f29080",
+			"headers": "//Content-Type: multipart/form-data\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTc5MjU3NTQxMSwiZXhwIjoxNTkyMzk3Mzc1fQ.zGjPW1LWtq-EOLHrgo7y8bHXwBI_f1rvz_SZ8T7CYt_wAJjMm83M1cO7qjz8se0VwrncaYrb-pHoaGuheyNiEw\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "multipart/form-data",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTc5MjU3NTQxMSwiZXhwIjoxNTkyMzk3Mzc1fQ.zGjPW1LWtq-EOLHrgo7y8bHXwBI_f1rvz_SZ8T7CYt_wAJjMm83M1cO7qjz8se0VwrncaYrb-pHoaGuheyNiEw",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/admin/delete/hotel/2",
+			"folder": "c6f4db30-1482-9e81-296e-c19720d0d9ee",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [
+				{
+					"key": "files",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": false
+				},
+				{
+					"key": "files",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": false
+				},
+				{
+					"key": "files",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": false
+				}
+			],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1591798983650,
+			"name": "{{base-url}}/admin/getMyHotels",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"isFromCollection": true,
+			"collectionRequestId": "efc4edf5-ceed-98e0-efc4-bfa65b26222a"
+		},
+		{
 			"id": "1b94c82c-144b-e6b6-9520-87f9ab2bc5a1",
 			"headers": "//Content-Type: application/x-www-form-urlencoded\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NjE1MTIxNzEwOSwiZXhwIjoxNTg2NzU2MDE3fQ.pKoaioLhPCSvhpFD-7A1-YdxSZzO0goNGyw_QEbtDp2wjH61vxjU5f1mFJHSA0vbOZx2JxOQ74dd_HoFMHCbWA\n",
 			"headerData": [
@@ -309,6 +423,99 @@
 			"responses": []
 		},
 		{
+			"id": "22b9ebee-3968-5410-0571-59b10d595aa3",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTc5MjU3NTQxMSwiZXhwIjoxNTkyMzk3Mzc1fQ.zGjPW1LWtq-EOLHrgo7y8bHXwBI_f1rvz_SZ8T7CYt_wAJjMm83M1cO7qjz8se0VwrncaYrb-pHoaGuheyNiEw\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTc5MjU3NTQxMSwiZXhwIjoxNTkyMzk3Mzc1fQ.zGjPW1LWtq-EOLHrgo7y8bHXwBI_f1rvz_SZ8T7CYt_wAJjMm83M1cO7qjz8se0VwrncaYrb-pHoaGuheyNiEw",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/admin/deleteCoupon/1",
+			"folder": "4981089d-389e-1b46-16a2-dcd8e5d20e54",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1591874507755,
+			"name": "{{base-url}}/admin/deleteCoupon/1",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\t\"hotelName\":\"Paradise\",\n\t\"address\":\"noida\",\n\t\"lattitude\":\"1233.333\",\n\t\"longitude\":\"321312.332\",\n\t\"payAtHotel\":true,\n\t\"freeBreakFast\":true,\n\t\"coupleFriendly\":true,\n\t\"freeWifi\":true,\n\t\"initialPrice\":500,\n\t\"discountPrice\":100\n\t\n}"
+		},
+		{
+			"id": "247eef50-d698-ef6f-0034-ae112910009b",
+			"headers": "//Content-Type: multipart/form-data\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTc5MjU3NTQxMSwiZXhwIjoxNTkyMzk3Mzc1fQ.zGjPW1LWtq-EOLHrgo7y8bHXwBI_f1rvz_SZ8T7CYt_wAJjMm83M1cO7qjz8se0VwrncaYrb-pHoaGuheyNiEw\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "multipart/form-data",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTc5MjU3NTQxMSwiZXhwIjoxNTkyMzk3Mzc1fQ.zGjPW1LWtq-EOLHrgo7y8bHXwBI_f1rvz_SZ8T7CYt_wAJjMm83M1cO7qjz8se0VwrncaYrb-pHoaGuheyNiEw",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/admin/getAllUsers",
+			"folder": "c6f4db30-1482-9e81-296e-c19720d0d9ee",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [
+				{
+					"key": "files",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": false
+				},
+				{
+					"key": "files",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": false
+				},
+				{
+					"key": "files",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": false
+				}
+			],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1591881595392,
+			"name": "{{base-url}}/admin/getAllUsers",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": []
+		},
+		{
 			"id": "27c139ab-9cd8-08c8-ae88-edf01fae2f89",
 			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MDgyMzE2NTM4MSwiZXhwIjoxNTkxNDI3OTY1fQ.ys1HrEKltmwHDAGgHET3MIzE6CnXpz2frqgqeMuw46CbMXgwmQjXBwMC2oQYWUUqMfkfxZSlqpRFou16GF6lOg\n",
 			"headerData": [
@@ -337,12 +544,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1590823526995,
-			"name": "addRoomToHotel",
+			"time": 1591982905666,
+			"name": "/admin/add-or-update-rooms-to-hotel",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
-			"rawModeData": "{\t\n\t\"hotelId\":2,\n\t\"name\":\"delux1 room\",\n\t\"freeCancellation\":false,\n\t\"balconyAvl\":true,\n\t\"doubleBed\":true,\n\t\"occupacy\":5,\n\t\"roomSize\":\"5x5\",\n\t\"roomType\":\"SUPER-DELUXE-1\",\n\t\"initialPrice\":5000,\n\t\"discountPrice\":200\n}"
+			"rawModeData": "{\t\n\t\"hotelId\":2,\n\t\"name\":\"delux1 room\",\n\t\"freeCancellation\":false,\n\t\"balconyAvl\":true,\n\t\"doubleBed\":true,\n\t\"occupacy\":5,\n\t\"roomSize\":\"5x5\",\n\t\"roomType\":\"SUPER-DELUXE-1\",\n\t\"initialPrice\":5000,\n\t\"discountPrice\":200,\n\t\"reserved\" :true,\n\t\"id\":1\n}"
 		},
 		{
 			"id": "29ccb87e-bbbb-fd1c-6893-5dee6086b650",
@@ -375,6 +582,42 @@
 			"helperAttributes": {},
 			"time": 1587960004694,
 			"name": "getPayment details",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n        \"id\": 1,\n        \"booking_price\": 5000,\n        \"discount_price\": 200,\n        \"coupon_discount\": 50,\n        \"discount_coupon\": \"FREE50\",\n        \"gst\": 480,\n        \"rooms\": [\n            1\n        ],\n        \"noOfGuests\": 2,\n        \"transaction\": null,\n        \"bookingStatus\": \"INITIATED\",\n        \"paymentStatus\": \"PENDING\",\n        \"checkinDate\": \"14/09/1994\",\n        \"checkout_date\": \"15/09/1994\",\n        \"bookingId\": \"d2c6a68c-a06d-4c1d-8dd1-5d4cc4d964b9\",\n        \"userId\": 1\n    }"
+		},
+		{
+			"id": "35d73c5b-401f-10d6-e51a-152601d945a9",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI4NjAzODQ5NjQ2IiwiY3JlYXRlZCI6MTU5MjA0Njk5MTEyMywiZXhwIjoxNTkyNjUxNzkxfQ.JMBQ0hJ0GDA5KvyvxQun_qsIanxURDTPChwOjkhqEXyrLFhObO2w_zvRLioD5hVILB8xFj6csKT7jEmpB_oENQ\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI4NjAzODQ5NjQ2IiwiY3JlYXRlZCI6MTU5MjA0Njk5MTEyMywiZXhwIjoxNTkyNjUxNzkxfQ.JMBQ0hJ0GDA5KvyvxQun_qsIanxURDTPChwOjkhqEXyrLFhObO2w_zvRLioD5hVILB8xFj6csKT7jEmpB_oENQ",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/admin/getAllConfiguration",
+			"folder": "c6f4db30-1482-9e81-296e-c19720d0d9ee",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1592047713208,
+			"name": "getAllConfiguration",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
@@ -455,7 +698,7 @@
 		},
 		{
 			"id": "3c8ddcfb-30c8-b3ff-c57e-914b1b6189b5",
-			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw\n",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI4NjAzODQ5NjQ2IiwiY3JlYXRlZCI6MTU5MTk1NjkxMjg4MywiZXhwIjoxNTkyNTYxNzEyfQ.C2otM9WuGRhUuw1LJ10TTi3dI7zidQcSwe9qfzeI_obPuTAJy2DIwS_-h43ME9tCFxHdOURpi8QkrjOFGx2pCA\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -465,7 +708,7 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI4NjAzODQ5NjQ2IiwiY3JlYXRlZCI6MTU5MTk1NjkxMjg4MywiZXhwIjoxNTkyNTYxNzEyfQ.C2otM9WuGRhUuw1LJ10TTi3dI7zidQcSwe9qfzeI_obPuTAJy2DIwS_-h43ME9tCFxHdOURpi8QkrjOFGx2pCA",
 					"description": "",
 					"enabled": true
 				}
@@ -490,7 +733,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1587827032141,
+			"time": 1591985770859,
 			"name": "get all rooms of a hotel",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
@@ -498,8 +741,8 @@
 			"rawModeData": "{\n\t\"name\":\"delux room\",\n\t\"freeCancellation\":false,\n\t\"balconyAvl\":true,\n\t\"doubleBed\":true,\n\t\"occupacy\":5,\n\t\"roomSize\":\"5x5\",\n\t\"roomType\":\"DELUXE\",\n\t\"hotelId\":1\n}"
 		},
 		{
-			"id": "40b90843-e4ae-6f36-128f-afa33ce47a07",
-			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU4ODkzOTEwOTQwNiwiZXhwIjoxNTg5NTQzOTA5fQ.MfSS8kCWGlxtu2D4slE54KdHJYgJSTZX4ygP3adIahyAsCLBbxvDRUjAt7St9AkMrXCmgaU9_Zi3CZsiEHomsA\n",
+			"id": "3eb9040e-41d3-2b45-b159-a1e75711db1c",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI4NjAzODQ5NjQ2IiwiY3JlYXRlZCI6MTU5MjA0Njk5MTEyMywiZXhwIjoxNTkyNjUxNzkxfQ.JMBQ0hJ0GDA5KvyvxQun_qsIanxURDTPChwOjkhqEXyrLFhObO2w_zvRLioD5hVILB8xFj6csKT7jEmpB_oENQ\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -509,12 +752,48 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU4ODkzOTEwOTQwNiwiZXhwIjoxNTg5NTQzOTA5fQ.MfSS8kCWGlxtu2D4slE54KdHJYgJSTZX4ygP3adIahyAsCLBbxvDRUjAt7St9AkMrXCmgaU9_Zi3CZsiEHomsA",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI4NjAzODQ5NjQ2IiwiY3JlYXRlZCI6MTU5MjA0Njk5MTEyMywiZXhwIjoxNTkyNjUxNzkxfQ.JMBQ0hJ0GDA5KvyvxQun_qsIanxURDTPChwOjkhqEXyrLFhObO2w_zvRLioD5hVILB8xFj6csKT7jEmpB_oENQ",
 					"description": "",
 					"enabled": true
 				}
 			],
-			"url": "{{base-url}}/hotel/getAll-hotels",
+			"url": "{{base-url}}/admin/updateConfig",
+			"folder": "c6f4db30-1482-9e81-296e-c19720d0d9ee",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1592048187508,
+			"name": "update config",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\t\"key\": \"REFERRAL_BONUS\",\n\t\"value\": \"100\"\n}"
+		},
+		{
+			"id": "40b90843-e4ae-6f36-128f-afa33ce47a07",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTc5MjU3NTQxMSwiZXhwIjoxNTkyMzk3Mzc1fQ.zGjPW1LWtq-EOLHrgo7y8bHXwBI_f1rvz_SZ8T7CYt_wAJjMm83M1cO7qjz8se0VwrncaYrb-pHoaGuheyNiEw\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTc5MjU3NTQxMSwiZXhwIjoxNTkyMzk3Mzc1fQ.zGjPW1LWtq-EOLHrgo7y8bHXwBI_f1rvz_SZ8T7CYt_wAJjMm83M1cO7qjz8se0VwrncaYrb-pHoaGuheyNiEw",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/admin/findHotel/1",
 			"folder": "1e8e4444-4f5c-d80b-c3fc-95a7ea1c4c8a",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -526,7 +805,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1588939418858,
+			"time": 1591795108743,
 			"name": "get all hotels",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
@@ -570,6 +849,99 @@
 			"rawModeData": "{\n\t\"hotelName\":\"Paradise1\",\n\t\"address\":\"noida\",\n\t\"lattitude\":\"1233.333\",\n\t\"longitude\":\"321312.332\",\n\t\"payAtHotel\":true,\n\t\"freeBreakFast\":true,\n\t\"coupleFriendly\":true,\n\t\"freeWifi\":true,\n\t\"initialPrice\":500,\n\t\"discountPrice\":100,\n\t\"city\" :\"noida\",\n\t\"pincode\":\"111111\",\n\t\"ac\":false\n}"
 		},
 		{
+			"id": "44e35e4f-81ed-0c15-b491-0597f79949d6",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI4NjAzODQ5NjQ2IiwiY3JlYXRlZCI6MTU5MjA0Njk5MTEyMywiZXhwIjoxNTkyNjUxNzkxfQ.JMBQ0hJ0GDA5KvyvxQun_qsIanxURDTPChwOjkhqEXyrLFhObO2w_zvRLioD5hVILB8xFj6csKT7jEmpB_oENQ\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI4NjAzODQ5NjQ2IiwiY3JlYXRlZCI6MTU5MjA0Njk5MTEyMywiZXhwIjoxNTkyNjUxNzkxfQ.JMBQ0hJ0GDA5KvyvxQun_qsIanxURDTPChwOjkhqEXyrLFhObO2w_zvRLioD5hVILB8xFj6csKT7jEmpB_oENQ",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/admin/addNewConfig",
+			"folder": "c6f4db30-1482-9e81-296e-c19720d0d9ee",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1592049087238,
+			"name": "add config copy",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\t\"key\": \"REFERRAL_BONUS\",\n\t\"value\": \"100\"\n}"
+		},
+		{
+			"id": "46cdd845-4c83-5a89-1140-44c07350e4be",
+			"headers": "//Content-Type: multipart/form-data\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTc5MjU3NTQxMSwiZXhwIjoxNTkyMzk3Mzc1fQ.zGjPW1LWtq-EOLHrgo7y8bHXwBI_f1rvz_SZ8T7CYt_wAJjMm83M1cO7qjz8se0VwrncaYrb-pHoaGuheyNiEw\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "multipart/form-data",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTc5MjU3NTQxMSwiZXhwIjoxNTkyMzk3Mzc1fQ.zGjPW1LWtq-EOLHrgo7y8bHXwBI_f1rvz_SZ8T7CYt_wAJjMm83M1cO7qjz8se0VwrncaYrb-pHoaGuheyNiEw",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/admin/getCouponById/1",
+			"folder": "c6f4db30-1482-9e81-296e-c19720d0d9ee",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [
+				{
+					"key": "files",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": false
+				},
+				{
+					"key": "files",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": false
+				},
+				{
+					"key": "files",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": false
+				}
+			],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1591871275411,
+			"name": "{{base-url}}/admin/getCouponById/1",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": []
+		},
+		{
 			"id": "4cd6288f-fed7-ad5c-0224-b8a724362f5c",
 			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjMiLCJjcmVhdGVkIjoxNTg2MzM3MjE0NzQ5LCJleHAiOjE1ODY5NDIwMTR9.3VkqaIwZEVkJPRxYPRLdrThZvitenFgQdZR1_L9ysCyInZD-CGU5rR9V7-1CmBUK8UW-E2TXGo-xVfZQpi59ag\n",
 			"headerData": [
@@ -607,7 +979,7 @@
 		},
 		{
 			"id": "4e0c18b3-d413-4d34-d93a-bc9a63691239",
-			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODkzNDc1MjU3NCwiZXhwIjoxNTg5NTM5NTUyfQ.GEkMkKYbsyPhIZZ0TOI5KgfwN0Oc8e4eYEFP5KvvjgVRfdN3i7h6r8UFa1ZgnWLN89HH57BK51sCF0FJXdkBxA\n",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI4NjAzODQ5NjQ2IiwiY3JlYXRlZCI6MTU5MTk2MDE3MDE3NiwiZXhwIjoxNTkyNTY0OTcwfQ.7RjaEcODlrd6J1AABHRr4CRTecqd8z1m4IL5A4Jm212jYiZTLopjVA84qPOIk8DNd9DPOsqvSs3oRnUf20Butg\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -617,12 +989,12 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODkzNDc1MjU3NCwiZXhwIjoxNTg5NTM5NTUyfQ.GEkMkKYbsyPhIZZ0TOI5KgfwN0Oc8e4eYEFP5KvvjgVRfdN3i7h6r8UFa1ZgnWLN89HH57BK51sCF0FJXdkBxA",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI4NjAzODQ5NjQ2IiwiY3JlYXRlZCI6MTU5MTk2MDE3MDE3NiwiZXhwIjoxNTkyNTY0OTcwfQ.7RjaEcODlrd6J1AABHRr4CRTecqd8z1m4IL5A4Jm212jYiZTLopjVA84qPOIk8DNd9DPOsqvSs3oRnUf20Butg",
 					"description": "",
 					"enabled": true
 				}
 			],
-			"url": "{{base-url}}/hotel/remove-staff-from-hotel",
+			"url": "{{base-url}}/admin/remove-staff-from-hotel",
 			"folder": "4981089d-389e-1b46-16a2-dcd8e5d20e54",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -634,7 +1006,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1588937000172,
+			"time": 1591980846365,
 			"name": "remove staff from hotel",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
@@ -642,7 +1014,7 @@
 			"rawModeData": "{\n\"hotelId\":1,\n\"staff\":[1]\n}"
 		},
 		{
-			"id": "59f9e7e0-5ea6-73bc-b216-dad551222c0e",
+			"id": "55776a9a-2b5d-c0b6-8148-255270cd681c",
 			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw\n",
 			"headerData": [
 				{
@@ -654,6 +1026,42 @@
 				{
 					"key": "Authorization",
 					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/admin/deleteConfig/XX",
+			"folder": "c6f4db30-1482-9e81-296e-c19720d0d9ee",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1592050073471,
+			"name": "delete config",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": ""
+		},
+		{
+			"id": "59f9e7e0-5ea6-73bc-b216-dad551222c0e",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5OTM0MDMzMjcxIiwiY3JlYXRlZCI6MTU5MTg0OTg4NzYxMiwiZXhwIjoxNTkyNDU0Njg3fQ.dk2Ky0DbaTAYqUXqOun0C0BSVvxz6zHvqZjx64V2gBPVXxhPj4I5nvZvTfFJinyQB9S9k0Bkv6-KD3hK3T4I9g\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5OTM0MDMzMjcxIiwiY3JlYXRlZCI6MTU5MTg0OTg4NzYxMiwiZXhwIjoxNTkyNDU0Njg3fQ.dk2Ky0DbaTAYqUXqOun0C0BSVvxz6zHvqZjx64V2gBPVXxhPj4I5nvZvTfFJinyQB9S9k0Bkv6-KD3hK3T4I9g",
 					"description": "",
 					"enabled": true
 				}
@@ -671,8 +1079,8 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1587969757963,
-			"name": "ALL existing coupon code",
+			"time": 1591869027705,
+			"name": "get-all-coupons",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
@@ -716,6 +1124,65 @@
 			"responses": []
 		},
 		{
+			"id": "61e47ff3-b448-93db-408c-d2428f16d437",
+			"headers": "//Content-Type: multipart/form-data\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTc5MjU3NTQxMSwiZXhwIjoxNTkyMzk3Mzc1fQ.zGjPW1LWtq-EOLHrgo7y8bHXwBI_f1rvz_SZ8T7CYt_wAJjMm83M1cO7qjz8se0VwrncaYrb-pHoaGuheyNiEw\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "multipart/form-data",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTc5MjU3NTQxMSwiZXhwIjoxNTkyMzk3Mzc1fQ.zGjPW1LWtq-EOLHrgo7y8bHXwBI_f1rvz_SZ8T7CYt_wAJjMm83M1cO7qjz8se0VwrncaYrb-pHoaGuheyNiEw",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/admin/getCouponById/1",
+			"folder": "c6f4db30-1482-9e81-296e-c19720d0d9ee",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [
+				{
+					"key": "files",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": false
+				},
+				{
+					"key": "files",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": false
+				},
+				{
+					"key": "files",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": false
+				}
+			],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1591871275411,
+			"name": "/findBookingById/{id}",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"isFromCollection": true,
+			"collectionRequestId": "46cdd845-4c83-5a89-1140-44c07350e4be"
+		},
+		{
 			"id": "63049814-7eb6-b7af-dd43-b84e81fb28ae",
 			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTE3Njg1NzM0NiwiZXhwIjoxNTkxNzgxNjU3fQ.B3XJ1JYevTybrGG9yxNPFKm6v7steJlQWBd1e-5yo_O5tJkE4kF-Mk-ZTatOkkludJIe5prJonKuIM_uj2K86w\n",
 			"headerData": [
@@ -753,7 +1220,7 @@
 		},
 		{
 			"id": "6d0bd587-cb8b-1941-43a9-5031577e787b",
-			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw\n",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI4NjAzODQ5NjQ2IiwiY3JlYXRlZCI6MTU5MTk1NjkxMjg4MywiZXhwIjoxNTkyNTYxNzEyfQ.C2otM9WuGRhUuw1LJ10TTi3dI7zidQcSwe9qfzeI_obPuTAJy2DIwS_-h43ME9tCFxHdOURpi8QkrjOFGx2pCA\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -763,7 +1230,7 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI4NjAzODQ5NjQ2IiwiY3JlYXRlZCI6MTU5MTk1NjkxMjg4MywiZXhwIjoxNTkyNTYxNzEyfQ.C2otM9WuGRhUuw1LJ10TTi3dI7zidQcSwe9qfzeI_obPuTAJy2DIwS_-h43ME9tCFxHdOURpi8QkrjOFGx2pCA",
 					"description": "",
 					"enabled": true
 				}
@@ -788,7 +1255,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1587826281386,
+			"time": 1591982580096,
 			"name": "get room details",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
@@ -818,12 +1285,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1587826883319,
+			"time": 1591956918621,
 			"name": "LOGIN with OTP",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
-			"rawModeData": "{\n\t\"mobile\":\"1234\",\n\t\"otp\":\"896769\"\n}"
+			"rawModeData": "{\n\t\"mobile\":\"8603849646\",\n\t\"otp\":\"188834\"\n}"
 		},
 		{
 			"id": "76f549e3-c247-328c-5210-10eabd055c52",
@@ -885,12 +1352,86 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1591710150292,
+			"time": 1591957643417,
 			"name": "generate OTP",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
-			"rawModeData": "{\n\t\"mobile\":\"1111111111\"\n}"
+			"rawModeData": "{\n\t\"mobile\":\"8603849646\"\n}"
+		},
+		{
+			"id": "7c113299-9607-87e8-e8f3-0852302d4019",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTc5MjU3NTQxMSwiZXhwIjoxNTkyMzk3Mzc1fQ.zGjPW1LWtq-EOLHrgo7y8bHXwBI_f1rvz_SZ8T7CYt_wAJjMm83M1cO7qjz8se0VwrncaYrb-pHoaGuheyNiEw\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTc5MjU3NTQxMSwiZXhwIjoxNTkyMzk3Mzc1fQ.zGjPW1LWtq-EOLHrgo7y8bHXwBI_f1rvz_SZ8T7CYt_wAJjMm83M1cO7qjz8se0VwrncaYrb-pHoaGuheyNiEw",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/admin/getAllUsers",
+			"folder": "4981089d-389e-1b46-16a2-dcd8e5d20e54",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1591842303488,
+			"name": "{{base-url}}/admin/getAllUsers",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"isFromCollection": true,
+			"collectionRequestId": "9456dd9e-4dc2-dc36-e648-419e103fd9ce",
+			"rawModeData": "{\n\t\"hotelName\":\"Paradise\",\n\t\"address\":\"noida\",\n\t\"lattitude\":\"1233.333\",\n\t\"longitude\":\"321312.332\",\n\t\"payAtHotel\":true,\n\t\"freeBreakFast\":true,\n\t\"coupleFriendly\":true,\n\t\"freeWifi\":true,\n\t\"initialPrice\":500,\n\t\"discountPrice\":100\n\t\n}"
+		},
+		{
+			"id": "7e284d6e-a38e-72a8-9d1e-0cc246577ace",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTcyMjAzODU3NiwiZXhwIjoxNTkyMzI2ODM4fQ.szo6yqKRhM5B3Zo_ql7q_s94fM4pINZNbK3jsrpJYdPpZY1l5gyaa7hyO5GNfKx0C8OdktsVJgc62JB4pxSInQ\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTcyMjAzODU3NiwiZXhwIjoxNTkyMzI2ODM4fQ.szo6yqKRhM5B3Zo_ql7q_s94fM4pINZNbK3jsrpJYdPpZY1l5gyaa7hyO5GNfKx0C8OdktsVJgc62JB4pxSInQ",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/admin/getAllBookings",
+			"folder": "4981089d-389e-1b46-16a2-dcd8e5d20e54",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1591724210669,
+			"name": "{{base-url}}/admin/getAllBookings",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\t\"hotelName\":\"Paradise\",\n\t\"address\":\"noida\",\n\t\"lattitude\":\"1233.333\",\n\t\"longitude\":\"321312.332\",\n\t\"payAtHotel\":true,\n\t\"freeBreakFast\":true,\n\t\"coupleFriendly\":true,\n\t\"freeWifi\":true,\n\t\"initialPrice\":500,\n\t\"discountPrice\":100\n\t\n}"
 		},
 		{
 			"id": "83810f94-f561-5699-f0c5-b642490f77e2",
@@ -956,6 +1497,42 @@
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": []
+		},
+		{
+			"id": "9456dd9e-4dc2-dc36-e648-419e103fd9ce",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTc5MjU3NTQxMSwiZXhwIjoxNTkyMzk3Mzc1fQ.zGjPW1LWtq-EOLHrgo7y8bHXwBI_f1rvz_SZ8T7CYt_wAJjMm83M1cO7qjz8se0VwrncaYrb-pHoaGuheyNiEw\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTc5MjU3NTQxMSwiZXhwIjoxNTkyMzk3Mzc1fQ.zGjPW1LWtq-EOLHrgo7y8bHXwBI_f1rvz_SZ8T7CYt_wAJjMm83M1cO7qjz8se0VwrncaYrb-pHoaGuheyNiEw",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/admin/getAllUsers",
+			"folder": "4981089d-389e-1b46-16a2-dcd8e5d20e54",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1591842303488,
+			"name": "get all hotels users",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\t\"hotelName\":\"Paradise\",\n\t\"address\":\"noida\",\n\t\"lattitude\":\"1233.333\",\n\t\"longitude\":\"321312.332\",\n\t\"payAtHotel\":true,\n\t\"freeBreakFast\":true,\n\t\"coupleFriendly\":true,\n\t\"freeWifi\":true,\n\t\"initialPrice\":500,\n\t\"discountPrice\":100\n\t\n}"
 		},
 		{
 			"id": "94d0bb90-07a3-fe24-5681-3fbee86d1676",
@@ -1096,6 +1673,107 @@
 			"rawModeData": ""
 		},
 		{
+			"id": "99e02fa2-9330-8410-a0e3-10c56dfaae42",
+			"headers": "Authorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTc5MjU3NTQxMSwiZXhwIjoxNTkyMzk3Mzc1fQ.zGjPW1LWtq-EOLHrgo7y8bHXwBI_f1rvz_SZ8T7CYt_wAJjMm83M1cO7qjz8se0VwrncaYrb-pHoaGuheyNiEw\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTc5MjU3NTQxMSwiZXhwIjoxNTkyMzk3Mzc1fQ.zGjPW1LWtq-EOLHrgo7y8bHXwBI_f1rvz_SZ8T7CYt_wAJjMm83M1cO7qjz8se0VwrncaYrb-pHoaGuheyNiEw",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/hotel/downloadFile/hotel/1/image.jpg",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1592042118237,
+			"name": "{{base-url}}/hotel/downloadFile/hotel/1/image.jpg",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": []
+		},
+		{
+			"id": "9f133572-2785-ae5c-7bf1-f769e6f269a2",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI4NjAzODQ5NjQ2IiwiY3JlYXRlZCI6MTU5MTk2MDE3MDE3NiwiZXhwIjoxNTkyNTY0OTcwfQ.7RjaEcODlrd6J1AABHRr4CRTecqd8z1m4IL5A4Jm212jYiZTLopjVA84qPOIk8DNd9DPOsqvSs3oRnUf20Butg\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI4NjAzODQ5NjQ2IiwiY3JlYXRlZCI6MTU5MTk2MDE3MDE3NiwiZXhwIjoxNTkyNTY0OTcwfQ.7RjaEcODlrd6J1AABHRr4CRTecqd8z1m4IL5A4Jm212jYiZTLopjVA84qPOIk8DNd9DPOsqvSs3oRnUf20Butg",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/payment/initiateRefund",
+			"folder": "c6f4db30-1482-9e81-296e-c19720d0d9ee",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1591969176871,
+			"name": "initiateRefund",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n        \"bookingId\": 21,\n       \"refundAmount\": 400\n    }"
+		},
+		{
+			"id": "a67d8c03-7c69-9daa-cbfc-efdbb34085ff",
+			"headers": "Authorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTg4NDE1NzE3NSwiZXhwIjoxNTkyNDg4OTU3fQ.u3o_guQBKJGk2kbeMjvSjU5uibebGCr98WWNO8QX7NIZILTyvBFuOrB_eW8Y8FMo9cyD4Zz7mzuoxZxPlCHPnQ\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTg4NDE1NzE3NSwiZXhwIjoxNTkyNDg4OTU3fQ.u3o_guQBKJGk2kbeMjvSjU5uibebGCr98WWNO8QX7NIZILTyvBFuOrB_eW8Y8FMo9cyD4Zz7mzuoxZxPlCHPnQ",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/admin/updateProfileById",
+			"folder": "171a38f8-6c6c-92a0-7457-3461a20d9a21",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1591884621031,
+			"name": "{{base-url}}/admin/updateProfileById/3",
+			"description": "as",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\t\"role\" :\"ROLE_ADMIN\",\n\t\"del_ind\":false,\n\t\"enabled\" : true,\n\t\"is_verified\" :true,\n\t\"id\":10\n}"
+		},
+		{
 			"id": "a7b4a19b-5e05-bc57-d94c-90455eeba8b4",
 			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU4ODkzOTEwOTQwNiwiZXhwIjoxNTg5NTQzOTA5fQ.MfSS8kCWGlxtu2D4slE54KdHJYgJSTZX4ygP3adIahyAsCLBbxvDRUjAt7St9AkMrXCmgaU9_Zi3CZsiEHomsA\n",
 			"headerData": [
@@ -1112,7 +1790,7 @@
 					"enabled": true
 				}
 			],
-			"url": "{{base-url}}/hotel/getAll-hotels",
+			"url": "{{base-url}}/admin//findUser/1",
 			"folder": "4981089d-389e-1b46-16a2-dcd8e5d20e54",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -1124,8 +1802,8 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1588953922639,
-			"name": "get all configuration",
+			"time": 1591722948080,
+			"name": "{{base-url}}/admin//findUser/1",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
@@ -1294,6 +1972,42 @@
 			"rawModeData": "{\n        \"id\": 1,\n        \"booking_price\": 5000,\n        \"discount_price\": 200,\n        \"coupon_discount\": 50,\n        \"discount_coupon\": \"FREE50\",\n        \"gst\": 480,\n        \"rooms\": [\n            1\n        ],\n        \"noOfGuests\": 2,\n        \"transaction\": null,\n        \"bookingStatus\": \"INITIATED\",\n        \"paymentStatus\": \"PENDING\",\n        \"checkinDate\": \"14/09/1994\",\n        \"checkout_date\": \"15/09/1994\",\n        \"bookingId\": \"d2c6a68c-a06d-4c1d-8dd1-5d4cc4d964b9\",\n        \"userId\": 1\n    }"
 		},
 		{
+			"id": "c61e7944-2afc-527e-69ee-7c74f8f7be9e",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI4NjAzODQ5NjQ2IiwiY3JlYXRlZCI6MTU5MTk2MDE3MDE3NiwiZXhwIjoxNTkyNTY0OTcwfQ.7RjaEcODlrd6J1AABHRr4CRTecqd8z1m4IL5A4Jm212jYiZTLopjVA84qPOIk8DNd9DPOsqvSs3oRnUf20Butg\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI4NjAzODQ5NjQ2IiwiY3JlYXRlZCI6MTU5MTk2MDE3MDE3NiwiZXhwIjoxNTkyNTY0OTcwfQ.7RjaEcODlrd6J1AABHRr4CRTecqd8z1m4IL5A4Jm212jYiZTLopjVA84qPOIk8DNd9DPOsqvSs3oRnUf20Butg",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/hotel/cancelBooking",
+			"folder": "1e8e4444-4f5c-d80b-c3fc-95a7ea1c4c8a",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1591973611077,
+			"name": "cancelBooking",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": [],
+			"rawModeData": "{\n\t\"id\":23\n\t\n}"
+		},
+		{
 			"id": "c7e6b414-2988-e719-5a0c-69e2198fcdb5",
 			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODg2NjUxMTY1MCwiZXhwIjoxNTg5NDcxMzExfQ.CbUwOe558OU6xvdN_MvcekBUkDDIA8Giqb7i1kGqS5rGoknIHsRy1k1Jl8jwOusvNUIZof7SIh61c80cDYVpZw\n",
 			"headerData": [
@@ -1331,7 +2045,7 @@
 		},
 		{
 			"id": "cc9af0af-052a-a78a-f976-5ca6e11c0e7c",
-			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODkzNDc1MjU3NCwiZXhwIjoxNTg5NTM5NTUyfQ.GEkMkKYbsyPhIZZ0TOI5KgfwN0Oc8e4eYEFP5KvvjgVRfdN3i7h6r8UFa1ZgnWLN89HH57BK51sCF0FJXdkBxA\n",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTc5MjU3NTQxMSwiZXhwIjoxNTkyMzk3Mzc1fQ.zGjPW1LWtq-EOLHrgo7y8bHXwBI_f1rvz_SZ8T7CYt_wAJjMm83M1cO7qjz8se0VwrncaYrb-pHoaGuheyNiEw\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -1341,12 +2055,12 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODkzNDc1MjU3NCwiZXhwIjoxNTg5NTM5NTUyfQ.GEkMkKYbsyPhIZZ0TOI5KgfwN0Oc8e4eYEFP5KvvjgVRfdN3i7h6r8UFa1ZgnWLN89HH57BK51sCF0FJXdkBxA",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTc5MjU3NTQxMSwiZXhwIjoxNTkyMzk3Mzc1fQ.zGjPW1LWtq-EOLHrgo7y8bHXwBI_f1rvz_SZ8T7CYt_wAJjMm83M1cO7qjz8se0VwrncaYrb-pHoaGuheyNiEw",
 					"description": "",
 					"enabled": true
 				}
 			],
-			"url": "{{base-url}}/hotel/add-staff-to-hotel",
+			"url": "{{base-url}}/admin/add-staff-to-hotel",
 			"folder": "4981089d-389e-1b46-16a2-dcd8e5d20e54",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -1358,12 +2072,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1588936716394,
+			"time": 1591796427165,
 			"name": "Add staff to hotel",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
-			"rawModeData": "{\n\"hotelId\":1,\n\"staff\":[1,2,3]\n}"
+			"rawModeData": "{\n\"hotelId\":1,\n\"staff\":[2,3]\n}"
 		},
 		{
 			"id": "d4fe54a7-e4ac-5220-9860-785623349fa2",
@@ -1382,7 +2096,7 @@
 					"enabled": true
 				}
 			],
-			"url": "{{base-url}}/hotel/update-room",
+			"url": "{{base-url}}/payment/initiateRefund",
 			"folder": "c6f4db30-1482-9e81-296e-c19720d0d9ee",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -1394,12 +2108,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1588757247496,
-			"name": "updateRooms",
+			"time": 1591955129698,
+			"name": "{{base-url}}/payment/initiateRefund",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
-			"rawModeData": "{\t\"hotelId\":2,\n\t\"name\":\"delux1 room\",\n\t\"freeCancellation\":false,\n\t\"balconyAvl\":true,\n\t\"doubleBed\":true,\n\t\"occupacy\":5,\n\t\"roomSize\":\"5x5\",\n\t\"roomType\":\"SUPER-DELUXE-1\",\n\t\"initialPrice\":5000,\n\t\"discountPrice\":200\n}"
+			"rawModeData": "{\t\"bookingId\":2,\n\t\"refundAmount\":340\n}"
 		},
 		{
 			"id": "db2a6646-da24-02d1-adc2-f2e3efd7c81a",
@@ -1459,16 +2173,73 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1590314716241,
+			"time": 1591811321568,
 			"name": "add/update new Hotel",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
-			"rawModeData": "{\n\t\"hotelName\":\"Paradise1\",\n\t\"address\":\"noida\",\n\t\"lattitude\":\"1233.333\",\n\t\"longitude\":\"321312.332\",\n\t\"payAtHotel\":true,\n\t\"freeBreakFast\":true,\n\t\"coupleFriendly\":true,\n\t\"freeWifi\":true,\n\t\"initialPrice\":500,\n\t\"discountPrice\":100,\n\t\"city\" :\"noida\",\n\t\"pincode\":\"111111\",\n\t\"ac\":false\n}"
+			"rawModeData": "{\n\t\"hotelName\":\"Paradise1\",\n\t\"address\":\"noida\",\n\t\"lattitude\":\"1233.333\",\n\t\"longitude\":\"321312.332\",\n\t\"payAtHotel\":true,\n\t\"freeBreakFast\":true,\n\t\"coupleFriendly\":true,\n\t\"freeWifi\":true,\n\t\"initialPrice\":500,\n\t\"discountPrice\":100,\n\t\"city\" :\"noida\",\n\t\"pincode\":\"111111\",\n\t\"ac\":false,\n\t\"isBlocked\":true\n}"
+		},
+		{
+			"id": "e4c84d75-a27e-240c-5e4d-c33a4c2f4d95",
+			"headers": "//Content-Type: multipart/form-data\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTc5MjU3NTQxMSwiZXhwIjoxNTkyMzk3Mzc1fQ.zGjPW1LWtq-EOLHrgo7y8bHXwBI_f1rvz_SZ8T7CYt_wAJjMm83M1cO7qjz8se0VwrncaYrb-pHoaGuheyNiEw\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "multipart/form-data",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTc5MjU3NTQxMSwiZXhwIjoxNTkyMzk3Mzc1fQ.zGjPW1LWtq-EOLHrgo7y8bHXwBI_f1rvz_SZ8T7CYt_wAJjMm83M1cO7qjz8se0VwrncaYrb-pHoaGuheyNiEw",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/admin/getAllBookings",
+			"folder": "c6f4db30-1482-9e81-296e-c19720d0d9ee",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [
+				{
+					"key": "files",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": false
+				},
+				{
+					"key": "files",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": false
+				},
+				{
+					"key": "files",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": false
+				}
+			],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1591879179050,
+			"name": "/admin/getAllBookings",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": []
 		},
 		{
 			"id": "ea26dc74-5dd0-60db-4f74-b8f6e855b3b4",
-			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTE3MTE2MDY3MSwiZXhwIjoxNTkxNzc1OTYwfQ.eiyVTB8I_eHTttEEhbTeyOKG9YcGcKM4N2bxz0wf2CztaQiHGRHJY3C7HIeil8IRxgKkkIEp2TGrihy6Cz78Aw\n",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI4NjAzODQ5NjQ2IiwiY3JlYXRlZCI6MTU5MTk1NjkxMjg4MywiZXhwIjoxNTkyNTYxNzEyfQ.C2otM9WuGRhUuw1LJ10TTi3dI7zidQcSwe9qfzeI_obPuTAJy2DIwS_-h43ME9tCFxHdOURpi8QkrjOFGx2pCA\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -1478,7 +2249,7 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTE3MTE2MDY3MSwiZXhwIjoxNTkxNzc1OTYwfQ.eiyVTB8I_eHTttEEhbTeyOKG9YcGcKM4N2bxz0wf2CztaQiHGRHJY3C7HIeil8IRxgKkkIEp2TGrihy6Cz78Aw",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI4NjAzODQ5NjQ2IiwiY3JlYXRlZCI6MTU5MTk1NjkxMjg4MywiZXhwIjoxNTkyNTYxNzEyfQ.C2otM9WuGRhUuw1LJ10TTi3dI7zidQcSwe9qfzeI_obPuTAJy2DIwS_-h43ME9tCFxHdOURpi8QkrjOFGx2pCA",
 					"description": "",
 					"enabled": true
 				}
@@ -1495,12 +2266,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1591171281685,
+			"time": 1591966323490,
 			"name": "Book a room",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
-			"rawModeData": "{\t\"hotelId\":1,\n\t\"userId\":1,\n\t\"rooms\":[1],\n\t\"noOfGuests\":2,\n\t\"checkinDate\":\"14/09/1994\",\n\t\"checkoutDate\":\"15/09/1994\"\n\t\n}"
+			"rawModeData": "{\t\"hotelId\":1,\n\t\"userId\":19,\n\t\"rooms\":[1],\n\t\"noOfGuests\":2,\n\t\"checkinDate\":\"20/06/2020\",\n\t\"checkoutDate\":\"25/06/2020\"\n\t\n}"
 		},
 		{
 			"id": "ec1209a4-73df-bf3a-bad2-078f9209e837",
@@ -1533,16 +2304,16 @@
 		},
 		{
 			"id": "ef59f406-3cdd-42c2-28f0-21983d4e187a",
-			"headers": "Authorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw\n",
+			"headers": "Authorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTcyMjAzODU3NiwiZXhwIjoxNTkyMzI2ODM4fQ.szo6yqKRhM5B3Zo_ql7q_s94fM4pINZNbK3jsrpJYdPpZY1l5gyaa7hyO5GNfKx0C8OdktsVJgc62JB4pxSInQ\n",
 			"headerData": [
 				{
 					"key": "Authorization",
-					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTcyMjAzODU3NiwiZXhwIjoxNTkyMzI2ODM4fQ.szo6yqKRhM5B3Zo_ql7q_s94fM4pINZNbK3jsrpJYdPpZY1l5gyaa7hyO5GNfKx0C8OdktsVJgc62JB4pxSInQ",
 					"description": "",
 					"enabled": true
 				}
 			],
-			"url": "http://localhost:8090/payment/update-order?payment_id=MOJO0426Z05N58155436&payment_status=Credit&id=82fd861b6e1a40cc95ccb110c47a5c24&transaction_id=TRfbcd108f-d616-4bc0-b02c-61d8af5ac1a2",
+			"url": "{{base-url}}/payment/update-order?payment_id=MOJO0426Z05N58155436&payment_status=Credit&id=82fd861b6e1a40cc95ccb110c47a5c24&transaction_id=TRfbcd108f-d616-4bc0-b02c-61d8af5ac1a2",
 			"folder": "1e8e4444-4f5c-d80b-c3fc-95a7ea1c4c8a",
 			"queryParams": [
 				{
@@ -1583,7 +2354,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1587959408066,
+			"time": 1591723377507,
 			"name": "update order(payment  redirection)",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
@@ -1591,7 +2362,7 @@
 		},
 		{
 			"id": "efc4edf5-ceed-98e0-efc4-bfa65b26222a",
-			"headers": "//Content-Type: multipart/form-data\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODg2NjUxMTY1MCwiZXhwIjoxNTg5NDcxMzExfQ.CbUwOe558OU6xvdN_MvcekBUkDDIA8Giqb7i1kGqS5rGoknIHsRy1k1Jl8jwOusvNUIZof7SIh61c80cDYVpZw\n",
+			"headers": "//Content-Type: multipart/form-data\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTc5MjU3NTQxMSwiZXhwIjoxNTkyMzk3Mzc1fQ.zGjPW1LWtq-EOLHrgo7y8bHXwBI_f1rvz_SZ8T7CYt_wAJjMm83M1cO7qjz8se0VwrncaYrb-pHoaGuheyNiEw\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -1601,60 +2372,46 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODg2NjUxMTY1MCwiZXhwIjoxNTg5NDcxMzExfQ.CbUwOe558OU6xvdN_MvcekBUkDDIA8Giqb7i1kGqS5rGoknIHsRy1k1Jl8jwOusvNUIZof7SIh61c80cDYVpZw",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTc5MjU3NTQxMSwiZXhwIjoxNTkyMzk3Mzc1fQ.zGjPW1LWtq-EOLHrgo7y8bHXwBI_f1rvz_SZ8T7CYt_wAJjMm83M1cO7qjz8se0VwrncaYrb-pHoaGuheyNiEw",
 					"description": "",
 					"enabled": true
 				}
 			],
-			"url": "{{base-url}}/hotel/delete/hotel/1",
+			"url": "{{base-url}}/admin/delete/hotel/2",
 			"folder": "c6f4db30-1482-9e81-296e-c19720d0d9ee",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
 			"pathVariableData": [],
-			"method": "POST",
+			"method": "GET",
 			"data": [
 				{
 					"key": "files",
-					"value": "Screenshot (164).png",
+					"value": "",
 					"description": "",
 					"type": "file",
-					"enabled": true
-				},
-				{
-					"key": "id",
-					"value": "1",
-					"description": "room/hotel id",
-					"type": "text",
-					"enabled": true
+					"enabled": false
 				},
 				{
 					"key": "files",
-					"value": "Screenshot (149).png",
+					"value": "",
 					"description": "",
 					"type": "file",
-					"enabled": true
+					"enabled": false
 				},
 				{
 					"key": "files",
-					"value": "Screenshot (153).png",
+					"value": "",
 					"description": "",
 					"type": "file",
-					"enabled": true
-				},
-				{
-					"key": "flag",
-					"value": "hotel",
-					"description": "if upload to hotel \"hotel\"/\"room\"",
-					"type": "text",
-					"enabled": true
+					"enabled": false
 				}
 			],
 			"dataMode": "params",
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1588873697099,
+			"time": 1591798983650,
 			"name": "delete Image of hotel/room",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
@@ -1662,7 +2419,7 @@
 		},
 		{
 			"id": "f1983a10-0742-7d47-26a7-80d5d5a03427",
-			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU4ODk0MTI4MzkwNSwiZXhwIjoxNTg5NTQ2MDgzfQ.CJNmsnKm5n9SxxVk5CViVpy6b5QSQqR9Q-fMYt9QopicC48RQWXXIoZO10yKlCPxXk09G31rRdyrqsFfBGvlsg\n",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTcxMTgxMjMyNiwiZXhwIjoxNTkyMzE2NjEyfQ.p_XzzJlS9z6rOlipRnx7AO8gHPz8V0KofYT8o6FbEyQEBWLJcL_qyDsTfz5tnixbA5PwabGGIi7UsSAw6b1AXg\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -1672,12 +2429,12 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU4ODk0MTI4MzkwNSwiZXhwIjoxNTg5NTQ2MDgzfQ.CJNmsnKm5n9SxxVk5CViVpy6b5QSQqR9Q-fMYt9QopicC48RQWXXIoZO10yKlCPxXk09G31rRdyrqsFfBGvlsg",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTcxMTgxMjMyNiwiZXhwIjoxNTkyMzE2NjEyfQ.p_XzzJlS9z6rOlipRnx7AO8gHPz8V0KofYT8o6FbEyQEBWLJcL_qyDsTfz5tnixbA5PwabGGIi7UsSAw6b1AXg",
 					"description": "",
 					"enabled": true
 				}
 			],
-			"url": "{{base-url}}/hotel/addUpdateNewCoupon",
+			"url": "{{base-url}}/admin/addUpdateNewCoupon",
 			"folder": "4981089d-389e-1b46-16a2-dcd8e5d20e54",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -1689,16 +2446,16 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1588953255235,
+			"time": 1591872518395,
 			"name": "add update coupon",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
-			"rawModeData": "{\n\t\"code\":\"FREE25\",\n\t\"value\":20,\n\t\"expiry\":\"2020-08-01\",\n\t\"id\":90\n}"
+			"rawModeData": "{\n\t\"code\":\"FREE25\",\n\t\"value\":20,\n\t\"expiry\":\"2020-08-01\",\n\t\"id\":\"1\",\n\t\"enabled\":true\n\t\n}"
 		},
 		{
 			"id": "f4e36bd8-288b-6930-c004-ae042400875d",
-			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw\n",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTk1NTE0MjM0MCwiZXhwIjoxNTkyNTU5OTQyfQ.YuHWlv8aIacH6Gt99GVVqL3FzJMHM0Upco6Gq-nQNBCnFzHccaJL7b57MLt0Tx9OuHIS2hazC2JwsXR86Y7veg\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -1708,7 +2465,7 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0IiwiY3JlYXRlZCI6MTU4NzgyNDQ0NjIwNiwiZXhwIjoxNTg4NDI5MjQ2fQ.5wmernq-AQohxOEm1nwvZt6fEyJxvQ26TJSo1-sBMGR0LWNLiBTGIUWu_sVH5cPDJi6dF-2LBD0A3Rcqvt4-Zw",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTk1NTE0MjM0MCwiZXhwIjoxNTkyNTU5OTQyfQ.YuHWlv8aIacH6Gt99GVVqL3FzJMHM0Upco6Gq-nQNBCnFzHccaJL7b57MLt0Tx9OuHIS2hazC2JwsXR86Y7veg",
 					"description": "",
 					"enabled": true
 				}
@@ -1725,12 +2482,41 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1587960031403,
+			"time": 1592046702735,
 			"name": "payment(online/offline)",
 			"description": "",
 			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
 			"responses": [],
-			"rawModeData": "{\n        \"id\": 1\n}"
+			"rawModeData": "{\n        \"id\": 27\n}"
+		},
+		{
+			"id": "f82125e4-2a77-1d27-ccaf-c9892e711de6",
+			"headers": "Authorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODY4NzcxNTY5OSwiZXhwIjoxNTg5MjkyNTE1fQ.6H2fdkPW5zJrLaDdkDkelnyhI8hvekur7lXCys8lSFlEtetlcnNl3UwcOiilNBLl9exqQy-GvE-YFbkL4V4LXg\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQyIiwiY3JlYXRlZCI6MTU4ODY4NzcxNTY5OSwiZXhwIjoxNTg5MjkyNTE1fQ.6H2fdkPW5zJrLaDdkDkelnyhI8hvekur7lXCys8lSFlEtetlcnNl3UwcOiilNBLl9exqQy-GvE-YFbkL4V4LXg",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{base-url}}/user/get-all-coupons",
+			"folder": "171a38f8-6c6c-92a0-7457-3461a20d9a21",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1591868984800,
+			"name": "/get-all-coupons",
+			"description": "",
+			"collectionId": "ad55d198-6728-2ed7-48f4-caabff1e671c",
+			"responses": []
 		}
 	]
 }

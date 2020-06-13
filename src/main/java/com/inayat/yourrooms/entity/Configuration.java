@@ -23,26 +23,16 @@ public class Configuration implements Serializable{
 	}
 	
 	@Id
-	private Long id;
-
 	@Column(name = "key")
 	private String key;
 	
 	@Column(name = "value")
 	private String value;
 	
-	public Configuration(Long id, String key, String value) {
+
+	public Configuration(String key, String value) {
 		this.key = key;
 		this.value = value;
-		this.id = id;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getKey() {

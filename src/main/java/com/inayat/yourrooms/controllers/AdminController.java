@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.inayat.yourrooms.dto.BookingDTO;
 import com.inayat.yourrooms.dto.BookingTransactionDTO;
+import com.inayat.yourrooms.dto.ConfigurationRequest;
 import com.inayat.yourrooms.dto.CouponsRequest;
 import com.inayat.yourrooms.dto.HotelDTO;
 import com.inayat.yourrooms.dto.MapStaffRequest;
@@ -201,6 +202,34 @@ public class AdminController {
 	@RequestMapping(value = "/getAllRefunds", method = RequestMethod.GET)
 	public ResponseEntity<ApiResponse> getAllRefunds() {
 		ApiResponse response = adminService.getAllRefunds();
+		return new ResponseEntity<>(response, HttpStatus.OK);
+
+	}
+	
+	@RequestMapping(value = "/getAllConfiguration", method = RequestMethod.GET)
+	public ResponseEntity<ApiResponse> getAllConfiguration() {
+		ApiResponse response = adminService.getAllConfiguration();
+		return new ResponseEntity<>(response, HttpStatus.OK);
+
+	}
+	
+	@RequestMapping(value = "/updateConfig", method = RequestMethod.POST)
+	public ResponseEntity<ApiResponse> updateConfig(@RequestBody ConfigurationRequest request) {
+		ApiResponse response = adminService.updateConfig(request);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+
+	}
+	
+	@RequestMapping(value = "/addNewConfig", method = RequestMethod.POST)
+	public ResponseEntity<ApiResponse> addNewConfig(@RequestBody ConfigurationRequest request) {
+		ApiResponse response = adminService.addNewConfig(request);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+
+	}
+	
+	@RequestMapping(value = "/deleteConfig/{key}", method = RequestMethod.GET)
+	public ResponseEntity<ApiResponse> deleteConfig(@PathVariable("key") String key) {
+		ApiResponse response = adminService.deleteConfig(key);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 
 	}

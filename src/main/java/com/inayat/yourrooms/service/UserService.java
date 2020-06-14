@@ -416,23 +416,7 @@ public class UserService {
 
 	}
 
-	public ApiResponse changeRole(ChangeRoleRequest request) {
-		Optional<User> users = userRepository.findById(request.getUserId());
-		if (!users.isPresent()) {
-			return new ApiResponse(321, "UserId not found");
-		}
-		Optional<Role> roles = roleRepository.findById(request.getRoleId());
-		if (!roles.isPresent()) {
-			return new ApiResponse(321, "invalid role");
-		}
-
-		User user = users.get();
-		user.setRole(roles.get());
-		userRepository.save(user);
-
-		return new ApiResponse(321, "SUCCESS");
-
-	}
+	
 
 	public ApiResponse updateProfileById(UsersDTO user) {
 

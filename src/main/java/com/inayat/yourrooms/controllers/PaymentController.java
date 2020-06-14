@@ -59,12 +59,6 @@ public class PaymentController {
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/create-refund/{paymentId}/{amount}", method = RequestMethod.POST)
-	public ResponseEntity<ApiResponse> createRefund(@PathVariable("amount") Double amount,
-			@PathVariable("paymentId") String paymentId) throws NumberFormatException, IOException {
-		ApiResponse resp = hotelservice.createRefund(paymentId, amount);
-		return new ResponseEntity<>(resp, HttpStatus.OK);
-	}
 	
 	@RequestMapping(value = "/createHash", method = RequestMethod.GET)
 	public ResponseEntity<ApiResponse> createHash(@QueryParam("payment_id") String payment_id,

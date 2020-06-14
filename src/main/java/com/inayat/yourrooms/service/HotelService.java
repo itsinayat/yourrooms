@@ -528,16 +528,6 @@ public class HotelService {
 		return new ApiResponse(674, "Success", hashs);
 	}
 
-	public ApiResponse cancelBooking(String bookingId) {
-		Booking bookings = bookingRepository.findByUserAndBooking(userService.getCurrentUser(),
-				Long.valueOf(bookingId));
-		if (bookings == null) {
-			return new ApiResponse(674, "Booking Not Found");
-		}
-		bookings.setBookingStatus(BOOKING_STATUS.CANCELLED.toString());
-		bookingRepository.save(bookings);
-		return new ApiResponse(674, "Booking CANCELLED");
-	}
 
 	public ApiResponse updateBooking(BookingDTO request) throws Exception {
 		Optional<Booking> bookings = bookingRepository.findById(request.getId());

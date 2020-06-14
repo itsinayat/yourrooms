@@ -84,7 +84,7 @@ public class AdminController {
 	}
 
 	@GetMapping("/delete/{type}/{id}")
-	public ResponseEntity<ApiResponse> uploadMultipleFiles(@PathVariable("id") String id,
+	public ResponseEntity<ApiResponse> DelateFile(@PathVariable("id") String id,
 			@PathVariable("type") String type) {
 		if (type.equalsIgnoreCase("room")) {
 			ApiResponse response = fileStorageService.deletefromroom(id);

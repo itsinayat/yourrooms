@@ -84,13 +84,6 @@ public class HotelController {
 		ApiResponse resp = hotelservice.applyCoupon(code, Long.parseLong(bookingId));
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
-
-	@RequestMapping(value = "/cancelBooking/{bookingId}", method = RequestMethod.POST)
-	public ResponseEntity<ApiResponse> cancelBooking(@PathVariable("bookingId") String bookingId) throws IOException {
-		ApiResponse resp = hotelservice.cancelBooking(bookingId);
-		return new ResponseEntity<>(resp, HttpStatus.OK);
-	}
-
 	
 
 	@GetMapping("/downloadFile/{type}/{roomId}/{fileName:.+}")

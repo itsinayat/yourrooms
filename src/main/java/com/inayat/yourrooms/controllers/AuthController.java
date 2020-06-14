@@ -100,10 +100,6 @@ public class AuthController {
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/testAuth", method = RequestMethod.GET)
-	public String test() {
-		return "Running";
-	}
 
 	@RequestMapping(value = "/generate-otp", method = RequestMethod.POST)
 	public ResponseEntity<ApiResponse> generateOtpForRegistration(@RequestBody UsersDTO user) {
@@ -169,13 +165,6 @@ public class AuthController {
 	@RequestMapping(value = "/review-and-rating", method = RequestMethod.POST)
 	public ResponseEntity<ApiResponse> reviewAndRating(@RequestBody ReviewAndRatingsDTO dto) {
 		ApiResponse response = userService.setReviewAndRating(dto);
-		return new ResponseEntity<>(response, HttpStatus.OK);
-
-	}
-	
-	@RequestMapping(value = "/change_user_role", method = RequestMethod.POST)
-	public ResponseEntity<ApiResponse> changeRole(@RequestBody ChangeRoleRequest request) {
-		ApiResponse response = userService.changeRole(request);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 
 	}

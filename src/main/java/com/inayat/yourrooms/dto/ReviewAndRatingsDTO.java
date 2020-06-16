@@ -22,6 +22,16 @@ public class ReviewAndRatingsDTO implements Serializable {
 	private String comment;
 
 	private Boolean del_ind;
+	
+	private Boolean approved;
+
+	public Boolean getApproved() {
+		return approved;
+	}
+
+	public void setApproved(Boolean approved) {
+		this.approved = approved;
+	}
 
 	private int rating;
 

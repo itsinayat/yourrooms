@@ -24,6 +24,17 @@ public class ReviewAndRating{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(name = "approved")
+	private Boolean approved;
+	
+	public Boolean getApproved() {
+		return approved;
+	}
+
+	public void setApproved(Boolean approved) {
+		this.approved = approved;
+	}
+
 	@Column(name = "comment")
 	private String comment;
 	

@@ -251,12 +251,12 @@ public class UserService {
 				wallet.setUpdate_user_id(0L);
 				Wallet newwallet = walletRepository.save(wallet);
 				user.setWallet(newwallet);
-			
+
 				// Generate token
 				String tokenKey = this.tokenHandler.generateToken(user);
-				
+
 				// Build response
-				UserToken userToken =new UserToken();
+				UserToken userToken = new UserToken();
 				userToken.setUser(user);
 				userToken.setTokenKey(tokenKey);
 				userToken.setStatus(Constants.UsetTokenStatus.ACTIVE);
@@ -264,7 +264,7 @@ public class UserService {
 				// Save token
 				userDao.saveUserToken(userToken);
 				UserTokenDTO userTokenDTO = UserTokenTranslator.translateToDTO(userToken);
-				return new ApiResponse(51, "User Registered Successfully",userTokenDTO);
+				return new ApiResponse(51, "User Registered Successfully", userTokenDTO);
 			} else {
 				return new ApiResponse(42, "User Already Registered, Please Login.");
 			}
@@ -399,7 +399,8 @@ public class UserService {
 			rr.setHotel(hotel);
 			rr.setRating(dto.getRating());
 			rr.setUpdate_user_id(user.getId());
-			rr.setCreate_user_id(user.getId());
+			rr.setApproved(dto.getApproved());
+			rr.setDel_ind(dto.getDel_ind());
 			reviewAndRatingsRepository.save(rr);
 			return new ApiResponse(321, "Updated Review");
 		} else {
@@ -410,6 +411,8 @@ public class UserService {
 			rr.setRating(dto.getRating());
 			rr.setUpdate_user_id(user.getId());
 			rr.setCreate_user_id(user.getId());
+			rr.setApproved(false);
+			rr.setDel_ind(false);
 			reviewAndRatingsRepository.save(rr);
 			return new ApiResponse(321, "created Review");
 		}
@@ -433,11 +436,11 @@ public class UserService {
 		}
 
 		Optional<User> users = userRepository.findById(user.getId());
-		if(!users.isPresent()) {
+		if (!users.isPresent()) {
 			return new ApiResponse(50, "USER NOT FOUND");
 		}
 		User dao = users.get();
-		
+
 		dao.setEnabled(user.getIs_enabled());
 		dao.setIs_verified(user.getIs_verified());
 		dao.setDel_ind(user.getDel_ind());
@@ -448,7 +451,7 @@ public class UserService {
 			return new ApiResponse(50, e.getMessage());
 		}
 		return new ApiResponse(50, "SUCCESS");
-	
+
 	}
 
 }

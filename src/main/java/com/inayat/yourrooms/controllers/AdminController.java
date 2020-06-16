@@ -28,6 +28,7 @@ import com.inayat.yourrooms.dto.ConfigurationRequest;
 import com.inayat.yourrooms.dto.CouponsRequest;
 import com.inayat.yourrooms.dto.HotelDTO;
 import com.inayat.yourrooms.dto.MapStaffRequest;
+import com.inayat.yourrooms.dto.ReviewAndRatingsDTO;
 import com.inayat.yourrooms.dto.RoomsDTO;
 import com.inayat.yourrooms.dto.UsersDTO;
 import com.inayat.yourrooms.entity.Booking;
@@ -234,5 +235,13 @@ public class AdminController {
 
 	}
 	
+	@RequestMapping(value = "/updateReview", method = RequestMethod.POST)
+	public ResponseEntity<ApiResponse> updateReview(@RequestBody ReviewAndRatingsDTO dto) {
+		ApiResponse response = adminService.updateReview(dto);
+		return new ResponseEntity<>(response, HttpStatus.OK);
 
+	}
+	
+	
+	
 }

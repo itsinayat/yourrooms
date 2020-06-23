@@ -25,8 +25,6 @@ public Refunds() {}
 	@Column(name = "status")
 	private String status;
 
-	
-	
 	@Column(name = "total_amount")
 	private Double totalAmount;
 	

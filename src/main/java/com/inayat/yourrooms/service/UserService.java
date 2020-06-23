@@ -393,6 +393,7 @@ public class UserService {
 		User user = getCurrentUser();
 		Hotel hotel = h.get();
 		ReviewAndRating rr = reviewAndRatingsRepository.findByUserAndHotel(user.getId(), hotel);
+		//update
 		if (rr != null) {
 			rr.setComment(dto.getComment());
 			rr.setDel_ind(false);
@@ -401,8 +402,13 @@ public class UserService {
 			rr.setUpdate_user_id(user.getId());
 			rr.setApproved(dto.getApproved());
 			rr.setDel_ind(dto.getDel_ind());
-			reviewAndRatingsRepository.save(rr);
+			rr= reviewAndRatingsRepository.save(rr);
+			int finalRating = ratingCalculator(hotel);
+			//update rating
+			hotel.setRating(Long.valueOf(finalRating));
+			hotelRepository.save(hotel);
 			return new ApiResponse(321, "Updated Review");
+			//add
 		} else {
 			rr = new ReviewAndRating();
 			rr.setComment(dto.getComment());
@@ -413,13 +419,30 @@ public class UserService {
 			rr.setCreate_user_id(user.getId());
 			rr.setApproved(false);
 			rr.setDel_ind(false);
-			reviewAndRatingsRepository.save(rr);
+			rr = reviewAndRatingsRepository.save(rr);
+			int finalRating = ratingCalculator(hotel);
+			//update rating
+			hotel.setRating(Long.valueOf(finalRating));
+			hotelRepository.save(hotel);
 			return new ApiResponse(321, "created Review");
 		}
 
 	}
 
 	
+
+	private int ratingCalculator(Hotel h) {
+		Set<ReviewAndRating> rr=  h.getReviewAndRating();
+		Iterator<ReviewAndRating> cc = rr.iterator();
+		int sum = 0 ;
+		int count = 0;
+		while(cc.hasNext()) {
+			sum = sum + cc.next().getRating();
+			count=count+1;
+		}
+		int avg = (sum/count);
+		return avg;
+	}
 
 	public ApiResponse updateProfileById(UsersDTO user) {
 
@@ -452,6 +475,15 @@ public class UserService {
 		}
 		return new ApiResponse(50, "SUCCESS");
 
+	}
+	
+	public ApiResponse findUserByMobile(String mobile) {
+		User user = userRepository.findByMobile(mobile);
+		if(user == null) {
+			return new ApiResponse(50, "User Not Found");
+		}else {
+			return new ApiResponse(50, "SUCCESS",user);
+		}
 	}
 
 }

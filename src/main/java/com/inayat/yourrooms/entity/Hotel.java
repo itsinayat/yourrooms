@@ -92,7 +92,7 @@ public class Hotel implements Serializable {
 	private Boolean isBlocked =false;
 	
 	
-	@ManyToMany(mappedBy="hotels")
+	@ManyToMany(mappedBy="hotels", cascade = CascadeType.ALL)
     private Set<User> staffs;
 	
 	@OneToMany(mappedBy = "htl", cascade = CascadeType.ALL)

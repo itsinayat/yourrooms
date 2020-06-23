@@ -1,9 +1,5 @@
 package com.inayat.yourrooms.config;
 
-import java.util.Date;
-
-import javax.ws.rs.Encoded;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -11,16 +7,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.inayat.yourrooms.entity.Configuration;
-import com.inayat.yourrooms.entity.Coupon;
 import com.inayat.yourrooms.entity.Role;
 import com.inayat.yourrooms.entity.User;
 import com.inayat.yourrooms.repositories.ConfigurationRepository;
-import com.inayat.yourrooms.repositories.CouponRepository;
 import com.inayat.yourrooms.repositories.RoleRepository;
 import com.inayat.yourrooms.repositories.UserRepository;
-import com.inayat.yourrooms.utils.Utils;
-
-import ch.qos.logback.classic.pattern.Util;
 
 @Component
 public class DataLoader implements ApplicationRunner {
@@ -38,7 +29,8 @@ public class DataLoader implements ApplicationRunner {
 	BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	public void run(ApplicationArguments args) {
-		
+		Scheduler s =new Scheduler();
+		s.run();
 		roleRepository.save(new Role(1L,"ROLE_ADMIN"));
 		roleRepository.save(new Role(2L,"ROLE_CONSUMER"));
 		roleRepository.save(new Role(3L,"ROLE_SUPERADMIN"));

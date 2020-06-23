@@ -72,6 +72,7 @@ public class AuthorizationFilter extends UsernamePasswordAuthenticationFilter {
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         }
+        
 		
 		chain.doFilter(req, res);
 	}

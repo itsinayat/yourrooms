@@ -221,7 +221,9 @@ public class HotelService {
 			dao.setBalconyAvl(dto.getBalconyAvl());
 			dao.setDoubleBed(dto.getDoubleBed());
 			dao.setFreeCancellation(dto.getFreeCancellation());
-			dao.setHotel(hotel);
+			if(dto.getHotelId() !=null) {
+				dao.setHotel(hotel);
+			}
 			dao.setName(dto.getName());
 			dao.setOccupacy(dto.getOccupacy());
 			dao.setReserved(false);
@@ -292,9 +294,9 @@ public class HotelService {
 		dao.setRooms(jsonStr);
 		dao.setUpdate_user_id(userService.getCurrentUser().getId());
 		dao.setUser(u.get());
-
-		Date checkinDate = new SimpleDateFormat("dd/MM/yyyy").parse(request.getCheckinDate());
-		Date checkoutDate = new SimpleDateFormat("dd/MM/yyyy").parse(request.getCheckoutDate());
+		//2020-06-24
+		Date checkinDate = new SimpleDateFormat("yyyy-MM-dd").parse(request.getCheckinDate());
+		Date checkoutDate = new SimpleDateFormat("yyyy-MM-dd").parse(request.getCheckoutDate());
 		dao.setCheckinDate(checkinDate);
 		dao.setCheckoutDate(checkoutDate);
 		dao.setBooking_price(initialPriceTotal);
@@ -731,16 +733,18 @@ public class HotelService {
 
 	
 	// Booking can be cancelled upto 24 hrs
-	public ApiResponse cancelBooking(BookingDTO request) {
+	public ApiResponse cancelBooking(BookingDTO request) throws JsonParseException, JsonMappingException, IOException {
 
 		Optional<Booking> bookings = bookingRepository.findById(request.getId());
 		if (!bookings.isPresent()) {
 			return new ApiResponse(674, "Booking Not Found");
 		}
 		Booking booking = bookings.get();
+		
 		if(booking.getBookingStatus().equals("CANCELLED")) {
 			return new ApiResponse(674, "BOOKING ALREADY CANCELLED");
 		}
+		
 		Date checkinDate = booking.getCheckinDate();
 		long checkinDateMillis = checkinDate.getTime();
 		long offsetCancellationTime = 24 * 60 * 60 * 1000; // 24 hrs
@@ -751,15 +755,30 @@ public class HotelService {
 					"Booking Can be cancelled Only Uptu 24 Hrs Of chekin Date,Please Contact Customer care");
 		}
 		BookingTransaction btr  = booking.getTransaction();
-		if(btr == null) {
-
+		
+		if(btr == null || btr.getPayment_mode().equals("PAY_AT_HOTEL")) {
 			booking.setBookingStatus("CANCELLED");
 			booking.setPaymentStatus("CANCELLED");
 			bookingRepository.save(booking);
 			//dont change status code
+			//FREE ROOM
+			String rooms =  booking.getRooms();
+			ObjectMapper mapper = new ObjectMapper();
+			Long[] rs = mapper.readValue(rooms, Long[].class);
+			for (long rid : rs) {
+				Optional<Room> room = roomsRepository.findById(rid);
+				if (room.isPresent()) {
+					Room roomss = room.get();
+					roomss.setReserved(false);
+					roomsRepository.save(roomss);
+				}
+			}
+			
 			return new ApiResponse(200, "BOOKING CANCELLED: NO REFUND NEEDED");
 		
 		}
+		
+		
 		PaymentOrder r= paymentService.getPaymentByOrderId(booking.getTransaction().getOrder_id());
 		List<Payment> ps= r.getPayments();
 		Payment payment =null;
@@ -778,12 +797,38 @@ public class HotelService {
 				booking.setPaymentStatus("REFUNDED");
 				booking.getTransaction().setPaymentStatus("REFUNDED");
 				bookingRepository.save(booking);
+				//FREE ROOM
+				String rooms =  booking.getRooms();
+				ObjectMapper mapper = new ObjectMapper();
+				Long[] rs = mapper.readValue(rooms, Long[].class);
+				for (long rid : rs) {
+					Optional<Room> room = roomsRepository.findById(rid);
+					if (room.isPresent()) {
+						Room roomss = room.get();
+						roomss.setReserved(false);
+						roomsRepository.save(roomss);
+					}
+				}
+				
 				return new ApiResponse(200, "BOOKING CANCELLED AND REFUND INITIATED",resp);
 			} else {
 				return new ApiResponse(674, "ERROR OCCURED WHILE BOOKING CANCELLATION");
 			}
 
 		} else {
+			//FREE ROOM
+			String rooms =  booking.getRooms();
+			ObjectMapper mapper = new ObjectMapper();
+			Long[] rs = mapper.readValue(rooms, Long[].class);
+			for (long rid : rs) {
+				Optional<Room> room = roomsRepository.findById(rid);
+				if (room.isPresent()) {
+					Room roomss = room.get();
+					roomss.setReserved(false);
+					roomsRepository.save(roomss);
+				}
+			}
+			
 			booking.setBookingStatus("CANCELLED");
 			booking.setPaymentStatus("CANCELLED");
 			bookingRepository.save(booking);

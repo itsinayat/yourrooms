@@ -243,5 +243,11 @@ public class AdminController {
 	}
 	
 	
+	@RequestMapping(value = "/searchUser/{mobile}", method = RequestMethod.GET)
+	public ResponseEntity<ApiResponse> findUserByMobile(@PathVariable("mobile") String mobile) {
+		ApiResponse response = userService.findUserByMobile(mobile);
+		System.out.println(mobile);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
 	
 }

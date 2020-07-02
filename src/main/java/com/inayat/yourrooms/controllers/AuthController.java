@@ -17,18 +17,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.inayat.yourrooms.dao.UserDao;
-import com.inayat.yourrooms.dto.ChangeRoleRequest;
 import com.inayat.yourrooms.dto.ReviewAndRatingsDTO;
 import com.inayat.yourrooms.dto.UsersDTO;
 import com.inayat.yourrooms.entity.Coupon;
@@ -38,7 +34,7 @@ import com.inayat.yourrooms.repositories.CouponRepository;
 import com.inayat.yourrooms.repositories.RoleRepository;
 import com.inayat.yourrooms.repositories.UserRepository;
 import com.inayat.yourrooms.security.TokenHandler;
-import com.inayat.yourrooms.service.FileStorageService;
+import com.inayat.yourrooms.service.HotelService;
 import com.inayat.yourrooms.service.UserService;
 
 @RestController
@@ -49,6 +45,8 @@ public class AuthController {
 
 	@Autowired
 	UserDao userDao;
+	@Autowired
+	HotelService hotelService;
 
 	@Autowired
 	AuthenticationManager authenticationManager;

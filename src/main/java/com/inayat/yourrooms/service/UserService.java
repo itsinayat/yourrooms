@@ -108,8 +108,8 @@ public class UserService {
 			wallet.setIs_activated(false);
 			Wallet newwallet = walletRepository.save(wallet);
 			user.setWallet(newwallet);
-			userRepository.save(user);
-			return new ApiResponse(41, "SUCCESS");
+			User userResponse =  userRepository.save(user);
+			return new ApiResponse(41, "SUCCESS",userResponse);
 		} else {
 			return new ApiResponse(42, "User Already Registered, Please Login.");
 		}
@@ -230,6 +230,8 @@ public class UserService {
 			User u = userRepository.findByUsername(dto.getMobile());
 			if (u == null) {
 				User user = new User();
+				user.setFirstName(dto.getFirstName());
+				user.setLastName(dto.getLastName());
 				user.setMobile(dto.getMobile());
 				user.setUsername(dto.getMobile());
 				user.setPassword(encoder.encode(defaultPassoword));
@@ -260,10 +262,11 @@ public class UserService {
 				userToken.setUser(user);
 				userToken.setTokenKey(tokenKey);
 				userToken.setStatus(Constants.UsetTokenStatus.ACTIVE);
-				userRepository.save(user);
+				User user1= userRepository.save(user);
 				// Save token
 				userDao.saveUserToken(userToken);
 				UserTokenDTO userTokenDTO = UserTokenTranslator.translateToDTO(userToken);
+				userTokenDTO.setUserId(user1.getId());
 				return new ApiResponse(51, "User Registered Successfully", userTokenDTO);
 			} else {
 				return new ApiResponse(42, "User Already Registered, Please Login.");

@@ -269,7 +269,7 @@ public class HotelService {
 			return new ApiResponse(432, "Hotel Not Found");
 		}
 
-		boolean isReserved = false;
+		int occupacy=0;
 		double initialPriceTotal = 0;
 		double discountPriceTotal = 0;
 
@@ -282,7 +282,12 @@ public class HotelService {
 
 			initialPriceTotal += room.get().getInitialPrice();
 			discountPriceTotal += room.get().getDiscountPrice();
+			occupacy++;
 		}
+		//chek ocupacy
+//		if(request.getNoOfGuests()>occupacy) {
+//			return new ApiResponse(432, "Sorry Number of guest is greater than Occupacy");
+//		}
 
 		double totalprice = initialPriceTotal - discountPriceTotal;
 
@@ -750,15 +755,12 @@ public class HotelService {
 		long offsetCancellationTime = 24 * 60 * 60 * 1000; // 24 hrs
 		long throttleTime = checkinDateMillis - offsetCancellationTime;
 		long currentTime = System.currentTimeMillis();
-		if (currentTime > throttleTime) {
-			return new ApiResponse(509,
-					"Booking Can be cancelled Only Uptu 24 Hrs Of chekin Date,Please Contact Customer care");
-		}
+		
 		BookingTransaction btr  = booking.getTransaction();
 		
 		if(btr == null || btr.getPayment_mode().equals("PAY_AT_HOTEL")) {
 			booking.setBookingStatus("CANCELLED");
-			booking.setPaymentStatus("CANCELLED");
+			booking.setPaymentStatus("REFUNDED");
 			bookingRepository.save(booking);
 			//dont change status code
 			//FREE ROOM
@@ -776,6 +778,10 @@ public class HotelService {
 			
 			return new ApiResponse(200, "BOOKING CANCELLED: NO REFUND NEEDED");
 		
+		}
+		if (currentTime > throttleTime) {
+			return new ApiResponse(509,
+					"Booking Can be cancelled Only Uptu 24 Hrs Of chekin Date,Please Contact Customer care");
 		}
 		
 		

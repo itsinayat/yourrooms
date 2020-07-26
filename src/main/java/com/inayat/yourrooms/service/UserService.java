@@ -211,12 +211,18 @@ public class UserService {
 
 		UserDetails ud = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User dao = userRepository.findByUsername(ud.getUsername());
-		dao.setDob(user.getDob());
-		dao.setEmail(user.getEmail());
-		dao.setFirstName(user.getFirstName());
-		dao.setGender(user.getGender());
-		dao.setIs_verified(user.getIs_verified());
-		dao.setLastName(user.getLastName());
+		if(user.getDob() != null)
+			dao.setDob(user.getDob());
+		if(user.getEmail() != null)
+			dao.setEmail(user.getEmail());
+		if(user.getFirstName() != null)
+			dao.setFirstName(user.getFirstName());
+		if(user.getGender() != null)
+			dao.setGender(user.getGender());
+		if(user.getIs_verified() != null)
+			dao.setIs_verified(user.getIs_verified());
+		if(user.getLastName() != null)
+			dao.setLastName(user.getLastName());
 		try {
 			userRepository.save(dao);
 		} catch (Exception e) {

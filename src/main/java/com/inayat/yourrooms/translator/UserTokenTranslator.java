@@ -9,6 +9,7 @@ public class UserTokenTranslator {
 		UserTokenDTO token = new UserTokenDTO();
 		token.setTokenKey(dto.getTokenKey());
 		token.setRole(dto.getUser().getRole().getName());
+		token.setUserId(dto.getUser().getId());
 		return token;
 
 	}

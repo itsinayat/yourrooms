@@ -13,7 +13,6 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -158,43 +157,59 @@ public class HotelService {
 
 	}
 
-	public ApiResponse getAllHotel(String city, String pincode,String sortBy,String ascDesc) throws JsonProcessingException {
-		List<Hotel> list = null;
+	public ApiResponse getAllHotel(String city, String pincode) throws JsonProcessingException {
 		if (city != null && pincode == null) {
-			if(null !=ascDesc && ascDesc.equals("asc")) {
-			list = hotelRepository.findByCityASC(city,sortBy);
-			}else if(null !=ascDesc && ascDesc.equals("desc")) {
-			list = hotelRepository.findByCityDESC(city,sortBy);
-			}else {
-				list = hotelRepository.findByCityDESC(city,sortBy);
-			}
+			List<Hotel> list = hotelRepository.findByCity(city);
 			return new ApiResponse(343, "SUCCESS", list);
 		} else if (pincode != null && city == null) {
-			if(null !=ascDesc && ascDesc.equals("asc")) {
-			list = hotelRepository.findByPinCodeASC(pincode,sortBy);
-			}else if(null !=ascDesc && ascDesc.equals("desc")) {
-				list = hotelRepository.findByPinCodeDESC(pincode,sortBy);
-			}else {
-				list = hotelRepository.findByCityDESC(city,sortBy);
-			}
+			List<Hotel> list = hotelRepository.findByPinCode(pincode);
+			return new ApiResponse(343, "SUCCESS", list);
 		} else if (pincode != null && city != null) {
-			if(null !=ascDesc && ascDesc.equals("asc")) {
-			list = hotelRepository.findByPinCodeAndCityASC(pincode, city,sortBy);
-			}else if(null !=ascDesc && ascDesc.equals("desc")) {
-				list = hotelRepository.findByPinCodeAndCityDESC(pincode, city,sortBy);
-			}else {
-				list = hotelRepository.findByCityDESC(city,sortBy);
-			}
+			List<Hotel> list = hotelRepository.findByPinCodeAndCity(pincode, city);
 			return new ApiResponse(343, "SUCCESS", list);
 		} else {
-			ascDesc="desc";
-			sortBy="id";
-			Iterable<Hotel> hotellist = hotelRepository.findAll(Sort.by(ascDesc.equals("asc")?Sort.Direction.ASC:Sort.Direction.DESC, sortBy));
-			
+			Iterable<Hotel> hotellist = hotelRepository.findAll();
+			List<HotelDTO> list = new ArrayList<>();
+			for (Hotel h : hotellist) {
+				HotelDTO dto = new HotelDTO();
+				dto.setAc(h.getAc());
+				dto.setAddress(h.getAddress());
+				dto.setCity(h.getCity());
+				dto.setCoupleFriendly(h.getCoupleFriendly());
+				dto.setCreate_dt(h.getCreate_dt());
+				dto.setCreate_user_id(h.getCreate_user_id());
+				dto.setDel_ind(h.getDel_ind());
+
+				dto.setFreeBreakFast(h.getFreeBreakFast());
+				dto.setFreeWifi(h.getFreeWifi());
+				dto.setHotelName(h.getHotelName());
+				dto.setId(h.getId());
+
+				dto.setLattitude(h.getLattitude());
+				dto.setLongitude(h.getLongitude());
+				dto.setPayAtHotel(h.getPayAtHotel());
+				dto.setPincode(h.getPincode());
+				dto.setRating(h.getRating());
+				dto.setUpdate_dt(h.getUpdate_dt());
+				dto.setUpdate_user_id(h.getUpdate_user_id());
+
+				List<ReviewAndRating> g = reviewAndRatingsRepository.findByHotel(h);
+				List<ReviewAndRatingsDTO> list1 = new ArrayList<>();
+
+				for (ReviewAndRating r : g) {
+					ReviewAndRatingsDTO rr = new ReviewAndRatingsDTO();
+					rr.setComment(r.getComment());
+					rr.setDel_ind(r.getDel_ind());
+					rr.setId(r.getId());
+					rr.setRating(r.getRating());
+					list1.add(rr);
+				}
+				dto.setReviewAndRatings(list1);
+				list.add(dto);
+			}
 			return new ApiResponse(343, "SUCCESS", hotellist);
 
 		}
-		return new ApiResponse(343, "SUCCESS", list);
 	}
 
 	public ApiResponse addRoomsTOHotel(RoomsDTO dto) {
@@ -221,9 +236,7 @@ public class HotelService {
 			dao.setBalconyAvl(dto.getBalconyAvl());
 			dao.setDoubleBed(dto.getDoubleBed());
 			dao.setFreeCancellation(dto.getFreeCancellation());
-			if(dto.getHotelId() !=null) {
-				dao.setHotel(hotel);
-			}
+			dao.setHotel(hotel);
 			dao.setName(dto.getName());
 			dao.setOccupacy(dto.getOccupacy());
 			dao.setReserved(false);
@@ -269,7 +282,7 @@ public class HotelService {
 			return new ApiResponse(432, "Hotel Not Found");
 		}
 
-		int occupacy=0;
+		boolean isReserved = false;
 		double initialPriceTotal = 0;
 		double discountPriceTotal = 0;
 
@@ -282,12 +295,7 @@ public class HotelService {
 
 			initialPriceTotal += room.get().getInitialPrice();
 			discountPriceTotal += room.get().getDiscountPrice();
-			occupacy++;
 		}
-		//chek ocupacy
-//		if(request.getNoOfGuests()>occupacy) {
-//			return new ApiResponse(432, "Sorry Number of guest is greater than Occupacy");
-//		}
 
 		double totalprice = initialPriceTotal - discountPriceTotal;
 
@@ -299,9 +307,9 @@ public class HotelService {
 		dao.setRooms(jsonStr);
 		dao.setUpdate_user_id(userService.getCurrentUser().getId());
 		dao.setUser(u.get());
-		//2020-06-24
-		Date checkinDate = new SimpleDateFormat("yyyy-MM-dd").parse(request.getCheckinDate());
-		Date checkoutDate = new SimpleDateFormat("yyyy-MM-dd").parse(request.getCheckoutDate());
+
+		Date checkinDate = new SimpleDateFormat("dd/MM/yyyy").parse(request.getCheckinDate());
+		Date checkoutDate = new SimpleDateFormat("dd/MM/yyyy").parse(request.getCheckoutDate());
 		dao.setCheckinDate(checkinDate);
 		dao.setCheckoutDate(checkoutDate);
 		dao.setBooking_price(initialPriceTotal);
@@ -310,7 +318,7 @@ public class HotelService {
 		dao.setDel_ind(false);
 		dao.setCheckoutStatus(CHECKIN_CHECKOUT_STATUS.PENDING.toString());
 		dao.setCheckinStatus(CHECKIN_CHECKOUT_STATUS.PENDING.toString());
-		dao.setHotel(hotelRepository.findById(hotels.get().getId()).get());
+		dao.setHotelId(hotels.get().getId());
 		Booking newbooking = bookingRepository.save(dao);
 
 		for (Long id : ids) {
@@ -535,6 +543,16 @@ public class HotelService {
 		return new ApiResponse(674, "Success", hashs);
 	}
 
+	public ApiResponse cancelBooking(String bookingId) {
+		Booking bookings = bookingRepository.findByUserAndBooking(userService.getCurrentUser(),
+				Long.valueOf(bookingId));
+		if (bookings == null) {
+			return new ApiResponse(674, "Booking Not Found");
+		}
+		bookings.setBookingStatus(BOOKING_STATUS.CANCELLED.toString());
+		bookingRepository.save(bookings);
+		return new ApiResponse(674, "Booking CANCELLED");
+	}
 
 	public ApiResponse updateBooking(BookingDTO request) throws Exception {
 		Optional<Booking> bookings = bookingRepository.findById(request.getId());
@@ -738,53 +756,35 @@ public class HotelService {
 
 	
 	// Booking can be cancelled upto 24 hrs
-	public ApiResponse cancelBooking(BookingDTO request) throws JsonParseException, JsonMappingException, IOException {
+	public ApiResponse cancelBooking(BookingDTO request) {
 
 		Optional<Booking> bookings = bookingRepository.findById(request.getId());
 		if (!bookings.isPresent()) {
 			return new ApiResponse(674, "Booking Not Found");
 		}
 		Booking booking = bookings.get();
-		
 		if(booking.getBookingStatus().equals("CANCELLED")) {
 			return new ApiResponse(674, "BOOKING ALREADY CANCELLED");
 		}
-		
 		Date checkinDate = booking.getCheckinDate();
 		long checkinDateMillis = checkinDate.getTime();
 		long offsetCancellationTime = 24 * 60 * 60 * 1000; // 24 hrs
 		long throttleTime = checkinDateMillis - offsetCancellationTime;
 		long currentTime = System.currentTimeMillis();
-		
-		BookingTransaction btr  = booking.getTransaction();
-		
-		if(btr == null || btr.getPayment_mode().equals("PAY_AT_HOTEL")) {
-			booking.setBookingStatus("CANCELLED");
-			booking.setPaymentStatus("REFUNDED");
-			bookingRepository.save(booking);
-			//dont change status code
-			//FREE ROOM
-			String rooms =  booking.getRooms();
-			ObjectMapper mapper = new ObjectMapper();
-			Long[] rs = mapper.readValue(rooms, Long[].class);
-			for (long rid : rs) {
-				Optional<Room> room = roomsRepository.findById(rid);
-				if (room.isPresent()) {
-					Room roomss = room.get();
-					roomss.setReserved(false);
-					roomsRepository.save(roomss);
-				}
-			}
-			
-			return new ApiResponse(200, "BOOKING CANCELLED: NO REFUND NEEDED");
-		
-		}
 		if (currentTime > throttleTime) {
 			return new ApiResponse(509,
 					"Booking Can be cancelled Only Uptu 24 Hrs Of chekin Date,Please Contact Customer care");
 		}
+		BookingTransaction btr  = booking.getTransaction();
+		if(btr == null) {
+
+			booking.setBookingStatus("CANCELLED");
+			booking.setPaymentStatus("CANCELLED");
+			bookingRepository.save(booking);
+			//dont change status code
+			return new ApiResponse(200, "BOOKING CANCELLED: NO REFUND NEEDED");
 		
-		
+		}
 		PaymentOrder r= paymentService.getPaymentByOrderId(booking.getTransaction().getOrder_id());
 		List<Payment> ps= r.getPayments();
 		Payment payment =null;
@@ -803,38 +803,12 @@ public class HotelService {
 				booking.setPaymentStatus("REFUNDED");
 				booking.getTransaction().setPaymentStatus("REFUNDED");
 				bookingRepository.save(booking);
-				//FREE ROOM
-				String rooms =  booking.getRooms();
-				ObjectMapper mapper = new ObjectMapper();
-				Long[] rs = mapper.readValue(rooms, Long[].class);
-				for (long rid : rs) {
-					Optional<Room> room = roomsRepository.findById(rid);
-					if (room.isPresent()) {
-						Room roomss = room.get();
-						roomss.setReserved(false);
-						roomsRepository.save(roomss);
-					}
-				}
-				
 				return new ApiResponse(200, "BOOKING CANCELLED AND REFUND INITIATED",resp);
 			} else {
 				return new ApiResponse(674, "ERROR OCCURED WHILE BOOKING CANCELLATION");
 			}
 
 		} else {
-			//FREE ROOM
-			String rooms =  booking.getRooms();
-			ObjectMapper mapper = new ObjectMapper();
-			Long[] rs = mapper.readValue(rooms, Long[].class);
-			for (long rid : rs) {
-				Optional<Room> room = roomsRepository.findById(rid);
-				if (room.isPresent()) {
-					Room roomss = room.get();
-					roomss.setReserved(false);
-					roomsRepository.save(roomss);
-				}
-			}
-			
 			booking.setBookingStatus("CANCELLED");
 			booking.setPaymentStatus("CANCELLED");
 			bookingRepository.save(booking);

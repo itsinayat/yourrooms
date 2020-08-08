@@ -24,11 +24,9 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.inayat.yourrooms.dto.BookingDTO;
 import com.inayat.yourrooms.dto.BookingTransactionDTO;
-import com.inayat.yourrooms.dto.ConfigurationRequest;
 import com.inayat.yourrooms.dto.CouponsRequest;
 import com.inayat.yourrooms.dto.HotelDTO;
 import com.inayat.yourrooms.dto.MapStaffRequest;
-import com.inayat.yourrooms.dto.ReviewAndRatingsDTO;
 import com.inayat.yourrooms.dto.RoomsDTO;
 import com.inayat.yourrooms.dto.UsersDTO;
 import com.inayat.yourrooms.entity.Booking;
@@ -85,7 +83,7 @@ public class AdminController {
 	}
 
 	@GetMapping("/delete/{type}/{id}")
-	public ResponseEntity<ApiResponse> DelateFile(@PathVariable("id") String id,
+	public ResponseEntity<ApiResponse> uploadMultipleFiles(@PathVariable("id") String id,
 			@PathVariable("type") String type) {
 		if (type.equalsIgnoreCase("room")) {
 			ApiResponse response = fileStorageService.deletefromroom(id);
@@ -207,47 +205,5 @@ public class AdminController {
 
 	}
 	
-	@RequestMapping(value = "/getAllConfiguration", method = RequestMethod.GET)
-	public ResponseEntity<ApiResponse> getAllConfiguration() {
-		ApiResponse response = adminService.getAllConfiguration();
-		return new ResponseEntity<>(response, HttpStatus.OK);
 
-	}
-	
-	@RequestMapping(value = "/updateConfig", method = RequestMethod.POST)
-	public ResponseEntity<ApiResponse> updateConfig(@RequestBody ConfigurationRequest request) {
-		ApiResponse response = adminService.updateConfig(request);
-		return new ResponseEntity<>(response, HttpStatus.OK);
-
-	}
-	
-	@RequestMapping(value = "/addNewConfig", method = RequestMethod.POST)
-	public ResponseEntity<ApiResponse> addNewConfig(@RequestBody ConfigurationRequest request) {
-		ApiResponse response = adminService.addNewConfig(request);
-		return new ResponseEntity<>(response, HttpStatus.OK);
-
-	}
-	
-	@RequestMapping(value = "/deleteConfig/{key}", method = RequestMethod.GET)
-	public ResponseEntity<ApiResponse> deleteConfig(@PathVariable("key") String key) {
-		ApiResponse response = adminService.deleteConfig(key);
-		return new ResponseEntity<>(response, HttpStatus.OK);
-
-	}
-	
-	@RequestMapping(value = "/updateReview", method = RequestMethod.POST)
-	public ResponseEntity<ApiResponse> updateReview(@RequestBody ReviewAndRatingsDTO dto) {
-		ApiResponse response = adminService.updateReview(dto);
-		return new ResponseEntity<>(response, HttpStatus.OK);
-
-	}
-	
-	
-	@RequestMapping(value = "/searchUser/{mobile}", method = RequestMethod.GET)
-	public ResponseEntity<ApiResponse> findUserByMobile(@PathVariable("mobile") String mobile) {
-		ApiResponse response = userService.findUserByMobile(mobile);
-		System.out.println(mobile);
-		return new ResponseEntity<>(response, HttpStatus.OK);
-	}
-	
 }

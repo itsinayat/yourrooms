@@ -108,8 +108,8 @@ public class UserService {
 			wallet.setIs_activated(false);
 			Wallet newwallet = walletRepository.save(wallet);
 			user.setWallet(newwallet);
-			User userResponse =  userRepository.save(user);
-			return new ApiResponse(41, "SUCCESS",userResponse);
+			userRepository.save(user);
+			return new ApiResponse(41, "SUCCESS");
 		} else {
 			return new ApiResponse(42, "User Already Registered, Please Login.");
 		}
@@ -211,18 +211,12 @@ public class UserService {
 
 		UserDetails ud = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User dao = userRepository.findByUsername(ud.getUsername());
-		if(user.getDob() != null)
-			dao.setDob(user.getDob());
-		if(user.getEmail() != null)
-			dao.setEmail(user.getEmail());
-		if(user.getFirstName() != null)
-			dao.setFirstName(user.getFirstName());
-		if(user.getGender() != null)
-			dao.setGender(user.getGender());
-		if(user.getIs_verified() != null)
-			dao.setIs_verified(user.getIs_verified());
-		if(user.getLastName() != null)
-			dao.setLastName(user.getLastName());
+		dao.setDob(user.getDob());
+		dao.setEmail(user.getEmail());
+		dao.setFirstName(user.getFirstName());
+		dao.setGender(user.getGender());
+		dao.setIs_verified(user.getIs_verified());
+		dao.setLastName(user.getLastName());
 		try {
 			userRepository.save(dao);
 		} catch (Exception e) {
@@ -236,8 +230,6 @@ public class UserService {
 			User u = userRepository.findByUsername(dto.getMobile());
 			if (u == null) {
 				User user = new User();
-				user.setFirstName(dto.getFirstName());
-				user.setLastName(dto.getLastName());
 				user.setMobile(dto.getMobile());
 				user.setUsername(dto.getMobile());
 				user.setPassword(encoder.encode(defaultPassoword));
@@ -245,7 +237,6 @@ public class UserService {
 				user.setCreate_user_id(0L);
 				user.setIs_logged_in(false);
 				user.setIs_verified(true);
-				user.setLast_login_time(new Date());
 				String referral_code = createReferalCode(6);
 				user.setReferral_code(referral_code);
 				user.setUpdate_user_id(0L);
@@ -259,21 +250,8 @@ public class UserService {
 				wallet.setUpdate_user_id(0L);
 				Wallet newwallet = walletRepository.save(wallet);
 				user.setWallet(newwallet);
-
-				// Generate token
-				String tokenKey = this.tokenHandler.generateToken(user);
-
-				// Build response
-				UserToken userToken = new UserToken();
-				userToken.setUser(user);
-				userToken.setTokenKey(tokenKey);
-				userToken.setStatus(Constants.UsetTokenStatus.ACTIVE);
-				User user1= userRepository.save(user);
-				// Save token
-				userDao.saveUserToken(userToken);
-				UserTokenDTO userTokenDTO = UserTokenTranslator.translateToDTO(userToken);
-				userTokenDTO.setUserId(user1.getId());
-				return new ApiResponse(51, "User Registered Successfully", userTokenDTO);
+				userRepository.save(user);
+				return new ApiResponse(51, "User Registered Successfully.");
 			} else {
 				return new ApiResponse(42, "User Already Registered, Please Login.");
 			}
@@ -390,7 +368,7 @@ public class UserService {
 	public ApiResponse getBookingHistory() throws ParseException {
 		User user = getCurrentUser();
 		List<Booking> bookings = bookingRepository.findByUser(user);
-		List<BookingHistoryResponse> list = new BookingHistoryResponseTranslator().translate(bookings);
+		List<BookingHistoryResponse> list = BookingHistoryResponseTranslator.translate(bookings);
 		return new ApiResponse(321, "SUCCESS", list);
 	}
 
@@ -402,22 +380,15 @@ public class UserService {
 		User user = getCurrentUser();
 		Hotel hotel = h.get();
 		ReviewAndRating rr = reviewAndRatingsRepository.findByUserAndHotel(user.getId(), hotel);
-		//update
 		if (rr != null) {
 			rr.setComment(dto.getComment());
 			rr.setDel_ind(false);
 			rr.setHotel(hotel);
 			rr.setRating(dto.getRating());
 			rr.setUpdate_user_id(user.getId());
-			rr.setApproved(dto.getApproved());
-			rr.setDel_ind(dto.getDel_ind());
-			rr= reviewAndRatingsRepository.save(rr);
-			int finalRating = ratingCalculator(hotel);
-			//update rating
-			hotel.setRating(Long.valueOf(finalRating));
-			hotelRepository.save(hotel);
+			rr.setCreate_user_id(user.getId());
+			reviewAndRatingsRepository.save(rr);
 			return new ApiResponse(321, "Updated Review");
-			//add
 		} else {
 			rr = new ReviewAndRating();
 			rr.setComment(dto.getComment());
@@ -426,31 +397,28 @@ public class UserService {
 			rr.setRating(dto.getRating());
 			rr.setUpdate_user_id(user.getId());
 			rr.setCreate_user_id(user.getId());
-			rr.setApproved(false);
-			rr.setDel_ind(false);
-			rr = reviewAndRatingsRepository.save(rr);
-			int finalRating = ratingCalculator(hotel);
-			//update rating
-			hotel.setRating(Long.valueOf(finalRating));
-			hotelRepository.save(hotel);
+			reviewAndRatingsRepository.save(rr);
 			return new ApiResponse(321, "created Review");
 		}
 
 	}
 
-	
-
-	private int ratingCalculator(Hotel h) {
-		Set<ReviewAndRating> rr=  h.getReviewAndRating();
-		Iterator<ReviewAndRating> cc = rr.iterator();
-		int sum = 0 ;
-		int count = 0;
-		while(cc.hasNext()) {
-			sum = sum + cc.next().getRating();
-			count=count+1;
+	public ApiResponse changeRole(ChangeRoleRequest request) {
+		Optional<User> users = userRepository.findById(request.getUserId());
+		if (!users.isPresent()) {
+			return new ApiResponse(321, "UserId not found");
 		}
-		int avg = (sum/count);
-		return avg;
+		Optional<Role> roles = roleRepository.findById(request.getRoleId());
+		if (!roles.isPresent()) {
+			return new ApiResponse(321, "invalid role");
+		}
+
+		User user = users.get();
+		user.setRole(roles.get());
+		userRepository.save(user);
+
+		return new ApiResponse(321, "SUCCESS");
+
 	}
 
 	public ApiResponse updateProfileById(UsersDTO user) {
@@ -468,11 +436,11 @@ public class UserService {
 		}
 
 		Optional<User> users = userRepository.findById(user.getId());
-		if (!users.isPresent()) {
+		if(!users.isPresent()) {
 			return new ApiResponse(50, "USER NOT FOUND");
 		}
 		User dao = users.get();
-
+		
 		dao.setEnabled(user.getIs_enabled());
 		dao.setIs_verified(user.getIs_verified());
 		dao.setDel_ind(user.getDel_ind());
@@ -483,16 +451,7 @@ public class UserService {
 			return new ApiResponse(50, e.getMessage());
 		}
 		return new ApiResponse(50, "SUCCESS");
-
-	}
 	
-	public ApiResponse findUserByMobile(String mobile) {
-		User user = userRepository.findByMobile(mobile);
-		if(user == null) {
-			return new ApiResponse(50, "User Not Found");
-		}else {
-			return new ApiResponse(50, "SUCCESS",user);
-		}
 	}
 
 }

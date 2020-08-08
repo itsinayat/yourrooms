@@ -26,8 +26,6 @@ public class UsersTranslator {
 		dto.setRole(tUser.getRole().getName());
 		dto.setReferral_code(tUser.getReferral_code());
 		dto.setId(tUser.getId());
-		dto.setEnabled(tUser.isEnabled());
-		
 	    return dto;
 	}
 	public static User convertToDao(UsersDTO dto) {

@@ -53,19 +53,10 @@ public class PaymentService {
 		order.setCurrency("INR");
 		order.setAmount(Double.valueOf(calculateAmountPayable(dao)));
 		order.setDescription("PaymentFor BookingID: " + dao.getBookingId());
-		Configuration ENV = configurationRepository.findByKey("ENV");
-		if (ENV.getValue().equals("DEV")) {  
-			System.out.println(configurationRepository.findByKey("DEV_HOST").getValue());
-			order.setRedirectUrl(configurationRepository.findByKey("DEV_HOST").getValue() + "/payment/update-order");
-		} else {
-			order.setRedirectUrl(configurationRepository.findByKey("PROD_HOST").getValue() + "/payment/update-order");
-			System.out.println(configurationRepository.findByKey("PROD_HOST").getValue() + "/payment/update-order");
-		}
-
+		order.setRedirectUrl("http://localhost:8090/payment/update-order");
 		order.setWebhookUrl("http://www.someurl.com/");
 		order.setTransactionId(generateTrId());
 
-		
 		try {
 			PaymentOrderResponse paymentOrderResponse = api.createPaymentOrder(order);
 			BookingTransaction bookingTransaction = new BookingTransaction();
@@ -157,36 +148,34 @@ public class PaymentService {
 	}
 
 	public BookingTransaction createOrderPayAtHotel(Booking dao, int hashCode) {
-		BookingTransaction bookingTransaction = new BookingTransaction();
-		String tid = generateTrId();
-		String oid = generateOrderId();
-		dao.setBookingStatus(PaymentStatus.SUCCESS.toString());
-		dao.setPaymentStatus(PaymentStatus.SUCCESS.toString());
-		bookingTransaction.setOrder_id(oid);
-		bookingTransaction.setTransaction_id(tid);
-		bookingTransaction.setTransaction_url("NONE");
-		bookingTransaction.setCreate_user_id(userService.getCurrentUser().getId());
-		bookingTransaction.setDel_ind(false);
-		bookingTransaction.setUpdate_user_id(userService.getCurrentUser().getId());
-		if (dao.getCoupon_discount() != null) {
-			bookingTransaction.setTotalAmount(dao.getBooking_price().longValue() - dao.getDiscount_price().longValue()
-					+ dao.getGst().longValue() - dao.getCoupon_discount().longValue());
-		} else {
-			bookingTransaction.setTotalAmount(dao.getBooking_price().longValue() - dao.getDiscount_price().longValue()
-					+ dao.getGst().longValue());
-		}
-		bookingTransaction.setReference_id(tid);
-		bookingTransaction.setPaymentStatus(PaymentStatus.SUCCESS.toString());
-		bookingTransaction.setDiscountType("NONE");
-		bookingTransaction.setPaidAmount(0L);
-		bookingTransaction.setBooking(dao);
-		bookingTransaction.setPaymentHash(String.valueOf(hashCode));
-		bookingTransaction.setPayment_mode(PAYMENT_MODE.PAY_AT_HOTEL.toString());
-		bookingTransactionReository.save(bookingTransaction);
-		dao.setTransaction(bookingTransaction);
-		bookingRepository.save(dao);
-		return bookingTransaction;
-
+			BookingTransaction bookingTransaction = new BookingTransaction();
+			String tid = generateTrId();
+			String oid = generateOrderId();
+			dao.setBookingStatus(PaymentStatus.SUCCESS.toString());
+			dao.setPaymentStatus(PaymentStatus.SUCCESS.toString());
+			bookingTransaction.setOrder_id(oid);
+			bookingTransaction.setTransaction_id(tid);
+			bookingTransaction.setTransaction_url("NONE");
+			bookingTransaction.setCreate_user_id(userService.getCurrentUser().getId());
+			bookingTransaction.setDel_ind(false);
+			bookingTransaction.setUpdate_user_id(userService.getCurrentUser().getId());
+			if(dao.getCoupon_discount() !=null) {
+				bookingTransaction.setTotalAmount(dao.getBooking_price().longValue()-dao.getDiscount_price().longValue()+dao.getGst().longValue()-dao.getCoupon_discount().longValue());
+			}else {
+				bookingTransaction.setTotalAmount(dao.getBooking_price().longValue()-dao.getDiscount_price().longValue()+dao.getGst().longValue());
+			}
+			bookingTransaction.setReference_id(tid);
+			bookingTransaction.setPaymentStatus(PaymentStatus.SUCCESS.toString());
+			bookingTransaction.setDiscountType("NONE");
+			bookingTransaction.setPaidAmount(0L);
+			bookingTransaction.setBooking(dao);
+			bookingTransaction.setPaymentHash(String.valueOf(hashCode));
+			bookingTransaction.setPayment_mode(PAYMENT_MODE.PAY_AT_HOTEL.toString());
+			bookingTransactionReository.save(bookingTransaction);
+			dao.setTransaction(bookingTransaction);
+			bookingRepository.save(dao);
+			return bookingTransaction;
+	
 	}
 
 }

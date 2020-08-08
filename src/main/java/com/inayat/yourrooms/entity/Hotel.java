@@ -92,26 +92,13 @@ public class Hotel implements Serializable {
 	private Boolean isBlocked =false;
 	
 	
-	@ManyToMany(mappedBy="hotels", cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy="hotels")
     private Set<User> staffs;
 	
 	@OneToMany(mappedBy = "htl", cascade = CascadeType.ALL)
 	@JsonManagedReference
     private Set<HotelImage> hotelImages;
 	
-	
-	@OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
-	@JsonManagedReference
-    private Set<ReviewAndRating> reviewAndRating;
-	
-
-	public Set<ReviewAndRating> getReviewAndRating() {
-		return reviewAndRating;
-	}
-
-	public void setReviewAndRating(Set<ReviewAndRating> reviewAndRating) {
-		this.reviewAndRating = reviewAndRating;
-	}
 
 	public Long getId() {
 		return id;

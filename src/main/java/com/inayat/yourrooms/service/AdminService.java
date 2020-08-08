@@ -6,24 +6,18 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.inayat.yourrooms.dto.ConfigurationRequest;
-import com.inayat.yourrooms.dto.ReviewAndRatingsDTO;
 import com.inayat.yourrooms.entity.Booking;
 import com.inayat.yourrooms.entity.BookingTransaction;
-import com.inayat.yourrooms.entity.Configuration;
 import com.inayat.yourrooms.entity.Coupon;
 import com.inayat.yourrooms.entity.Hotel;
 import com.inayat.yourrooms.entity.Refunds;
-import com.inayat.yourrooms.entity.ReviewAndRating;
 import com.inayat.yourrooms.entity.User;
 import com.inayat.yourrooms.model.ApiResponse;
 import com.inayat.yourrooms.repositories.BookingRepository;
 import com.inayat.yourrooms.repositories.BookingTransactionRepository;
-import com.inayat.yourrooms.repositories.ConfigurationRepository;
 import com.inayat.yourrooms.repositories.CouponRepository;
 import com.inayat.yourrooms.repositories.HotelRepository;
 import com.inayat.yourrooms.repositories.RefundsRepository;
-import com.inayat.yourrooms.repositories.ReviewAndRatingsRepository;
 import com.inayat.yourrooms.repositories.UserRepository;
 
 @Service
@@ -54,11 +48,6 @@ CouponRepository couponRepository;
 RefundsRepository refundsRepository;
 
 
-@Autowired
-ConfigurationRepository configurationRepository;
-
-@Autowired
-ReviewAndRatingsRepository reviewAndRatingsRepository;
 
 
 	public ApiResponse getMyHotels() {
@@ -131,59 +120,7 @@ ReviewAndRatingsRepository reviewAndRatingsRepository;
 		return new ApiResponse(321, "SUCCESS",rfnds);
 	
 	}
-
-	public ApiResponse getAllConfiguration() {
-		Iterable<Configuration> confs = 	configurationRepository.findAll();
-		return new ApiResponse(321, "SUCCESS",confs);
-	}
-
-	public ApiResponse updateConfig(ConfigurationRequest request) {
-		Configuration config = configurationRepository.findByKey(request.getKey());
-		if(config == null) {
-			return new ApiResponse(321, "NO KEY FOUND");
-		}
-		config.setValue(request.getValue());
-		configurationRepository.save(config);
-		return new ApiResponse(321, "SUCCESS");
-	}
-
-	public ApiResponse addNewConfig(ConfigurationRequest request) {
-		Configuration config =new  Configuration(request.getKey(),request.getValue());
-		configurationRepository.save(config);
-		return new ApiResponse(321, "SUCCESS");
-	}
-
-	public ApiResponse deleteConfig(String key) {
-		Configuration config = configurationRepository.findByKey(key);
-		if(config == null) {
-			return new ApiResponse(321, "KEY NOT FOUND");
-		}
-		configurationRepository.deleteByKey(key);
-		return new ApiResponse(321, "SUCCESS");
-	}
 	
-	public ApiResponse updateReview(ReviewAndRatingsDTO dto) {
-		Optional<ReviewAndRating> rr = reviewAndRatingsRepository.findById(dto.getId());
-		if (!rr.isPresent()) {
-			return new ApiResponse(321, "Review Not Found");
-		} else {
-			ReviewAndRating review = rr.get();
-
-			if (dto.getApproved() != null) {
-				review.setApproved(dto.getApproved());
-			}
-
-			if (dto.getComment() != null) {
-				review.setComment(dto.getComment());
-			}
-
-			if (dto.getDel_ind() != null) {
-				review.setDel_ind(dto.getDel_ind());
-			}
-			reviewAndRatingsRepository.save(review);
-			return new ApiResponse(321, "SUCCESS");
-		}
-
-	}
+	
 
 }

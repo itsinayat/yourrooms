@@ -12,16 +12,6 @@ public class UserTokenDTO implements Serializable {
 	private long tokenId;
 
 	private String tokenKey;
-	
-	private Long userId;
-
-	public Long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
 
 	private String status;
 

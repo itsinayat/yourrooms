@@ -5,8 +5,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 
-import com.inayat.yourrooms.entity.Hotel;
-
 public class BookingHistoryResponse implements Serializable {
 	Long id;
 	Double price;
@@ -15,7 +13,6 @@ public class BookingHistoryResponse implements Serializable {
 	Double coupon_discount;
 	Double gst;
 	String rooms;
-	Hotel hotel;
 	int noOfGuests;
 	BookingTransactionDTO transaction;
 	Date create_dt;
@@ -26,12 +23,6 @@ public class BookingHistoryResponse implements Serializable {
 	String bookingId;
 	private String checkin_status;
 	
-	public Hotel getHotel() {
-		return hotel;
-	}
-	public void setHotel(Hotel hotel) {
-		this.hotel = hotel;
-	}
 	private String checkout_status;
 	
 	public Long getId() {

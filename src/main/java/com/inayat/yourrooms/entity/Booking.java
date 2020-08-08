@@ -76,6 +76,19 @@ public class Booking {
 
 	@OneToOne
 	@JsonManagedReference
+	private Hotel hotel;
+	
+	
+	public Hotel getHotel() {
+		return hotel;
+	}
+
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
+	}
+
+	@OneToOne
+	@JsonManagedReference
 	private BookingTransaction transaction;
 
 	@Column(name = "del_ind")

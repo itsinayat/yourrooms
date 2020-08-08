@@ -390,7 +390,7 @@ public class UserService {
 	public ApiResponse getBookingHistory() throws ParseException {
 		User user = getCurrentUser();
 		List<Booking> bookings = bookingRepository.findByUser(user);
-		List<BookingHistoryResponse> list = BookingHistoryResponseTranslator.translate(bookings);
+		List<BookingHistoryResponse> list = new BookingHistoryResponseTranslator().translate(bookings);
 		return new ApiResponse(321, "SUCCESS", list);
 	}
 

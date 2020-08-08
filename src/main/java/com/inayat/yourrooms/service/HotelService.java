@@ -310,7 +310,7 @@ public class HotelService {
 		dao.setDel_ind(false);
 		dao.setCheckoutStatus(CHECKIN_CHECKOUT_STATUS.PENDING.toString());
 		dao.setCheckinStatus(CHECKIN_CHECKOUT_STATUS.PENDING.toString());
-		dao.setHotelId(hotels.get().getId());
+		dao.setHotel(hotelRepository.findById(hotels.get().getId()).get());
 		Booking newbooking = bookingRepository.save(dao);
 
 		for (Long id : ids) {

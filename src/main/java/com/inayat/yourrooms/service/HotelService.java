@@ -310,7 +310,8 @@ public class HotelService {
 		dao.setDel_ind(false);
 		dao.setCheckoutStatus(CHECKIN_CHECKOUT_STATUS.PENDING.toString());
 		dao.setCheckinStatus(CHECKIN_CHECKOUT_STATUS.PENDING.toString());
-		dao.setHotel(hotelRepository.findById(hotels.get().getId()).get());
+		//dao.setHotelId(hotels.get().getId());
+		dao.setHotel(hotelRepository.findById(Long.valueOf(hotels.get().getId())).get());
 		Booking newbooking = bookingRepository.save(dao);
 
 		for (Long id : ids) {
@@ -677,7 +678,7 @@ public class HotelService {
 		if (!hotels.isPresent()) {
 			return new ApiResponse(674, "Hotel Not Found");
 		}
-		List<Booking> bookings = bookingRepository.finByHotel(Long.valueOf(hotelId));
+		List<Booking> bookings = bookingRepository.finByHotel(hotels.get());
 		return new ApiResponse(674, "SUCCESS", bookings);
 	}
 
@@ -840,6 +841,20 @@ public class HotelService {
 			bookingRepository.save(booking);
 			return new ApiResponse(200, "BOOKING CANCELLED: NO REFUND NEEDED");
 		}
+
+	}
+
+	public ApiResponse applyDiscount(String amount, long bookingId) throws IOException {
+			Optional<Booking> bks = bookingRepository.findById(bookingId);
+			if (!bks.isPresent()) {
+				return new ApiResponse(545, "Invalid booking Id");
+			} else {
+				Booking bookings = bks.get();
+				bookings.setMerchantDiscount(Double.valueOf(amount));
+				BookingResponse resp = BookingResponseTranslator.translateToDTO(bookings);
+				bookingRepository.save(bookings);
+				return new ApiResponse(545, "Coupon Applied", resp);
+			}
 
 	}
 

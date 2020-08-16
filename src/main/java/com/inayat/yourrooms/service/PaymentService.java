@@ -168,17 +168,25 @@ public class PaymentService {
 		bookingTransaction.setCreate_user_id(userService.getCurrentUser().getId());
 		bookingTransaction.setDel_ind(false);
 		bookingTransaction.setUpdate_user_id(userService.getCurrentUser().getId());
+		Double coupon_discount = 0d;
+		Double merchant_discount = 0d;
 		if (dao.getCoupon_discount() != null) {
-			bookingTransaction.setTotalAmount(dao.getBooking_price().longValue() - dao.getDiscount_price().longValue()
-					+ dao.getGst().longValue() - dao.getCoupon_discount().longValue());
-		} else {
-			bookingTransaction.setTotalAmount(dao.getBooking_price().longValue() - dao.getDiscount_price().longValue()
-					+ dao.getGst().longValue());
+			coupon_discount = dao.getCoupon_discount();
 		}
+		
+		if (dao.getMerchantDiscount() != null) {
+			merchant_discount = dao.getMerchantDiscount();
+		}
+
+		Long total = dao.getBooking_price().longValue() - dao.getDiscount_price().longValue()
+		+ dao.getGst().longValue() - coupon_discount.longValue()- merchant_discount.longValue() ;
+		
+		bookingTransaction.setTotalAmount(total);
+		
 		bookingTransaction.setReference_id(tid);
 		bookingTransaction.setPaymentStatus(PaymentStatus.SUCCESS.toString());
 		bookingTransaction.setDiscountType("NONE");
-		bookingTransaction.setPaidAmount(0L);
+		bookingTransaction.setPaidAmount(total);
 		bookingTransaction.setBooking(dao);
 		bookingTransaction.setPaymentHash(String.valueOf(hashCode));
 		bookingTransaction.setPayment_mode(PAYMENT_MODE.PAY_AT_HOTEL.toString());

@@ -22,6 +22,15 @@ public class BookingResponse {
 	 private String checkin_status;
 	 private String bookingId;
 	 private Long userId;
+	 private Double merchantDiscount;
+	 
+	
+	public Double getMerchantDiscount() {
+		return merchantDiscount;
+	}
+	public void setMerchantDiscount(Double merchantDiscount) {
+		this.merchantDiscount = merchantDiscount;
+	}
 	public Long getId() {
 		return id;
 	}

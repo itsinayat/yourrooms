@@ -29,7 +29,7 @@ public class BookingResponseTranslator {
 		dto.setUserId(dao.getUser().getId());
 		dto.setCheckin_status(dao.getCheckinStatus());
 		dto.setCheckout_status(dao.getCheckoutStatus());
-		
+		dto.setMerchantDiscount(Double.valueOf(dao.getMerchantDiscount()));
 		return dto;
 	}
 

@@ -35,15 +35,15 @@ public class DataLoader implements ApplicationRunner {
 		roleRepository.save(new Role(2L,"ROLE_CONSUMER"));
 		roleRepository.save(new Role(3L,"ROLE_SUPERADMIN"));
 		
-//		configurationRepository.save(new Configuration("REFERRAL_BONUS","100"));
-//		configurationRepository.save(new Configuration("GST_RATE","10"));
-//		
-//		configurationRepository.save(new Configuration("IM_PRIVATE_KEY","test_c0fe7a31708c15d1d1fd548d88c"));
-//		configurationRepository.save(new Configuration("IM_AUTH_TOKEN","test_75914bf49a32ffaaee32bf441b8"));
-//		configurationRepository.save(new Configuration("IM_SALT","fb7d6875d700457198525b308bcd1d52"));
-//		configurationRepository.save(new Configuration("IM_CLIENT_SECRET","test_uICB6FvnzLkYR0lS256p7WIVUkxO9Ddm4uyzwXWuqVhSKbvdUVoOsLWkFHiW0w1VMlXVtjZ8WWXa3wSTHieGqGVxxbqhrTnkxrbWWiUPhT0rTHGnrcd200TAMnE"));
-//		configurationRepository.save(new Configuration("IM_CLIENT_ID","test_6I2TqQfGs3yXN2SH9yfgQJgL0sV4NvSNy1V"));
-//		
+		configurationRepository.save(new Configuration("REFERRAL_BONUS","100"));
+		configurationRepository.save(new Configuration("GST_RATE","10"));
+		
+		configurationRepository.save(new Configuration("IM_PRIVATE_KEY","test_c0fe7a31708c15d1d1fd548d88c"));
+		configurationRepository.save(new Configuration("IM_AUTH_TOKEN","test_75914bf49a32ffaaee32bf441b8"));
+		configurationRepository.save(new Configuration("IM_SALT","fb7d6875d700457198525b308bcd1d52"));
+		configurationRepository.save(new Configuration("IM_CLIENT_SECRET","test_uICB6FvnzLkYR0lS256p7WIVUkxO9Ddm4uyzwXWuqVhSKbvdUVoOsLWkFHiW0w1VMlXVtjZ8WWXa3wSTHieGqGVxxbqhrTnkxrbWWiUPhT0rTHGnrcd200TAMnE"));
+		configurationRepository.save(new Configuration("IM_CLIENT_ID","test_6I2TqQfGs3yXN2SH9yfgQJgL0sV4NvSNy1V"));
+		
 		userRepository.save(new User(1L,"ADMIN", "PANEL", "test@gmail.com", "9311982278", true, true, false, Long.valueOf(0), Long.valueOf(0), "admin", bCryptPasswordEncoder.encode("admin"), roleRepository.findById(3L).get()));
 	}
 }

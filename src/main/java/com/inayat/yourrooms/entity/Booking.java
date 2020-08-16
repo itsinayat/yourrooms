@@ -125,6 +125,22 @@ public class Booking {
 	
 	@Column(name = "checkout_status")
 	private String checkoutStatus;
+	
+
+	@Column(name = "merchant_discount")
+	private Double merchantDiscount=0d;
+	
+	
+
+	
+
+	public Double getMerchantDiscount() {
+		return merchantDiscount;
+	}
+
+	public void setMerchantDiscount(Double merchantDiscount) {
+		this.merchantDiscount = merchantDiscount;
+	}
 
 	public Long getId() {
 		return id;

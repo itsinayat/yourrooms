@@ -15,20 +15,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.inayat.yourrooms.dto.BookingDTO;
-import com.inayat.yourrooms.dto.CouponsRequest;
-import com.inayat.yourrooms.dto.HotelDTO;
-import com.inayat.yourrooms.dto.MapStaffRequest;
-import com.inayat.yourrooms.dto.RoomsDTO;
 import com.inayat.yourrooms.model.ApiResponse;
 import com.inayat.yourrooms.service.FileStorageService;
 import com.inayat.yourrooms.service.HotelService;
@@ -82,6 +76,14 @@ public class HotelController {
 	public ResponseEntity<ApiResponse> applyCoupon(@PathVariable("code") String code,
 			@PathVariable("bookingId") String bookingId) throws NumberFormatException, IOException {
 		ApiResponse resp = hotelservice.applyCoupon(code, Long.parseLong(bookingId));
+		return new ResponseEntity<>(resp, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/apply-merchantDiscount/{bookingId}/{amount}", method = RequestMethod.GET)
+	public ResponseEntity<ApiResponse> applyDiscount(
+			@PathVariable("amount") String amount,
+			@PathVariable("bookingId") String bookingId) throws NumberFormatException, IOException {
+		ApiResponse resp = hotelservice.applyDiscount(amount, Long.parseLong(bookingId));
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 	

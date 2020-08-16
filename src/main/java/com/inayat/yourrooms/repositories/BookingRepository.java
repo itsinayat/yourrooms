@@ -19,6 +19,6 @@ public interface BookingRepository extends CrudRepository<Booking, Long> {
 	@Query("SELECT b from Booking b " + "WHERE b.user =:user and id =:bookingId")
 	Booking findByUserAndBooking(User user, Long bookingId);
 
-	@Query("SELECT b from Booking b " + "WHERE hotelId =:hotelId")
-	List<Booking> finByHotel(Long hotelId);
+	@Query("SELECT b from Booking b WHERE b.hotel=:hotel")
+	List<Booking> finByHotel(Hotel hotel);
 }

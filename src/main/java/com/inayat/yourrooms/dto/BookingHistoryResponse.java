@@ -18,11 +18,11 @@ public class BookingHistoryResponse implements Serializable {
 	Hotel hotel;
 	int noOfGuests;
 	BookingTransactionDTO transaction;
-	Date create_dt;
+	String create_dt;
 	Long create_user_id;
 	String bookingStatus;
-	Date checkinDate;
-	Date checkoutDate;
+	String checkinDate;
+	String checkoutDate;
 	String bookingId;
 	private String checkin_status;
 	
@@ -78,13 +78,26 @@ public class BookingHistoryResponse implements Serializable {
 		this.noOfGuests = noOfGuests;
 	}
 	
-	public Date getCreate_dt() {
+	
+	
+	public String getCreate_dt() {
 		return create_dt;
 	}
-	public void setCreate_dt(Date create_dt) {
+	public void setCreate_dt(String create_dt) {
 		this.create_dt = create_dt;
 	}
-	
+	public String getCheckinDate() {
+		return checkinDate;
+	}
+	public void setCheckinDate(String checkinDate) {
+		this.checkinDate = checkinDate;
+	}
+	public String getCheckoutDate() {
+		return checkoutDate;
+	}
+	public void setCheckoutDate(String checkoutDate) {
+		this.checkoutDate = checkoutDate;
+	}
 	public String getBookingStatus() {
 		return bookingStatus;
 	}
@@ -92,18 +105,7 @@ public class BookingHistoryResponse implements Serializable {
 		this.bookingStatus = bookingStatus;
 	}
 	
-	public Date getCheckinDate() {
-		return checkinDate;
-	}
-	public void setCheckinDate(Date checkinDate) {
-		this.checkinDate = checkinDate;
-	}
-	public Date getCheckoutDate() {
-		return checkoutDate;
-	}
-	public void setCheckoutDate(Date checkoutDate) {
-		this.checkoutDate = checkoutDate;
-	}
+	
 	public String getBookingId() {
 		return bookingId;
 	}

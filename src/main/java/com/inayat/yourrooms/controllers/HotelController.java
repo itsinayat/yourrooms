@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.inayat.yourrooms.dto.AvailabilityRequest;
 import com.inayat.yourrooms.dto.BookingDTO;
 import com.inayat.yourrooms.model.ApiResponse;
 import com.inayat.yourrooms.service.FileStorageService;
@@ -124,6 +125,12 @@ public class HotelController {
 	@RequestMapping(value = "/cancelBooking", method = RequestMethod.POST)
 	public ResponseEntity<ApiResponse> cancelBooking(@RequestBody BookingDTO request) throws Exception {
 		ApiResponse resp = hotelservice.cancelBooking(request);
+		return new ResponseEntity<>(resp, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/checkAvailablity", method = RequestMethod.POST)
+	public ResponseEntity<ApiResponse> checkAvailablity(@RequestBody AvailabilityRequest request) throws Exception {
+		ApiResponse resp = hotelservice.checkAvailablity(request);
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 

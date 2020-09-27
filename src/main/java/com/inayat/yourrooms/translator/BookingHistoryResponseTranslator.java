@@ -1,32 +1,36 @@
 package com.inayat.yourrooms.translator;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.inayat.yourrooms.dto.BookingHistoryResponse;
 import com.inayat.yourrooms.dto.BookingTransactionDTO;
 import com.inayat.yourrooms.entity.Booking;
 import com.inayat.yourrooms.entity.BookingTransaction;
-import com.inayat.yourrooms.entity.Hotel;
-import com.inayat.yourrooms.repositories.HotelRepository;
+
 @Service
 public class BookingHistoryResponseTranslator {
 
 	public List<BookingHistoryResponse> translate(List<Booking> bookings) throws ParseException {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
 		List<BookingHistoryResponse> list = new ArrayList<>();
 		for (Booking b : bookings) {
 			BookingHistoryResponse h = new BookingHistoryResponse();
 			h.setBookingId(b.getBookingId());
 			h.setBookingStatus(b.getBookingStatus());
-			h.setCheckinDate(b.getCheckinDate());
-			h.setCheckoutDate(b.getCheckoutDate());
+			String cinDAte = formatter.format(b.getCheckinDate());
+			h.setCheckinDate(cinDAte);
+			String coutDAte = formatter.format(b.getCheckoutDate());
+			h.setCheckoutDate(coutDAte);
+
 			h.setCoupon_discount(b.getCoupon_discount());
-			h.setCreate_dt(b.getCreate_dt());
+			String crDate = formatter.format(b.getCreate_dt());
+			h.setCreate_dt(crDate);
 			h.setDiscount_coupon(b.getDiscount_coupon());
 			h.setCreate_user_id(b.getCreate_user_id());
 			h.setDiscount_price(b.getDiscount_price());

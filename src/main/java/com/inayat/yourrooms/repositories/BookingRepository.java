@@ -1,5 +1,6 @@
 package com.inayat.yourrooms.repositories;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -21,4 +22,7 @@ public interface BookingRepository extends CrudRepository<Booking, Long> {
 
 	@Query("SELECT b from Booking b WHERE b.hotel=:hotel")
 	List<Booking> finByHotel(Hotel hotel);
+	
+	@Query("SELECT b from Booking b where b.checkinDate BETWEEN :checkinDate AND :checkoutDate AND b.hotel=:hotel")
+	List<Booking> findAvailability(Date checkinDate, Date checkoutDate, Hotel hotel);
 }
